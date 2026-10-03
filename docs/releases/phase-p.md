@@ -2,11 +2,11 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
-## v0.349.0 — Scope freeze
+## v0.357.0 — Scope freeze
 
 **Status:** planned.
 
-**Setup:** baseline 0.348.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.356.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Scope freeze.
 
@@ -16,13 +16,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Later upstream additions enter a separate backlog; security fixes remain eligible for inclusion. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.349.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.357.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.350.0 — Catalogue audit
+## v0.358.0 — Catalogue audit
 
 **Status:** planned.
 
-**Setup:** baseline 0.349.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.357.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Catalogue audit.
 
@@ -32,13 +32,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** No unexplained omissions, duplicate counting or native-only substitutions inflate the compatibility claim. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.350.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.358.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.351.0 — Workflow and UI audit
+## v0.359.0 — Workflow and UI audit
 
 **Status:** planned.
 
-**Setup:** baseline 0.350.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.358.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Workflow and UI audit.
 
@@ -48,13 +48,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Workbench parity is demonstrated beyond unit tests; safety differences are documented prominently. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.351.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.359.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.352.0 — Cross-target conformance
+## v0.360.0 — Cross-target conformance
 
 **Status:** planned.
 
-**Setup:** baseline 0.351.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.359.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Cross-target conformance.
 
@@ -64,13 +64,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Required capabilities work on the published baseline; simulated wasm compilation alone is not sufficient. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.352.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.360.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.353.0 — Resource and denial-of-service audit
+## v0.361.0 — Resource and denial-of-service audit
 
 **Status:** planned.
 
-**Setup:** baseline 0.352.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.360.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Resource and denial-of-service audit.
 
@@ -80,13 +80,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Memory/work/depth/output limits hold; discovered crashes and hangs are triaged and fixed before release. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.353.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.361.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.354.0 — Unsafe and dependency audit
+## v0.362.0 — Unsafe and dependency audit
 
 **Status:** planned.
 
-**Setup:** baseline 0.353.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.361.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Unsafe and dependency audit.
 
@@ -96,13 +96,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** No unreviewed dependency exception or known unmitigated high-severity issue remains in the release profile. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.354.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.362.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.355.0 — API and authorization assessment
+## v0.363.0 — API and authorization assessment
 
 **Status:** planned.
 
-**Setup:** baseline 0.354.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.362.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** API and authorization assessment.
 
@@ -112,13 +112,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Confirmed critical/high findings are fixed and regression-tested; accepted lower risks have owners and rationale. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.355.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.363.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.356.0 — Data and cache assessment
+## v0.364.0 — Data and cache assessment
 
 **Status:** planned.
 
-**Setup:** baseline 0.355.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.363.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Data and cache assessment.
 
@@ -128,13 +128,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Cross-tenant cache probing and partial-result disclosure tests fail closed; documentation matches actual retention. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.356.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.364.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.357.0 — Accessibility and usability assessment
+## v0.365.0 — Accessibility and usability assessment
 
 **Status:** planned.
 
-**Setup:** baseline 0.356.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.364.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Accessibility and usability assessment.
 
@@ -144,13 +144,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Essential tasks have non-canvas alternatives; accessibility failures are fixed rather than deferred to native apps. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.357.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.365.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.358.0 — Performance characterization
+## v0.366.0 — Performance characterization
 
 **Status:** planned.
 
-**Setup:** baseline 0.357.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.365.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Performance characterization.
 
@@ -160,13 +160,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Claims distinguish streaming from whole-input operations and cold from warm caches; no invented speedup multipliers. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.358.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.366.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.359.0 — Supply-chain release proof
+## v0.367.0 — Supply-chain release proof
 
 **Status:** planned.
 
-**Setup:** baseline 0.358.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.366.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Supply-chain release proof.
 
@@ -176,13 +176,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Independent clean builds can verify the release process; supplied models/fonts/data are licensed for redistribution. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.359.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.367.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.360.0 — Migration and disaster drill
+## v0.368.0 — Migration and disaster drill
 
 **Status:** planned.
 
-**Setup:** baseline 0.359.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.367.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Migration and disaster drill.
 
@@ -192,13 +192,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Recovery preserves recipe revision and authorization invariants; operational instructions are executable. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.360.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.368.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.361.0 — Documentation and SDK freeze
+## v0.369.0 — Documentation and SDK freeze
 
 **Status:** planned.
 
-**Setup:** baseline 0.360.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.368.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Documentation and SDK freeze.
 
@@ -208,13 +208,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Examples are exercised in CI; docs disclose compatibility limits and browser-owned TLS boundaries. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.361.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.369.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.362.0 — Release-candidate rehearsal
+## v0.370.0 — Release-candidate rehearsal
 
 **Status:** planned.
 
-**Setup:** baseline 0.361.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.369.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Release-candidate rehearsal.
 
@@ -224,13 +224,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Blocking issues produce further 0.x releases; the version number cannot waive missing functionality or security gates. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.362.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.370.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.363.0 — GA acceptance decision
+## v0.371.0 — GA acceptance decision
 
 **Status:** planned.
 
-**Setup:** baseline 0.362.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.370.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** GA acceptance decision.
 
@@ -240,4 +240,4 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Advance to 1.0.0-rc only when every mandatory gate passes; otherwise continue 0.241.0 and beyond with concrete gap releases. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.363.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.371.0 implementation stop reached. Run pentest for this exact commit.

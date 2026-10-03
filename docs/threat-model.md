@@ -18,6 +18,7 @@ plugins and rendered results are untrusted, including when processing locally.
 | Artifact/database | Partial publication, traversal, stale worker, lost revisions | Staging/fencing, symlink-safe namespace, transaction/crash/restore tests |
 | Cache/search | Cross-tenant inference, stale grants, poison, secret indexing | Scoped keys, authoritative auth, completed manifests, outage/rebuild tests |
 | OpenBao | Root leakage, broad grants, expiry, bootstrap/audit failure | Scoped AppRole, root revoke, TLS, rotation/recovery and denials |
+| Initialization/build secret supply | Local fallback, CI claim confusion, persistent delivery leaks, sealed-vault dependency cycle | Bao-first provisioning, enumerated startup trust, scoped CI exchange, tmpfs cleanup, source/version provenance |
 | Plugin/media | Ambient origin privileges, runaway code, host-call escape | Separate memory/workers, import allowlist, isolated previews, killability |
 | Supply/release | Stale vulnerable code, mutable actions/images, forged PASS | Hash/version policy, audits/SBOM, exact-source pentest, signed provenance |
 
@@ -34,3 +35,8 @@ HTTP; dev PostgreSQL/Valkey loopback transport is unencrypted; local recovery
 shares and service passwords are held together for disposable tests; 30-day
 self-signed OpenBao certificates and 24-hour AppRole SecretIDs expire. Production
 profiles must reject these shortcuts and implement separate lifecycle gates.
+Service passwords are currently generated outside OpenBao before KV seeding;
+the next planned pass remediates origin and startup ordering. Mandatory project
+secret scope and custody are defined in [secret lifecycle](SECRETS_POLICY.md).
+The [search design](SEARCH_DESIGN.md) requires negative evidence for stale-index
+hits, snippets, counts and facets, including revoked same-tenant permissions.

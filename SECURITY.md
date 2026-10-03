@@ -22,3 +22,11 @@ Production runtime processes must never hold bootstrap root tokens or OpenBao
 recovery shares. Secrets do not belong in URLs, logs, arguments, payload caches
 or search indexes. Local .local/stack custody shortcuts are only test fixtures
 and have no production support claim.
+
+All project-operated initialization, runtime, build and release secrets must
+come through OpenBao; public Rust setup/build needs none. Vault startup trust
+and independent recovery custody are the minimal explicit bootstrap boundary.
+The current fixture generates passwords locally before seeding the vault and
+requires the next planned remediation pass. See [secret lifecycle](docs/SECRETS_POLICY.md).
+Search is optional infrastructure; current database permissions govern hits
+and aggregates in both backends. See [search design](docs/SEARCH_DESIGN.md).

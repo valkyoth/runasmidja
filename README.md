@@ -28,8 +28,8 @@ service-test tooling. No workbench, transformation operation, browser UI,
 production HTTP server or CyberChef parity is implemented yet. `0.1.0` is an
 unpublished foundation candidate, with pentest pending.
 
-The [release plan](docs/RELEASE_PLAN.md) defines 363 small pre-1.0 passes,
-through `0.363.0`, with further versions whenever needed. `1.0.0` is the first
+The [release plan](docs/RELEASE_PLAN.md) defines 371 small pre-1.0 passes,
+through `0.371.0`, with further versions whenever needed. `1.0.0` is the first
 serious production release with complete declared website/API functionality.
 Desktop/mobile GUIs follow afterward.
 
@@ -58,6 +58,10 @@ Dependencies run in rootless Podman: PostgreSQL **19 beta 4**, OpenBao **2.7.1**
 and Valkey **9.1.2**. State and credentials stay in ignored `.local/stack`.
 OpenBao is initialized over TLS with declarative audit, KV v2, scoped AppRole
 and revoked bootstrap root token. See [local stack](docs/local-stack.md).
+The next pass replaces locally generated fixture passwords with OpenBao-first
+provisioning. All project-operated secrets, including initialization/private
+build/release credentials, must come through OpenBao; public Rust builds need
+none. See [secret lifecycle](docs/SECRETS_POLICY.md) for bootstrap custody.
 
 ## Workspace
 
@@ -91,8 +95,11 @@ are retained as design inputs. Their historical compiler/provider statements
 are not current implementation evidence.
 
 Operation search will work locally over descriptors. Saved-recipe metadata
-search starts behind a portable repository boundary. Meilisearch is optional
-if measured requirements justify it; payloads and secrets are excluded.
+search has an early portable SearchService contract and two planned backends:
+repository search and optional Meilisearch. Both will be implemented/tested with
+hosted persistence; operators may enable or disable Meilisearch without changing
+the UI/API or recipe schema. Payloads/secrets are excluded and current database
+permissions govern results. See [search design](docs/SEARCH_DESIGN.md).
 
 ## License
 

@@ -2,7 +2,7 @@
 
 Status: planned; workspace initialized, no release tagged.
 
-363 small pre-1.0 passes, starting at 0.1.0 and ending at 0.363.0. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.
+371 small pre-1.0 passes, starting at 0.1.0 and ending at 0.371.0. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.
 
 The supplied 240-release bundle is preserved under [reference](reference/workbench-plan/README.md). Runasmidja adds operational services and splits multi-provider/algorithm work; source-version mappings preserve every original workstream. Nothing in this plan claims an implementation or a completed pentest.
 
@@ -11,6 +11,8 @@ The supplied 240-release bundle is preserved under [reference](reference/workben
 - Run Rust 1.99.0 initially; review official stable, crate, tool, action and service metadata weekly and before changes.
 - Before each pass, write its exact API/operation/argument scope, target profile, numeric resource ceilings and test IDs. One new algorithm, dialect, persistent contract or trust boundary per pass.
 - All code files stay at or below 500 lines; focused crates and independently tested adapters preserve no_std and future Vef/Brynja extraction.
+- OpenBao is the source for every project-operated initialization, runtime, build and release secret; consumers start only after scoped retrieval. Minimal vault bootstrap/recovery trust has separate custody; public Rust builds and browser-local user inputs require no vault.
+- SearchService is an early portable contract. Repository search and optional Meilisearch are required implementation/test profiles before production; optional deployment is not deferred implementation. Index only approved nonsensitive metadata and recheck current database authorization.
 - A family row is an inventory owner. If it contains independent algorithms or dialects after source reconciliation, split it into additional numbered passes before coding; never hide feature work in a patch.
 - The predecessor is the baseline. A later capability is never assumed available; move or split the consumer if a concrete prerequisite is discovered.
 - Imported operation names remain provisional until the immutable CyberChef inventory confirms exact variants and redistribution rights. Unsupported required variants remain blocking gaps.
@@ -21,27 +23,31 @@ Run `scripts/checks.sh`, current dependency/license/advisory checks, freshness, 
 
 The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Tagging/publication is separate from this setup task.
 
+The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The next bounded implementation pass is OpenBao-first secret provisioning; current fixture passwords are still locally generated and do not meet that new origin policy.
+
+The [2026-10-03 planning revision](plan-revision-2026-10-03.md) records moved owners and qualification limits. Unpublished version assignments changed; the supplied source-version mapping remains intact.
+
 ## Per-version handoffs
 
 | Phase | Versions | Detailed handoffs |
 | --- | --- | --- |
-| Z: Repository and service foundation | 0.1.0–0.6.0 | [Milestones](releases/phase-z.md) |
-| A: Foundation and useful vertical slice | 0.7.0–0.27.0 | [Milestones](releases/phase-a.md) |
-| B: Bytes, text and foundational encodings | 0.28.0–0.57.0 | [Milestones](releases/phase-b.md) |
-| C: Streaming, artifacts and execution foundations | 0.58.0–0.72.0 | [Milestones](releases/phase-c.md) |
-| D: Modern browser workbench | 0.73.0–0.87.0 | [Milestones](releases/phase-d.md) |
-| E: Remote API, PostgreSQL and secure server execution | 0.88.0–0.111.0 | [Milestones](releases/phase-e.md) |
-| F: Structured formats, queries and utilities | 0.112.0–0.135.0 | [Milestones](releases/phase-f.md) |
-| G: Compression and archives | 0.136.0–0.150.0 | [Milestones](releases/phase-g.md) |
-| H: Modern hashing and cryptographic operations | 0.151.0–0.186.0 | [Milestones](releases/phase-h.md) |
-| I: Legacy cryptography, hashes and classical ciphers | 0.187.0–0.237.0 | [Milestones](releases/phase-i.md) |
-| J: Public keys, certificates and tokens | 0.238.0–0.264.0 | [Milestones](releases/phase-j.md) |
-| K: Network and forensic analysis | 0.265.0–0.279.0 | [Milestones](releases/phase-k.md) |
-| L: Images, media and document presentation | 0.280.0–0.300.0 | [Milestones](releases/phase-l.md) |
-| M: Complete recipe semantics, Magic and compatibility | 0.301.0–0.315.0 | [Milestones](releases/phase-m.md) |
-| N: Extensibility and replacement-adapter proof | 0.316.0–0.330.0 | [Milestones](releases/phase-n.md) |
-| O: Portability, collaboration and operations | 0.331.0–0.348.0 | [Milestones](releases/phase-o.md) |
-| P: Qualification and general-availability readiness | 0.349.0–0.363.0 | [Milestones](releases/phase-p.md) |
+| Z: Repository and service foundation | 0.1.0–0.8.0 | [Milestones](releases/phase-z.md) |
+| A: Foundation and useful vertical slice | 0.9.0–0.33.0 | [Milestones](releases/phase-a.md) |
+| B: Bytes, text and foundational encodings | 0.34.0–0.63.0 | [Milestones](releases/phase-b.md) |
+| C: Streaming, artifacts and execution foundations | 0.64.0–0.78.0 | [Milestones](releases/phase-c.md) |
+| D: Modern browser workbench | 0.79.0–0.93.0 | [Milestones](releases/phase-d.md) |
+| E: Remote API, PostgreSQL and secure server execution | 0.94.0–0.120.0 | [Milestones](releases/phase-e.md) |
+| F: Structured formats, queries and utilities | 0.121.0–0.144.0 | [Milestones](releases/phase-f.md) |
+| G: Compression and archives | 0.145.0–0.159.0 | [Milestones](releases/phase-g.md) |
+| H: Modern hashing and cryptographic operations | 0.160.0–0.195.0 | [Milestones](releases/phase-h.md) |
+| I: Legacy cryptography, hashes and classical ciphers | 0.196.0–0.246.0 | [Milestones](releases/phase-i.md) |
+| J: Public keys, certificates and tokens | 0.247.0–0.273.0 | [Milestones](releases/phase-j.md) |
+| K: Network and forensic analysis | 0.274.0–0.288.0 | [Milestones](releases/phase-k.md) |
+| L: Images, media and document presentation | 0.289.0–0.309.0 | [Milestones](releases/phase-l.md) |
+| M: Complete recipe semantics, Magic and compatibility | 0.310.0–0.324.0 | [Milestones](releases/phase-m.md) |
+| N: Extensibility and replacement-adapter proof | 0.325.0–0.339.0 | [Milestones](releases/phase-n.md) |
+| O: Portability, collaboration and operations | 0.340.0–0.356.0 | [Milestones](releases/phase-o.md) |
+| P: Qualification and general-availability readiness | 0.357.0–0.371.0 | [Milestones](releases/phase-p.md) |
 
 ## Release candidates and production
 
@@ -49,7 +55,7 @@ The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY
 
 **Status:** planned.
 
-**Setup:** every required pre-1.0 inventory row and qualification result is closed; PostgreSQL 19 GA, current OpenBao/Valkey and exact artifacts are pinned.
+**Setup:** every required pre-1.0 inventory row and qualification result is closed; PostgreSQL 19 GA, current OpenBao/Valkey, optional Meilisearch and exact artifacts are pinned. Both search profiles and OpenBao secret-source/initialization/build/recovery gates are qualified.
 
 **Goal:** qualify the first complete production candidate.
 
@@ -89,7 +95,7 @@ The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY
 
 **Deliverables:** supported distributions, maintenance policy, full operation/API docs, production security/recovery guides and release notes.
 
-**Verification:** verify all operation/argument/recipe/UI/target rows, exact distribution provenance, current security findings and executed deployment/upgrade/recovery procedures.
+**Verification:** verify all operation/argument/recipe/UI/target rows, both search profiles with live authorization, OpenBao-sourced project secrets from initialization through release, exact distribution provenance, current security findings and executed deployment/upgrade/recovery procedures.
 
 **Exit criteria:** all required functionality and evidence pass; no beta database or unsupported production claim remains. v1.0.0 implementation stop reached. Run pentest for this exact commit.
 

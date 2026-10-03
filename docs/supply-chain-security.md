@@ -32,3 +32,13 @@ redistribution notices for admitted code/models/fonts/tables/corpora.
 Local system packages follow the user-managed daily Tumbleweed updates and do
 not block product/service freshness checks. Meilisearch upstream is monitored
 as an optional unadmitted service; qualification is required before enabling it.
+Both repository search and the optional Meilisearch adapter are required planned
+implementations before 1.0; deployment selection is separate. At admission,
+verify the current server/client API, license/features, action/image/source
+provenance and add the admitted client to weekly crate freshness coverage.
+
+Public toolchain/build checks need no secret. Any project credential for private
+initialization, registry access, signing, publishing or deployment comes through
+OpenBao under [secret lifecycle policy](SECRETS_POLICY.md), including in CI.
+Platform workload identity is scoped authentication proof, not a project-token
+storage substitute; trusted jobs retrieve only their own bounded grants.

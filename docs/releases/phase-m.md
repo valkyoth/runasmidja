@@ -2,11 +2,11 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
-## v0.301.0 — Compatibility interpreter
+## v0.310.0 — Compatibility interpreter
 
 **Status:** planned.
 
-**Setup:** baseline 0.300.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.309.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Compatibility interpreter.
 
@@ -16,13 +16,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Recipes with disabled operations, defaults and mixed data types preserve documented semantics. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.301.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.310.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.302.0 — Fork and Merge compatibility
+## v0.311.0 — Fork and Merge compatibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.301.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.310.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Fork and Merge compatibility.
 
@@ -32,13 +32,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Empty branches, delimiters and nested forks match fixtures independently of runtime chunking. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.302.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.311.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.303.0 — Subsection processing
+## v0.312.0 — Subsection processing
 
 **Status:** planned.
 
-**Setup:** baseline 0.302.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.311.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Subsection processing.
 
@@ -48,13 +48,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Boundary, Unicode and changing-output-length cases preserve the required surrounding data. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.303.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.312.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.304.0 — Registers and variables
+## v0.313.0 — Registers and variables
 
 **Status:** planned.
 
-**Setup:** baseline 0.303.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.312.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Registers and variables.
 
@@ -64,13 +64,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Scope, escaping, missing registers and lifetime rules are deterministic; secrets do not leak into recipe serialization. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.304.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.313.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.305.0 — Labels and jumps
+## v0.314.0 — Labels and jumps
 
 **Status:** planned.
 
-**Setup:** baseline 0.304.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.313.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Labels and jumps.
 
@@ -80,13 +80,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Looping reference fixtures pass; exhausted limits return a precise diagnostic rather than hang. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.305.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.314.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.306.0 — Return and nested recipes
+## v0.315.0 — Return and nested recipes
 
 **Status:** planned.
 
-**Setup:** baseline 0.305.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.314.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Return and nested recipes.
 
@@ -96,13 +96,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Return scopes and nested budget inheritance are tested; recursion is bounded or rejected by the declared profile. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.306.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.315.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.307.0 — Compatibility recipe importer
+## v0.316.0 — Compatibility recipe importer
 
 **Status:** planned.
 
-**Setup:** baseline 0.306.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.315.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Compatibility recipe importer.
 
@@ -112,13 +112,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Unknown operations/arguments are preserved for review or rejected, never silently dropped. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.307.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.316.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.308.0 — Compatibility exporter
+## v0.317.0 — Compatibility exporter
 
 **Status:** planned.
 
-**Setup:** baseline 0.307.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.316.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Compatibility exporter.
 
@@ -128,13 +128,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Unrepresentable graph features produce an explicit report; no misleading successful export loses behavior. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.308.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.317.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.309.0 — Detection primitives
+## v0.318.0 — Detection primitives
 
 **Status:** planned.
 
-**Setup:** baseline 0.308.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.317.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Detection primitives.
 
@@ -144,13 +144,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Detectors explain evidence and uncertainty; a score is not advertised as a calibrated probability without validation. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.309.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.318.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.310.0 — Magic one-step suggestions
+## v0.319.0 — Magic one-step suggestions
 
 **Status:** planned.
 
-**Setup:** baseline 0.309.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.318.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Magic one-step suggestions.
 
@@ -160,13 +160,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Suggestions require user acceptance; network, secret-revealing or expensive actions are excluded by default. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.310.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.319.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.311.0 — Magic bounded search
+## v0.320.0 — Magic bounded search
 
 **Status:** planned.
 
-**Setup:** baseline 0.310.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.319.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Magic bounded search.
 
@@ -176,13 +176,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Adversarial recursive inputs terminate; repeated runs on the same data/revision produce stable candidate ordering. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.311.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.320.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.312.0 — Brute-force analysis
+## v0.321.0 — Brute-force analysis
 
 **Status:** planned.
 
-**Setup:** baseline 0.311.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.320.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Brute-force analysis.
 
@@ -192,13 +192,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Work estimates, candidate limits and cancellation are effective; heavy searches are never automatic by default. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.312.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.321.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.313.0 — Full regex compatibility
+## v0.322.0 — Full regex compatibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.312.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.321.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Full regex compatibility.
 
@@ -208,13 +208,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Reference dialect corpus passes locally and natively; safe-regex mode remains separately identified. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.313.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.322.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.314.0 — End-to-end reference recipes
+## v0.323.0 — End-to-end reference recipes
 
 **Status:** planned.
 
-**Setup:** baseline 0.313.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.322.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** End-to-end reference recipes.
 
@@ -224,13 +224,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Equality criteria cover bytes, structure, diagnostics and allowed nondeterminism; every mismatch has a tracked disposition. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.314.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.323.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.315.0 — Feature-complete parity candidate
+## v0.324.0 — Feature-complete parity candidate
 
 **Status:** planned.
 
-**Setup:** baseline 0.314.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.323.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Feature-complete parity candidate.
 
@@ -240,4 +240,4 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** No required capability is missing; any open gap creates additional 0.x releases before qualification. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.315.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.324.0 implementation stop reached. Run pentest for this exact commit.

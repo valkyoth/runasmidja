@@ -2,11 +2,11 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
-## v0.7.0 — Executable seed
+## v0.9.0 — Executable seed
 
 **Status:** planned.
 
-**Setup:** baseline 0.6.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.8.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Executable seed.
 
@@ -16,13 +16,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Native and browser fixtures agree; the example needs neither PostgreSQL nor a sibling repository. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.7.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.9.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.8.0 — Reference baseline
+## v0.10.0 — Reference baseline
 
 **Status:** planned.
 
-**Setup:** baseline 0.7.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.9.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Reference baseline.
 
@@ -32,13 +32,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Every discovered operation has a stable tracking record; the reference commit and file hashes are recorded, not guessed. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.8.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.10.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.9.0 — Application contracts
+## v0.11.0 — Application contracts
 
 **Status:** planned.
 
-**Setup:** baseline 0.8.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.10.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Application contracts.
 
@@ -48,13 +48,77 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Round-trip tests reject unknown required fields and preserve large offsets without JavaScript number truncation. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.9.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.11.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.10.0 — Portable kernel
+## v0.12.0 — OpenBao SDK admission
 
 **Status:** planned.
 
-**Setup:** baseline 0.9.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.11.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** OpenBao SDK admission.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Admit the latest stable openbao SDK into a dedicated std adapter with minimal reviewed features and server compatibility checks; keep it outside portable defaults. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Use the real TLS OpenBao fixture and compatibility policy; token and error diagnostics are redacted; no SDK transport types reach application APIs. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.12.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.13.0 — Application secret references
+
+**Status:** planned.
+
+**Setup:** baseline 0.12.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Application secret references.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Define service/build SecretRef resolution through scoped OpenBao identity, bounded delivery and lease/version metadata; inventory database/cache/search/bootstrap, session/signing/encryption, external integration and release credentials. Exclude user operation keys from default persistence. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Missing, expired and revoked credentials fail closed; no root token or recovery key is delivered to API/worker/build processes; cross-workspace secret requests fail; no host/SDK type enters portable contracts and no hardcoded/environment/file secret fallback exists. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.13.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.14.0 — Secret rotation lifecycle
+
+**Status:** planned.
+
+**Setup:** baseline 0.13.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Secret rotation lifecycle.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Implement token renewal, AppRole re-provisioning, credential rotation and restart convergence behind secret-store contracts. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Expiry, rotation during work, OpenBao outage and audit failure are exercised; old grants cannot be reused and no static secret fallback appears. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.14.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.15.0 — Search service contracts
+
+**Status:** planned.
+
+**Setup:** baseline 0.14.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Search service contracts.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Define portable SearchService request/results, bounds, opaque cursors and declared capabilities during application contracts. Keep operation-picker search local. Plan repository and optional Meilisearch saved-metadata adapters with unchanged UI/API/schema and a std-only feature/runtime selector. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Default no_std graph admits no Meilisearch dependency; offline catalogue search and both hosted-backend contract fixtures cover query bounds, metadata projection and authorization. Ranking differences are explicit; filters/SDK types stay adapter-owned and unavailable features return declared errors. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.15.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.16.0 — Portable kernel
+
+**Status:** planned.
+
+**Setup:** baseline 0.15.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Portable kernel.
 
@@ -64,13 +128,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Bare-metal-style compile checks catch std leakage; unsafe code is forbidden in first-party portable core by default. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.10.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.16.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.11.0 — Bounded buffer contract
+## v0.17.0 — Bounded buffer contract
 
 **Status:** planned.
 
-**Setup:** baseline 0.10.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.16.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Bounded buffer contract.
 
@@ -80,13 +144,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Zero-sized windows, short writes, empty inputs and repeated finish calls have defined results without panics. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.11.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.17.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.12.0 — Operation descriptors
+## v0.18.0 — Operation descriptors
 
 **Status:** planned.
 
-**Setup:** baseline 0.11.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.17.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Operation descriptors.
 
@@ -96,13 +160,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** One new operation registers once and appears in catalogue, validation, documentation and generated argument controls. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.12.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.18.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.13.0 — Linear execution
+## v0.19.0 — Linear execution
 
 **Status:** planned.
 
-**Setup:** baseline 0.12.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.18.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Linear execution.
 
@@ -112,13 +176,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Chunk partitions do not alter outputs; invalid intermediate types fail before execution where statically knowable. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.13.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.19.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.14.0 — Worker protocol
+## v0.20.0 — Worker protocol
 
 **Status:** planned.
 
-**Setup:** baseline 0.13.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.19.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Worker protocol.
 
@@ -128,13 +192,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Processing runs outside the UI thread; stale generations and malformed messages cannot update active results. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.14.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.20.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.15.0 — Cancellation lifecycle
+## v0.21.0 — Cancellation lifecycle
 
 **Status:** planned.
 
-**Setup:** baseline 0.14.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.20.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Cancellation lifecycle.
 
@@ -144,13 +208,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** A cancelled job cannot publish a successful artifact; cancellation leaves the next job usable. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.15.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.21.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.16.0 — First browser workbench
+## v0.22.0 — First browser workbench
 
 **Status:** planned.
 
-**Setup:** baseline 0.15.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.21.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** First browser workbench.
 
@@ -160,13 +224,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Keyboard-only use completes a sample recipe; raw output is never interpreted as trusted HTML. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.16.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.22.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.17.0 — Loopback API host
+## v0.23.0 — Loopback API host
 
 **Status:** planned.
 
-**Setup:** baseline 0.16.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.22.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Loopback API host.
 
@@ -176,13 +240,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Local and HTTP clients pass the same contract suite; the development server binds loopback by default. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.17.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.23.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.18.0 — Regex compatibility feasibility
+## v0.24.0 — Regex compatibility feasibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.17.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.23.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Regex compatibility feasibility.
 
@@ -192,13 +256,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.18.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.24.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.19.0 — Query-language feasibility
+## v0.25.0 — Query-language feasibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.18.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.24.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Query-language feasibility.
 
@@ -208,13 +272,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.19.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.25.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.20.0 — YARA feasibility
+## v0.26.0 — YARA feasibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.19.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.25.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** YARA feasibility.
 
@@ -224,13 +288,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.20.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.26.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.21.0 — Cryptographic-provider feasibility
+## v0.27.0 — Cryptographic-provider feasibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.20.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.26.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Cryptographic-provider feasibility.
 
@@ -240,13 +304,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.21.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.27.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.22.0 — Compression-provider feasibility
+## v0.28.0 — Compression-provider feasibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.21.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.27.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Compression-provider feasibility.
 
@@ -256,13 +320,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.22.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.28.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.23.0 — Disassembly feasibility
+## v0.29.0 — Disassembly feasibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.22.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.28.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Disassembly feasibility.
 
@@ -272,13 +336,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.23.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.29.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.24.0 — OCR and media feasibility
+## v0.30.0 — OCR and media feasibility
 
 **Status:** planned.
 
-**Setup:** baseline 0.23.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.29.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** OCR and media feasibility.
 
@@ -288,13 +352,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.24.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.30.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.25.0 — Differential harness
+## v0.31.0 — Differential harness
 
 **Status:** planned.
 
-**Setup:** baseline 0.24.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.30.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Differential harness.
 
@@ -304,13 +368,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Positive, negative, binary and Unicode cases run reproducibly; upstream bugs are recorded rather than blindly copied. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.25.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.31.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.26.0 — First threat review
+## v0.32.0 — First threat review
 
 **Status:** planned.
 
-**Setup:** baseline 0.25.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.31.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** First threat review.
 
@@ -320,13 +384,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** No payload telemetry or automatic network side effects; hostile samples produce bounded failures. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.26.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.32.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.27.0 — Usable vertical alpha
+## v0.33.0 — Usable vertical alpha
 
 **Status:** planned.
 
-**Setup:** baseline 0.26.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.32.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Usable vertical alpha.
 
@@ -336,4 +400,4 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** A fresh clone builds and runs without sibling projects or a database; phase A contracts are demonstrated end to end. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.27.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.33.0 implementation stop reached. Run pentest for this exact commit.

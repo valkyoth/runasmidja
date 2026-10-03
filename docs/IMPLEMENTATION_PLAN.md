@@ -8,8 +8,8 @@ transformations execute in a real Dedicated Worker in their browser without
 an account, database or payload upload. Explicit remote execution uses isolated
 Linux workers. Saving and sharing are independent permissions.
 
-The [release plan](RELEASE_PLAN.md) assigns 363 bounded passes through
-0.363.0; additional passes close every mandatory gap before 1.0. The original
+The [release plan](RELEASE_PLAN.md) assigns 371 bounded passes through
+0.371.0; additional passes close every mandatory gap before 1.0. The original
 240-pass bundle remains preserved in [reference](reference/workbench-plan/README.md).
 Every original source version maps to one or more Runasmidja owners in phase
 JSON records. Multi-algorithm work is split rather than hidden in a broad title.
@@ -30,6 +30,10 @@ JSON records. Multi-algorithm work is split rather than hidden in a broad title.
   Qualify maintained providers for cryptography, compression and complex parsing;
   reducing dependency count must not override correctness or security.
 - Keep framework, database, SDK, TLS and browser types outside portable APIs.
+- Source every project-operated secret from OpenBao, including initial service,
+  private Rust/build, CI and release credentials. Public builds need no secrets.
+  Minimal vault startup/recovery trust has separate enumerated custody; see
+  [secret lifecycle](SECRETS_POLICY.md). The current fixture needs remediation.
 - Test every admitted behavior, malformed path, resource limit and lifecycle.
   Tests, security docs and release notes arrive in the same implementation pass.
 - EUPL-1.2 applies to project code. External asset/code rights are reviewed
@@ -56,6 +60,7 @@ Extract the following only when real behavior needs ownership:
 | runasmidja-postgres / runasmidja-mysql | Backend-owned migrations and repository conformance | std adapters |
 | runasmidja-openbao | Latest reviewed openbao SDK, AppRole and leases | std adapter |
 | runasmidja-valkey | Optional bounded cache and invalidation | std adapter |
+| runasmidja-search-meilisearch | Optional saved-metadata search and outbox consumer | std adapter |
 | runasmidja-browser / runasmidja-web | Wasm worker bindings and accessible Rust DOM UI | browser host |
 | runasmidja-server / runasmidja-worker | Control plane and isolated native execution | Linux/std |
 
@@ -66,16 +71,28 @@ provider footprint or review size justify separation. `lib.rs` exports;
 ## Implementation order
 
 Repository and container fixtures come first so every later hosted feature can
-test itself. Then prove one transformation on native and actual browser hosts,
+test itself. The next bounded pass is OpenBao-first secret provisioning: vault
+initialization precedes PostgreSQL/Valkey credentials and startup. Qualify private
+temporary delivery and build/release identity separately. Then prove one
+transformation on native and actual browser hosts,
 pin the complete CyberChef inventory and establish stable descriptors/contracts.
+Immediately after application contracts, qualify OpenBao SDK/SecretRef/rotation
+and define SearchService, independent of browser, database or provider types.
 Investigate regex dialects, query languages, YARA, crypto, compression,
 disassembly and OCR in separate feasibility passes before assuming providers.
 
 Common encodings precede execution stress, persistent artifacts and advanced
 viewers. Optional hosted persistence/API work follows local contracts and adds
-real PostgreSQL repositories, OpenBao SDK/rotation/database leases, Valkey
+real PostgreSQL repositories, OpenBao database leases, Valkey
 failure behavior, authentication, isolation and quotas. Production service TLS,
 recovery custody and PostgreSQL beta-to-GA migration have explicit owner passes.
+
+Implement repository search, transactional projection/outbox, the optional
+Meilisearch fixture/adapter, live authorization rechecks and backend-switching
+qualification immediately after hosted persistence and workspace authorization.
+Both backends are required implementations/tests before 1.0; Meilisearch remains
+optional to deploy. Local operation/recipe search stays local. Later shared
+collections extend the same contract. See [search design](SEARCH_DESIGN.md).
 
 Structured formats, archives, modern and historical cryptography, public keys,
 forensics and media follow in narrow operation/provider passes. Full recipe

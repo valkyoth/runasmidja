@@ -12,6 +12,8 @@
 | GitHub CodeQL | External setting required | GitHub Default setup only; no advanced workflow |
 | Local secret isolation | Implemented harness | Ignored .local state, private permissions, limited container mounts |
 | OpenBao test bootstrap | Implemented harness | TLS validation, declarative audit, KV v2, AppRole, root revoke |
+| OpenBao source for all project secrets | Required; remediation planned | Current fixture generates local passwords first; next pass implements Bao-first initialization, then temporary delivery/build gates; see [policy](SECRETS_POLICY.md) |
+| Search optionality and live authorization | Planned | Early SearchService, repository/Meilisearch profiles, metadata allowlist, outbox and current-authority rechecks; see [design](SEARCH_DESIGN.md) |
 | PostgreSQL/Valkey test controls | Implemented harness | Runtime DB role, cache ACL/prefix/TTL/memory, loopback ports |
 | Release pentest readiness | Configured | Non-PASS evidence blocked by scripts/check_release.py |
 | Product security controls | Planned | Browser, API, recipe, worker, provider and recovery milestones |

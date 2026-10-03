@@ -2,11 +2,11 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
-## v0.28.0 — Byte inspection
+## v0.34.0 — Byte inspection
 
 **Status:** planned.
 
-**Setup:** baseline 0.27.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.33.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Byte inspection.
 
@@ -16,13 +16,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Offsets, delimiters, malformed rows and partial final lines match the selected compatibility profile. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.28.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.34.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.29.0 — Integer representations
+## v0.35.0 — Integer representations
 
 **Status:** planned.
 
-**Setup:** baseline 0.28.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.34.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Integer representations.
 
@@ -32,13 +32,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Signedness, precision, overflow, NaN payloads and byte-order behavior have explicit tests. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.29.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.35.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.30.0 — Floating-point representations
+## v0.36.0 — Floating-point representations
 
 **Status:** planned.
 
-**Setup:** baseline 0.29.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.35.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Floating-point representations.
 
@@ -48,13 +48,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Signedness, precision, overflow, NaN payloads and byte-order behavior have explicit tests. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.30.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.36.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.31.0 — BCD representations
+## v0.37.0 — BCD representations
 
 **Status:** planned.
 
-**Setup:** baseline 0.30.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.36.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** BCD representations.
 
@@ -64,13 +64,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Signedness, precision, overflow, NaN payloads and byte-order behavior have explicit tests. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.31.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.37.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.32.0 — Base64 family
+## v0.38.0 — Base64 family
 
 **Status:** planned.
 
-**Setup:** baseline 0.31.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.37.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Base64 family.
 
@@ -80,13 +80,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** RFC vectors and reference arguments pass across every short-input chunk partition; padding is accepted only in valid positions. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.32.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.38.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.33.0 — Base32 variants
+## v0.39.0 — Base32 variants
 
 **Status:** planned.
 
-**Setup:** baseline 0.32.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.38.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Base32 variants.
 
@@ -96,13 +96,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Case handling, trailing bits and incomplete blocks have separate strict and compatibility fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.33.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.39.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.34.0 — Base45 variants
+## v0.40.0 — Base45 variants
 
 **Status:** planned.
 
-**Setup:** baseline 0.33.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.39.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Base45 variants.
 
@@ -112,13 +112,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Case handling, trailing bits and incomplete blocks have separate strict and compatibility fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.34.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.40.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.35.0 — Base58 variants
+## v0.41.0 — Base58 variants
 
 **Status:** planned.
 
-**Setup:** baseline 0.34.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.40.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Base58 variants.
 
@@ -128,13 +128,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Checksums, mixed-case policy, network prefixes and maximum-length limits are enforced without ambiguous repair. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.35.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.41.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.36.0 — Bech32 variants
+## v0.42.0 — Bech32 variants
 
 **Status:** planned.
 
-**Setup:** baseline 0.35.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.41.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Bech32 variants.
 
@@ -144,13 +144,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Checksums, mixed-case policy, network prefixes and maximum-length limits are enforced without ambiguous repair. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.36.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.42.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.37.0 — Base62
+## v0.43.0 — Base62
 
 **Status:** planned.
 
-**Setup:** baseline 0.36.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.42.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Base62.
 
@@ -160,13 +160,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.37.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.43.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.38.0 — Base85
+## v0.44.0 — Base85
 
 **Status:** planned.
 
-**Setup:** baseline 0.37.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.43.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Base85.
 
@@ -176,13 +176,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.38.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.44.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.39.0 — Base92
+## v0.45.0 — Base92
 
 **Status:** planned.
 
-**Setup:** baseline 0.38.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.44.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Base92.
 
@@ -192,13 +192,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.39.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.45.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.40.0 — Generic bounded base conversion
+## v0.46.0 — Generic bounded base conversion
 
 **Status:** planned.
 
-**Setup:** baseline 0.39.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.45.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Generic bounded base conversion.
 
@@ -208,13 +208,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.40.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.46.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.41.0 — Percent encoding
+## v0.47.0 — Percent encoding
 
 **Status:** planned.
 
-**Setup:** baseline 0.40.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.46.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Percent encoding.
 
@@ -224,13 +224,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Reserved characters, malformed escapes and newline handling match documented profiles; results remain inert data. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.41.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.47.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.42.0 — HTML entity encoding
+## v0.48.0 — HTML entity encoding
 
 **Status:** planned.
 
-**Setup:** baseline 0.41.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.47.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** HTML entity encoding.
 
@@ -240,13 +240,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Reserved characters, malformed escapes and newline handling match documented profiles; results remain inert data. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.42.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.48.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.43.0 — Quoted-printable
+## v0.49.0 — Quoted-printable
 
 **Status:** planned.
 
-**Setup:** baseline 0.42.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.48.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Quoted-printable.
 
@@ -256,13 +256,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Reserved characters, malformed escapes and newline handling match documented profiles; results remain inert data. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.43.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.49.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.44.0 — Unicode escape semantics
+## v0.50.0 — Unicode escape semantics
 
 **Status:** planned.
 
-**Setup:** baseline 0.43.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.49.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Unicode escape semantics.
 
@@ -272,13 +272,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Surrogate and invalid-sequence policy is explicit; normalization is tested at chunk boundaries and against table versions. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.44.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.50.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.45.0 — Unicode normalization
+## v0.51.0 — Unicode normalization
 
 **Status:** planned.
 
-**Setup:** baseline 0.44.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.50.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Unicode normalization.
 
@@ -288,13 +288,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Surrogate and invalid-sequence policy is explicit; normalization is tested at chunk boundaries and against table versions. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.45.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.51.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.46.0 — Character encodings
+## v0.52.0 — Character encodings
 
 **Status:** planned.
 
-**Setup:** baseline 0.45.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.51.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Character encodings.
 
@@ -304,13 +304,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Every enabled encoding has round-trip and lossy-mode tests; unimplemented table variants remain visible gaps. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.46.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.52.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.47.0 — Text transformations
+## v0.53.0 — Text transformations
 
 **Status:** planned.
 
-**Setup:** baseline 0.46.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.52.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Text transformations.
 
@@ -320,13 +320,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Byte, Unicode scalar, grapheme and legacy UTF-16 behaviors are not silently interchanged. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.47.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.53.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.48.0 — Lines and collections
+## v0.54.0 — Lines and collections
 
 **Status:** planned.
 
-**Setup:** baseline 0.47.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.53.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Lines and collections.
 
@@ -336,13 +336,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Long lines and whole-input sorting obey budgets; ordering and empty-record semantics match fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.48.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.54.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.49.0 — Search and replace core
+## v0.55.0 — Search and replace core
 
 **Status:** planned.
 
-**Setup:** baseline 0.48.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.54.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Search and replace core.
 
@@ -352,13 +352,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Safe-mode syntax is labelled distinctly from full compatibility regex; all highlighting is escaped by renderers. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.49.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.55.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.50.0 — Bitwise and byte arithmetic
+## v0.56.0 — Bitwise and byte arithmetic
 
 **Status:** planned.
 
-**Setup:** baseline 0.49.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.55.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Bitwise and byte arithmetic.
 
@@ -368,13 +368,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Key repetition, carry, signedness and integer overflow rules are deterministic across targets. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.50.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.56.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.51.0 — Braille encoding
+## v0.57.0 — Braille encoding
 
 **Status:** planned.
 
-**Setup:** baseline 0.50.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.56.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Braille encoding.
 
@@ -384,13 +384,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.51.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.57.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.52.0 — Punycode encoding
+## v0.58.0 — Punycode encoding
 
 **Status:** planned.
 
-**Setup:** baseline 0.51.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.57.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Punycode encoding.
 
@@ -400,13 +400,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.52.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.58.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.53.0 — Modhex encoding
+## v0.59.0 — Modhex encoding
 
 **Status:** planned.
 
-**Setup:** baseline 0.52.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.58.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Modhex encoding.
 
@@ -416,13 +416,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.53.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.59.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.54.0 — COBS framing
+## v0.60.0 — COBS framing
 
 **Status:** planned.
 
-**Setup:** baseline 0.53.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.59.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** COBS framing.
 
@@ -432,13 +432,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.54.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.60.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.55.0 — Caret and control encodings
+## v0.61.0 — Caret and control encodings
 
 **Status:** planned.
 
-**Setup:** baseline 0.54.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.60.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Caret and control encodings.
 
@@ -448,13 +448,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.55.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.61.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.56.0 — MIME decoding
+## v0.62.0 — MIME decoding
 
 **Status:** planned.
 
-**Setup:** baseline 0.55.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.61.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** MIME decoding.
 
@@ -464,13 +464,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.56.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.62.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.57.0 — Encoding completeness gate
+## v0.63.0 — Encoding completeness gate
 
 **Status:** planned.
 
-**Setup:** baseline 0.56.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.62.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Encoding completeness gate.
 
@@ -480,4 +480,4 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** A generated report separates complete operations, argument gaps and intentionally different safe defaults; no hidden omissions. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.57.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.63.0 implementation stop reached. Run pentest for this exact commit.

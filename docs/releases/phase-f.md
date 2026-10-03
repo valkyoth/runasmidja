@@ -2,11 +2,11 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
-## v0.112.0 — Lossless JSON
+## v0.121.0 — Lossless JSON
 
 **Status:** planned.
 
-**Setup:** baseline 0.111.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.120.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Lossless JSON.
 
@@ -16,13 +16,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Large integers, duplicate-key policy, multiline fields and final newline behavior are fixture-tested. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.112.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.121.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.113.0 — CSV semantics
+## v0.122.0 — CSV semantics
 
 **Status:** planned.
 
-**Setup:** baseline 0.112.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.121.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** CSV semantics.
 
@@ -32,13 +32,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Large integers, duplicate-key policy, multiline fields and final newline behavior are fixture-tested. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.113.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.122.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.114.0 — XML data processing
+## v0.123.0 — XML data processing
 
 **Status:** planned.
 
-**Setup:** baseline 0.113.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.122.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** XML data processing.
 
@@ -48,13 +48,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Entity expansion, excessive depth and malformed documents fail within budgets; renderers receive inert data. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.114.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.123.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.115.0 — HTML data processing
+## v0.124.0 — HTML data processing
 
 **Status:** planned.
 
-**Setup:** baseline 0.114.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.123.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** HTML data processing.
 
@@ -64,13 +64,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Entity expansion, excessive depth and malformed documents fail within budgets; renderers receive inert data. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.115.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.124.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.116.0 — XPath dialect
+## v0.125.0 — XPath dialect
 
 **Status:** planned.
 
-**Setup:** baseline 0.115.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.124.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** XPath dialect.
 
@@ -80,13 +80,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Namespaces, selector syntax and output formatting match compatibility fixtures; unsupported syntax is not silently simplified. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.116.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.125.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.117.0 — CSS selector dialect
+## v0.126.0 — CSS selector dialect
 
 **Status:** planned.
 
-**Setup:** baseline 0.116.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.125.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** CSS selector dialect.
 
@@ -96,13 +96,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Namespaces, selector syntax and output formatting match compatibility fixtures; unsupported syntax is not silently simplified. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.117.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.126.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.118.0 — JSONPath dialect
+## v0.127.0 — JSONPath dialect
 
 **Status:** planned.
 
-**Setup:** baseline 0.117.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.126.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** JSONPath dialect.
 
@@ -112,13 +112,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.118.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.127.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.119.0 — JMESPath dialect
+## v0.128.0 — JMESPath dialect
 
 **Status:** planned.
 
-**Setup:** baseline 0.118.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.127.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** JMESPath dialect.
 
@@ -128,13 +128,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.119.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.128.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.120.0 — jq dialect if inventoried
+## v0.129.0 — jq dialect if inventoried
 
 **Status:** planned.
 
-**Setup:** baseline 0.119.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.128.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** jq dialect if inventoried.
 
@@ -144,13 +144,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.120.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.129.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.121.0 — JSONata dialect if inventoried
+## v0.130.0 — JSONata dialect if inventoried
 
 **Status:** planned.
 
-**Setup:** baseline 0.120.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.129.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** JSONata dialect if inventoried.
 
@@ -160,13 +160,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.121.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.130.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.122.0 — YAML semantics
+## v0.131.0 — YAML semantics
 
 **Status:** planned.
 
-**Setup:** baseline 0.121.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.130.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** YAML semantics.
 
@@ -176,13 +176,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Alias bombs, implicit scalar differences and non-string mapping keys are handled according to documented profiles. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.122.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.131.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.123.0 — Rison semantics
+## v0.132.0 — Rison semantics
 
 **Status:** planned.
 
-**Setup:** baseline 0.122.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.131.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Rison semantics.
 
@@ -192,13 +192,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Alias bombs, implicit scalar differences and non-string mapping keys are handled according to documented profiles. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.123.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.132.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.124.0 — MessagePack semantics
+## v0.133.0 — MessagePack semantics
 
 **Status:** planned.
 
-**Setup:** baseline 0.123.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.132.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** MessagePack semantics.
 
@@ -208,13 +208,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Indefinite lengths, nesting, duplicate keys and extension types are bounded and represented without accidental loss. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.124.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.133.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.125.0 — CBOR semantics
+## v0.134.0 — CBOR semantics
 
 **Status:** planned.
 
-**Setup:** baseline 0.124.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.133.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** CBOR semantics.
 
@@ -224,13 +224,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Indefinite lengths, nesting, duplicate keys and extension types are bounded and represented without accidental loss. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.125.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.134.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.126.0 — AMF variants
+## v0.135.0 — AMF variants
 
 **Status:** planned.
 
-**Setup:** baseline 0.125.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.134.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** AMF variants.
 
@@ -240,13 +240,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Unsupported schema features become tracked gaps; hostile references and lengths cannot escape limits. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.126.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.135.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.127.0 — Avro schemas
+## v0.136.0 — Avro schemas
 
 **Status:** planned.
 
-**Setup:** baseline 0.126.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.135.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Avro schemas.
 
@@ -256,13 +256,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Unsupported schema features become tracked gaps; hostile references and lengths cannot escape limits. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.127.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.136.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.128.0 — TLV and binary structures
+## v0.137.0 — TLV and binary structures
 
 **Status:** planned.
 
-**Setup:** baseline 0.127.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.136.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** TLV and binary structures.
 
@@ -272,13 +272,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Truncation, overlapping lengths, large tags and signed/unsigned decoding have negative tests. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.128.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.137.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.129.0 — Code formatting and minification
+## v0.138.0 — Code formatting and minification
 
 **Status:** planned.
 
-**Setup:** baseline 0.128.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.137.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Code formatting and minification.
 
@@ -288,13 +288,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Strings, comments, regex literals and template syntax survive correctly; substitutions are not advertised as parsers. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.129.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.138.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.130.0 — Mathematics and statistics
+## v0.139.0 — Mathematics and statistics
 
 **Status:** planned.
 
-**Setup:** baseline 0.129.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.138.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Mathematics and statistics.
 
@@ -304,13 +304,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Precision, divide-by-zero, overflow and ordering are explicit and consistent across browser/native targets. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.130.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.139.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.131.0 — Set and combinatorial operations
+## v0.140.0 — Set and combinatorial operations
 
 **Status:** planned.
 
-**Setup:** baseline 0.130.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.139.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Set and combinatorial operations.
 
@@ -320,13 +320,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Output cardinality is estimated and capped before exponential expansion; ordering matches fixtures. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.131.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.140.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.132.0 — Time and identifiers
+## v0.141.0 — Time and identifiers
 
 **Status:** planned.
 
-**Setup:** baseline 0.131.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.140.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Time and identifiers.
 
@@ -336,13 +336,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Invalid dates, offset transitions, precision and deterministic clock injection have tests. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.132.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.141.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.133.0 — Distances and miscellaneous utilities
+## v0.142.0 — Distances and miscellaneous utilities
 
 **Status:** planned.
 
-**Setup:** baseline 0.132.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.141.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Distances and miscellaneous utilities.
 
@@ -352,13 +352,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Numeric units, coordinate ranges and rounding are explicit; map/network resources require declared capability or offline assets. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.133.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.142.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.134.0 — Remaining text and encoding tables
+## v0.143.0 — Remaining text and encoding tables
 
 **Status:** planned.
 
-**Setup:** baseline 0.133.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.142.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Remaining text and encoding tables.
 
@@ -368,13 +368,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Every claimed encoding/dialect identifies its data-table version and has native/browser fixtures. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.134.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.143.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.135.0 — Structured-format gate
+## v0.144.0 — Structured-format gate
 
 **Status:** planned.
 
-**Setup:** baseline 0.134.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.143.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Structured-format gate.
 
@@ -384,4 +384,4 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Unsupported syntax remains a release blocker for 1.0; the plan extends rather than hiding difficult languages. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.135.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.144.0 implementation stop reached. Run pentest for this exact commit.

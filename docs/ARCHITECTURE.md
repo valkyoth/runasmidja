@@ -24,6 +24,9 @@ flowchart TD
   Ports --> Artifacts[Staged artifact storage]
   Ports --> Secrets[OpenBao SDK adapter]
   Ports --> Cache[Optional Valkey cache]
+  Ports --> Search[SearchService]
+  Search --> Repository[Repository metadata search]
+  Search --> Meili[Optional Meilisearch adapter]
 ```
 
 Core types never expose database rows, Tokio handles, framework requests,
@@ -71,12 +74,19 @@ roles and portable repository methods. Durable metadata is separate from bulk
 artifacts. Real MySQL conformance and bidirectional logical migration prove the
 seam before 1.0; an in-memory fake cannot supply that proof.
 
-OpenBao 2.7.1 supplies secrets. The current dev harness fully initializes it over
-TLS, with declarative audit, KV v2, AppRole and revoked bootstrap root. Application
-integration later admits current stable openbao SDK features. Runtime processes
+OpenBao 2.7.1 is the required source for every project-operated initialization,
+runtime, private-build and release secret. Public Rust builds need no credentials.
+The current dev harness initializes it over TLS, with declarative audit, KV v2,
+AppRole and revoked bootstrap root, but generates service passwords locally
+first. The next pass replaces that sequence with Bao-first provisioning and
+vault-sourced credentials. Early application-contract passes admit the current
+stable openbao SDK and qualify SecretRef/rotation. Runtime processes
 never receive recovery shares/root privileges. Production TLS, identity,
 renewal, rotation, dynamic DB leases, audit failure and recovery custody require
 separate qualification. Single-share local custody is strictly a test shortcut.
+Vault startup trust and independent recovery custody are the minimal explicit
+bootstrap boundary; they cannot depend solely on a sealed vault. Follow
+[secret lifecycle](SECRETS_POLICY.md) for scoped delivery and failure behavior.
 
 Valkey 9.1.2 is optional cache acceleration, with scoped ACLs, TTL and byte limits.
 Only completed deterministic nonsensitive results or bounded metadata are eligible.
@@ -84,11 +94,18 @@ Cache identity includes semantic/provider/data revisions and canonical framing;
 it is partition-independent and workspace scoped. Permission checks use
 current authority. Cold cache/outage/eviction cannot lose authoritative data.
 
-Operation search uses local descriptors. Saved-recipe search starts in repository
-adapters with permission filtering. Meilisearch is a conditional service after
-benchmarks establish a need. Its index must be rebuildable from metadata via an
-outbox; revocation/deletion and tenant isolation are mandatory. Inputs, decrypted
-outputs, secrets and run payloads never enter an index.
+Operation and browser-local recipe search stay local. Early SearchService
+contracts own saved-server-metadata queries; implement both repository and
+optional Meilisearch adapters with hosted persistence/authorization. A std-only
+feature and runtime selector preserve the same UI/API/domain schema with the
+service enabled or disabled. Measurements guide deployment and limits.
+
+Project only approved nonsensitive metadata; inputs, outputs, operation arguments
+and secrets never enter an index. Transactional revisioned outbox/replay makes
+it rebuildable. Tenant filters plus current database permission/revision checks
+govern every returned hit and visible aggregate; asynchronous index grants are
+never authority. Meilisearch startup/scoped keys come through OpenBao. See
+[search design](SEARCH_DESIGN.md) for switching, outages and qualification.
 
 ## Future extraction
 

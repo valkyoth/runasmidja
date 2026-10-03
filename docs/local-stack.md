@@ -25,6 +25,15 @@ and revokes/removes the initial root token. One unseal share is retained private
 for fully automated test restarts. This is a local custody shortcut, not a
 production configuration or HA claim.
 
+Current origin limitation: scripts generate PostgreSQL/Valkey passwords locally
+before OpenBao starts, then seed runtime values into KV. Persistent private
+password/ACL files are still present. This violates the new
+[project secret source policy](SECRETS_POLICY.md). The next bounded pass moves
+OpenBao startup and credential issuance ahead of dependent services; subsequent
+delivery qualification removes persistent plaintext copies. Existing state must
+be migrated/rekeyed safely rather than discarded. These are planned changes,
+not behavior provided by the commands above.
+
 Only OpenBao config/certificate files, its data and audit directories are mounted
 into the OpenBao container; its mount excludes host bootstrap recovery material
 and plaintext service passwords. PostgreSQL receives its admin password file;
@@ -53,3 +62,9 @@ The smoke suite checks exact PostgreSQL beta version, transaction rollback and
 runtime role/login/password/privileged-table denials, OpenBao TLS/AppRole/path denials and Valkey authentication,
 key-prefix isolation and expiring cache writes. Planned SDK application
 integration and production secret rotation are separate milestones.
+
+The planned optional Meilisearch profile is added with hosted metadata search,
+using an OpenBao-sourced initial master key and scoped keys delivered through
+OpenBao. Disabled mode needs neither container nor Meilisearch credentials.
+Both backend modes require actual runtime qualification; see
+[search design](SEARCH_DESIGN.md). The current harness starts no Meilisearch.

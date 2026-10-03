@@ -2,11 +2,11 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
-## v0.280.0 — Media provider boundary
+## v0.289.0 — Media provider boundary
 
 **Status:** planned.
 
-**Setup:** baseline 0.279.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.288.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Media provider boundary.
 
@@ -16,13 +16,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Pixel/frame/duration limits are checked before allocation; corrupted metadata cannot request unbounded buffers. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.280.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.289.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.281.0 — Image decoding
+## v0.290.0 — Image decoding
 
 **Status:** planned.
 
-**Setup:** baseline 0.280.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.289.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Image decoding.
 
@@ -32,13 +32,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Browser/native decode fixtures record color, alpha and frame semantics; unavailable codecs remain explicit gaps. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.281.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.290.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.282.0 — Image encoding
+## v0.291.0 — Image encoding
 
 **Status:** planned.
 
-**Setup:** baseline 0.281.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.290.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Image encoding.
 
@@ -48,13 +48,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Quality settings and byte-level nondeterminism are documented; exact output comparisons use the right compatibility criteria. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.282.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.291.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.283.0 — Geometry transforms
+## v0.292.0 — Geometry transforms
 
 **Status:** planned.
 
-**Setup:** baseline 0.282.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.291.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Geometry transforms.
 
@@ -64,13 +64,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Coordinate bounds, interpolation options, orientation and very large dimensions are fixture-tested. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.283.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.292.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.284.0 — Color transforms
+## v0.293.0 — Color transforms
 
 **Status:** planned.
 
-**Setup:** baseline 0.283.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.292.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Color transforms.
 
@@ -80,13 +80,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Color space, alpha premultiplication and clamping rules are explicit and reproducible. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.284.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.293.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.285.0 — Filters and effects
+## v0.294.0 — Filters and effects
 
 **Status:** planned.
 
-**Setup:** baseline 0.284.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.293.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Filters and effects.
 
@@ -96,13 +96,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Kernel costs and edge behavior are bounded; arbitrary filter input cannot cause uncontrolled GPU/CPU allocation. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.285.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.294.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.286.0 — Image composition
+## v0.295.0 — Image composition
 
 **Status:** planned.
 
-**Setup:** baseline 0.285.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.294.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Image composition.
 
@@ -112,13 +112,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Fonts/assets are local and versioned; untrusted text remains inert and export respects declared dimensions. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.286.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.295.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.287.0 — Steganography and bit planes
+## v0.296.0 — Steganography and bit planes
 
 **Status:** planned.
 
-**Setup:** baseline 0.286.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.295.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Steganography and bit planes.
 
@@ -128,13 +128,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Capacity limits, channel order and malformed payloads have round-trip and negative tests. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.287.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.296.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.288.0 — QR generation
+## v0.297.0 — QR generation
 
 **Status:** planned.
 
-**Setup:** baseline 0.287.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.296.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** QR generation.
 
@@ -144,13 +144,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Payload capacity, error correction and invalid character sets are checked against reference fixtures. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.288.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.297.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.289.0 — Barcode generation
+## v0.298.0 — Barcode generation
 
 **Status:** planned.
 
-**Setup:** baseline 0.288.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.297.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Barcode generation.
 
@@ -160,13 +160,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Payload capacity, error correction and invalid character sets are checked against reference fixtures. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.289.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.298.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.290.0 — QR recognition
+## v0.299.0 — QR recognition
 
 **Status:** planned.
 
-**Setup:** baseline 0.289.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.298.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** QR recognition.
 
@@ -176,13 +176,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Recognition failure is explicit; no image is uploaded to a third-party recognition service. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.290.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.299.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.291.0 — Barcode recognition
+## v0.300.0 — Barcode recognition
 
 **Status:** planned.
 
-**Setup:** baseline 0.290.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.299.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Barcode recognition.
 
@@ -192,13 +192,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Recognition failure is explicit; no image is uploaded to a third-party recognition service. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.291.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.300.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.292.0 — OCR
+## v0.301.0 — OCR
 
 **Status:** planned.
 
-**Setup:** baseline 0.291.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.300.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** OCR.
 
@@ -208,13 +208,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Model availability, accuracy corpus, memory costs and browser support are measured; absent languages are tracked gaps. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.292.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.301.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.293.0 — EXIF metadata
+## v0.302.0 — EXIF metadata
 
 **Status:** planned.
 
-**Setup:** baseline 0.292.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.301.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** EXIF metadata.
 
@@ -224,13 +224,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Nested metadata, thumbnails and encoding variants are bounded; metadata is not interpreted as trusted markup. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.293.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.302.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.294.0 — ID3 metadata
+## v0.303.0 — ID3 metadata
 
 **Status:** planned.
 
-**Setup:** baseline 0.293.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.302.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** ID3 metadata.
 
@@ -240,13 +240,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Nested metadata, thumbnails and encoding variants are bounded; metadata is not interpreted as trusted markup. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.294.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.303.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.295.0 — Residual media metadata
+## v0.304.0 — Residual media metadata
 
 **Status:** planned.
 
-**Setup:** baseline 0.294.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.303.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Residual media metadata.
 
@@ -256,13 +256,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Nested metadata, thumbnails and encoding variants are bounded; metadata is not interpreted as trusted markup. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.295.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.304.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.296.0 — Audio and other media operations
+## v0.305.0 — Audio and other media operations
 
 **Status:** planned.
 
-**Setup:** baseline 0.295.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.304.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Audio and other media operations.
 
@@ -272,13 +272,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** User activation requirements and codec support are visible; playback is never automatic for imported recipes. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.296.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.305.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.297.0 — PDF preview isolation
+## v0.306.0 — PDF preview isolation
 
 **Status:** planned.
 
-**Setup:** baseline 0.296.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.305.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** PDF preview isolation.
 
@@ -288,13 +288,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Active content cannot access app origin, secrets or APIs; no unsupported claim of a full Rust PDF renderer. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.297.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.306.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.298.0 — HTML preview isolation
+## v0.307.0 — HTML preview isolation
 
 **Status:** planned.
 
-**Setup:** baseline 0.297.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.306.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** HTML preview isolation.
 
@@ -304,13 +304,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Active content cannot access app origin, secrets or APIs; no unsupported claim of a full Rust PDF renderer. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.298.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.307.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.299.0 — Media preview isolation
+## v0.308.0 — Media preview isolation
 
 **Status:** planned.
 
-**Setup:** baseline 0.298.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.307.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Media preview isolation.
 
@@ -320,13 +320,13 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** For this scoped topic: Active content cannot access app origin, secrets or APIs; no unsupported claim of a full Rust PDF renderer. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.299.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.308.0 implementation stop reached. Run pentest for this exact commit.
 
-## v0.300.0 — Media qualification
+## v0.309.0 — Media qualification
 
 **Status:** planned.
 
-**Setup:** baseline 0.299.0; verify current upstream sources and record a bounded scope manifest before coding.
+**Setup:** baseline 0.308.0; verify current upstream sources and record a bounded scope manifest before coding.
 
 **Goal:** Media qualification.
 
@@ -336,4 +336,4 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Verification:** Baseline use works without WebGPU; optional acceleration produces equivalent results within documented tolerances. Run codec/model provenance, malformed dimension/frame/decompression cases, inert previews and browser/native result comparisons. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.300.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.309.0 implementation stop reached. Run pentest for this exact commit.
