@@ -22,8 +22,8 @@
     },
     {
       "author": "",
-      "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.1.0",
-      "description": "Bounded portable domain foundations",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.1.0",
+      "description": "HTML boundary reserved for future Vef extraction",
       "externalReferences": [
         {
           "type": "vcs",
@@ -35,7 +35,7 @@
           "expression": "EUPL-1.2"
         }
       ],
-      "name": "runasmidja-core",
+      "name": "runasmidja-html",
       "type": "library",
       "version": "0.1.0"
     },
@@ -60,8 +60,8 @@
     },
     {
       "author": "",
-      "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.1.0",
-      "description": "HTML boundary reserved for future Vef extraction",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.1.0",
+      "description": "Bounded portable domain foundations",
       "externalReferences": [
         {
           "type": "vcs",
@@ -73,7 +73,7 @@
           "expression": "EUPL-1.2"
         }
       ],
-      "name": "runasmidja-html",
+      "name": "runasmidja-core",
       "type": "library",
       "version": "0.1.0"
     }
@@ -81,10 +81,10 @@
   "dependencies": [
     {
       "dependsOn": [
-        "CycloneDxRef-Component-runasmidja-crypto-0.1.0",
-        "CycloneDxRef-Component-runasmidja-html-0.1.0",
         "CycloneDxRef-Component-runasmidja-core-0.1.0",
-        "CycloneDxRef-Component-runasmidja-ports-0.1.0"
+        "CycloneDxRef-Component-runasmidja-ports-0.1.0",
+        "CycloneDxRef-Component-runasmidja-crypto-0.1.0",
+        "CycloneDxRef-Component-runasmidja-html-0.1.0"
       ],
       "ref": "CycloneDxRef-Component-runasmidja-0.1.0"
     }
@@ -215,7 +215,7 @@
       "name": "runasmidja",
       "type": "application"
     },
-    "timestamp": "2026-10-03T10:21:18.076Z",
+    "timestamp": "2026-10-03T15:07:11.497Z",
     "tools": [
       {
         "name": "cargo-sbom",
@@ -223,7 +223,7 @@
       }
     ]
   },
-  "serialNumber": "urn:uuid:d090a75d-dcb0-4c19-9f6a-29204b885364",
+  "serialNumber": "urn:uuid:8f44ccbc-e6c1-4cf3-9e43-f111840895a0",
   "specVersion": "1.5",
   "version": 1
 }

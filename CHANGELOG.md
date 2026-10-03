@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — 0.1.0 foundation candidate
+
+Release review (2026-10-03): the maintainer accepted the green retest, resolving
+all three submitted findings with no new actionable security issue. Full local
+verification and version/documentation review pass; the monitored, unadmitted
+OpenBao SDK was refreshed to 2.2.2. Pentest PASS covers the foundation only;
+GitHub checks, tagging and publication remain pending.
+
+The notes below preserve the earlier candidate's preparation history.
+
 Pentest remediation (2026-10-03): addressed the browser origin threat-model gap,
 assigned profile/header/independent offline verification owners, replaced
 optimization-removable smoke assertions, and verified native probes using the
@@ -13,7 +23,7 @@ refreshed the SBOM and documented known limits for the maintainer's pentest.
 The release loop now commits only after their green result, waits for GitHub,
 and tags/pushes a version tag only on explicit instruction. Pentest is NOT RUN.
 
-## Unreleased — 0.1.0 foundation candidate
+### Foundation scope
 
 - Initialized EUPL-1.2/Rust 1.99.0 workspace with five no_std boundary crates
   and a Linux development health probe.
@@ -36,5 +46,5 @@ and tags/pushes a version tag only on explicit instruction. Pentest is NOT RUN.
   explicit, and actual continuation starts at 0.387.0. Generator rejects blank
   or nonstring verification gates before writing output.
 
-No product parity or production readiness is claimed. Pentest, tagging and
-publication are pending. See release-notes/v0.1.0.md.
+No product parity or production readiness is claimed. Pentest is accepted;
+GitHub checks, tagging and publication are pending. See release-notes/v0.1.0.md.

@@ -26,8 +26,9 @@ external network operations are distinct explicit actions.
 **Current status:** repository foundation, development health probe and
 service-test tooling. No workbench, transformation operation, browser UI,
 production HTTP server or CyberChef parity is implemented yet. `0.1.0` is an
-unpublished foundation candidate, with pentest remediation complete and
-maintainer retest pending. See the [remediation report](security/pentest/v0.1.0.md).
+unpublished foundation candidate. The maintainer accepted the green pentest
+retest; local release verification is complete. GitHub checks and the version
+tag are pending. See the [assessment report](security/pentest/v0.1.0.md).
 
 The [release plan](docs/RELEASE_PLAN.md) defines 386 small pre-1.0 passes,
 through `0.386.0`, with further versions whenever needed. `1.0.0` is the first
