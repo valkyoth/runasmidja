@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** IPv4/IPv6, mapped addresses and boundary masks have fixtures without accidental outbound traffic. IP/CIDR/endian/network representations cover IPv4/IPv6 edge vectors without I/O; overflowing masks, ambiguous forms and malformed addresses reject. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.287.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.287.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.288.0 — URL and domain analysis
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Decoding order and Unicode display cannot silently change a network destination. URL/domain/punycode/public-suffix semantics pin datasets and parser rules; confusable/ambiguous/untrusted links remain inert and do not resolve automatically. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.288.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.288.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.289.0 — HTTP data parsing
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Ambiguous framing is reported; parsing hostile HTTP never routes it through the live service parser as a trusted request. HTTP artifact parsing is passive and distinct from serving; malformed framing/headers/binary bodies have bounded diagnostic output and no network effects. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.289.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.289.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.290.0 — User HTTP request operation
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Browser CORS limitations are visible; remote mode passes SSRF and egress tests and never runs automatically on import. Explicit network grants plus broker SSRF policy cover every redirect/retry/connect; missing grants, private destinations and browser restrictions never cause silent remote fallback. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.290.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.290.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.291.0 — DNS data and queries
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Network use requires consent/capability; responses, name compression and timeout/work limits are bounded. DNS packet/query variants bound compression-pointer cycles, records and names; actual queries require grants and resolver/destination policy. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.291.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.291.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.292.0 — TLS and SSH fingerprints
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Fingerprint versions and normalization rules are explicit; analysis of legacy handshakes does not enable legacy TLS transport. TLS/SSH fingerprint formats freeze exact revisions and input normalization with independent vectors; historical parsing cannot weaken live TLS policy. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.292.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.292.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.293.0 — Packet and protocol extraction
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Truncation, nested lengths and reassembly limits are tested; unsupported protocol revisions are reported. Packet/protocol parsers reject malformed lengths/fragmentation/reassembly excess; passive offline input remains local and ordered outputs are reproducible. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.293.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.293.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.294.0 — File identification
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Detection is labelled heuristic where appropriate; input-controlled paths or extensions do not override byte evidence. File signatures/datasets are pinned and licensed; ambiguous/truncated/polyglot fixtures explain evidence and scanning remains bounded. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.294.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.294.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.295.0 — Executable analysis
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Corrupt offsets and huge section counts fail safely; extracted code is never executed. Each executable format checks tables/offsets/overlap/depth with independent fixtures; analysis never loads/runs sample code or follows external resources. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.295.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.295.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.296.0 — Disassembly
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Native/browser outputs and syntax options match the selected reference; architecture support is enumerated, not implied. Each disassembly architecture/mode/endian has independent instruction vectors, truncation policy and bounded output; actual browser implementation is required. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.296.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.296.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.297.0 — YARA language support
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Rule corpus covers modules, strings, conditions and language variants; a subset implementation cannot claim full parity. Freeze YARA rule/compiler/module dialect, include policy and actual target support; unsupported syntax/modules reject instead of silently weakening rules. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.297.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.297.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.298.0 — YARA execution controls
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Hostile rules and many matches respect budgets; scanning requires no filesystem/network privileges. Pathological patterns/loops/modules hit work/memory/output caps; rule compilation and scanning are killable and have no ambient filesystem/process/network access. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.298.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.298.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.299.0 — Carving and extraction
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Overlapping candidates, nested files and excessive matches cannot exceed job-wide quotas. Carving/extraction bounds candidate count, overlap, total artifacts/bytes and file names; malicious patterns cannot create unlimited retained outputs. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.299.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.299.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.300.0 — Forensic analysis views
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Sampling versus full analysis is labelled; results are deterministic for a fixed input and algorithm revision. Forensic tables/bytes/provenance are paged and inert; payloads/sample identifiers do not leak through caches/logs or external lookups. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.300.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.300.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.301.0 — Forensic completeness gate
 
@@ -242,4 +242,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** No browser-local reference capability is silently replaced by a server-only implementation. All forensic/network operation/argument/target rows close with passive and explicit-capability tests; native-only YARA/disassembly remains a browser gap. Run passive-data fixtures and explicit network capability denials, SSRF/rebinding/redirect cases and hostile analysis cost limits. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.301.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.301.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

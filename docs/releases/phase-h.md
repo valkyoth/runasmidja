@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Raw keys are redacted and excluded from default persistence/cache; no application transport depends on operation-pack crypto. Maintained qualified providers are behind owned contracts; entropy/secret/algorithm policies and feature-isolated legacy versus live security are tested. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.173.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.173.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.174.0 — SHA-2 variants
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Known-answer vectors, long inputs and arbitrary partitions agree across targets. Each SHA-2/HMAC variant passes independent known-answer and split-input vectors; key/block/length handling and output encoding are exact. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.174.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.174.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.175.0 — HMAC construction
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Known-answer vectors, long inputs and arbitrary partitions agree across targets. Each SHA-2/HMAC variant passes independent known-answer and split-input vectors; key/block/length handling and output encoding are exact. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.175.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.175.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.176.0 — SHA-3 variants
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Domain separation and output length are explicit; similar algorithm names cannot be substituted. SHA-3/Keccak/SHAKE domain separation, rates and output lengths are independent variants; no alias silently selects a different function. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.176.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.176.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.177.0 — Keccak variants
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Domain separation and output length are explicit; similar algorithm names cannot be substituted. SHA-3/Keccak/SHAKE domain separation, rates and output lengths are independent variants; no alias silently selects a different function. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.177.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.177.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.178.0 — SHAKE output semantics
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Domain separation and output length are explicit; similar algorithm names cannot be substituted. SHA-3/Keccak/SHAKE domain separation, rates and output lengths are independent variants; no alias silently selects a different function. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.178.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.178.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.179.0 — BLAKE variants
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Keyed/context modes and tree boundaries have vectors; provider upgrades cannot silently alter cache identities. Each BLAKE variant freezes key/salt/personalization/output semantics; optional BLAKE3 adoption has its own scope and oracle. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.179.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.179.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.180.0 — BLAKE3 enhancement assessment
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Keyed/context modes and tree boundaries have vectors; provider upgrades cannot silently alter cache identities. Each BLAKE variant freezes key/salt/personalization/output semantics; optional BLAKE3 adoption has its own scope and oracle. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.180.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.180.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.181.0 — Checksums and CRCs
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Polynomial reflection, initial/final values and output byte order are independently tested. CRC polynomial/reflection/init/xor/width/residue and checksum variants have independent vectors; names alone cannot select ambiguous parameter sets. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.181.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.181.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.182.0 — PBKDF2
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Salt/info distinctions, output bounds and excessive iteration requests are tested; secrets remain tainted. PBKDF2/HKDF/other inventoried KDF variants verify salt/info/length/iteration semantics; output/work excess rejects and secrets remain tainted. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.182.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.182.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.183.0 — HKDF
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Salt/info distinctions, output bounds and excessive iteration requests are tested; secrets remain tainted. PBKDF2/HKDF/other inventoried KDF variants verify salt/info/length/iteration semantics; output/work excess rejects and secrets remain tainted. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.183.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.183.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.184.0 — Residual inventoried KDFs
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Salt/info distinctions, output bounds and excessive iteration requests are tested; secrets remain tainted. PBKDF2/HKDF/other inventoried KDF variants verify salt/info/length/iteration semantics; output/work excess rejects and secrets remain tainted. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.184.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.184.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.185.0 — bcrypt variants
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: CPU/memory costs are validated before scheduling; compatibility variants and truncation rules are explicit. bcrypt/scrypt and any adopted Argon2 variants test version/parameter encodings, cost memory/time ceilings, malformed hashes and cancellation. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.185.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.185.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.186.0 — scrypt variants
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: CPU/memory costs are validated before scheduling; compatibility variants and truncation rules are explicit. bcrypt/scrypt and any adopted Argon2 variants test version/parameter encodings, cost memory/time ceilings, malformed hashes and cancellation. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.186.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.186.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.187.0 — Argon2 enhancement assessment
 
@@ -242,7 +242,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: CPU/memory costs are validated before scheduling; compatibility variants and truncation rules are explicit. bcrypt/scrypt and any adopted Argon2 variants test version/parameter encodings, cost memory/time ceilings, malformed hashes and cancellation. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.187.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.187.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.188.0 — AES block-mode inventory and provider qualification
 
@@ -258,7 +258,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Standard vectors and negative padding cases pass; insecure modes are analysis tools, never default application encryption. Every inventoried AES mode has independent mode/padding/key/IV vectors; unsafe analysis modes stay separate from live security and partial tails reject precisely. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.188.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.188.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.189.0 — AES ECB analysis
 
@@ -274,7 +274,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Standard vectors and negative padding cases pass; insecure modes are analysis tools, never default application encryption. Every inventoried AES mode has independent mode/padding/key/IV vectors; unsafe analysis modes stay separate from live security and partial tails reject precisely. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.189.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.189.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.190.0 — AES CBC analysis
 
@@ -290,7 +290,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Standard vectors and negative padding cases pass; insecure modes are analysis tools, never default application encryption. Every inventoried AES mode has independent mode/padding/key/IV vectors; unsafe analysis modes stay separate from live security and partial tails reject precisely. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.190.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.190.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.191.0 — AES CFB analysis
 
@@ -306,7 +306,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Standard vectors and negative padding cases pass; insecure modes are analysis tools, never default application encryption. Every inventoried AES mode has independent mode/padding/key/IV vectors; unsafe analysis modes stay separate from live security and partial tails reject precisely. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.191.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.191.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.192.0 — AES OFB analysis
 
@@ -322,7 +322,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Standard vectors and negative padding cases pass; insecure modes are analysis tools, never default application encryption. Every inventoried AES mode has independent mode/padding/key/IV vectors; unsafe analysis modes stay separate from live security and partial tails reject precisely. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.192.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.192.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.193.0 — AES CTR analysis
 
@@ -338,7 +338,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Standard vectors and negative padding cases pass; insecure modes are analysis tools, never default application encryption. Every inventoried AES mode has independent mode/padding/key/IV vectors; unsafe analysis modes stay separate from live security and partial tails reject precisely. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.193.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.193.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.194.0 — Residual inventoried AES modes
 
@@ -354,7 +354,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Standard vectors and negative padding cases pass; insecure modes are analysis tools, never default application encryption. Every inventoried AES mode has independent mode/padding/key/IV vectors; unsafe analysis modes stay separate from live security and partial tails reject precisely. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.194.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.194.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.195.0 — AEAD parameter contracts
 
@@ -370,7 +370,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: A failed tag releases no plaintext artifact; all input/tag/nonce changes have negative vectors. AEAD nonce/tag/AAD/length semantics pass independent vectors; every ciphertext/tag/AAD mutation fails and no unauthenticated plaintext is previewed/published. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.195.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.195.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.196.0 — AEAD authenticated encryption
 
@@ -386,7 +386,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: A failed tag releases no plaintext artifact; all input/tag/nonce changes have negative vectors. AEAD nonce/tag/AAD/length semantics pass independent vectors; every ciphertext/tag/AAD mutation fails and no unauthenticated plaintext is previewed/published. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.196.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.196.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.197.0 — AEAD staged decryption publication
 
@@ -402,7 +402,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: A failed tag releases no plaintext artifact; all input/tag/nonce changes have negative vectors. AEAD nonce/tag/AAD/length semantics pass independent vectors; every ciphertext/tag/AAD mutation fails and no unauthenticated plaintext is previewed/published. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.197.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.197.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.198.0 — AES key wrap
 
@@ -418,7 +418,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Invalid key lengths, padding and integrity failures do not expose partially unwrapped material. AES key-wrap variants verify independent known answers, padding and integrity failures; invalid key/length inputs expose no unwrapped material. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.198.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.198.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.199.0 — ChaCha stream variants
 
@@ -434,7 +434,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Counter overflow and nonce construction are checked; variant differences remain visible in descriptors. ChaCha/Poly1305 variants freeze rounds/counter/nonce/tag construction; independent vectors, counter exhaustion and bad-tag staging tests pass. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.199.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.199.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.200.0 — Poly1305 authentication
 
@@ -450,7 +450,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Counter overflow and nonce construction are checked; variant differences remain visible in descriptors. ChaCha/Poly1305 variants freeze rounds/counter/nonce/tag construction; independent vectors, counter exhaustion and bad-tag staging tests pass. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.200.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.200.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.201.0 — ChaCha authenticated combinations
 
@@ -466,7 +466,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Counter overflow and nonce construction are checked; variant differences remain visible in descriptors. ChaCha/Poly1305 variants freeze rounds/counter/nonce/tag construction; independent vectors, counter exhaustion and bad-tag staging tests pass. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.201.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.201.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.202.0 — Salsa20
 
@@ -482,7 +482,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Known vectors and boundary conditions work in streaming and one-shot paths. Salsa/XSalsa nonce/key/counter variants pass independent vectors and wrap/partial-window tests; unsupported parameters reject before provider use. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.202.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.202.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.203.0 — XSalsa20
 
@@ -498,7 +498,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Known vectors and boundary conditions work in streaming and one-shot paths. Salsa/XSalsa nonce/key/counter variants pass independent vectors and wrap/partial-window tests; unsupported parameters reject before provider use. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.203.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.203.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.204.0 — Fernet and authenticated wrappers
 
@@ -514,7 +514,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Authentication precedes plaintext publication; injected clock and expiry policy are testable. Fernet/wrapper wire format, time/key/encoding semantics and bad authentication have independent interoperability vectors; no speculative plaintext publication. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.204.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.204.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.205.0 — Deterministic analysis PRNGs
 
@@ -530,7 +530,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Seeded analysis tools are not mistaken for CSPRNG; entropy failure is fatal where secure randomness is required. Secure randomness fails without approved host entropy; deterministic PRNGs are separate; prime searches charge total work/size and remain hard-cancellable. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.205.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.205.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.206.0 — Secure random generation
 
@@ -546,7 +546,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Seeded analysis tools are not mistaken for CSPRNG; entropy failure is fatal where secure randomness is required. Secure randomness fails without approved host entropy; deterministic PRNGs are separate; prime searches charge total work/size and remain hard-cancellable. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.206.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.206.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.207.0 — Bounded prime generation
 
@@ -562,7 +562,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Seeded analysis tools are not mistaken for CSPRNG; entropy failure is fatal where secure randomness is required. Secure randomness fails without approved host entropy; deterministic PRNGs are separate; prime searches charge total work/size and remain hard-cancellable. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.207.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.207.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.208.0 — Modern crypto qualification
 
@@ -578,4 +578,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** No known high-severity provider issue remains; side-channel claims are limited to evidence and platform capabilities. Every modern algorithm/argument/target has independent vectors, secret-lifecycle and relevant side-channel evidence; no test-only entropy enters production. Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.208.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.208.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

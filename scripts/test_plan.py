@@ -24,7 +24,7 @@ class PlanTests(unittest.TestCase):
             self.assertEqual(row['version'], f'0.{index}.0')
             self.assertEqual(row['depends_on'], [] if index == 1 else [f'0.{index-1}.0'])
             document = (ROOT / f'docs/releases/phase-{row["phase"].lower()}.md').read_text()
-            self.assertIn(f'v{row["version"]} implementation stop reached. Run pentest for this exact commit.', document)
+            self.assertIn(f'v{row["version"]} implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.', document)
             self.assertEqual(row['status'], 'planned')
 
     def test_vault_origin_precedes_credential_consumers(self):
@@ -166,3 +166,23 @@ class PlanTests(unittest.TestCase):
         self.assertIn(continuation, ga['scope_context'])
         for path in ('docs/RELEASE_PLAN.md', 'docs/VERSION_PLAN.md', 'docs/releases/phase-p.md'):
             self.assertIn(continuation, (ROOT / path).read_text())
+
+    def test_browser_origin_controls_have_early_and_release_owners(self):
+        rows = {row['title']: row for row in ordered_rows()}
+        required = {
+            'Executable seed': ('0.14.0', ('document/worker CSP', 'connect-src none')),
+            'Browser privacy and secret publication': ('0.27.0', ('origin compromise', 'automatic remote bridges')),
+            'First browser workbench': ('0.28.0', ('Trusted Types', 'COOP/COEP/CORP', 'Permissions Policy', 'Chromium/Firefox/WebKit')),
+            'Minimal lazy browser pack loader': ('0.31.0', ('connect-src none', 'no policy widening')),
+            'Offline packaging': ('0.101.0', ('independent pre-launch', 'network-disabled host', 'untrusted signer')),
+            'Server security gate': ('0.133.0', ('separate origin/application', 'CORS/CSRF', 'automatic payload bridge')),
+            'Release packaging': ('0.366.0', ('signed immutable', 'network-disabled launch', 'v0.367.0')),
+        }
+        for title, (version, controls) in required.items():
+            with self.subTest(owner=title):
+                row = rows[title]
+                self.assertEqual(row['version'], version)
+                contract = ' '.join(str(row.get(key, '')) for key in ('deliverable', 'acceptance', 'scope_context'))
+                for control in controls:
+                    self.assertIn(control, contract)
+        self.assertEqual(len(rows), 386)

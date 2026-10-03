@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Offsets, delimiters, malformed rows and partial final lines match the selected compatibility profile. All byte values and empty/malformed offset cases preserve exact bytes; bounded hex/text displays do not materialize whole large sources. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.43.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.43.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.44.0 — Integer representations
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Signedness, precision, overflow, NaN payloads and byte-order behavior have explicit tests. Each inventoried integer/float/BCD representation has endian/width/sign/rounding vectors, exact limits, and invalid/overflow/NaN policy fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.44.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.44.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.45.0 — Floating-point representations
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Signedness, precision, overflow, NaN payloads and byte-order behavior have explicit tests. Each inventoried integer/float/BCD representation has endian/width/sign/rounding vectors, exact limits, and invalid/overflow/NaN policy fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.45.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.45.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.46.0 — BCD representations
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Signedness, precision, overflow, NaN payloads and byte-order behavior have explicit tests. Each inventoried integer/float/BCD representation has endian/width/sign/rounding vectors, exact limits, and invalid/overflow/NaN policy fixtures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.46.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.46.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.47.0 — Base64 family
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** RFC vectors and reference arguments pass across every short-input chunk partition; padding is accepted only in valid positions. Every alphabet/padding/line-wrap/default variant passes reference and partition tests; malformed trailing bits, split padding, and data-after-padding have fixed outcomes. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.47.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.47.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.48.0 — Base32 variants
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Case handling, trailing bits and incomplete blocks have separate strict and compatibility fixtures. Base32 and Base45 each receive independent vectors; tail lengths, alphabet/case policy, malformed characters, and tiny output windows agree across targets. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.48.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.48.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.49.0 — Base45 variants
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Case handling, trailing bits and incomplete blocks have separate strict and compatibility fixtures. Base32 and Base45 each receive independent vectors; tail lengths, alphabet/case policy, malformed characters, and tiny output windows agree across targets. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.49.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.49.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.50.0 — Base58 variants
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Checksums, mixed-case policy, network prefixes and maximum-length limits are enforced without ambiguous repair. Base58 and Bech32 variants separately verify leading zeros, alphabets, checksums, case rules, length ceilings, and wrong-variant failures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.50.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.50.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.51.0 — Bech32 variants
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Checksums, mixed-case policy, network prefixes and maximum-length limits are enforced without ambiguous repair. Base58 and Bech32 variants separately verify leading zeros, alphabets, checksums, case rules, length ceilings, and wrong-variant failures. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.51.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.51.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.52.0 — Base62
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage. Base62/85/92 and generic conversion have separate scope/vectors; distinguish arbitrary-radix whole-input work from truly bounded streaming. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.52.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.52.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.53.0 — Base85
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage. Base62/85/92 and generic conversion have separate scope/vectors; distinguish arbitrary-radix whole-input work from truly bounded streaming. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.53.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.53.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.54.0 — Base92
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage. Base62/85/92 and generic conversion have separate scope/vectors; distinguish arbitrary-radix whole-input work from truly bounded streaming. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.54.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.54.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.55.0 — Generic bounded base conversion
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage. Base62/85/92 and generic conversion have separate scope/vectors; distinguish arbitrary-radix whole-input work from truly bounded streaming. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.55.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.55.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.56.0 — Percent encoding
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Reserved characters, malformed escapes and newline handling match documented profiles; results remain inert data. Percent/entities/quoted-printable variants separately test malformed escapes, byte/text conversion, split tokens, and inert rendering; no implicit URL fetch. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.56.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.56.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.57.0 — HTML entity encoding
 
@@ -242,7 +242,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Reserved characters, malformed escapes and newline handling match documented profiles; results remain inert data. Percent/entities/quoted-printable variants separately test malformed escapes, byte/text conversion, split tokens, and inert rendering; no implicit URL fetch. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.57.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.57.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.58.0 — Quoted-printable
 
@@ -258,7 +258,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Reserved characters, malformed escapes and newline handling match documented profiles; results remain inert data. Percent/entities/quoted-printable variants separately test malformed escapes, byte/text conversion, split tokens, and inert rendering; no implicit URL fetch. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.58.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.58.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.59.0 — Unicode escape semantics
 
@@ -274,7 +274,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Surrogate and invalid-sequence policy is explicit; normalization is tested at chunk boundaries and against table versions. Escape/normalization fixtures cover surrogate errors, Unicode revisions, split codepoints, and combining-sequence ceilings with explicit above-limit rejection. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.59.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.59.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.60.0 — Unicode normalization
 
@@ -290,7 +290,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Surrogate and invalid-sequence policy is explicit; normalization is tested at chunk boundaries and against table versions. Escape/normalization fixtures cover surrogate errors, Unicode revisions, split codepoints, and combining-sequence ceilings with explicit above-limit rejection. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.60.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.60.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.61.0 — Character encodings
 
@@ -306,7 +306,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Every enabled encoding has round-trip and lossy-mode tests; unimplemented table variants remain visible gaps. Each declared charset passes independent round trips and invalid-sequence policy; no silent lossy replacement unless an explicit argument requests it. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.61.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.61.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.62.0 — Text transformations
 
@@ -322,7 +322,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Byte, Unicode scalar, grapheme and legacy UTF-16 behaviors are not silently interchanged. Case/trim/pad/reverse variants freeze locale/Unicode/byte semantics; global operations declare bounded/seekable classification and output ceilings. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.62.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.62.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.63.0 — Lines and collections
 
@@ -338,7 +338,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Long lines and whole-input sorting obey budgets; ordering and empty-record semantics match fixtures. Line/collection operations preserve declared ordering and delimiters; enormous single records, empty records, and collection growth hit explicit caps. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.63.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.63.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.64.0 — Search and replace core
 
@@ -354,7 +354,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Safe-mode syntax is labelled distinctly from full compatibility regex; all highlighting is escaped by renderers. Freeze fast-regex dialect/replacement semantics; unsupported lookaround/backreferences fail explicitly; pattern/result/record limits and adversarial scans terminate. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.64.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.64.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.65.0 — Bitwise and byte arithmetic
 
@@ -370,7 +370,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Key repetition, carry, signedness and integer overflow rules are deterministic across targets. All byte/bit shifts, widths, arithmetic modes, and key cycles pass exhaustive small vectors; overflow and partial-block semantics are explicit. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.65.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.65.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.66.0 — Braille encoding
 
@@ -386,7 +386,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Each inventoried Braille/Punycode/Modhex/COBS/control/MIME dialect has separate vectors, malformed tails, dataset provenance, and declared carry limits. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.66.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.66.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.67.0 — Punycode encoding
 
@@ -402,7 +402,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Each inventoried Braille/Punycode/Modhex/COBS/control/MIME dialect has separate vectors, malformed tails, dataset provenance, and declared carry limits. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.67.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.67.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.68.0 — Modhex encoding
 
@@ -418,7 +418,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Each inventoried Braille/Punycode/Modhex/COBS/control/MIME dialect has separate vectors, malformed tails, dataset provenance, and declared carry limits. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.68.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.68.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.69.0 — COBS framing
 
@@ -434,7 +434,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Each inventoried Braille/Punycode/Modhex/COBS/control/MIME dialect has separate vectors, malformed tails, dataset provenance, and declared carry limits. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.69.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.69.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.70.0 — Caret and control encodings
 
@@ -450,7 +450,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Each inventoried Braille/Punycode/Modhex/COBS/control/MIME dialect has separate vectors, malformed tails, dataset provenance, and declared carry limits. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.70.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.70.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.71.0 — MIME decoding
 
@@ -466,7 +466,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures. Each inventoried Braille/Punycode/Modhex/COBS/control/MIME dialect has separate vectors, malformed tails, dataset provenance, and declared carry limits. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.71.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.71.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.72.0 — Encoding completeness gate
 
@@ -482,4 +482,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** A generated report separates complete operations, argument gaps and intentionally different safe defaults; no hidden omissions. Reconcile all encoding operation/argument/target inventory rows; no unexplained gap or native-only substitution closes browser support. Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.72.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.72.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

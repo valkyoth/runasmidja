@@ -20,6 +20,8 @@
 | Fixture ownership/drift | Required; planned | Existing reuse checks scope label only, stop/volume/network need stronger ownership and desired-spec checks |
 | Valkey expiry evidence | Required; planned | Current smoke accepts EX then deletes; actual TTL/countdown/expiry qualification remains pending |
 | Product security controls | Planned | Browser, API, recipe, worker, provider and recovery milestones |
+| Smoke evidence integrity | Implemented; maintainer retest pending | Optimization-safe checks, actual child's announced ephemeral port, bounded/flushed readiness and pre/post liveness; 34 Python tests plus optimized actual probes |
+| Browser origin-compromise boundary | Design remediation; runtime planned | Separate local/remote origins, independently verified signed offline/network-disabled profile and exact document/worker headers with [versioned owners](BROWSER_SECURITY_PROFILES.md) |
 
 A configured workflow is not evidence that GitHub settings or remote CI passed.
 A local service smoke test is not a production security assessment. See

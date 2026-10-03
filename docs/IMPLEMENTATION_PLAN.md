@@ -17,6 +17,16 @@ The [gap reconciliation](gap-reconciliation-2026-10-03.md) records verified gaps
 corrections and actual version owners. All 240 reference acceptances remain,
 with additive strict verification and the [G0–G7 contract](VERIFICATION_GATES.md).
 
+Use the maintainer's [release loop](RELEASE_RUNBOOK.md): build and verify, stop
+for their pentest, fix/retest until green, then commit locally. They push; repeat
+the GitHub fix loop until green and wait for their explicit tag/push instruction.
+
+The [browser security profiles](BROWSER_SECURITY_PROFILES.md) close the origin
+threat-model gap: separate local/remote origins, independently verified signed
+offline artifacts with network-disabled execution, and explicit document/worker
+header owners from the seed through packaging. Workers alone provide no origin
+compromise protection; no high-assurance browser support is claimed now.
+
 ## Engineering rules
 
 - Pin current stable Rust 1.99.0, edition 2024/resolver 3. The compiler floor

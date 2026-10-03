@@ -14,11 +14,11 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Pin Rust 1.99.0; create kernel, engine, browser and native host packages; run one hex operation from a real browser worker. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Pin Rust 1.99.0; create kernel, engine, browser and native host packages; run one hex operation from a real browser worker. Before seed input, serve an isolated local-only test origin with the document/worker CSP and headers in docs/BROWSER_SECURITY_PROFILES.md. Prove actual worker/Wasm startup under connect-src none and absent payload network effects; do not claim public or high-assurance origin protection. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
 **Verification:** Native and browser fixtures agree; the example needs neither PostgreSQL nor a sibling repository. Actual browser worker and native byte-transform outputs agree; prove UI-thread separation, malformed-input rejection, and offline/no-upload behavior for the frozen seed. The seed is one bounded hex operation, not the future scheduler: use the seed vocabulary/profile, finite positive fuel, explicit EOF/counts and a supervisor deadline; freeze minimal version/run/generation/length messages and no persistence/effects. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.14.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.14.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.15.0 — Reference baseline
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Every discovered operation has a stable tracking record; the reference commit and file hashes are recorded, not guessed. Resolve v11.5.0 and adopted deltas to immutable commits; inventory every distinct operation, alias, argument/default, and target with fixture/license provenance. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.15.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.15.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.16.0 — Application contracts
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Round-trip tests reject unknown required fields and preserve large offsets without JavaScript number truncation. Compile independent local/native clients against owned DTOs; reject host/provider type leakage, lossy offsets, missing grants, and malformed schemas. Use the already-tested seed value/budget vocabulary; do not assume the later full scheduler/IR exists. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.16.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.16.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.17.0 — OpenBao SDK admission
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Use the real TLS OpenBao fixture and compatibility policy; token and error diagnostics are redacted; no SDK transport types reach application APIs. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.17.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.17.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.18.0 — Application secret references
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Missing, expired and revoked credentials fail closed; no root token or recovery key is delivered to API/worker/build processes; cross-workspace secret requests fail; no host/SDK type enters portable contracts and no hardcoded/environment/file secret fallback exists. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.18.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.18.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.19.0 — Secret rotation lifecycle
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Expiry, rotation during work, OpenBao outage and audit failure are exercised; old grants cannot be reused and no static secret fallback appears. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.19.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.19.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.20.0 — Search service contracts
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Default no_std graph admits no Meilisearch dependency; offline catalogue search and both hosted-backend contract fixtures cover query bounds, metadata projection and authorization. Ranking differences are explicit; filters/SDK types stay adapter-owned and unavailable features return declared errors. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.20.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.20.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.21.0 — Portable kernel
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Bare-metal-style compile checks catch std leakage; unsafe code is forbidden in first-party portable core by default. Fixed-buffer kernels build on bare metal without std/alloc; checked offsets/limits and all boundary/overflow paths have executable tests. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.21.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.21.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.22.0 — Bounded buffer contract
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Zero-sized windows, short writes, empty inputs and repeated finish calls have defined results without panics. Assert counts and statuses on every step; test zero windows, every EOF state, repeated finish, output expansion, and provider/carry reservation. Execution shape and capabilities are orthogonal; synchronous steps never conceal host I/O/secret waits, zero-progress consumes fuel, and multi-port counts are explicit when supported. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.22.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.22.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.23.0 — Operation descriptors
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** One new operation registers once and appears in catalogue, validation, documentation and generated argument controls. Catalogue/forms/schema derive from one descriptor; missing types, semantic revisions, execution limits, arguments, or capabilities fail validation. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.23.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.23.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.24.0 — Linear execution
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Chunk partitions do not alter outputs; invalid intermediate types fail before execution where statically knowable. Execute frozen linear fixtures through the same operations on native/browser; failures stop subsequent steps and cannot publish successful output. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.24.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.24.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.25.0 — Worker protocol
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Processing runs outside the UI thread; stale generations and malformed messages cannot update active results. Real workers reject protocol mismatch/oversize/duplicate frames; bounded transfer credits and stale-generation suppression pass race fixtures. Task-level yields, bounded progress/page credits and measured transfer/Wasm copies preserve cancellation responsiveness; transferring a buffer is not a universal zero-copy guarantee. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.25.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.25.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.26.0 — Cancellation lifecycle
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** A cancelled job cannot publish a successful artifact; cancellation leaves the next job usable. Measure cooperative cancellation and hard termination; cancel at input/output waits, provider completion, and publication with no surviving child work. A starved/noncooperative worker is terminated by the UI supervisor; host-owned manifests reconcile staging because terminate does not run cleanup handlers. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.26.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.26.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.27.0 — Browser privacy and secret publication
 
@@ -222,11 +222,11 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Implement sensitivity joins and opaque ephemeral handles at browser serialization/UI/storage boundaries before rich viewers or crypto. Add explicit reveal/export grants, generation rechecks and supervisor-owned cleanup; browser-entered user keys never require OpenBao/upload. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Implement sensitivity joins and opaque ephemeral handles at browser serialization/UI/storage boundaries before rich viewers or crypto. Add explicit reveal/export grants, generation rechecks and supervisor-owned cleanup; browser-entered user keys never require OpenBao/upload. Enforce separate local-only, offline and remote origin/capability profiles from docs/BROWSER_SECURITY_PROFILES.md; origin compromise is an explicit trust limit. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
-**Verification:** Sentinel inputs/keys/derived material stay absent from IndexedDB/OPFS/CacheStorage, history, URLs, clipboard, search, diagnostics and network by default. Revoked disclosure/stale page/cancel/crash tests deny publication; document unavoidable DOM/JS copies and no guaranteed erasure. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+**Verification:** Sentinel inputs/keys/derived material stay absent from IndexedDB/OPFS/CacheStorage, history, URLs, clipboard, search, diagnostics and network by default. Revoked disclosure/stale page/cancel/crash tests deny publication; document unavoidable DOM/JS copies and no guaranteed erasure. Local-only profiles reject network transforms and automatic remote bridges/fallback; explicit export/import rechecks disclosure. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.27.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.27.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.28.0 — First browser workbench
 
@@ -238,11 +238,11 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Build accessible input, recipe and output panes, operation search and a manual Run button. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Build accessible input, recipe and output panes, operation search and a manual Run button. Implement the local-only origin and exact document/worker CSP, Trusted Types, COOP/COEP/CORP, framing and Permissions Policy from docs/BROWSER_SECURITY_PROFILES.md. Real Chromium/Firefox/WebKit tests block injected script/HTML/URLs, external workers/resources, network APIs, frames/opener, denied permissions and automatic remote bridging. A worker does not defend against compromised owning code. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
 **Verification:** Keyboard-only use completes a sample recipe; raw output is never interpreted as trusted HTML. Run input/recipe/output tasks in actual browsers; importing never runs, hostile output is inert, and transformations generate no payload upload/persistence. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.28.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.28.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.29.0 — Loopback API host
 
@@ -258,7 +258,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Local and HTTP clients pass the same contract suite; the development server binds loopback by default. Serve application commands on loopback using an owned HTTP adapter; test framing/body/deadline/disconnect limits and domain-error mapping. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.29.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.29.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.30.0 — Pack manifest and resource contract
 
@@ -274,7 +274,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Tampered, incompatible, unlicensed, oversized and forbidden-import pack fixtures reject before activation. Disabled packs have no default dependency or bundle cost; declared required operations remain visible when a pack is absent. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.30.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.30.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.31.0 — Minimal lazy browser pack loader
 
@@ -288,9 +288,9 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Deliverables:** Implement bounded same-origin loading/installation of reviewed first-party packs in a Dedicated Worker, with cancellation, atomic activation and an explicit selected offline set. Qualify one small pack before large providers; later extensibility passes expand the catalogue/plugin model. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
-**Verification:** Real browsers exercise failed/interrupted downloads, hash/ABI mismatch, cancellation, quota and offline absence. A failed activation preserves the previous pack set; loading never uploads payloads or fetches hidden CDN assets; measure decode/compile/instantiate/copy and retained-memory costs. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+**Verification:** Real browsers exercise failed/interrupted downloads, hash/ABI mismatch, cancellation, quota and offline absence. A failed activation preserves the previous pack set; loading never uploads payloads or fetches hidden CDN assets; measure decode/compile/instantiate/copy and retained-memory costs. Local-only loaders operate under connect-src none with verified static-module/embedded assets; no policy widening or payload-bearing resource URLs. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.31.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.31.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.32.0 — Regex compatibility feasibility
 
@@ -306,7 +306,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Each of regex/query/YARA/crypto/compression/disassembly/OCR has a separate native/browser spike, exact license/provider/limit report, and explicit unresolved gaps. Large browser candidates use the earlier reviewed pack-loader contract; historical provider issues are feasibility warnings, not current support determinations. Non-Rust provider/executable exceptions require explicit project approval. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.32.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.32.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.33.0 — Query-language feasibility
 
@@ -322,7 +322,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Each of regex/query/YARA/crypto/compression/disassembly/OCR has a separate native/browser spike, exact license/provider/limit report, and explicit unresolved gaps. Large browser candidates use the earlier reviewed pack-loader contract; historical provider issues are feasibility warnings, not current support determinations. Non-Rust provider/executable exceptions require explicit project approval. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.33.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.33.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.34.0 — YARA feasibility
 
@@ -338,7 +338,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Each of regex/query/YARA/crypto/compression/disassembly/OCR has a separate native/browser spike, exact license/provider/limit report, and explicit unresolved gaps. Large browser candidates use the earlier reviewed pack-loader contract; historical provider issues are feasibility warnings, not current support determinations. Non-Rust provider/executable exceptions require explicit project approval. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.34.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.34.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.35.0 — Cryptographic-provider feasibility
 
@@ -354,7 +354,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Each of regex/query/YARA/crypto/compression/disassembly/OCR has a separate native/browser spike, exact license/provider/limit report, and explicit unresolved gaps. Large browser candidates use the earlier reviewed pack-loader contract; historical provider issues are feasibility warnings, not current support determinations. Non-Rust provider/executable exceptions require explicit project approval. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.35.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.35.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.36.0 — Compression-provider feasibility
 
@@ -370,7 +370,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Each of regex/query/YARA/crypto/compression/disassembly/OCR has a separate native/browser spike, exact license/provider/limit report, and explicit unresolved gaps. Large browser candidates use the earlier reviewed pack-loader contract; historical provider issues are feasibility warnings, not current support determinations. Non-Rust provider/executable exceptions require explicit project approval. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.36.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.36.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.37.0 — Disassembly feasibility
 
@@ -386,7 +386,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Each of regex/query/YARA/crypto/compression/disassembly/OCR has a separate native/browser spike, exact license/provider/limit report, and explicit unresolved gaps. Large browser candidates use the earlier reviewed pack-loader contract; historical provider issues are feasibility warnings, not current support determinations. Non-Rust provider/executable exceptions require explicit project approval. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.37.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.37.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.38.0 — OCR and media feasibility
 
@@ -402,7 +402,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies. Each of regex/query/YARA/crypto/compression/disassembly/OCR has a separate native/browser spike, exact license/provider/limit report, and explicit unresolved gaps. Large browser candidates use the earlier reviewed pack-loader contract; historical provider issues are feasibility warnings, not current support determinations. Non-Rust provider/executable exceptions require explicit project approval. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.38.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.38.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.39.0 — Differential harness
 
@@ -418,7 +418,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Positive, negative, binary and Unicode cases run reproducibly; upstream bugs are recorded rather than blindly copied. Run pinned reference fixtures through independently captured oracle and engine; deliberate semantic corruption fails the comparator, with exact source hashes. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.39.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.39.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.40.0 — First threat review
 
@@ -434,7 +434,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** No payload telemetry or automatic network side effects; hostile samples produce bounded failures. Enumerate assets/trust boundaries and concrete abuse fixtures; each exposed seed behavior has tested negative controls and finding disposition. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.40.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.40.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.41.0 — Usable vertical alpha
 
@@ -450,7 +450,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** A fresh clone builds and runs without sibling projects or a database; phase A contracts are demonstrated end to end. Complete the declared seed workflow in supported browsers and native API; all mandatory alpha inventory rows have runtime evidence and no hidden remote dependency. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.41.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.41.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.42.0 — Performance baseline and regression profiles
 
@@ -466,4 +466,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Record correctness and source/artifact/browser/tool identities, repetitions, cold/warm p50/p95/p99/max, JS/Wasm/RSS/disk/copy memory and cleanup. Goals are unmet until measured; budget regressions and event floods fail the gate. No seed measurement claims full-provider/large-input performance. Exercise browser/native boundary, malformed contracts, stale worker generations and absence of payload network traffic. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.42.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.42.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

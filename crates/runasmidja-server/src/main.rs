@@ -25,6 +25,7 @@ fn main() -> std::io::Result<()> {
     };
     let listener = TcpListener::bind((address, port))?;
     println!("Runasmidja development probe on {}", listener.local_addr()?);
+    std::io::stdout().flush()?;
     for connection in listener.incoming() {
         let Ok(mut stream) = connection else { continue };
         stream.set_read_timeout(Some(Duration::from_secs(2)))?;

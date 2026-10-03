@@ -13,6 +13,8 @@ Run scripts/checks.sh, current freshness checks, cargo deny check and cargo audi
 to the feature being claimed. Keep security docs, limitations, CHANGELOG and
 release notes with each pass. Every minor/patch/RC/tag needs an exact-source
 pentest and tested remediation; NOT RUN never qualifies as PASS.
+The maintainer performs that pentest. Commit new candidate work only after their
+green result; GitHub failures follow the fix/report/retest loop in the runbook.
 
 See [release runbook](docs/RELEASE_RUNBOOK.md), [threat model](docs/threat-model.md)
 and [controls](docs/security-controls.md). GitHub uses CodeQL **Default setup**;

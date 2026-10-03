@@ -56,6 +56,13 @@ artifacts. Authenticated decryption stays staged until final integrity succeeds.
 
 ## Privacy and UI
 
+An owning page and its delivered worker code share the website trust boundary.
+A Dedicated Worker does not protect input from origin/CDN/deployment compromise.
+Use separate hosted local-only, independently verified offline/network-disabled,
+and explicit remote origins/applications as defined in
+[browser security profiles](BROWSER_SECURITY_PROFILES.md). CSP/Trusted Types and
+COOP/COEP/CORP are defense in depth, not proof that compromised code is trustworthy.
+
 Serve a normal online website. Default processing happens in a real Dedicated
 Worker. Network/upload, local persistence, sharing and secret use are separate
 capabilities. Failure never silently uploads. Generated descriptor metadata

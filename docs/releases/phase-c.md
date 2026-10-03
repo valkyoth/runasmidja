@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** A deliberately expanding operation hits the declared budget; reported totals do not omit retained branch buffers. Allocation capacity, provider scratch, queue retention, previews, fan-out, and disk reservations are charged; failures refund correctly and counters cannot wrap. Whole-run positive fuel and cumulative output/disk/branch/frame/register limits cannot reset on jumps, cache hits or child recipes; each noncooperative provider quantum has a hard host deadline. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.73.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.73.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.74.0 — Backpressure scheduler
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Slow consumers cannot grow memory indefinitely; synchronous CPU work does not depend on an async task per node. Tiny-credit diamonds and stalled/failed joins complete or fail deterministically; no deadlock, starvation, unbounded queue, or credit leak remains. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.74.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.74.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.75.0 — Stream state machines
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Every state transition is tested; EOF is neither duplicated nor inferred from an arbitrary chunk boundary. Enumerate input/output/EOF/error/cancel terminal transitions; duplicate EOF/finish and truncated tails cannot busy-loop or produce duplicate completion. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.75.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.75.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.76.0 — Multi-input ports
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Arrival order cannot change XOR/key semantics; unresolved inputs block safely and never grow unbounded buffers. Multi-port skew, missing/failed input, ordering, and unequal EOF cases follow typed port rules under bounded per-port and aggregate credit. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.76.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.76.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.77.0 — Branches and joins
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Reconverging branches, slow consumers and early exits do not deadlock or lose output. Fork/join output ordering is invariant under scheduling; failed branches cancel dependents, and shared buffers stay charged until the last reference releases them. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.77.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.77.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.78.0 — Native artifact storage
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Crash simulation cannot expose a partial artifact as complete; offsets and lengths are checked. Real filesystem ranges/staging/integrity pass; traversal/symlink attempts, disk full, partial write, crash, and orphan cleanup cannot expose unfinished payloads. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.78.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.78.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.79.0 — Browser artifact storage
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Firefox and other supported browsers work without optional APIs; quota failures never trigger silent upload. Real worker IndexedDB/OPFS tests cover transaction completion/abort, quota, schema upgrade, denied persistence, and secret-sentinel exclusion. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.79.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.79.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.80.0 — Storage transaction discipline
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Aborted transactions and interrupted writes are reported; no successful-write result precedes commit confirmation. Crash local native object-finalize/manifest and browser IndexedDB/OPFS transaction/local-event cut points; idempotent recovery exposes only completed locally authorized artifacts. This proves local storage discipline, not hosted SQL run/manifest/outbox publication, which qualifies in v0.112.0. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.80.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.80.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.81.0 — Whole-input and seekable adapters
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Non-streaming operations declare their class and reject oversized jobs before uncontrolled allocation. Whole-input L-1/L/L+1 and unknown-length cases fail closed; seekable two-pass source mutation rejects, and spooling has real disk/work ceilings. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.81.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.81.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.82.0 — Semantic content identities
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Repartitioning input leaves identity unchanged; different parameters or operation semantics never reuse an entry accidentally. Canonical identities include type, ordered inputs, arguments, semantic/provider/dataset revisions; chunk partition changes no identity and ambiguous framing collides nowhere in fixtures. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.82.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.82.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.83.0 — Selective computation cache
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Unknown streams are not fully buffered merely to attempt an early hit; secrets and failed jobs are excluded by default. Only complete deterministic nonsensitive authorized results cache; secret/effectful/staged outputs deny, and cache identity includes current scope/revisions. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.83.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.83.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.84.0 — Cache lifecycle
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Eviction cannot delete a live artifact; cache misses and storage failures do not corrupt authoritative recipes. TTL/eviction/revocation/poison/outage cases preserve truth and permissions; pending writers or stale grants cannot resurrect entries. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.84.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.84.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.85.0 — Bounded control-flow IR
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Graph-cycle rejection does not mistakenly eliminate required recipe loops; iteration/work budgets are enforced. Bound compilation, SCC/region structure, frame depth, fuel, registers, output and artifacts; self/nested loops and amplification exhaust budgets predictably. Cyclic control transfers connect bounded regions, not cyclic stream queues; checked static loop estimates supplement monotonic runtime fuel, and irreducible compatibility jumps use a bounded frame/program-counter model. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.85.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.85.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.86.0 — Execution provenance
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Sensitive arguments stay out of logs; nondeterministic jobs cannot masquerade as reproducible cached results. Provenance preserves exact source/operation revisions and offset availability; debug/event growth is bounded and records exclude payload/secret values. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.86.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.86.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.87.0 — Engine stress qualification
 
@@ -242,4 +242,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Measured memory stays within each declared profile and errors remain recoverable; no universal constant-memory claim. Large streaming plateaus in retained memory; adversarial partitions, queue interleavings, cancellation, and all execution classes pass stress/resource fixtures. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.87.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.87.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

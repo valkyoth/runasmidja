@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Local and HTTP transports pass shared use-case tests; framework request types never enter the application layer. Independent client contract tests exercise version/errors/offsets/capabilities/idempotency; schemas expose no framework/database/provider types. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.103.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.103.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.104.0 — Job lifecycle API
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Reconnection and duplicated requests cannot create ambiguous terminal states or leak another principal’s job. Current private loopback lifecycle/contract fixtures cover create/poll/cancel/result terminal states, replay, local generations and disconnect races. Future lease/authority scenarios are schema/contract evidence only; live SQL fencing, sessions, isolated supervisors, heartbeat/retry and egress remain pending at their named owners and must qualify before public exposure. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.104.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.104.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.105.0 — Artifact transfer API
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Incomplete uploads remain staged; large files do not travel as JSON Base64 payloads by default. Private local upload/download/range/checksum/abort and existing local capability/generation negatives pass; oversized/traversal/partial artifacts stay unreadable. Hosted SQL publication, deployed object authority and worker/egress faults are pending at their named owners; these early tests cannot attest those absent runtime controls. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.105.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.105.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.106.0 — Repository contracts
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Contracts describe domain semantics instead of generic execute-SQL methods; an in-memory adapter passes the suite. Atomic commands define revision/conflict/idempotency/lease/pagination semantics; rollback and concurrent use-case tests pass before SQL optimization. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.106.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.106.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.107.0 — PostgreSQL adapter
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Recipes and jobs pass repository tests on an actual PostgreSQL instance; driver row types stay in the adapter. Real PostgreSQL runs the full repository contract, migrations and runtime least-privilege suite; no input/output payload is silently stored as SQL blobs. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.107.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.107.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.108.0 — Database TLS seam
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Certificate validation failures are fatal; a mock provider proves database TLS is not permanently tied to rustls. Real database TLS rejects wrong host/root/expiry/plaintext downgrade; database-specific negotiation/channel binding stays in the adapter. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.108.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.108.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.109.0 — OpenBao database leases
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Real leased login/expiry/revocation fixtures pass; stale pooled credentials are discarded; unsupported beta/plugin compatibility gets a new owned pass. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.109.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.109.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.110.0 — Identity and sessions
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Authorization is enforced server-side for every object; browser-local use remains anonymous and database-free. Reviewed identity/session flows pass wrong issuer/audience/nonce, replay, expiry, CSRF/origin and cookie negatives; credentials never appear in URLs/logs. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.110.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.110.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.111.0 — Workspace authorization
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Cross-workspace and confused-deputy tests fail closed even without database-specific row-security features. Cross-tenant and same-tenant revoked-object denials cover recipes/runs/artifacts/search; opaque IDs and cache/index grants never substitute for authority. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.111.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.111.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.112.0 — Hosted artifact publication fencing
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Crash each finalize/commit/publish/cleanup cut point; duplicate completion, failed SQL commit, corrupt object, disk full, revoked reader and stale worker cannot publish partial/unauthorized output. Read bytes to verify hashes; cleanup never deletes a live referenced object. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.112.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.112.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.113.0 — Repository metadata search
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Real PostgreSQL tests prove tenant/object permissions, malformed/bounded queries, deterministic pagination and immediate deletion/revocation. The UI/API works with Meilisearch disabled; local browser recipe search stays local. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.113.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.113.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.114.0 — Search projection and outbox
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Transaction rollback leaves no event; crashes, duplicate/reordered delivery, concurrent edit/delete and poison events cannot resurrect old projections. Projection contains no recipe/input/result/SecretRef values and is fully rebuildable from authorized metadata. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.114.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.114.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.115.0 — Meilisearch Podman fixture
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Actual optional service start/restart passes; disabled profile starts no Meilisearch container and requests no Meilisearch credentials. Missing/revoked vault secrets, wrong TLS identity, unauthenticated requests and excessive key privileges fail; master keys never reach browser or application readers. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.115.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.115.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.116.0 — Meilisearch metadata adapter
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Real server tests cover task acceptance versus completion, failed indexing, retry, queue ceilings, malformed queries, deadlines, scoped reader/writer credentials and exact projection fields. Shared repository/Meilisearch conformance passes without backend DTOs leaking into API types. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.116.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.116.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.117.0 — Search authorization and revocation
 
@@ -242,7 +242,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Two-tenant and same-tenant revoked-reader tests with a deliberately stale index reveal no hit, title, snippet, facet, count or object existence. Forged filter/cursor, stale edit/delete/revoke, permissions changed during a request and database outage deny access without trusting index grants. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.117.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.117.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.118.0 — Search backend switching and recovery
 
@@ -258,7 +258,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Run website/API tests in both compiled profiles and both runtime modes; disabled mode needs no search service/secrets. Outage, task failure, key rotation, corrupted/lost index, pagination across switches and cutover/replay drills preserve current permissions and database truth; performance measurements tune deployment choice rather than cancel adapter work. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.118.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.118.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.119.0 — Isolated execution workers
 
@@ -274,7 +274,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** A parser crash or non-cooperative job can be killed without taking down API or other tenants. Real isolated processes reject forbidden syscalls/mounts/network; CPU/memory/PID/temp/FD exhaustion and hard kill of descendants leave inaccessible staging. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.119.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.119.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.120.0 — Worker isolation fault qualification
 
@@ -290,7 +290,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** CPU spin, OOM, PID/fork/FD/temp exhaustion, forbidden mounts/syscalls/egress and malformed IPC are tested on the deployment kernel. Descendants stop after kill and staged output remains inaccessible; missing kernel controls reject the profile rather than silently weaken it. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.120.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.120.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.121.0 — Admission and quotas
 
@@ -306,7 +306,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Repeated tiny requests and large expanding jobs cannot bypass aggregate resource accounting. Admission precedes expensive work; concurrent tenant/global limits, rate limits and quota-service outage cannot oversubscribe or bypass resource reservations. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.121.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.121.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.122.0 — Valkey application adapter
 
@@ -322,7 +322,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Cache miss, outage, poison, stale revision and cross-tenant probes pass against Valkey; authoritative data and permissions survive without cache. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.122.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.122.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.123.0 — Valkey invalidation and outage
 
@@ -338,7 +338,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Revoked grants are checked against authoritative state; connection failures do not bypass quotas; cache poisoning and invalidation races have regressions. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.123.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.123.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.124.0 — Durable jobs and leases
 
@@ -354,7 +354,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Expired workers cannot finalize duplicate results; retry is prohibited for unsafe external side effects. Crash/reassign/duplicate completion tests enforce authoritative fencing; stale/expired workers cannot renew or publish newer run output. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.124.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.124.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.125.0 — Server networking policy
 
@@ -370,7 +370,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** SSRF, rebinding, private/metadata destinations and mapped-address cases are covered before user HTTP operations are public. Controlled DNS/connect/redirect fixtures deny rebinding, all forbidden A/AAAA/mapped/link-local destinations, credential forwarding and decompression excess. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.125.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.125.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.126.0 — DNS and connection destination binding
 
@@ -386,7 +386,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Controlled DNS/TLS fixtures reject mixed public/private answers, rebinding between resolve/connect, metadata/private/link-local/reserved addresses, scoped/ambiguous forms and unknown peers. No SDK/client re-resolution bypass remains; explicit private-network operator policy is separately scoped. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.126.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.126.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.127.0 — Redirect and outbound transport policy
 
@@ -402,7 +402,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Private redirects, loops, retry/deadline/byte excess, signed-URL/header leaks, cross-origin credentials, ambient proxy and stale pooled-policy tests fail. An intentional proxy enforces final destinations; browser Fetch limitations are explicit and cannot trigger silent remote fallback. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.127.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.127.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.128.0 — Metadata-only observability
 
@@ -418,7 +418,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Default logs contain no raw inputs, outputs, secrets or high-cardinality user payload labels. Sentinel payloads/keys/query bodies never enter default logs/metrics/traces; bounded IDs/counters still diagnose failures without sensitive labels. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.128.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.128.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.129.0 — Server deployment profile
 
@@ -434,7 +434,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Restart and restore drills preserve metadata/artifact consistency; insecure development defaults cannot silently become public. Reproducible rootless deployment checks all actual isolation/secret/TLS/admission policies; public endpoints exclude administrative services and dev shortcuts. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.129.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.129.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.130.0 — Service TLS deployment policy
 
@@ -450,7 +450,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Wrong names, unknown roots, expired certificates, missing TLS and unauthorized service clients fail; deployment never publishes administrative endpoints. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.130.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.130.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.131.0 — OpenBao production recovery custody
 
@@ -466,7 +466,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Independent custody/recovery, audit-disk failure, snapshot restore and expired bootstrap identity are tested; one-share local test material is rejected in production. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.131.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.131.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.132.0 — PostgreSQL beta-to-GA upgrade drill
 
@@ -482,7 +482,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Restore and repository/authorization fixtures pass on pinned GA; no beta data directory is reused blindly; rollback is executable and 1.0 uses GA. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.132.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.132.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.133.0 — Server security gate
 
@@ -494,8 +494,8 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Test authentication, object authorization, uploads, worker isolation, cancellation and resource abuse. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Test authentication, object authorization, uploads, worker isolation, cancellation and resource abuse. Expose remote execution only through a separate origin/application with distinct session, storage, worker, CORS/CSRF and opener boundaries. Local-only origins have no network-capable transform or automatic payload bridge/fallback. Explicit disclosure changes the trust profile; run the browser security-profile negatives. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
 **Verification:** Public remote execution stays disabled until isolation and quota tests pass; local web mode remains independently releasable. Adversarial API/auth/worker/egress/storage assessment passes on the exact deployment; remediation/retest and operational recovery evidence precede exposure. All public untrusted-job routes stay disabled until authority, admission, isolation, fencing, egress, TLS and recovery gates pass together; earlier API rows are local/private integration only. Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.133.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.133.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

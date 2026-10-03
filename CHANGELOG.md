@@ -1,5 +1,18 @@
 # Changelog
 
+Pentest remediation (2026-10-03): addressed the browser origin threat-model gap,
+assigned profile/header/independent offline verification owners, replaced
+optimization-removable smoke assertions, and verified native probes using the
+live child's announced ephemeral port. Added adversarial regressions and fixed
+angle-bracket Markdown link checking. All 34 Python tests and optimized actual
+native/container probes pass; maintainer retest is pending, not pentest PASS.
+
+Foundation handoff (2026-10-03): reverified the v0.1.0 scope, common gates,
+dependency/freshness checks, real native/container probes and service restart;
+refreshed the SBOM and documented known limits for the maintainer's pentest.
+The release loop now commits only after their green result, waits for GitHub,
+and tags/pushes a version tag only on explicit instruction. Pentest is NOT RUN.
+
 ## Unreleased — 0.1.0 foundation candidate
 
 - Initialized EUPL-1.2/Rust 1.99.0 workspace with five no_std boundary crates

@@ -6,6 +6,13 @@ See [versioned owners](gap-reconciliation-2026-10-03.md) and
 
 ## Worker, UI and cancellation
 
+The owning origin/page remains trusted; a Dedicated Worker cannot prevent a
+malicious page reading input or replacing code. Apply the separate local-only,
+offline/network-disabled and remote origin contracts, exact document/worker
+headers and real browser negatives in
+[browser security profiles](BROWSER_SECURITY_PROFILES.md). Pack/Wasm loading
+must work under connect-src none rather than widening it for Fetch convenience.
+
 Keep an accessible Rust DOM UI with the linear input/recipe/output workflow,
 manual Run, descriptor-generated forms, keyboard editing and bounded pages.
 Leptos remains an outer-adapter candidate selected at current reviewed admission.

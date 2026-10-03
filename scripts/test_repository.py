@@ -26,3 +26,12 @@ class RepositoryTests(unittest.TestCase):
             (root / ".github").mkdir()
             (root / ".github/codeql.yml").write_text("name: CodeQL\n")
             self.assertEqual(len(check(root)), 1)
+
+    def test_angle_bracket_links_accept_urls_and_existing_paths(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / 'local document.md').write_text('Documentation')
+            (root / 'README.md').write_text('[source](<https://example.invalid/spec>)\n[local](<local document.md>)')
+            self.assertEqual(check(root), [])
+            (root / 'README.md').write_text('[missing](<missing document.md>)')
+            self.assertEqual(len(check(root)), 1)

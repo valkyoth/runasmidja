@@ -28,7 +28,9 @@ def check(root=ROOT):
     for path in root.rglob("*.md"):
         if any(part in {"target", ".git", ".local", ".cargo-deny-advisory-dbs"} for part in path.parts):
             continue
-        for target in re.findall(r"\[[^\]]*\]\(([^\s)]+)\)", path.read_text()):
+        for target in re.findall(r"\[[^\]]*\]\((<[^>\n]+>|[^\s)]+)\)", path.read_text()):
+            if target.startswith('<') and target.endswith('>'):
+                target = target[1:-1]
             if target.startswith(("http:", "https:", "#", "mailto:")):
                 continue
             if not (path.parent / target.split("#", 1)[0]).exists():

@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** A sample operation is added without modifying scheduler, HTTP routes, database schema or handwritten UI forms. Independent operation author implements descriptor/step/tests/limits without editing transport/UI/domain plumbing; conformance failure catches missing metadata. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.338.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.338.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.339.0 — Operation pack manifests
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Required dependencies are explicit; removing a pack cannot produce silently incomplete loaded recipes. Pack manifests bind operation/revision/ABI/dependencies/capabilities/assets/licenses/sizes; malformed/incompatible packs reject before execution. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.339.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.339.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.340.0 — Lazy browser packs
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** App, engine and pack versions are verified before activation; failed downloads leave a usable previous state. Large browser packs load only on explicit need/installation, with verified identity and resource budgets; absent/offline packs never upload input. Extend the already-qualified minimal first-party loader/catalogue rather than delaying initial provider isolation to this milestone. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.340.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.340.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.341.0 — Provider replacement tests
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Replacement requires byte/behavior conformance and security review; provider identity participates where it affects reproducibility. Swap a real qualified provider and rerun shared independent vectors/error/resource/secret suites; mock compilation alone cannot claim interchangeability. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.341.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.341.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.342.0 — Core-Wasm plugin ABI
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** The ABI contains no host pointers, unrestricted syscalls or implicit network/file access. Core-Wasm ABI validates handles/lengths/versions/imports/exports; malformed modules, memory growth and host-call amplification fail under limits. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.342.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.342.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.343.0 — Browser plugin sandbox
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** An infinite loop, memory growth or hostile output can be terminated without accessing app state or persistent secrets. Untrusted plugins execute in isolated worker/memory with no arbitrary origin JS authority; forbidden imports, network/storage and runaway execution are denied/terminated. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.343.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.343.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.344.0 — Native plugin sandbox
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Resource and capability tests cover malicious modules; signatures are not treated as proof of safety. Native plugin runtime enforces fuel/epoch or process deadlines, memory/table/stack/host-call limits and capability denial with real hostile guests. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.344.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.344.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.345.0 — Plugin package integrity
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Unknown publishers are not automatically trusted; rollback protection and offline integrity checks have tests. Tampered/rollback/oversized/incompatible packages reject; trusted identity/integrity never substitutes for sandbox restrictions or safe-code review. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.345.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.345.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.346.0 — Plugin conformance kit
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Plugin authors can validate behavior without depending on the web framework or database. Public plugin vectors/malformed ABI/import/memory/work tests run independently in browser/native; example plugins meet the same limits as third-party guests. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.346.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.346.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.347.0 — Component-model evaluation
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Keep it optional unless browser/native portability and resource enforcement match the established plugin contract. Actual WIT/component adapter plus generated JS passes browser/native semantics/import/resource/copy tests; optional tooling remains outside the baseline ABI. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.347.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.347.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.348.0 — HTTP server replacement seam
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** All application endpoints run without importing the original framework outside its adapter package. Second runnable HTTP adapter serves the same use cases; framing/backpressure/disconnect/origin/error/security suites pass without domain changes. Mocks remain useful unit fixtures but do not close runnable host replacement support. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.348.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.348.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.349.0 — Outbound HTTP replacement seam
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** No native subsystem opens an unreviewed HTTP/TLS path; destination and trust policies survive provider substitution. All native outbound consumers are inventoried and routed/isolated under owned egress policy; alternate transport preserves DNS/connect/redirect/trust limits. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.349.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.349.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.350.0 — TLS replacement seam
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Trust, hostname verification, ALPN, timeouts and errors remain explicit; browser-owned TLS is documented as outside this seam. Alternate native and database TLS providers pass real identity/trust/ALPN/mTLS/negotiation negatives; browser TLS is explicitly outside replacement scope. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.350.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.350.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.351.0 — Conditional sibling integrations
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** The default build works without sibling paths; integration is not claimed complete when only a placeholder exists. Real Vef/Brynja integration is claimed only against current runnable APIs with target/security evidence; default builds require no sibling directory. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.351.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.351.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.352.0 — Extensibility qualification
 
@@ -242,4 +242,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** No domain/database/UI rewrite is needed; every accepted extra dependency has a documented purpose and feature budget. Demonstrate operation/pack/provider/transport additions through public contracts with actual execution and documented dependency/size costs. Run alternate adapter/provider contracts, plugin hostile imports/memory/work tests and default builds without sibling directories. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.352.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.352.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

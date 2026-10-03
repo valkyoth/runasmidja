@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Recipes with disabled operations, defaults and mixed data types preserve documented semantics. Bounded compatibility VM executes immutable reference semantics with global fuel, frame/register/output/artifact limits and deterministic errors. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.323.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.323.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.324.0 — Fork and Merge compatibility
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Empty branches, delimiters and nested forks match fixtures independently of runtime chunking. Fork/Merge separators/order/branch scopes pass whole-recipe differentials; nested fan-out shares aggregate limits and cannot deadlock joins. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.324.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.324.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.325.0 — Subsection processing
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Boundary, Unicode and changing-output-length cases preserve the required surrounding data. Subsection selection/replacement uses exact byte/text/regex semantics and scoped state; overlapping/empty/unbounded selections have precise limits. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.325.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.325.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.326.0 — Registers and variables
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Scope, escaping, missing registers and lifetime rules are deterministic; secrets do not leak into recipe serialization. Register substitution/types/lifetimes/defaults match reference; scopes cannot retain unlimited values or expose secret parameters in UI/exports. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.326.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.326.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.327.0 — Labels and jumps
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Looping reference fixtures pass; exhausted limits return a precise diagnostic rather than hang. Forward/backward/conditional jumps, missing/duplicate labels and reference counter reset behavior have differential fixtures; global fuel never resets. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.327.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.327.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.328.0 — Return and nested recipes
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Return scopes and nested budget inheritance are tested; recursion is bounded or rejected by the declared profile. Return/subrecipe semantics pass nested differentials; direct/indirect recursion and frame-depth/output amplification terminate without host-stack overflow. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.328.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.328.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.329.0 — Compatibility recipe importer
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Unknown operations/arguments are preserved for review or rejected, never silently dropped. Versioned imports preserve exact names/arguments/control flow/revisions; unknown or malicious operations fail visibly and never autorun. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.329.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.329.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.330.0 — Compatibility exporter
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Unrepresentable graph features produce an explicit report; no misleading successful export loses behavior. Export/reimport preserves representable semantics; unsupported native features return a precise error rather than silently flatten loops or drop arguments. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.330.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.330.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.331.0 — Detection primitives
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Detectors explain evidence and uncertainty; a score is not advertised as a calibrated probability without validation. Detectors pin signatures/datasets, validity checks and ordering; bounded scans explain evidence and avoid payload/secret network lookups. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.331.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.331.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.332.0 — Magic one-step suggestions
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Suggestions require user acceptance; network, secret-revealing or expensive actions are excluded by default. One-step Magic suggestions are deterministic and explain detector/arguments/cost/capabilities; suggestions never execute effects automatically. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.332.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.332.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.333.0 — Magic bounded search
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Adversarial recursive inputs terminate; repeated runs on the same data/revision produce stable candidate ordering. Magic search caps depth/candidates/state/output/global fuel; adversarial ambiguous inputs terminate and ordered suggestions reproduce across targets. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.333.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.333.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.334.0 — Brute-force analysis
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Work estimates, candidate limits and cancellation are effective; heavy searches are never automatic by default. Brute force declares alphabet/search space/verification/work caps; cancellation and output count limits hold, and legacy search cannot consume unbounded resources. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.334.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.334.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.335.0 — Full regex compatibility
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Reference dialect corpus passes locally and natively; safe-regex mode remains separately identified. Full required JS/XRegExp semantics pass pinned differentials and pathological kill tests; UTF-16/byte offsets and replacements are mapped explicitly. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.335.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.335.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.336.0 — End-to-end reference recipes
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Equality criteria cover bytes, structure, diagnostics and allowed nondeterminism; every mismatch has a tracked disposition. Complete frozen reference recipes pass all arguments/control flow and target profiles; failures report exact unsupported semantics rather than count operations. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.336.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.336.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.337.0 — Feature-complete parity candidate
 
@@ -242,4 +242,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** No required capability is missing; any open gap creates additional 0.x releases before qualification. Five matrices for operations, arguments/semantics, recipes, UI and targets have zero mandatory gaps; a feature-complete candidate still needs final qualification. Run whole-recipe differentials, backwards jumps, nested control, defaults, lossless interchange and work exhaustion. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.337.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.337.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

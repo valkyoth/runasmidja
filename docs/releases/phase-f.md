@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Large integers, duplicate-key policy, multiline fields and final newline behavior are fixture-tested. JSON and CSV independently preserve declared numeric/null/duplicate/order/quoting semantics; depth/record limits and malformed fixtures pass both targets. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.134.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.134.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.135.0 — CSV semantics
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Large integers, duplicate-key policy, multiline fields and final newline behavior are fixture-tested. JSON and CSV independently preserve declared numeric/null/duplicate/order/quoting semantics; depth/record limits and malformed fixtures pass both targets. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.135.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.135.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.136.0 — XML data processing
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Entity expansion, excessive depth and malformed documents fail within budgets; renderers receive inert data. XML/HTML parsers reject external entity/network effects and expansion excess; hostile markup stays data and byte/text conversion is explicit. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.136.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.136.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.137.0 — HTML data processing
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Entity expansion, excessive depth and malformed documents fail within budgets; renderers receive inert data. XML/HTML parsers reject external entity/network effects and expansion excess; hostile markup stays data and byte/text conversion is explicit. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.137.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.137.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.138.0 — XPath dialect
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Namespaces, selector syntax and output formatting match compatibility fixtures; unsupported syntax is not silently simplified. Each XPath/CSS dialect and namespace/default is frozen; result/depth/work ceilings and hostile expressions terminate with precise diagnostics. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.138.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.138.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.139.0 — CSS selector dialect
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Namespaces, selector syntax and output formatting match compatibility fixtures; unsupported syntax is not silently simplified. Each XPath/CSS dialect and namespace/default is frozen; result/depth/work ceilings and hostile expressions terminate with precise diagnostics. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.139.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.139.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.140.0 — JSONPath dialect
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence. Each inventoried JSONPath/JMESPath/jq/JSONata dialect has separate semantic vectors; unsupported syntax, recursion and explosive queries are bounded. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.140.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.140.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.141.0 — JMESPath dialect
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence. Each inventoried JSONPath/JMESPath/jq/JSONata dialect has separate semantic vectors; unsupported syntax, recursion and explosive queries are bounded. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.141.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.141.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.142.0 — jq dialect if inventoried
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence. Each inventoried JSONPath/JMESPath/jq/JSONata dialect has separate semantic vectors; unsupported syntax, recursion and explosive queries are bounded. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.142.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.142.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.143.0 — JSONata dialect if inventoried
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence. Each inventoried JSONPath/JMESPath/jq/JSONata dialect has separate semantic vectors; unsupported syntax, recursion and explosive queries are bounded. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.143.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.143.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.144.0 — YAML semantics
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alias bombs, implicit scalar differences and non-string mapping keys are handled according to documented profiles. YAML/Rison independently define tags/aliases/merge/numbers; alias bombs, deep input, unsafe tags and malformed documents fail within ceilings. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.144.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.144.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.145.0 — Rison semantics
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alias bombs, implicit scalar differences and non-string mapping keys are handled according to documented profiles. YAML/Rison independently define tags/aliases/merge/numbers; alias bombs, deep input, unsafe tags and malformed documents fail within ceilings. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.145.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.145.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.146.0 — MessagePack semantics
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Indefinite lengths, nesting, duplicate keys and extension types are bounded and represented without accidental loss. MessagePack/CBOR independently test integers, binary/text, tags, map semantics, noncanonical encodings and truncation without lossy JSON conversion. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.146.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.146.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.147.0 — CBOR semantics
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Indefinite lengths, nesting, duplicate keys and extension types are bounded and represented without accidental loss. MessagePack/CBOR independently test integers, binary/text, tags, map semantics, noncanonical encodings and truncation without lossy JSON conversion. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.147.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.147.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.148.0 — AMF variants
 
@@ -242,7 +242,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Unsupported schema features become tracked gaps; hostile references and lengths cannot escape limits. Each AMF variant/Avro schema feature has independent vectors; cyclic schemas, reference growth, incompatible schemas and records hit declared limits. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.148.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.148.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.149.0 — Avro schemas
 
@@ -258,7 +258,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Unsupported schema features become tracked gaps; hostile references and lengths cannot escape limits. Each AMF variant/Avro schema feature has independent vectors; cyclic schemas, reference growth, incompatible schemas and records hit declared limits. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.149.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.149.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.150.0 — TLV and binary structures
 
@@ -274,7 +274,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Truncation, overlapping lengths, large tags and signed/unsigned decoding have negative tests. Length/count/offset arithmetic in TLV/binary structures is checked; truncated/overlapping/cyclic fields reject without oversized allocations. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.150.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.150.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.151.0 — Code formatting and minification
 
@@ -290,7 +290,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Strings, comments, regex literals and template syntax survive correctly; substitutions are not advertised as parsers. Each language formatter/minifier has frozen dialect and literal-preservation fixtures; malformed or pathological code cannot execute or exceed work limits. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.151.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.151.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.152.0 — Mathematics and statistics
 
@@ -306,7 +306,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Precision, divide-by-zero, overflow and ordering are explicit and consistent across browser/native targets. Math/statistics freeze domain errors, precision/rounding, NaN/overflow and deterministic reduction order; limits apply to expensive computations. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.152.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.152.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.153.0 — Set and combinatorial operations
 
@@ -322,7 +322,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Output cardinality is estimated and capped before exponential expansion; ordering matches fixtures. Cardinality/product growth is preflighted and charged; huge Cartesian/permutation outputs reject before memory/disk exhaustion. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.153.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.153.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.154.0 — Time and identifiers
 
@@ -338,7 +338,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Invalid dates, offset transitions, precision and deterministic clock injection have tests. Time/ID formats define zone/calendar/precision/version behavior; datasets are pinned and invalid/ambiguous/overflow cases have fixed outcomes. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.154.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.154.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.155.0 — Distances and miscellaneous utilities
 
@@ -354,7 +354,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Numeric units, coordinate ranges and rounding are explicit; map/network resources require declared capability or offline assets. Each distance/utility has independent edge vectors and complexity ceilings; quadratic work uses explicit admission rather than hidden interactive scans. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.155.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.155.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.156.0 — Remaining text and encoding tables
 
@@ -370,7 +370,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Every claimed encoding/dialect identifies its data-table version and has native/browser fixtures. Remaining tables/dialects close inventoried variants with source/license hashes; unsupported characters and Unicode-version differences are recorded. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.156.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.156.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.157.0 — Structured-format gate
 
@@ -386,4 +386,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Unsupported syntax remains a release blocker for 1.0; the plan extends rather than hiding difficult languages. All format/query argument and target rows close with actual browser/native results; family names or a parser subset do not count as dialect parity. Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.157.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.157.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

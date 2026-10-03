@@ -11,6 +11,7 @@ plugins and rendered results are untrusted, including when processing locally.
 | Boundary | Main threats | Required evidence |
 | --- | --- | --- |
 | Browser import/render | XSS, hidden effects, secret persistence, malicious links | Inert output, capability preview, no autorun/upload, real browser negatives |
+| Browser code origin | Compromised origin/CDN/deployment account/JavaScript reads input or replaces worker/policies | Separate local/remote applications; independently verified signed immutable offline bundle plus network-disabled host for high assurance; document/worker CSP, Trusted Types, COOP/COEP/CORP, framing and permission negatives |
 | Operation execution | Expansion, parser/provider faults, algorithm confusion | Independent vectors, budgets/fuzz/partition tests, explicit revisions |
 | Scheduler/control flow | Loops, join deadlock, stale result, cancellation race | Tiny-credit tests, total-work caps, generation fences, hard termination |
 | API/authorization | IDOR, CSRF, session replay, quota bypass | Object checks, tenant denial suite, origin/CSRF and aggregate limits |
@@ -29,6 +30,13 @@ Parsing, valid signatures and trusted identities remain separate states.
 Default logs/metrics exclude payloads, keys, query contents and decoded outputs.
 Opaque IDs are not authorization. Content hashes are not public capabilities.
 No claim of full erasure from browsers, swap or backups is made.
+
+Dedicated Workers isolate scheduling, not an input from the owning page. CSP
+does not make a compromised origin trustworthy. Browser extensions and a
+compromised browser/OS remain outside application defense. Hosted local-only
+processing makes no classified-data assurance claim. The exact profile/header
+contract and implementation owners are in
+[browser security profiles](BROWSER_SECURITY_PROFILES.md).
 
 Foundation residual limits: health probe is loopback test tooling, not qualified
 HTTP; dev PostgreSQL/Valkey loopback transport is unencrypted; local recovery

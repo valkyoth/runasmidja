@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Excessive lengths, recursion, non-canonical encodings and truncated objects have precise failures. BER/DER/ASN.1/OID scopes separately test canonicality, indefinite lengths, nesting, malformed tags and checked length/output budgets. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.260.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.260.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.261.0 — DER canonical parsing
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Excessive lengths, recursion, non-canonical encodings and truncated objects have precise failures. BER/DER/ASN.1/OID scopes separately test canonicality, indefinite lengths, nesting, malformed tags and checked length/output budgets. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.261.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.261.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.262.0 — ASN.1 display
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Excessive lengths, recursion, non-canonical encodings and truncated objects have precise failures. BER/DER/ASN.1/OID scopes separately test canonicality, indefinite lengths, nesting, malformed tags and checked length/output budgets. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.262.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.262.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.263.0 — OID conversion
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Excessive lengths, recursion, non-canonical encodings and truncated objects have precise failures. BER/DER/ASN.1/OID scopes separately test canonicality, indefinite lengths, nesting, malformed tags and checked length/output budgets. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.263.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.263.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.264.0 — PEM and key representations
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Key types, curves, leading zeros and private-field redaction survive round trips. PEM/key representations preserve format/type/algorithm distinctions; malformed armor and wrong labels reject, and private values keep secret sensitivity. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.264.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.264.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.265.0 — X.509 fields and extensions
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Parsing success is never labelled certificate trust; unknown extensions remain available as data. X.509 fields/extensions/bundles parse with bounded lossless diagnostics; malformed/unknown extensions and algorithms remain data. Parsing never claims trust. Any separately inventoried validation action requires explicit roots/time/name/policy and its own negative trust fixtures. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.265.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.265.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.266.0 — Certificate-bundle parsing delta
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Parsing success is never labelled certificate trust; unknown extensions remain available as data. X.509 fields/extensions/bundles parse with bounded lossless diagnostics; malformed/unknown extensions and algorithms remain data. Parsing never claims trust. Any separately inventoried validation action requires explicit roots/time/name/policy and its own negative trust fixtures. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.266.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.266.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.267.0 — CRL analysis
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Invalid signatures and malformed fields are distinguished from mere parsing errors. CRL/CSR parsing and explicit signature-verification actions have separate states and bounded independent fixtures. A valid signature alone cannot claim issuer trust, revocation completeness or certificate validity; those need separately scoped evidence. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.267.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.267.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.268.0 — CSR analysis
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Invalid signatures and malformed fields are distinguished from mere parsing errors. CRL/CSR parsing and explicit signature-verification actions have separate states and bounded independent fixtures. A valid signature alone cannot claim issuer trust, revocation completeness or certificate validity; those need separately scoped evidence. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.268.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.268.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.269.0 — RSA key generation
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Entropy, key-size budgets, padding failures and reference compatibility are tested; no raw-secret logging. RSA generation/encryption/signature variants independently test padding/hash/length/key policy; secure entropy, malformed keys and relevant side-channel review pass. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.269.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.269.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.270.0 — RSA encryption and decryption
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Entropy, key-size budgets, padding failures and reference compatibility are tested; no raw-secret logging. RSA generation/encryption/signature variants independently test padding/hash/length/key policy; secure entropy, malformed keys and relevant side-channel review pass. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.270.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.270.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.271.0 — RSA signing and verification
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Entropy, key-size budgets, padding failures and reference compatibility are tested; no raw-secret logging. RSA generation/encryption/signature variants independently test padding/hash/length/key policy; secure entropy, malformed keys and relevant side-channel review pass. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.271.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.271.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.272.0 — ECDSA curve and key formats
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: DER versus fixed-width forms, low-S policy and invalid curve points are handled explicitly. Each ECDSA curve/key/signature encoding gets independent vectors; malformed points/scalars, nonce policy, malleability rules and trust separation are explicit. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.272.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.272.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.273.0 — ECDSA signatures
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: DER versus fixed-width forms, low-S policy and invalid curve points are handled explicitly. Each ECDSA curve/key/signature encoding gets independent vectors; malformed points/scalars, nonce policy, malleability rules and trust separation are explicit. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.273.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.273.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.274.0 — SM2 identity and signatures
 
@@ -242,7 +242,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Parameter sets and user-identity fields have vectors; missing provider variants remain blocking gaps. SM2 identity and GOST parameter/signature/wrap variants pass independent vectors; wrong identity/curve/format inputs fail with no secret disclosure. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.274.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.274.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.275.0 — GOST signature and wrap variants
 
@@ -258,7 +258,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Parameter sets and user-identity fields have vectors; missing provider variants remain blocking gaps. SM2 identity and GOST parameter/signature/wrap variants pass independent vectors; wrong identity/curve/format inputs fail with no secret disclosure. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.275.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.275.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.276.0 — OpenPGP packet inspection
 
@@ -274,7 +274,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Unsupported packets or algorithms are reported precisely; packet lengths and recursion are bounded. OpenPGP packet/key/generation variants pass independent corpora; legacy algorithm/packet gaps, nesting/compression limits, entropy and browser backend risks are explicit. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.276.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.276.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.277.0 — OpenPGP key inspection
 
@@ -290,7 +290,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Unsupported packets or algorithms are reported precisely; packet lengths and recursion are bounded. OpenPGP packet/key/generation variants pass independent corpora; legacy algorithm/packet gaps, nesting/compression limits, entropy and browser backend risks are explicit. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.277.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.277.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.278.0 — OpenPGP key generation
 
@@ -306,7 +306,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Unsupported packets or algorithms are reported precisely; packet lengths and recursion are bounded. OpenPGP packet/key/generation variants pass independent corpora; legacy algorithm/packet gaps, nesting/compression limits, entropy and browser backend risks are explicit. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.278.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.278.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.279.0 — OpenPGP encryption
 
@@ -322,7 +322,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Integrity-protected output stays staged until verified; legacy insecure forms are clearly identified. OpenPGP encrypted formats/recipient variants interoperate with independent tooling; wrong key/tag/MDC/truncation cannot expose plaintext before authentication. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.279.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.279.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.280.0 — OpenPGP signing and verification
 
@@ -338,7 +338,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Detached/embedded signatures, canonical text and multi-signature cases match fixtures. OpenPGP signing/verification/combined variants freeze canonicalization and result states; cryptographic validity never implies identity trust by default. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.280.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.280.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.281.0 — OpenPGP combined encrypt and sign
 
@@ -354,7 +354,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Detached/embedded signatures, canonical text and multi-signature cases match fixtures. OpenPGP signing/verification/combined variants freeze canonicalization and result states; cryptographic validity never implies identity trust by default. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.281.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.281.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.282.0 — SSH key analysis
 
@@ -370,7 +370,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Algorithm distinctions and malformed length fields are bounded; no SSH connection is implied by parsing a key. SSH key/authorized-key formats and fingerprints have independent vectors; malformed keys/options and private-key display are bounded/redacted. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.282.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.282.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.283.0 — JWT and token inspection
 
@@ -386,7 +386,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Decode never implies validation; algorithm confusion, missing signatures and key-type mismatch tests fail closed. Decode treats claims as untrusted data and never implies validation. Explicit verification modes test algorithm/key/signature confusion and configured issuer/audience/time policy; inspection preserves malformed/historical data according to its declared analysis profile without weakening live session validation. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.283.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.283.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.284.0 — Signed session formats
 
@@ -402,7 +402,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Timestamp, compression, secret encoding and serializer variants are fixture-tested without persisting signing secrets. Each signed-session format passes independent framing/MAC/signature vectors; decoded claims remain untrusted until explicitly verified and authorized. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.284.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.284.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.285.0 — Key and secret UX
 
@@ -418,7 +418,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Recipe sharing cannot accidentally include private keys; browser/OS memory erasure limitations are documented honestly. Key entry/reveal/export/clipboard actions need scoped grants; sentinel keys never enter history, logs, links, cache, search or default persistence. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.285.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.285.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.286.0 — Public-key qualification
 
@@ -434,4 +434,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Every advertised algorithm/format is tested; a successful parse, a valid signature and a trusted identity remain distinct states. All public-key/format/argument/target rows and trust-negative suites pass; browser backend limitations and relevant timing risks have qualified dispositions. Run format/algorithm vectors, malformed keys and trust-confusion cases; parsing, validity and trust remain distinct. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.286.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.286.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

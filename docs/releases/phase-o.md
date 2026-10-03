@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Revoking access prevents future reads; links and searches cannot enumerate another workspace. Shared collections preserve separate recipe/payload sharing and current permissions; revoked grants, tenant enumeration and inherited access negatives pass. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.353.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.353.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.354.0 — Shared-collection search integration
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Both backends pass collection-sharing, inherited/revoked grants, revision edits, stale-index and recovery tests; names/tags remain an approved projection and secret-bearing collection metadata is excluded. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.354.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.354.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.355.0 — Recipe revisions and conflicts
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Two clients cannot silently overwrite each other; no real-time collaboration framework is required. Two-client edits produce explicit conflicts; compare/restore preserves revisions and cannot silently overwrite or recover a revoked secret-bearing record. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.355.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.355.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.356.0 — Administrative policy
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Policy is enforced server-side and reported through capabilities; clients cannot self-authorize forbidden operations. Operation/pack/egress/retention/resource policy is authoritative server state; forged client capabilities and cached policy cannot self-authorize. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.356.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.356.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.357.0 — Audit and retention lifecycle
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Payloads are absent by default; deleted live records and retained backups are not misleadingly described as immediate erasure everywhere. Retention/deletion/audit jobs are bounded/idempotent and authorized; default audit excludes payloads and backups' remaining retention is stated accurately. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.357.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.357.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.358.0 — Logical storage export
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Export is independent of PostgreSQL SQL syntax and contains explicit integrity/referential checks. Versioned logical exports include complete IDs/revisions/grants/manifests/digests and referential checks; secrets/payloads follow explicit separate export policy. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.358.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.358.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.359.0 — Migration integrity and canonicalization
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Two-tenant/revoked-grant/case/Unicode/large-number/tombstone fixtures and corrupt/truncated/duplicate exports reject precisely. Equality requires key sets, canonical digests, byte-read artifact hashes, permissions and revision/idempotency outcomes; missing/duplicate/unexpected records and references are zero. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.359.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.359.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.360.0 — MySQL portability prototype
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Shared contracts run against a real MySQL instance; merely compiling a generic driver is insufficient. Actual MySQL adapter/migrations pass the entire repository/use-case suite on a real rootless fixture, with no SQL/provider types in domain APIs. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.360.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.360.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.361.0 — SQL semantic parity
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Results and conflict semantics agree despite different SQL dialects; deviations stay inside adapters. Both databases agree on collation/NULL/JSON/integer/boolean/time/pagination/conflict/transaction semantics using adversarial concurrency fixtures. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.361.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.361.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.362.0 — PostgreSQL-to-MySQL migration drill
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Application use cases work without domain or API changes; failures leave the original deployment recoverable. Quiesce/fence jobs and migrate PostgreSQL to MySQL; zero missing/duplicate records, canonical digest/hash/grant changes, and broken references; cutover/rollback replay succeeds. Quiesce/fence live jobs and verify object hashes by reading bytes; rollback preserves post-cutover writes or explicitly freezes writes, never silently restores stale data. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.362.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.362.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.363.0 — MySQL-to-PostgreSQL reverse drill
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Round trips retain identifiers/revisions; the project makes no unsupported zero-downtime migration guarantee. Reverse the same model to PostgreSQL and repeat exact equality, authorization, revision and recipe-replay checks; active leases cannot survive as unfenced writers. Repeat byte-read hashes/canonical key sets/grants/revisions and representative recipe replay; MySQL is a proof adapter until separately production-qualified, with no zero-downtime claim. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.363.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.363.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.364.0 — Artifact backend portability
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Range reads, integrity, leases and orphan cleanup work without tying metadata schema to one cloud provider. Real filesystem/object-store adapters pass ranges/staging/integrity/quotas/cleanup under crash and outage; logical manifests expose no backend-specific paths. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.364.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.364.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.365.0 — Backup and disaster recovery
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Restore drills actually read and execute restored recipes/artifacts instead of only checking backup file existence. Restore coordinated metadata/artifacts/Bao state then authorize/read/execute representative recipes; corrupt/incomplete backups fail and retained data policy is explicit. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.365.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.365.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.366.0 — Release packaging
 
@@ -222,11 +222,11 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Produce versioned static offline bundles, native API binaries and container images with manifests and notices. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Produce versioned static offline bundles, native API binaries and container images with manifests and notices. Package the independently verified signed immutable offline/local-only and separate hosted-local/remote profiles with exact identities and headers. Rerun network-disabled launch, signature/manifest/substitution and profile negatives on the release artifacts; v0.367.0 binds their provenance to assessment. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
 **Verification:** Builds identify exact dependency and operation-pack revisions; no desktop/mobile application is shipped yet. Exact offline/static/native/container artifacts include pinned packs/assets/licenses/SBOM and verified hashes; no desktop/mobile support is claimed yet. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.366.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.366.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.367.0 — Distribution assessment and provenance binding
 
@@ -242,7 +242,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Tampered/substituted artifact, stale SBOM, forged/untrusted PASS, missing target/CI evidence and bad signature/issuer/source bindings reject. Independent clean builds verify manifests; secrets come from OpenBao and no test creates a real assessment PASS or publication authorization. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.367.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.367.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.368.0 — Upgrade and rollback
 
@@ -258,7 +258,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** An interrupted upgrade cannot mix incompatible schema/engine assets or corrupt saved recipes. Interrupted browser/server/pack/schema upgrade cannot mix incompatible revisions; rollback/restore preserves authorization and new writes by documented policy. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.368.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.368.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.369.0 — Operational load qualification
 
@@ -274,7 +274,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Published limits come from measurements; API responsiveness survives isolated worker exhaustion. Measured multi-tenant expensive-job mix with CPU/OOM/disk/network failures preserves API latency/fairness/admission and rejects stale completions. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.369.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.369.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.370.0 — Portability and operations gate
 
@@ -290,7 +290,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** PostgreSQL is the initial production-supported backend; MySQL support level is stated separately from the proven portability contract. Real second-database and replacement/operational rehearsals pass; support levels remain explicit and executable deployment/rollback documents agree with code. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.370.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.370.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.371.0 — Integrated service recovery gate
 
@@ -306,4 +306,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** A restored deployment serves authorized recipes and can run them; cache/search loss does not lose authoritative data; all recovery steps are automated or explicitly custody-gated. Use real database backends and operational cutover, crash/restore/rollback, revocation and data-integrity drills. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.371.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.371.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

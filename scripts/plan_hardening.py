@@ -1,6 +1,11 @@
 """Reviewed prerequisite passes; source owners and acceptance remain additive."""
 
 SOURCE_CONTEXT = {
+'0.1.0': 'Before seed input, serve an isolated local-only test origin with the document/worker CSP and headers in docs/BROWSER_SECURITY_PROFILES.md. Prove actual worker/Wasm startup under connect-src none and absent payload network effects; do not claim public or high-assurance origin protection.',
+'0.10.0': 'Implement the local-only origin and exact document/worker CSP, Trusted Types, COOP/COEP/CORP, framing and Permissions Policy from docs/BROWSER_SECURITY_PROFILES.md. Real Chromium/Firefox/WebKit tests block injected script/HTML/URLs, external workers/resources, network APIs, frames/opener, denied permissions and automatic remote bridging. A worker does not defend against compromised owning code.',
+'0.59.0': 'Qualify the signed immutable offline/local-only distribution with independent pre-launch signature/manifest verification and a network-disabled host. Bundle verified UI/worker/Wasm/packs/models/fonts; reject untrusted signer, tampered assets and hidden update/service-worker/CDN fallback. Hosted-origin trust is never replaced by same-page hash verification.',
+'0.75.0': 'Expose remote execution only through a separate origin/application with distinct session, storage, worker, CORS/CSRF and opener boundaries. Local-only origins have no network-capable transform or automatic payload bridge/fallback. Explicit disclosure changes the trust profile; run the browser security-profile negatives.',
+'0.222.0': 'Package the independently verified signed immutable offline/local-only and separate hosted-local/remote profiles with exact identities and headers. Rerun network-disabled launch, signature/manifest/substitution and profile negatives on the release artifacts; v0.367.0 binds their provenance to assessment.',
 '0.39.0': 'This pass qualifies local native artifact manifests and browser IndexedDB/OPFS transaction completion, local event/outbox records and orphan recovery only. Hosted SQL manifest/run/outbox publication is owned by v0.112.0, not assumed here.',
 '0.61.0': 'Current scope: private API schemas and the existing loopback transport, including lossless offsets/errors and bounded commands. Live session/object authority arrives in v0.110.0–v0.111.0, isolated-worker/supervisor proof in v0.119.0–v0.120.0, durable heartbeat/retry in v0.124.0 and egress in v0.125.0–v0.127.0. Those runtime suites remain pending, not schema-test PASS.',
 '0.62.0': 'Current scope: lifecycle messages and existing private loopback runs with local generation/cancellation tests; future lease/authorization cases are contract fixtures only. Minimal real SQL fencing is implemented in v0.107.0; deployed object authority qualifies in v0.110.0–v0.111.0, worker supervision in v0.119.0–v0.120.0, durable heartbeat/retry in v0.124.0 and egress in v0.125.0–v0.127.0 before v0.133.0 exposure. Do not claim durable or isolated execution here.',
@@ -42,8 +47,8 @@ FOUNDATION_AFTER_FRESHNESS = [
 ADDITIONS = {
 9: [
 ('Browser privacy and secret publication',
- 'Implement sensitivity joins and opaque ephemeral handles at browser serialization/UI/storage boundaries before rich viewers or crypto. Add explicit reveal/export grants, generation rechecks and supervisor-owned cleanup; browser-entered user keys never require OpenBao/upload.',
- 'Sentinel inputs/keys/derived material stay absent from IndexedDB/OPFS/CacheStorage, history, URLs, clipboard, search, diagnostics and network by default. Revoked disclosure/stale page/cancel/crash tests deny publication; document unavoidable DOM/JS copies and no guaranteed erasure.'),
+ 'Implement sensitivity joins and opaque ephemeral handles at browser serialization/UI/storage boundaries before rich viewers or crypto. Add explicit reveal/export grants, generation rechecks and supervisor-owned cleanup; browser-entered user keys never require OpenBao/upload. Enforce separate local-only, offline and remote origin/capability profiles from docs/BROWSER_SECURITY_PROFILES.md; origin compromise is an explicit trust limit.',
+ 'Sentinel inputs/keys/derived material stay absent from IndexedDB/OPFS/CacheStorage, history, URLs, clipboard, search, diagnostics and network by default. Revoked disclosure/stale page/cancel/crash tests deny publication; document unavoidable DOM/JS copies and no guaranteed erasure. Local-only profiles reject network transforms and automatic remote bridges/fallback; explicit export/import rechecks disclosure.'),
 ],
 11: [
 ('Pack manifest and resource contract',
@@ -51,7 +56,7 @@ ADDITIONS = {
  'Tampered, incompatible, unlicensed, oversized and forbidden-import pack fixtures reject before activation. Disabled packs have no default dependency or bundle cost; declared required operations remain visible when a pack is absent.'),
 ('Minimal lazy browser pack loader',
  'Implement bounded same-origin loading/installation of reviewed first-party packs in a Dedicated Worker, with cancellation, atomic activation and an explicit selected offline set. Qualify one small pack before large providers; later extensibility passes expand the catalogue/plugin model.',
- 'Real browsers exercise failed/interrupted downloads, hash/ABI mismatch, cancellation, quota and offline absence. A failed activation preserves the previous pack set; loading never uploads payloads or fetches hidden CDN assets; measure decode/compile/instantiate/copy and retained-memory costs.'),
+ 'Real browsers exercise failed/interrupted downloads, hash/ABI mismatch, cancellation, quota and offline absence. A failed activation preserves the previous pack set; loading never uploads payloads or fetches hidden CDN assets; measure decode/compile/instantiate/copy and retained-memory costs. Local-only loaders operate under connect-src none with verified static-module/embedded assets; no policy widening or payload-bearing resource URLs.'),
 ],
 15: [
 ('Performance baseline and regression profiles',

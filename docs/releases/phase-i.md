@@ -18,7 +18,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Enabling every operation cannot weaken HTTPS, sessions, storage encryption or identity verification. Enabling legacy analysis cannot change account hashing, TLS, live encryption, provider policy or recommended defaults; dependency/feature graphs prove separation. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.209.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.209.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.210.0 — DES analysis
 
@@ -34,7 +34,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Weak-key and parity-bit handling is documented; outputs match independent known-answer tests. DES/Triple DES variants test key parity/weak-key policy, modes/padding and independent historical vectors under analysis-only descriptors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.210.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.210.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.211.0 — Triple DES analysis
 
@@ -50,7 +50,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Weak-key and parity-bit handling is documented; outputs match independent known-answer tests. DES/Triple DES variants test key parity/weak-key policy, modes/padding and independent historical vectors under analysis-only descriptors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.211.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.211.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.212.0 — Blowfish analysis
 
@@ -66,7 +66,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Key expansion limits, effective key bits and legacy padding have positive and negative fixtures. Blowfish/RC2 variants independently qualify key/round/effective-key/mode defaults and malformed inputs; maintained provider admission is documented. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.212.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.212.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.213.0 — RC2 analysis
 
@@ -82,7 +82,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Key expansion limits, effective key bits and legacy padding have positive and negative fixtures. Blowfish/RC2 variants independently qualify key/round/effective-key/mode defaults and malformed inputs; maintained provider admission is documented. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.213.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.213.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.214.0 — RC4 and drop analysis
 
@@ -98,7 +98,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: State persists across chunks; skip/drop parameters cannot cause uncontrolled work. RC4/drop/Rabbit variants pass independent key/IV/state vectors across partitions; analysis warnings/defaults and counter/resource policy are explicit. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.214.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.214.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.215.0 — Rabbit analysis
 
@@ -114,7 +114,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: State persists across chunks; skip/drop parameters cannot cause uncontrolled work. RC4/drop/Rabbit variants pass independent key/IV/state vectors across partitions; analysis warnings/defaults and counter/resource policy are explicit. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.215.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.215.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.216.0 — TEA analysis
 
@@ -130,7 +130,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Short messages, padding and unusual variants have independently sourced compatibility cases. TEA/XTEA/XXTEA separately freeze endian/round/padding/block variants with independent vectors; ambiguous names never conceal different algorithms. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.216.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.216.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.217.0 — XTEA analysis
 
@@ -146,7 +146,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Short messages, padding and unusual variants have independently sourced compatibility cases. TEA/XTEA/XXTEA separately freeze endian/round/padding/block variants with independent vectors; ambiguous names never conceal different algorithms. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.217.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.217.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.218.0 — XXTEA analysis
 
@@ -162,7 +162,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Short messages, padding and unusual variants have independently sourced compatibility cases. TEA/XTEA/XXTEA separately freeze endian/round/padding/block variants with independent vectors; ambiguous names never conceal different algorithms. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.218.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.218.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.219.0 — RC6 analysis
 
@@ -178,7 +178,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Each algorithm/variant is separately tracked; an unavailable provider causes more 0.x work, not an unlabelled replacement. Each inventoried RC6/Twofish/PRESENT/other block cipher gets a separate bounded provider pass and vector set; absence of a provider stays a gap. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.219.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.219.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.220.0 — Twofish analysis
 
@@ -194,7 +194,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Each algorithm/variant is separately tracked; an unavailable provider causes more 0.x work, not an unlabelled replacement. Each inventoried RC6/Twofish/PRESENT/other block cipher gets a separate bounded provider pass and vector set; absence of a provider stays a gap. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.220.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.220.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.221.0 — PRESENT analysis
 
@@ -210,7 +210,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Each algorithm/variant is separately tracked; an unavailable provider causes more 0.x work, not an unlabelled replacement. Each inventoried RC6/Twofish/PRESENT/other block cipher gets a separate bounded provider pass and vector set; absence of a provider stays a gap. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.221.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.221.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.222.0 — Residual block-cipher inventory closure
 
@@ -226,7 +226,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Each algorithm/variant is separately tracked; an unavailable provider causes more 0.x work, not an unlabelled replacement. Each inventoried RC6/Twofish/PRESENT/other block cipher gets a separate bounded provider pass and vector set; absence of a provider stays a gap. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.222.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.222.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.223.0 — SM4 analysis
 
@@ -242,7 +242,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Parameter-set selection is reproducible; names alone cannot choose an incompatible implementation. SM4 and each GOST parameter/S-box/mode variant have exact independent vectors and policy separation from transport/account security. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.223.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.223.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.224.0 — GOST encryption parameter sets
 
@@ -258,7 +258,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Parameter-set selection is reproducible; names alone cannot choose an incompatible implementation. SM4 and each GOST parameter/S-box/mode variant have exact independent vectors and policy separation from transport/account security. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.224.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.224.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.225.0 — Ascon variants
 
@@ -274,7 +274,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Algorithm revision, nonce/tag lengths and byte-order differences are verified rather than conflated. Ascon variants distinguish historical versus standardized revisions, nonce/tag/output semantics, mutation failures and secret staging. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.225.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.225.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.226.0 — MD-family historical digests
 
@@ -290,7 +290,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Every inventoried variant has test vectors; obsolete digests remain labelled unsuitable for modern integrity security. Each historical digest has independently verified exact revision/padding/encoding semantics; no insecure digest becomes an authentication default. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.226.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.226.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.227.0 — SHA-0 analysis
 
@@ -306,7 +306,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Every inventoried variant has test vectors; obsolete digests remain labelled unsuitable for modern integrity security. Each historical digest has independently verified exact revision/padding/encoding semantics; no insecure digest becomes an authentication default. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.227.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.227.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.228.0 — RIPEMD variants
 
@@ -322,7 +322,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Every inventoried variant has test vectors; obsolete digests remain labelled unsuitable for modern integrity security. Each historical digest has independently verified exact revision/padding/encoding semantics; no insecure digest becomes an authentication default. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.228.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.228.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.229.0 — Residual historical digest closure
 
@@ -338,7 +338,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Every inventoried variant has test vectors; obsolete digests remain labelled unsuitable for modern integrity security. Each historical digest has independently verified exact revision/padding/encoding semantics; no insecure digest becomes an authentication default. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.229.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.229.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.230.0 — GOST digests
 
@@ -354,7 +354,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Provider absence, missing variants and licensing restrictions stay visible until resolved. GOST/SM3/Whirlpool/Snefru/HAS-160 and residual variants require separately scoped known answers, endian/parameter sets and bounded streaming state. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.230.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.230.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.231.0 — SM3 digest
 
@@ -370,7 +370,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Provider absence, missing variants and licensing restrictions stay visible until resolved. GOST/SM3/Whirlpool/Snefru/HAS-160 and residual variants require separately scoped known answers, endian/parameter sets and bounded streaming state. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.231.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.231.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.232.0 — Whirlpool digest
 
@@ -386,7 +386,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Provider absence, missing variants and licensing restrictions stay visible until resolved. GOST/SM3/Whirlpool/Snefru/HAS-160 and residual variants require separately scoped known answers, endian/parameter sets and bounded streaming state. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.232.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.232.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.233.0 — Snefru variants
 
@@ -402,7 +402,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Provider absence, missing variants and licensing restrictions stay visible until resolved. GOST/SM3/Whirlpool/Snefru/HAS-160 and residual variants require separately scoped known answers, endian/parameter sets and bounded streaming state. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.233.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.233.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.234.0 — HAS-160 digest
 
@@ -418,7 +418,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Provider absence, missing variants and licensing restrictions stay visible until resolved. GOST/SM3/Whirlpool/Snefru/HAS-160 and residual variants require separately scoped known answers, endian/parameter sets and bounded streaming state. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.234.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.234.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.235.0 — Residual specialist digest closure
 
@@ -434,7 +434,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Provider absence, missing variants and licensing restrictions stay visible until resolved. GOST/SM3/Whirlpool/Snefru/HAS-160 and residual variants require separately scoped known answers, endian/parameter sets and bounded streaming state. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.235.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.235.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.236.0 — Fuzzy and similarity hashes
 
@@ -450,7 +450,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** Similarity scores, block sizes and edge cases match reference behavior; results are not represented as cryptographic proofs. Fuzzy hashes pin algorithm/data/revision and test similarity edge cases against an independent implementation; matches are explained as evidence, not identity proof. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.236.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.236.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.237.0 — ROT and substitution analysis
 
@@ -466,7 +466,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested. Each substitution/ROT/Vigenere/Morse/Bacon/Affine/Atbash/A1Z26 variant freezes alphabet/case/nonalphabet handling with independent reference vectors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.237.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.237.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.238.0 — Vigenere analysis
 
@@ -482,7 +482,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested. Each substitution/ROT/Vigenere/Morse/Bacon/Affine/Atbash/A1Z26 variant freezes alphabet/case/nonalphabet handling with independent reference vectors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.238.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.238.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.239.0 — Morse encoding
 
@@ -498,7 +498,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested. Each substitution/ROT/Vigenere/Morse/Bacon/Affine/Atbash/A1Z26 variant freezes alphabet/case/nonalphabet handling with independent reference vectors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.239.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.239.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.240.0 — Bacon encoding
 
@@ -514,7 +514,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested. Each substitution/ROT/Vigenere/Morse/Bacon/Affine/Atbash/A1Z26 variant freezes alphabet/case/nonalphabet handling with independent reference vectors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.240.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.240.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.241.0 — Affine cipher
 
@@ -530,7 +530,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested. Each substitution/ROT/Vigenere/Morse/Bacon/Affine/Atbash/A1Z26 variant freezes alphabet/case/nonalphabet handling with independent reference vectors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.241.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.241.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.242.0 — Atbash cipher
 
@@ -546,7 +546,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested. Each substitution/ROT/Vigenere/Morse/Bacon/Affine/Atbash/A1Z26 variant freezes alphabet/case/nonalphabet handling with independent reference vectors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.242.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.242.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.243.0 — A1Z26 encoding
 
@@ -562,7 +562,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested. Each substitution/ROT/Vigenere/Morse/Bacon/Affine/Atbash/A1Z26 variant freezes alphabet/case/nonalphabet handling with independent reference vectors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.243.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.243.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.244.0 — Residual classical substitution closure
 
@@ -578,7 +578,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested. Each substitution/ROT/Vigenere/Morse/Bacon/Affine/Atbash/A1Z26 variant freezes alphabet/case/nonalphabet handling with independent reference vectors. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.244.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.244.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.245.0 — Bifid analysis
 
@@ -594,7 +594,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Incomplete grids, key validation and reverse transforms preserve the required conventions. Each Bifid/Rail Fence/Caesar Box/transposition variant defines dimensions, padding and global-input bounds; inverse/reference and malformed cases pass. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.245.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.245.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.246.0 — Rail Fence analysis
 
@@ -610,7 +610,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Incomplete grids, key validation and reverse transforms preserve the required conventions. Each Bifid/Rail Fence/Caesar Box/transposition variant defines dimensions, padding and global-input bounds; inverse/reference and malformed cases pass. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.246.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.246.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.247.0 — Caesar Box analysis
 
@@ -626,7 +626,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Incomplete grids, key validation and reverse transforms preserve the required conventions. Each Bifid/Rail Fence/Caesar Box/transposition variant defines dimensions, padding and global-input bounds; inverse/reference and malformed cases pass. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.247.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.247.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.248.0 — Residual classical transposition closure
 
@@ -642,7 +642,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Incomplete grids, key validation and reverse transforms preserve the required conventions. Each Bifid/Rail Fence/Caesar Box/transposition variant defines dimensions, padding and global-input bounds; inverse/reference and malformed cases pass. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.248.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.248.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.249.0 — Enigma analysis
 
@@ -658,7 +658,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Machine settings and known historical/reference fixtures agree; expensive searches have strict work budgets. Enigma/Typex/Lorenz/SIGABA and inventoried search tools have exact machine settings/vectors; key search has global fuel and deterministic cancellation. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.249.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.249.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.250.0 — Typex analysis
 
@@ -674,7 +674,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Machine settings and known historical/reference fixtures agree; expensive searches have strict work budgets. Enigma/Typex/Lorenz/SIGABA and inventoried search tools have exact machine settings/vectors; key search has global fuel and deterministic cancellation. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.250.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.250.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.251.0 — Lorenz analysis
 
@@ -690,7 +690,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Machine settings and known historical/reference fixtures agree; expensive searches have strict work budgets. Enigma/Typex/Lorenz/SIGABA and inventoried search tools have exact machine settings/vectors; key search has global fuel and deterministic cancellation. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.251.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.251.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.252.0 — SIGABA analysis
 
@@ -706,7 +706,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Machine settings and known historical/reference fixtures agree; expensive searches have strict work budgets. Enigma/Typex/Lorenz/SIGABA and inventoried search tools have exact machine settings/vectors; key search has global fuel and deterministic cancellation. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.252.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.252.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.253.0 — Bombe search if inventoried
 
@@ -722,7 +722,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Machine settings and known historical/reference fixtures agree; expensive searches have strict work budgets. Enigma/Typex/Lorenz/SIGABA and inventoried search tools have exact machine settings/vectors; key search has global fuel and deterministic cancellation. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.253.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.253.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.254.0 — Colossus search if inventoried
 
@@ -738,7 +738,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Machine settings and known historical/reference fixtures agree; expensive searches have strict work budgets. Enigma/Typex/Lorenz/SIGABA and inventoried search tools have exact machine settings/vectors; key search has global fuel and deterministic cancellation. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.254.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.254.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.255.0 — EVP legacy compatibility
 
@@ -754,7 +754,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Generated coverage shows no unowned long-tail algorithm or argument gap; all required browser paths are tested. Every legacy workstream/argument/target closes independently; unsupported historical functionality remains explicit rather than hidden by modern providers. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.255.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.255.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.256.0 — CipherSaber analysis
 
@@ -770,7 +770,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Generated coverage shows no unowned long-tail algorithm or argument gap; all required browser paths are tested. Every legacy workstream/argument/target closes independently; unsupported historical functionality remains explicit rather than hidden by modern providers. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.256.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.256.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.257.0 — Citrix compatibility
 
@@ -786,7 +786,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Generated coverage shows no unowned long-tail algorithm or argument gap; all required browser paths are tested. Every legacy workstream/argument/target closes independently; unsupported historical functionality remains explicit rather than hidden by modern providers. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.257.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.257.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.258.0 — LS47 analysis
 
@@ -802,7 +802,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Generated coverage shows no unowned long-tail algorithm or argument gap; all required browser paths are tested. Every legacy workstream/argument/target closes independently; unsupported historical functionality remains explicit rather than hidden by modern providers. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.258.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.258.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## v0.259.0 — Residual legacy acceptance
 
@@ -818,4 +818,4 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Verification:** For this scoped topic: Generated coverage shows no unowned long-tail algorithm or argument gap; all required browser paths are tested. Every legacy workstream/argument/target closes independently; unsupported historical functionality remains explicit rather than hidden by modern providers. Run historical vectors and exact argument semantics; all legacy-operation features must leave TLS/account security unchanged. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
-**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.259.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.259.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.

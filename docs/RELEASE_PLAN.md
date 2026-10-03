@@ -25,9 +25,11 @@ If mandatory gaps remain after 0.386.0, actual additional passes start at **v0.3
 
 ## Every release gate
 
+The [browser security profiles](BROWSER_SECURITY_PROFILES.md) define origin-compromise limits, separate local-only/remote applications and independently verified signed offline artifacts with network-disabled execution. Explicit seed/privacy/workbench/loader/offline/server/packaging owners qualify document/worker CSP, Trusted Types, COOP/COEP/CORP, framing and permissions; no browser enforcement is claimed by the foundation.
+
 Run `scripts/checks.sh`, current dependency/license/advisory checks, freshness, applicable browser/reference/service/fuzz/fault suites and artifact SBOM generation. Update threat controls, limitations, parity evidence, CHANGELOG and release notes. Every numbered minor, patch, RC and 1.0 needs its own exact-source pentest, remediation and clean retesting before tagging; passing tests alone do not authorize a PASS report.
 
-The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Tagging/publication is separate from this setup task.
+The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Build and verify locally, stop for the maintainer’s pentest, and commit only after green. The maintainer pushes; repeat GitHub fixes and affected pentest retests until green. Tag and push the version tag only when explicitly requested; distribution publication needs separate authorization.
 
 The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The next bounded implementation pass is OpenBao-first secret provisioning; current fixture passwords are still locally generated and do not meet that new origin policy.
 
@@ -73,7 +75,7 @@ The [gap reconciliation](gap-reconciliation-2026-10-03.md), [execution contracts
 
 **Verification:** actual supported browsers/native hosts; independent security assessment; auth/SSRF/cache/plugin/failure tests; real PostgreSQL/MySQL migration proof; backup/restore; Vef/Brynja seam tests; privacy and accessibility.
 
-**Exit criteria:** exact artifacts pass the complete acceptance contract with no required gaps or exploitable critical/high findings. v1.0.0-rc.1 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** exact artifacts pass the complete acceptance contract with no required gaps or exploitable critical/high findings. v1.0.0-rc.1 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ### v1.0.0-rc.N
 
@@ -89,7 +91,7 @@ The [gap reconciliation](gap-reconciliation-2026-10-03.md), [execution contracts
 
 **Verification:** rerun all affected suites and full candidate acceptance, including security and operational restoration.
 
-**Exit criteria:** no remaining blocker; every previous finding has tested disposition. v1.0.0-rc.N implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** no remaining blocker; every previous finding has tested disposition. v1.0.0-rc.N implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ### v1.0.0
 
@@ -105,7 +107,7 @@ The [gap reconciliation](gap-reconciliation-2026-10-03.md), [execution contracts
 
 **Verification:** verify all operation/argument/recipe/UI/target rows, both search profiles with live authorization, OpenBao-sourced project secrets from initialization through release, exact distribution provenance, current security findings and executed deployment/upgrade/recovery procedures.
 
-**Exit criteria:** all required functionality and evidence pass; no beta database or unsupported production claim remains. v1.0.0 implementation stop reached. Run pentest for this exact commit.
+**Exit criteria:** all required functionality and evidence pass; no beta database or unsupported production claim remains. v1.0.0 implementation stop reached. Run the maintainer’s pentest for this exact source candidate before committing new work.
 
 ## After 1.0
 
