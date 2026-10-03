@@ -1,6 +1,6 @@
 # Runasmidja Implementation Plan
 
-Status: planning contract; foundation initialized on 2026-10-03.
+Status: planning contract; v0.1.0 tagged, v0.2.0 implementation candidate awaiting pentest.
 
 The goal is a complete modern CyberChef-style online website, reusable Rust
 engine and durable public API. Users visit a normal hosted website; ordinary
@@ -46,7 +46,7 @@ compromise protection; no high-assurance browser support is claimed now.
 - Source every project-operated secret from OpenBao, including initial service,
   private Rust/build, CI and release credentials. Public builds need no secrets.
   Minimal vault startup/recovery trust has separate enumerated custody; see
-  [secret lifecycle](SECRETS_POLICY.md). The current fixture needs remediation.
+  [secret lifecycle](SECRETS_POLICY.md). The v0.2.0 fixture implements vault-first password issuance; temporary delivery and build/release identity remain later passes.
 - Test every admitted behavior, malformed path, resource limit and lifecycle.
   Tests, security docs and release notes arrive in the same implementation pass.
 - EUPL-1.2 applies to project code. External asset/code rights are reviewed
@@ -84,7 +84,7 @@ provider footprint or review size justify separation. `lib.rs` exports;
 ## Implementation order
 
 Repository and container fixtures come first so every later hosted feature can
-test itself. The next bounded pass is OpenBao-first secret provisioning: vault
+test itself. The current bounded pass is [OpenBao-first secret provisioning](releases/v0.2.0-scope.md): vault
 initialization precedes PostgreSQL/Valkey credentials and startup. Qualify private
 temporary delivery and build/release identity separately. Then prove one
 transformation on native and actual browser hosts using the preceding checked

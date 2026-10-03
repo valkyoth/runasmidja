@@ -23,12 +23,12 @@ The same Rust engine will execute in a browser worker and native hosts.
 Browser processing is the default; saving, sharing, server execution and
 external network operations are distinct explicit actions.
 
-**Current status:** repository foundation, development health probe and
-service-test tooling. No workbench, transformation operation, browser UI,
-production HTTP server or CyberChef parity is implemented yet. `0.1.0` is an
-unpublished foundation candidate. The maintainer accepted the green pentest
-retest; local release verification is complete. GitHub checks and the version
-tag are pending. See the [assessment report](security/pentest/v0.1.0.md).
+**Current status:** `v0.1.0` is tagged with accepted pentest and green GitHub
+checks. `0.2.0` adds OpenBao-first service provisioning and is a locally committed
+candidate awaiting the maintainer's pentest. No workbench, transformation,
+browser UI, production HTTP server or CyberChef parity is implemented yet.
+See the [0.2 scope](docs/releases/v0.2.0-scope.md) and
+[0.1 assessment](security/pentest/v0.1.0.md).
 
 The [release plan](docs/RELEASE_PLAN.md) defines 386 small pre-1.0 passes,
 through `0.386.0`, with further versions whenever needed. `1.0.0` is the first
@@ -60,11 +60,13 @@ python3 scripts/stack.py stop
 ```
 
 Dependencies run in rootless Podman: PostgreSQL **19 beta 4**, OpenBao **2.7.1**
-and Valkey **9.1.2**. State and credentials stay in ignored `.local/stack`.
+and Valkey **9.1.2**. The new fixture keeps private custody in ignored `.local/stacks/v02`; legacy
+`.local/stack` data is retained separately.
 OpenBao is initialized over TLS with declarative audit, KV v2, scoped AppRole
 and revoked bootstrap root token. See [local stack](docs/local-stack.md).
-The next pass replaces locally generated fixture passwords with OpenBao-first
-provisioning. All project-operated secrets, including initialization/private
+The new fixture obtains database/cache passwords from OpenBao before dependent
+startup, using separate scoped provisioning/runtime identities and version reuse.
+Private password/ACL delivery copies remain until the v0.8 qualification. All project-operated secrets, including initialization/private
 build/release credentials, must come through OpenBao; public Rust builds need
 none. See [secret lifecycle](docs/SECRETS_POLICY.md) for bootstrap custody.
 
@@ -93,7 +95,8 @@ Every code file has a hard 500-line ceiling.
 [release runbook](docs/RELEASE_RUNBOOK.md),
 [security controls](docs/security-controls.md),
 [dependency policy](docs/supply-chain-security.md),
-[release notes](release-notes/v0.1.0.md).
+[candidate release notes](release-notes/v0.2.0.md),
+[tagged foundation notes](release-notes/v0.1.0.md).
 
 The [original idea](docs/IDEA.md) and [supplied planning bundle](docs/reference/workbench-plan/README.md)
 are retained as design inputs. Their historical compiler/provider statements

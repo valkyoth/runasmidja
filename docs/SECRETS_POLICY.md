@@ -1,9 +1,10 @@
 # Project Secret Lifecycle
 
-Status: mandatory target policy. The current test harness generates service
-passwords locally and then seeds OpenBao; it does not yet enforce this policy.
-The next bounded implementation pass is OpenBao-first secret provisioning.
-This planning change introduces no runtime compliance claim.
+Status: mandatory target policy. The v0.2.0 candidate obtains fixture service
+passwords from OpenBao before dependent startup and uses scoped identities.
+The old v0.1.0 fixture is retained separately. Persistent private delivery copies,
+private-build/release identity, migration/rotation and production custody remain
+unqualified; see the [bounded scope](releases/v0.2.0-scope.md). Pentest NOT RUN.
 
 ## Source and scope
 

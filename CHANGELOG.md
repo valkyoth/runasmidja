@@ -1,6 +1,23 @@
 # Changelog
 
-## Unreleased — 0.1.0 foundation candidate
+## Unreleased — 0.2.0 OpenBao-first provisioning
+
+- Start TLS OpenBao and verify scoped identities before any dependent startup.
+- Issue PostgreSQL admin/runtime and Valkey passwords through OpenBao; preserve
+  version-1 KV records with CAS=0 and reject schema/version/projection drift.
+- Separate provisioning/runtime permissions and recovery/root custody; confirm
+  root revocation and preserve versions across partial failures and restart.
+- Require project/service/instance ownership before fixture mutations and pinned
+  image identity before container reuse. Add unit and real-service fault tests.
+- Retain legacy fixture data; use a separate v02 profile without silent migration.
+
+Pentest NOT RUN. This candidate is committed locally for the maintainer-requested pentest and not tagged.
+See [candidate notes](release-notes/v0.2.0.md).
+
+## 0.1.0 — 2026-10-03
+
+Signed `v0.1.0` points to `9d6ec75`; GitHub checks, containers and CodeQL passed.
+The paragraphs below preserve the preparation history of this tagged release.
 
 Release review (2026-10-03): the maintainer accepted the green retest, resolving
 all three submitted findings with no new actionable security issue. Full local

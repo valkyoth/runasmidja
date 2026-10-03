@@ -12,12 +12,12 @@
 | GitHub CodeQL | External setting required | GitHub Default setup only; no advanced workflow |
 | Local secret isolation | Implemented harness | Ignored .local state, private permissions, limited container mounts |
 | OpenBao test bootstrap | Implemented harness | TLS validation, declarative audit, KV v2, AppRole, root revoke |
-| OpenBao source for all project secrets | Required; remediation planned | Current fixture generates local passwords first; next pass implements Bao-first initialization, then temporary delivery/build gates; see [policy](SECRETS_POLICY.md) |
+| OpenBao source for all project secrets | Implemented for v0.2 fixture passwords; wider policy pending | Vault-first random/KV issuance and scoped reads; private delivery/build/release qualification pending; see [policy](SECRETS_POLICY.md) |
 | Search optionality and live authorization | Planned | Early SearchService, repository/Meilisearch profiles, metadata allowlist, outbox and current-authority rechecks; see [design](SEARCH_DESIGN.md) |
 | PostgreSQL/Valkey test controls | Implemented harness | Runtime DB role, cache ACL/prefix/TTL/memory, loopback ports |
 | Release metadata readiness | Configured; limited | Report shape/digest/lineage/SBOM-presence only; no assessor/artifact authentication; trusted review required |
 | Workflow/graph enforcement hardening | Required; planned | Reproduced .yaml action/CodeQL omission and no_std comment spoof; versioned rejection/admission owners in [reconciliation](gap-reconciliation-2026-10-03.md) |
-| Fixture ownership/drift | Required; planned | Existing reuse checks scope label only, stop/volume/network need stronger ownership and desired-spec checks |
+| Fixture ownership/drift | Minimum ownership implemented; full drift pending v0.5 | Project/service/instance labels before network/volume/container reuse and stop; pinned image ID checked. Full fingerprints and inspect/mutate races unqualified |
 | Valkey expiry evidence | Required; planned | Current smoke accepts EX then deletes; actual TTL/countdown/expiry qualification remains pending |
 | Product security controls | Planned | Browser, API, recipe, worker, provider and recovery milestones |
 | Smoke evidence integrity | Implemented; maintainer retest accepted | Optimization-safe checks, actual child's announced ephemeral port, bounded/flushed readiness and pre/post liveness; 34 Python tests plus optimized actual probes |

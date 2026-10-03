@@ -10,12 +10,15 @@ repeat after idempotent start and stop/restart. Run the probe locally and in the
 provided container test script. This tests foundation behavior; it cannot prove
 future product features.
 
-The next pass must prove OpenBao-first secret origin with actual cold-start and
-restart fixtures; the current stack smoke suite proves custody/access only.
-Add sealed/unavailable/denied vault, partial provisioning, root-revoked restart,
-rotation and tmpfs cleanup tests, with sentinel checks across logs, argv,
-environment, container metadata, caches and artifacts. Private build/CI grants
-need wrong-claim/fork denial evidence; public Rust builds remain secret-free.
+The v0.2 candidate has unit regressions in `test_stack.py` and actual cold-start,
+seal/outage/denied/bad-CA, partial-retry, root-revoked restart, version/persistence
+and redacted metadata/log/audit checks in `stack_qualification.py`. First-run
+empty-state evidence is reported separately from repeated retained-state runs.
+`python3 -O -m unittest discover -s scripts -p 'test_*.py'` verifies optimized
+Python behavior. Minimum ownership gates protect fixture reuse/stop; complete
+fingerprints/races remain v0.5. Persistent delivery/legacy migration are v0.8;
+rotation, tmpfs cleanup and private-build/CI wrong-claim/fork denials require
+later qualification. Public Rust builds remain secret-free.
 
 Search qualification runs the same hosted metadata/authorization contracts
 against real PostgreSQL and Meilisearch, with the optional feature compiled both

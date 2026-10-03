@@ -84,9 +84,10 @@ seam before 1.0; an in-memory fake cannot supply that proof.
 OpenBao 2.7.1 is the required source for every project-operated initialization,
 runtime, private-build and release secret. Public Rust builds need no credentials.
 The current dev harness initializes it over TLS, with declarative audit, KV v2,
-AppRole and revoked bootstrap root, but generates service passwords locally
-first. The next pass replaces that sequence with Bao-first provisioning and
-vault-sourced credentials. Early application-contract passes admit the current
+separate provisioning/runtime AppRoles and confirmed root revocation. The v0.2
+fixture issues service passwords inside OpenBao before consumers start, preserves
+vault versions across retry and retains legacy data in a separate profile.
+Persistent private delivery remains a qualification gap owned by v0.8. Early application-contract passes admit the current
 stable openbao SDK and qualify SecretRef/rotation. Runtime processes
 never receive recovery shares/root privileges. Production TLS, identity,
 renewal, rotation, dynamic DB leases, audit failure and recovery custody require

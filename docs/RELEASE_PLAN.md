@@ -1,6 +1,6 @@
 # Runasmidja Release Plan To 1.0.0
 
-Status: planned; workspace initialized, no release tagged.
+Status: roadmap contract; v0.1.0 tagged, v0.2.0 implementation candidate awaiting pentest.
 
 386 small pre-1.0 passes, starting at 0.1.0 and ending at 0.386.0. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.
 
@@ -31,7 +31,7 @@ Run `scripts/checks.sh`, current dependency/license/advisory checks, freshness, 
 
 The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Build and verify locally, stop for the maintainer’s pentest, and commit only after green. The maintainer pushes; repeat GitHub fixes and affected pentest retests until green. Tag and push the version tag only when explicitly requested; distribution publication needs separate authorization.
 
-The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The next bounded implementation pass is OpenBao-first secret provisioning; current fixture passwords are still locally generated and do not meet that new origin policy.
+The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The current bounded pass is [v0.2.0 OpenBao-first provisioning](releases/v0.2.0-scope.md). Its separate fixture issues database/cache passwords in OpenBao; the legacy v0.1 fixture is retained unchanged. Temporary delivery, build/release identity and full drift qualification remain later numbered passes.
 
 The [2026-10-03 planning revision](plan-revision-2026-10-03.md) records moved owners and qualification limits. Unpublished version assignments changed; the supplied source-version mapping remains intact.
 

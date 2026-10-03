@@ -1,17 +1,16 @@
 """Real service tests, including unauthorized paths and cache key isolation."""
 import json
-from stack_common import STATE, NAMES, bao, podman, valkey
+from stack_common import STATE, NAMES, bao, podman, valkey, read_private
+from stack_vault import identity, provisioning_values, read_version, KEYS
 
 
 def smoke():
     if STATE.stat().st_mode & 0o077:
         raise RuntimeError('Private stack directory permissions are too broad')
-    init = json.loads((STATE / 'bao-init.json').read_text())
-    if 'root_token' in init:
+    if (STATE / 'bootstrap.json').exists():
         raise RuntimeError('Bootstrap root token retained after provisioning')
-    for name in ('bao-init.json', 'app-role.json', 'postgres.password', 'app-db.password', 'valkey.password', 'bao.key'):
-        if (STATE / name).stat().st_mode & 0o077:
-            raise RuntimeError('Private material permissions are too broad')
+    for name in ('recovery.json', 'provision-role.json', 'runtime-role.json', 'postgres.password', 'app-db.password', 'valkey.password', 'bao.key'):
+        read_private(STATE / name)
     version = podman('exec', NAMES['postgres'], 'psql', '-U', 'postgres', '-Atc', 'SHOW server_version').stdout.strip()
     if not version.startswith('19beta4'):
         raise RuntimeError('PostgreSQL must be 19 beta 4 for this baseline')
@@ -21,7 +20,13 @@ def smoke():
         "SELECT rolsuper OR rolcreatedb OR rolcreaterole FROM pg_roles WHERE rolname='runasmidja'").stdout.strip()
     if flags != 'f':
         raise RuntimeError('Runtime database role has excessive privileges')
-    password = (STATE / 'app-db.password').read_text()
+    values = provisioning_values()
+    admin = podman('exec', '-i', NAMES['postgres'], 'sh', '-c',
+        'IFS= read -r PGPASSWORD; export PGPASSWORD; exec psql -h 127.0.0.1 -U postgres -d runasmidja -Atc "SELECT current_user"',
+        data=values['postgres_admin_password'] + '\n').stdout.strip()
+    if admin != 'postgres':
+        raise RuntimeError('Vault-issued administrator credential did not initialize PostgreSQL')
+    password = values['database_password']
     login = podman('exec', '-i', NAMES['postgres'], 'sh', '-c',
         'IFS= read -r PGPASSWORD; export PGPASSWORD; exec psql -h 127.0.0.1 -U runasmidja -d runasmidja -Atc "SELECT current_user"',
         data=password + '\n').stdout.strip()
@@ -37,11 +42,9 @@ def smoke():
         data='deliberately-invalid-test-password\n', allowed=(0, 2))
     if bad_login.returncode == 0:
         raise RuntimeError('Database accepted an invalid runtime password')
-    credentials = json.loads((STATE / 'app-role.json').read_text())
-    token = bao('auth/approle/login', credentials)['auth']['client_token']
-    try:
-        data = bao('runasmidja/data/runtime', token=token)['data']['data']
-        if data['database_password'] != (STATE / 'app-db.password').read_text():
+    with identity('runtime') as token:
+        data = read_version('runtime', token, KEYS[1:])
+        if data['database_password'] != password:
             raise RuntimeError('Secret provisioning mismatch')
         try:
             bao('sys/mounts', token=token)
@@ -51,14 +54,12 @@ def smoke():
         else:
             raise RuntimeError('AppRole must not manage mounts')
         try:
-            bao('runasmidja/data/other', token=token)
+            bao('runasmidja/data/provisioning', token=token)
         except RuntimeError as error:
             if '(403)' not in str(error):
                 raise
         else:
             raise RuntimeError('AppRole read escaped runtime secret path')
-    finally:
-        bao('auth/token/revoke-self', {}, token)
     if not valkey('PING', authenticated=False).startswith(b'-NOAUTH'):
         raise RuntimeError('Unauthenticated cache request accepted')
     if valkey('PING') != b'+PONG':
@@ -71,4 +72,14 @@ def smoke():
         raise RuntimeError('Cache read failed')
     if valkey('DEL', 'runasmidja:smoke') != b':1' or valkey('GET', 'runasmidja:smoke') is not None:
         raise RuntimeError('Cache deletion did not remove the value')
-    print('PostgreSQL transaction/role, OpenBao AppRole/denials, Valkey auth/ACL/TTL: PASS')
+    with identity('provision') as token:
+        for path, payload in (('sys/mounts', None), ('sys/tools/random', {'bytes': 32, 'format': 'hex'}),
+                              ('runasmidja/data/provisioning', {'data': {}})):
+            try:
+                bao(path, payload, token)
+            except RuntimeError as error:
+                if '(403)' not in str(error):
+                    raise
+            else:
+                raise RuntimeError('Provisioning identity exceeded read-only scope')
+    print('PostgreSQL transaction/role, OpenBao scoped reads/denials, Valkey auth/ACL: PASS (expiry not qualified)')

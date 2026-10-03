@@ -43,8 +43,9 @@ HTTP; dev PostgreSQL/Valkey loopback transport is unencrypted; local recovery
 shares and service passwords are held together for disposable tests; 30-day
 self-signed OpenBao certificates and 24-hour AppRole SecretIDs expire. Production
 profiles must reject these shortcuts and implement separate lifecycle gates.
-Service passwords are currently generated outside OpenBao before KV seeding;
-the next planned pass remediates origin and startup ordering. Mandatory project
+The v0.2 fixture obtains service passwords from OpenBao before consumer startup.
+The preserved legacy fixture still uses locally generated credentials; it is not
+silently migrated. Persistent private delivery copies remain until v0.8. Mandatory project
 secret scope and custody are defined in [secret lifecycle](SECRETS_POLICY.md).
 The [search design](SEARCH_DESIGN.md) requires negative evidence for stale-index
 hits, snippets, counts and facets, including revoked same-tenant permissions.

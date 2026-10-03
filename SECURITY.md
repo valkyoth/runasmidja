@@ -3,7 +3,7 @@
 Runasmidja is security-sensitive data-transformation software. Inputs, imported
 recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins,
 workers and supply-chain changes require threat review and executable tests.
-The current repository is an unpublished foundation, not a production service.
+The repository has a tagged v0.1.0 foundation and a v0.2.0 candidate; neither is a production service.
 
 Report vulnerabilities privately through [GitHub private advisories](https://github.com/valkyoth/runasmidja/security/advisories/new).
 Do not disclose exploitable details in public issues before remediation.
@@ -22,14 +22,15 @@ no advanced scanning workflow is added. Settings must be enabled externally.
 
 Production runtime processes must never hold bootstrap root tokens or OpenBao
 recovery shares. Secrets do not belong in URLs, logs, arguments, payload caches
-or search indexes. Local .local/stack custody shortcuts are only test fixtures
+or search indexes. Local .local/stacks custody shortcuts are only test fixtures
 and have no production support claim.
 
 All project-operated initialization, runtime, build and release secrets must
 come through OpenBao; public Rust setup/build needs none. Vault startup trust
 and independent recovery custody are the minimal explicit bootstrap boundary.
-The current fixture generates passwords locally before seeding the vault and
-requires the next planned remediation pass. See [secret lifecycle](docs/SECRETS_POLICY.md).
+The v0.2 candidate issues service passwords in OpenBao before consumer startup;
+persistent private delivery, build/release identity and production custody remain
+separate qualification passes. Legacy v0.1 fixture data is preserved unchanged. See [secret lifecycle](docs/SECRETS_POLICY.md).
 Search is optional infrastructure; current database permissions govern hits
 and aggregates in both backends. See [search design](docs/SEARCH_DESIGN.md).
 
