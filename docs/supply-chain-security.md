@@ -42,3 +42,16 @@ initialization, registry access, signing, publishing or deployment comes through
 OpenBao under [secret lifecycle policy](SECRETS_POLICY.md), including in CI.
 Platform workload identity is scoped authentication proof, not a project-token
 storage substitute; trusted jobs retrieve only their own bounded grants.
+
+The planned workflow/feature/target admission and early pack/resource passes in
+[gap reconciliation](gap-reconciliation-2026-10-03.md) strengthen the current
+scaffold heuristics. Review normal/build/dev/optional/target feature unification
+and lint inheritance; first-party unsafe remains forbidden. Pin pack/model/font/
+table source, redistribution rights, imports and expanded/compiled memory before
+large browser providers. A historical issue or upstream Wasm use does not prove
+current browser portability; qualify the exact admitted profile.
+
+Trusted assessment and exact source/artifact/pack/model/SBOM/toolchain/signing
+identity bindings require the planned distribution gates. Current source/report
+metadata validation authenticates neither assessor nor artifacts. GitHub CodeQL
+Default/settings and actual CI evidence remain separate external requirements.

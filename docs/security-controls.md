@@ -15,7 +15,10 @@
 | OpenBao source for all project secrets | Required; remediation planned | Current fixture generates local passwords first; next pass implements Bao-first initialization, then temporary delivery/build gates; see [policy](SECRETS_POLICY.md) |
 | Search optionality and live authorization | Planned | Early SearchService, repository/Meilisearch profiles, metadata allowlist, outbox and current-authority rechecks; see [design](SEARCH_DESIGN.md) |
 | PostgreSQL/Valkey test controls | Implemented harness | Runtime DB role, cache ACL/prefix/TTL/memory, loopback ports |
-| Release pentest readiness | Configured | Non-PASS evidence blocked by scripts/check_release.py |
+| Release metadata readiness | Configured; limited | Report shape/digest/lineage/SBOM-presence only; no assessor/artifact authentication; trusted review required |
+| Workflow/graph enforcement hardening | Required; planned | Reproduced .yaml action/CodeQL omission and no_std comment spoof; versioned rejection/admission owners in [reconciliation](gap-reconciliation-2026-10-03.md) |
+| Fixture ownership/drift | Required; planned | Existing reuse checks scope label only, stop/volume/network need stronger ownership and desired-spec checks |
+| Valkey expiry evidence | Required; planned | Current smoke accepts EX then deletes; actual TTL/countdown/expiry qualification remains pending |
 | Product security controls | Planned | Browser, API, recipe, worker, provider and recovery milestones |
 
 A configured workflow is not evidence that GitHub settings or remote CI passed.

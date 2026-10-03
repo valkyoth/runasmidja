@@ -41,3 +41,12 @@ Permanent evidence records candidate source/artifact digests, commands, tool
 versions, inputs, profiles, exit status, findings and limitations. Missing evidence
 blocks its support claim and 1.0 acceptance. Every tag, including patches and
 RCs, requires an exact-source pentest with remediation and regression retesting.
+
+The [strict gates](VERIFICATION_GATES.md) require reviewed per-pass numeric scope,
+selected short-corpus partitions through 12 bytes, every declared resource-bound
+edge, real host faults and trusted assessment/distribution identity. Detailed
+[execution](EXECUTION_CONTRACTS.md), [browser/performance](BROWSER_PERFORMANCE.md)
+and [storage/host](STORAGE_HOST_CONTRACTS.md) rules apply by feature. The current
+textual graph/workflow guards, fixture ownership checks and report metadata
+validator have verified limits; see [reconciliation](gap-reconciliation-2026-10-03.md).
+Their planned hardening is not a claim that current tests enforce those rules.

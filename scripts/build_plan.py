@@ -2,6 +2,7 @@
 """Render Runasmidja release handoffs from reviewed source plus service passes."""
 import json
 from pathlib import Path
+from plan_hardening import ADDITIONS, order_source, strengthen_foundation
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / 'docs'
@@ -65,7 +66,7 @@ EXTRAS = {
 ('Repository foundation', 'Initialize EUPL-1.2 workspace, copied and adapted GitHub files, Rust 1.99.0, no_std facade, 500-line gates, reference provenance and pending release evidence.', 'Default/release tests, bare-metal and Wasm checks, policy rejection fixtures, documentation links and dependency audits pass; no product parity is claimed.'),
 ('OpenBao-first secret provisioning', 'Remediate the current local-password-first harness: start and initialize TLS OpenBao before credential-consuming services; generate project-owned credentials through OpenBao, persist references/versions there and separate minimal vault trust/recovery custody. Configure audit, scoped provisioning/runtime identities and bootstrap root revocation.', 'An empty-state run obtains PostgreSQL admin/runtime and Valkey credentials from OpenBao before service initialization; sealed/unavailable/denied OpenBao prevents dependent startup without local generation or fallback. Partial failure/retry preserves vault credential versions and data; bootstrap root is revoked only after scoped provisioning succeeds; diagnostics never expose secrets.'),
 ('PostgreSQL 19 beta 4 test fixture', 'Pin PostgreSQL 19 beta 4 by digest; automate rootless Podman, OpenBao-sourced initial admin and runtime credentials, readiness and a separate runtime role.', 'A real container reports 19beta4, transaction rollback works, runtime role has no superuser or role-management powers, wrong passwords fail, and only loopback ports are published.'),
-('Valkey test fixture', 'Automate digest-pinned rootless Valkey with OpenBao-sourced application ACL credentials, prefix isolation, TTLs and memory limits.', 'Authenticated set/get/delete works; unauthenticated access and foreign key prefixes fail; eviction cannot become authoritative application state.'),
+('Valkey test fixture', 'Automate digest-pinned rootless Valkey with OpenBao-sourced application ACL credentials, prefix isolation, TTLs and memory limits.', 'Authenticated set/get/delete, TTL/countdown and observed expiration pass; unauthenticated access and foreign key prefixes fail; eviction cannot become authoritative application state. Grant only the additional TTL-test command permissions needed; the current EX-option smoke does not establish expiry.'),
 ('Initialization secret delivery', 'Inventory every fixture/provisioning secret; deliver OpenBao-issued values through bounded memory/IPC or private short-lived tmpfs files when a service requires files. Replace persistent plaintext password/ACL copies and scope restart grants independently from runtime grants.', 'No project credential remains in .local plaintext custody, argv, container metadata, environment dumps or logs; interruption cleans delivery files. Restart after root revocation resolves the same vault-owned credential version; expiry, denied provisioning identity and missing TLS fail closed.'),
 ('Build and release secret delivery', 'Make public Rust initialization/builds secret-free. For private registries, publishing, signing and deployment, authenticate a bounded developer/workload identity to OpenBao and resolve project secrets there; qualify GitHub OIDC claim binding and secret-free pull-request workflows.', 'Public rustup/Cargo/checks need no secret or vault. Credential-requiring jobs deny sealed vault, wrong repository/ref/environment/audience and fork PRs; no project secret is stored in GitHub Secrets, committed Cargo credentials, artifacts or build caches. Short-lived delivery and cleanup/renewal are tested.'),
 ('Service lifecycle harness', 'Exercise idempotent start, stop/restart, readiness deadlines and failed provisioning recovery without touching unrelated containers.', 'Two starts converge; sealed OpenBao is unsealed from local test recovery material; PostgreSQL persists; cache can be empty; failures return nonzero.'),
@@ -128,15 +129,19 @@ PHASE_VERIFY = {
 
 def build():
     baseline = json.loads(SOURCE.read_text())
+    strict = json.loads((DOCS / 'roadmap-input/reference-verification.json').read_text())
+    if set(strict) != {row['version'] for row in baseline['releases']}:
+        raise ValueError('Every source workstream needs one reviewed verification gate')
     rows = []
     def add(title, deliverable, acceptance, phase, source=None, narrow=False):
         number = len(rows) + 1
         rows.append(dict(version=f'0.{number}.0', title=title, deliverable=deliverable,
             acceptance=acceptance, phase=phase, source_version=source, narrow=narrow,
+            strict_verification=strict[source] if source else '',
             status='planned', depends_on=[] if number == 1 else [f'0.{number-1}.0']))
-    for title, deliverable, acceptance in EXTRAS[0]:
+    for title, deliverable, acceptance in strengthen_foundation(EXTRAS[0]):
         add(title, deliverable, acceptance, 'Z')
-    for item in baseline['releases']:
+    for item in order_source(baseline['releases']):
         minor = int(item['version'].split('.')[1])
         topics = SPLITS.get(minor)
         if topics:
@@ -147,7 +152,8 @@ def build():
                 add(topic, deliverable, 'For this scoped topic: ' + item['acceptance'], item['phase'], item['version'], True)
         else:
             add(item['title'], item['deliverable'], item['acceptance'], item['phase'], item['version'])
-        for title, deliverable, acceptance in EXTRAS.get(minor, []):
+        # Concrete artifact/authority prerequisites precede their search consumers.
+        for title, deliverable, acceptance in ADDITIONS.get(minor, []) + EXTRAS.get(minor, []):
             add(title, deliverable, acceptance, item['phase'])
     plans = DOCS / 'releases'; plans.mkdir(exist_ok=True)
     data_dir = DOCS / 'roadmap'; data_dir.mkdir(exist_ok=True)
@@ -162,12 +168,17 @@ def build():
         '- SearchService is an early portable contract. Repository search and optional Meilisearch are required implementation/test profiles before production; optional deployment is not deferred implementation. Index only approved nonsensitive metadata and recheck current database authorization.',
         '- A family row is an inventory owner. If it contains independent algorithms or dialects after source reconciliation, split it into additional numbered passes before coding; never hide feature work in a patch.',
         '- The predecessor is the baseline. A later capability is never assumed available; move or split the consumer if a concrete prerequisite is discovered.',
+        '- Freeze exact variants, targets/features, numeric byte/work/state/depth/deadline ceilings, capability policy, fixture provenance, test IDs and evidence locations in a reviewed scope manifest. TBD/placeholder fields block acceptance.',
+        '- The first hex seed is bounded by the earlier tested value/budget vocabulary and minimal worker messages. It proves one transformation, not the later scheduler or full recipe IR; fuel/byte limits apply from the first execution.',
+        '- API work before the integrated server security gate is loopback/private integration only. Public untrusted-job routes require verified authority, isolation, admission, fencing, egress, TLS and recovery together.',
+        '- Every fixture mutation needs verified ownership now, including concrete minimum checks in 0.2.0; the later ownership/drift pass expands fingerprints and negative coverage, never authorizes earlier name-only mutation or silent state reset.',
         '- Imported operation names remain provisional until the immutable CyberChef inventory confirms exact variants and redistribution rights. Unsupported required variants remain blocking gaps.', '',
         '## Every release gate', '',
         'Run `scripts/checks.sh`, current dependency/license/advisory checks, freshness, applicable browser/reference/service/fuzz/fault suites and artifact SBOM generation. Update threat controls, limitations, parity evidence, CHANGELOG and release notes. Every numbered minor, patch, RC and 1.0 needs its own exact-source pentest, remediation and clean retesting before tagging; passing tests alone do not authorize a PASS report.', '',
         'The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Tagging/publication is separate from this setup task.', '',
         'The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The next bounded implementation pass is OpenBao-first secret provisioning; current fixture passwords are still locally generated and do not meet that new origin policy.', '',
         'The [2026-10-03 planning revision](plan-revision-2026-10-03.md) records moved owners and qualification limits. Unpublished version assignments changed; the supplied source-version mapping remains intact.', '',
+        'The [gap reconciliation](gap-reconciliation-2026-10-03.md), [execution contracts](EXECUTION_CONTRACTS.md), [browser/performance policy](BROWSER_PERFORMANCE.md), [storage/host policy](STORAGE_HOST_CONTRACTS.md) and [strict gates](VERIFICATION_GATES.md) add reviewed requirements; no runtime remediation is claimed by this plan.', '',
         '## Per-version handoffs', '', '| Phase | Versions | Detailed handoffs |', '| --- | --- | --- |']
     for phase in ['Z'] + [p['id'] for p in baseline['phases']]:
         group = [row for row in rows if row['phase'] == phase]
@@ -180,9 +191,9 @@ def build():
             text += [f'## v{version} — {row["title"]}', '', '**Status:** planned.', '',
                 f'**Setup:** baseline {predecessor}; verify current upstream sources and record a bounded scope manifest before coding.', '',
                 f'**Goal:** {row["title"]}.', '',
-                f'**Scope:** one reviewable pass in this workstream. ' + (f'Source bundle owner {row["source_version"]}; implement only the named topic, preserving the other topics for their mapped passes.' if row['narrow'] else 'Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.'), '',
+                f'**Scope:** one reviewable pass in this workstream. ' + (f'Source bundle owner {row["source_version"]}; implement only the named topic. Retained family acceptance/strict gates apply to this topic; other algorithms remain with their mapped owners. The source workstream closes only when every mapped owner qualifies.' if row['narrow'] else 'Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.'), '',
                 '**Deliverables:** ' + row['deliverable'].replace('workbench-', 'runasmidja-') + ' Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.', '',
-                '**Verification:** ' + row['acceptance'] + ' ' + PHASE_VERIFY[phase] + ' Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.', '',
+                '**Verification:** ' + ' '.join(filter(None, [row['acceptance'], row['strict_verification'], PHASE_VERIFY[phase]])) + ' Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.', '',
                 f'**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v{version} implementation stop reached. Run pentest for this exact commit.', '']
         (plans / filename).write_text('\n'.join(text))
         # One record per line keeps data assets compact and reviewable.
@@ -209,7 +220,8 @@ def build():
     (DOCS / 'RELEASE_PLAN.md').write_text('\n'.join(index))
     (DOCS / 'VERSION_PLAN.md').write_text('# Runasmidja Version Plan\n\nThe authoritative [release plan](RELEASE_PLAN.md) links every detailed handoff.\n\n' +
         f'Pre-1.0: 0.1.0 through {rows[-1]["version"]}, then further 0.x passes as required. RCs and 1.0 are evidence gates, not dates.\n\n' +
-        'The [phase data](roadmap/phase-z.json) and remaining phase files preserve source-version mappings, predecessors and acceptance. Regenerate with `python3 scripts/build_plan.py`; every original baseline release has at least one mapped owner.\n')
+        'The [phase data](roadmap/phase-z.json) and remaining phase files preserve source-version mappings, predecessors, original acceptance and additive strict verification. Regenerate with `python3 scripts/build_plan.py`; every original baseline release has at least one mapped owner.\n\n' +
+        'Current version owners and reviewed scheduling corrections are recorded in the [gap reconciliation](gap-reconciliation-2026-10-03.md). The preserved reference and earlier evidence/revisions keep their original version numbers.\n')
     print(f'Rendered {len(rows)} pre-1.0 milestones, through {rows[-1]["version"]}')
 
 if __name__ == '__main__':

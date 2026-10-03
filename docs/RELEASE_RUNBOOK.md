@@ -14,9 +14,17 @@ setup creates a candidate; it does not tag, publish or attest that pentest passe
 6. Preserve a permanent report with reviewed commit, source digest, commands,
    findings/resolutions and Status: PASS only after the assessment completes.
 7. Make a report-only direct child commit; keep reviewed source unchanged.
-   `python3 scripts/check_release.py X.Y.Z` verifies evidence and lineage.
+   `python3 scripts/check_release.py X.Y.Z` checks report shape/source lineage
+   and SBOM presence only; it does not authenticate assessor or built artifacts.
 8. Review GitHub CI and CodeQL Default results, then create a signed tag and
    separately publish approved distributions. Keep hashes/notices/SBOM with them.
+
+Apply [G0–G7](VERIFICATION_GATES.md). The trust-contract and distribution-binding
+passes in [gap reconciliation](gap-reconciliation-2026-10-03.md) qualify reviewed
+assessment/reviewer identity and exact artifact/pack/model/SBOM/toolchain/target/
+provenance/signing bindings. A formatted PASS cannot authorize publication.
+Until enforcement exists, trusted review must reject missing evidence explicitly;
+the source/report script's success alone is never the publishing decision.
 
 A missing report, NOT RUN, unresolved critical/high finding, stale reviewed
 commit, changed source or unverified target blocks readiness. Never fabricate

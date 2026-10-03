@@ -40,3 +40,12 @@ the next planned pass remediates origin and startup ordering. Mandatory project
 secret scope and custody are defined in [secret lifecycle](SECRETS_POLICY.md).
 The [search design](SEARCH_DESIGN.md) requires negative evidence for stale-index
 hits, snippets, counts and facets, including revoked same-tenant permissions.
+
+The [reviewed gap owners](gap-reconciliation-2026-10-03.md) add concrete closures
+for workflow/graph admission bypasses, unsafe fixture reuse/stop assumptions,
+unobserved cache expiry and unauthenticated report/artifact metadata. They are
+verified gaps with future remediation owners, not exploited production findings.
+The [execution](EXECUTION_CONTRACTS.md), [browser/performance](BROWSER_PERFORMANCE.md)
+and [storage/host](STORAGE_HOST_CONTRACTS.md) contracts require positive global
+fuel, secret publication checks, supervisor cleanup, actual kernel fault evidence,
+cross-store crash cuts and DNS/connect/redirect policy before support claims.

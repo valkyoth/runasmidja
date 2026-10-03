@@ -8,11 +8,14 @@ transformations execute in a real Dedicated Worker in their browser without
 an account, database or payload upload. Explicit remote execution uses isolated
 Linux workers. Saving and sharing are independent permissions.
 
-The [release plan](RELEASE_PLAN.md) assigns 371 bounded passes through
-0.371.0; additional passes close every mandatory gap before 1.0. The original
+The [release plan](RELEASE_PLAN.md) assigns 386 bounded passes through
+0.386.0; additional passes close every mandatory gap before 1.0. The original
 240-pass bundle remains preserved in [reference](reference/workbench-plan/README.md).
 Every original source version maps to one or more Runasmidja owners in phase
 JSON records. Multi-algorithm work is split rather than hidden in a broad title.
+The [gap reconciliation](gap-reconciliation-2026-10-03.md) records verified gaps,
+corrections and actual version owners. All 240 reference acceptances remain,
+with additive strict verification and the [G0–G7 contract](VERIFICATION_GATES.md).
 
 ## Engineering rules
 
@@ -74,18 +77,29 @@ Repository and container fixtures come first so every later hosted feature can
 test itself. The next bounded pass is OpenBao-first secret provisioning: vault
 initialization precedes PostgreSQL/Valkey credentials and startup. Qualify private
 temporary delivery and build/release identity separately. Then prove one
-transformation on native and actual browser hosts,
+transformation on native and actual browser hosts using the preceding checked
+seed vocabulary and a deliberately small byte/work/protocol profile,
 pin the complete CyberChef inventory and establish stable descriptors/contracts.
 Immediately after application contracts, qualify OpenBao SDK/SecretRef/rotation
 and define SearchService, independent of browser, database or provider types.
 Investigate regex dialects, query languages, YARA, crypto, compression,
 disassembly and OCR in separate feasibility passes before assuming providers.
+Before SDK/provider admission, harden workflow/feature/target gates; before
+reusing/stopping fixtures, qualify ownership/drift across containers/volumes/
+networks. Admit minimal verified first-party pack loading before heavy browser
+feasibility/providers; retain later extensibility work. Measure alpha performance
+and freeze regression profiles rather than defer all limits to final qualification.
 
 Common encodings precede execution stress, persistent artifacts and advanced
 viewers. Optional hosted persistence/API work follows local contracts and adds
 real PostgreSQL repositories, OpenBao database leases, Valkey
 failure behavior, authentication, isolation and quotas. Production service TLS,
 recovery custody and PostgreSQL beta-to-GA migration have explicit owner passes.
+Actual artifact storage/transaction discipline precedes full whole-input/seekable
+replay qualification. Cross-store publication follows repository/authorization
+contracts. Public untrusted-job endpoints remain disabled until the integrated
+server security gate, including kernel isolation/faults, admission, authoritative
+fencing, destination-bound egress, TLS and recovery; early API work is private.
 
 Implement repository search, transactional projection/outbox, the optional
 Meilisearch fixture/adapter, live authorization rechecks and backend-switching
@@ -100,6 +114,12 @@ control flow includes backward jumps and bounded compatibility execution;
 a DAG alone is insufficient. Plugin and provider replacement proof follows
 mature contracts. Real MySQL tests and bidirectional logical migration drills
 prove database independence before final qualification.
+
+Detailed design gates: [execution/sensitivity](EXECUTION_CONTRACTS.md),
+[browser/pack/performance](BROWSER_PERFORMANCE.md), and
+[storage/migration/host security](STORAGE_HOST_CONTRACTS.md). Freeze exact scope,
+numeric limits, independent fixtures, target graphs and evidence/test IDs before
+each pass. A family acceptance closes only after all of its split owners qualify.
 
 ## Acceptance inventories
 

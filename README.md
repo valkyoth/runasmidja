@@ -28,10 +28,13 @@ service-test tooling. No workbench, transformation operation, browser UI,
 production HTTP server or CyberChef parity is implemented yet. `0.1.0` is an
 unpublished foundation candidate, with pentest pending.
 
-The [release plan](docs/RELEASE_PLAN.md) defines 371 small pre-1.0 passes,
-through `0.371.0`, with further versions whenever needed. `1.0.0` is the first
+The [release plan](docs/RELEASE_PLAN.md) defines 386 small pre-1.0 passes,
+through `0.386.0`, with further versions whenever needed. `1.0.0` is the first
 serious production release with complete declared website/API functionality.
 Desktop/mobile GUIs follow afterward.
+The [gap reconciliation](docs/gap-reconciliation-2026-10-03.md) adds verified
+prerequisite owners and stronger acceptance while preserving all 240 reference
+workstreams. These are planned controls, not implemented remediation.
 
 ## Development
 

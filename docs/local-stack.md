@@ -15,8 +15,15 @@ python3 scripts/smoke_probe.py --container
 `up` creates only named/labeled Runasmidja test resources. It initializes a
 PostgreSQL database, SCRAM host authentication (including loopback), and nonadministrative runtime login, OpenBao KV v2/AppRole
 and private Valkey ACL. Concurrent provisioning is locked. Repeated starts and
-stop/start preserve database/OpenBao state. No unrelated container is stopped.
+stop/start preserve database/OpenBao state in the exercised owned fixture.
 There is no automatic destructive reset command.
+
+Ownership limitation: reuse currently checks only a scope label and `stop` uses
+known names without verifying ownership; volume/network identity and desired
+image/mount/resource configuration are not fully reconciled. Do not interpret
+names alone as ownership. The versioned fixture-ownership pass in
+[gap reconciliation](gap-reconciliation-2026-10-03.md) adds collision/drift denials
+before every mutation. Those checks are not implemented by these commands yet.
 
 OpenBao uses HTTPS with a generated 30-day test certificate verified for localhost,
 persistent PebbleDB and declarative file audit required by OpenBao 2.7. It is not
@@ -60,8 +67,10 @@ are checked against current upstream sources.
 
 The smoke suite checks exact PostgreSQL beta version, transaction rollback and
 runtime role/login/password/privileged-table denials, OpenBao TLS/AppRole/path denials and Valkey authentication,
-key-prefix isolation and expiring cache writes. Planned SDK application
-integration and production secret rotation are separate milestones.
+key-prefix isolation and writes accepting an expiry option. It deletes the test
+entry immediately, so actual expiration/countdown is not yet demonstrated.
+Planned SDK application integration and production secret rotation are separate
+milestones.
 
 The planned optional Meilisearch profile is added with hosted metadata search,
 using an OpenBao-sourced initial master key and scoped keys delivered through

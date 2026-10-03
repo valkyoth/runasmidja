@@ -2,7 +2,7 @@
 
 Status: planned; workspace initialized, no release tagged.
 
-371 small pre-1.0 passes, starting at 0.1.0 and ending at 0.371.0. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.
+386 small pre-1.0 passes, starting at 0.1.0 and ending at 0.386.0. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.
 
 The supplied 240-release bundle is preserved under [reference](reference/workbench-plan/README.md). Runasmidja adds operational services and splits multi-provider/algorithm work; source-version mappings preserve every original workstream. Nothing in this plan claims an implementation or a completed pentest.
 
@@ -15,6 +15,10 @@ The supplied 240-release bundle is preserved under [reference](reference/workben
 - SearchService is an early portable contract. Repository search and optional Meilisearch are required implementation/test profiles before production; optional deployment is not deferred implementation. Index only approved nonsensitive metadata and recheck current database authorization.
 - A family row is an inventory owner. If it contains independent algorithms or dialects after source reconciliation, split it into additional numbered passes before coding; never hide feature work in a patch.
 - The predecessor is the baseline. A later capability is never assumed available; move or split the consumer if a concrete prerequisite is discovered.
+- Freeze exact variants, targets/features, numeric byte/work/state/depth/deadline ceilings, capability policy, fixture provenance, test IDs and evidence locations in a reviewed scope manifest. TBD/placeholder fields block acceptance.
+- The first hex seed is bounded by the earlier tested value/budget vocabulary and minimal worker messages. It proves one transformation, not the later scheduler or full recipe IR; fuel/byte limits apply from the first execution.
+- API work before the integrated server security gate is loopback/private integration only. Public untrusted-job routes require verified authority, isolation, admission, fencing, egress, TLS and recovery together.
+- Every fixture mutation needs verified ownership now, including concrete minimum checks in 0.2.0; the later ownership/drift pass expands fingerprints and negative coverage, never authorizes earlier name-only mutation or silent state reset.
 - Imported operation names remain provisional until the immutable CyberChef inventory confirms exact variants and redistribution rights. Unsupported required variants remain blocking gaps.
 
 ## Every release gate
@@ -27,27 +31,29 @@ The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) 
 
 The [2026-10-03 planning revision](plan-revision-2026-10-03.md) records moved owners and qualification limits. Unpublished version assignments changed; the supplied source-version mapping remains intact.
 
+The [gap reconciliation](gap-reconciliation-2026-10-03.md), [execution contracts](EXECUTION_CONTRACTS.md), [browser/performance policy](BROWSER_PERFORMANCE.md), [storage/host policy](STORAGE_HOST_CONTRACTS.md) and [strict gates](VERIFICATION_GATES.md) add reviewed requirements; no runtime remediation is claimed by this plan.
+
 ## Per-version handoffs
 
 | Phase | Versions | Detailed handoffs |
 | --- | --- | --- |
-| Z: Repository and service foundation | 0.1.0–0.8.0 | [Milestones](releases/phase-z.md) |
-| A: Foundation and useful vertical slice | 0.9.0–0.33.0 | [Milestones](releases/phase-a.md) |
-| B: Bytes, text and foundational encodings | 0.34.0–0.63.0 | [Milestones](releases/phase-b.md) |
-| C: Streaming, artifacts and execution foundations | 0.64.0–0.78.0 | [Milestones](releases/phase-c.md) |
-| D: Modern browser workbench | 0.79.0–0.93.0 | [Milestones](releases/phase-d.md) |
-| E: Remote API, PostgreSQL and secure server execution | 0.94.0–0.120.0 | [Milestones](releases/phase-e.md) |
-| F: Structured formats, queries and utilities | 0.121.0–0.144.0 | [Milestones](releases/phase-f.md) |
-| G: Compression and archives | 0.145.0–0.159.0 | [Milestones](releases/phase-g.md) |
-| H: Modern hashing and cryptographic operations | 0.160.0–0.195.0 | [Milestones](releases/phase-h.md) |
-| I: Legacy cryptography, hashes and classical ciphers | 0.196.0–0.246.0 | [Milestones](releases/phase-i.md) |
-| J: Public keys, certificates and tokens | 0.247.0–0.273.0 | [Milestones](releases/phase-j.md) |
-| K: Network and forensic analysis | 0.274.0–0.288.0 | [Milestones](releases/phase-k.md) |
-| L: Images, media and document presentation | 0.289.0–0.309.0 | [Milestones](releases/phase-l.md) |
-| M: Complete recipe semantics, Magic and compatibility | 0.310.0–0.324.0 | [Milestones](releases/phase-m.md) |
-| N: Extensibility and replacement-adapter proof | 0.325.0–0.339.0 | [Milestones](releases/phase-n.md) |
-| O: Portability, collaboration and operations | 0.340.0–0.356.0 | [Milestones](releases/phase-o.md) |
-| P: Qualification and general-availability readiness | 0.357.0–0.371.0 | [Milestones](releases/phase-p.md) |
+| Z: Repository and service foundation | 0.1.0–0.13.0 | [Milestones](releases/phase-z.md) |
+| A: Foundation and useful vertical slice | 0.14.0–0.42.0 | [Milestones](releases/phase-a.md) |
+| B: Bytes, text and foundational encodings | 0.43.0–0.72.0 | [Milestones](releases/phase-b.md) |
+| C: Streaming, artifacts and execution foundations | 0.73.0–0.87.0 | [Milestones](releases/phase-c.md) |
+| D: Modern browser workbench | 0.88.0–0.102.0 | [Milestones](releases/phase-d.md) |
+| E: Remote API, PostgreSQL and secure server execution | 0.103.0–0.133.0 | [Milestones](releases/phase-e.md) |
+| F: Structured formats, queries and utilities | 0.134.0–0.157.0 | [Milestones](releases/phase-f.md) |
+| G: Compression and archives | 0.158.0–0.172.0 | [Milestones](releases/phase-g.md) |
+| H: Modern hashing and cryptographic operations | 0.173.0–0.208.0 | [Milestones](releases/phase-h.md) |
+| I: Legacy cryptography, hashes and classical ciphers | 0.209.0–0.259.0 | [Milestones](releases/phase-i.md) |
+| J: Public keys, certificates and tokens | 0.260.0–0.286.0 | [Milestones](releases/phase-j.md) |
+| K: Network and forensic analysis | 0.287.0–0.301.0 | [Milestones](releases/phase-k.md) |
+| L: Images, media and document presentation | 0.302.0–0.322.0 | [Milestones](releases/phase-l.md) |
+| M: Complete recipe semantics, Magic and compatibility | 0.323.0–0.337.0 | [Milestones](releases/phase-m.md) |
+| N: Extensibility and replacement-adapter proof | 0.338.0–0.352.0 | [Milestones](releases/phase-n.md) |
+| O: Portability, collaboration and operations | 0.353.0–0.371.0 | [Milestones](releases/phase-o.md) |
+| P: Qualification and general-availability readiness | 0.372.0–0.386.0 | [Milestones](releases/phase-p.md) |
 
 ## Release candidates and production
 

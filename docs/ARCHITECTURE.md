@@ -116,3 +116,23 @@ Inventory all hidden outbound HTTP/TLS consumers, including SDKs and identity
 metadata. Adapter tests cover framing, backpressure, cancellation, trust/name
 verification, ALPN, redirects, errors and protocol-specific database negotiation.
 Browser TLS cannot be replaced by a Wasm TLS provider.
+
+## Detailed acceptance contracts
+
+The [execution contract](EXECUTION_CONTRACTS.md) defines explicit EOF/counts,
+orthogonal execution shape/capabilities, positive whole-run fuel, bounded regions
+and sensitivity/publication. A small checked vocabulary/profile precedes the
+first real-worker hex seed; later scheduling/IR work is not assumed present.
+
+The [browser/performance contract](BROWSER_PERFORMANCE.md) defines task-level
+cancellation yields, supervisor-owned staging cleanup, bounded page/progress
+protocols, measured copies and early pack/resource admission. Kernel, JS, Wasm,
+UI/provider and disk costs have separate measured envelopes.
+
+The [storage/host contract](STORAGE_HOST_CONTRACTS.md) defines cross-store crash
+cuts, actual artifact prerequisites, byte-read migration integrity, runnable
+transport replacement, kernel sandbox fault evidence and DNS/connect/redirect
+binding. Early API development never grants public job exposure before the
+integrated authority/admission/fencing/egress/TLS/recovery gates.
+See [reviewed owners](gap-reconciliation-2026-10-03.md) and
+[strict verification](VERIFICATION_GATES.md); no new runtime claim is made.

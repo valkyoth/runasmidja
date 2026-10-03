@@ -30,3 +30,11 @@ The current fixture generates passwords locally before seeding the vault and
 requires the next planned remediation pass. See [secret lifecycle](docs/SECRETS_POLICY.md).
 Search is optional infrastructure; current database permissions govern hits
 and aggregates in both backends. See [search design](docs/SEARCH_DESIGN.md).
+
+Apply the additive [verification gates](docs/VERIFICATION_GATES.md) and
+[versioned gap owners](docs/gap-reconciliation-2026-10-03.md). Existing textual
+workflow/portable-graph checks, fixture ownership and source/report metadata
+validation have confirmed enforcement limits. Their hardening is planned;
+metadata PASS cannot authenticate an assessor or distributed artifacts.
+Public untrusted-job endpoints remain disabled until authority, admission,
+kernel isolation, fencing, egress, TLS and recovery qualify together.
