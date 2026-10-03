@@ -7,6 +7,7 @@ import subprocess
 import tomllib
 import urllib.request
 from pathlib import Path
+from process_limits import run_bounded
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -58,6 +59,11 @@ def main():
         compare(repo, version, lambda repo=repo: json.loads(fetch(f'https://api.github.com/repos/{repo}/releases/latest'))['tag_name'])
     compare('OpenBao SDK (planned adapter)', metadata['openbao_sdk'], lambda: crate_version(json.loads(fetch('https://crates.io/api/v1/crates/openbao'))))
     compare('PostgreSQL 19 release', metadata['postgres'], lambda: postgres_version(fetch('https://www.postgresql.org/ftp/source/').decode()))
+    source = json.loads((ROOT / 'deploy/podman/postgres/source.lock.json').read_text())
+    compare('PostgreSQL source checksum', source['sha256'], lambda: fetch(source['checksum_source']).decode().split()[0])
+    base = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())['wolfi-base']['index']
+    compare('Wolfi base index', base.split('@')[1], lambda: run_bounded('skopeo', 'inspect', '--no-tags',
+        '--format', '{{.Digest}}', 'docker://cgr.dev/chainguard/wolfi-base:latest').stdout.strip())
     for repo, version in metadata.get('optional_github_releases', {}).items():
         compare(repo + ' (optional, not admitted)', version, lambda repo=repo: json.loads(fetch(f'https://api.github.com/repos/{repo}/releases/latest'))['tag_name'])
     workspace = json.loads(__import__('subprocess').check_output(['cargo', 'metadata', '--locked', '--offline', '--format-version', '1'], cwd=ROOT))

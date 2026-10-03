@@ -14,7 +14,7 @@ def check(root=ROOT):
         for path in base.rglob("*"):
             if any(part in {"target", ".git", ".local", "__pycache__", ".cargo-deny-advisory-dbs"} for part in path.parts):
                 continue
-            if path.suffix not in {".rs", ".py", ".sh", ".yml", ".yaml", ".toml", ".js", ".ts", ".css", ".html"}:
+            if path.suffix not in {".rs", ".py", ".sh", ".yml", ".yaml", ".toml", ".js", ".ts", ".css", ".html"} and path.name not in {"Containerfile", "Dockerfile"}:
                 continue
             content = path.read_text()
             if len(content.splitlines()) > 500:

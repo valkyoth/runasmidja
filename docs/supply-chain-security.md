@@ -13,9 +13,42 @@ status is checked against the official source-release directory; add a tested up
 pass rather than replacing a beta image in place.
 
 Security tools use exact versions and reviewed crate archive SHA-256 hashes from
-Brynja. Installation verifies those hashes before cargo install --locked.
+Brynja. Installation verifies those hashes, extracts the exact bounded archive,
+fetches locked dependencies and installs offline with `--path` from those bytes.
+The project root is never fetched again from a registry after verification.
 Action uses are full commits, credentials are not persisted and workflow tokens
-are read-only. Container images are immutable digests with reviewed tag metadata.
+are read-only. Remote container images are immutable digests with reviewed tag metadata.
+
+Fixture execution additionally requires `scripts/image_gate.py`: exact-image
+Trivy vulnerability scans and OS/language/native CycloneDX inventories, plus
+reviewed publisher policy. Cosign/Trivy use reviewed official artifact hashes;
+Trivy's Sigstore release bundle is verified against its GitHub workflow identity
+and issuer. Both tool releases are included in freshness checks.
+OpenBao's signed release index must authorize the exact Linux/amd64 leaf.
+The maintainer approved unsigned-image exceptions only for the exact official
+PostgreSQL/Valkey pins in deploy/podman/image-policy.json, limited to disposable
+fixtures. Changing any pin requires renewed review; these exceptions do not
+waive vulnerability findings or establish cryptographic publisher identity.
+The original PostgreSQL exception is historical and that image remains blocked.
+Its authorized replacement builds pinned official source on a Wolfi platform
+leaf authenticated through the signed Chainguard index. Signed APK packages are
+resolved at build time; builds are not bit-for-bit reproducibility claims.
+The local receipt binds the reviewed recipe and scanned archive's config and
+every layer to the executed immutable image ID. It is not cryptographic publisher
+identity for a distributed image. The build context excludes all project secrets.
+See the [recipe](../deploy/podman/postgres/README.md); private-build/release signing
+and portable artifact attestation remain v0.9 and later distribution owners.
+
+HIGH/CRITICAL findings block execution, including unfixed ones. Local Trivy
+configuration/environment, ignore files/policies and VEX filters cannot remove
+findings from this gate. Original PostgreSQL has 42 reported findings; the
+qualified Wolfi replacement and both current service images have zero reported
+HIGH/CRITICAL findings. No CVE waiver is admitted. PostgreSQL's source-built C
+application is recorded explicitly with its source hash; Trivy's OS inventory
+does not claim automatic advisory analysis of that compiled C source. Official
+PostgreSQL release/advisory review remains required. The Cargo inventory
+does not cover these image graphs. See [image evidence](../sbom/images/README.md).
+CI uploads per-image SBOMs for failed as well as successful scans.
 
 New dependencies need current-version, source, features, license, maintenance,
 advisory, unsafe/build-script and target-footprint review plus tests for the

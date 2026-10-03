@@ -5,12 +5,13 @@ import ssl
 import uuid
 import urllib.error
 from unittest.mock import patch
-from stack_common import STATE, NAMES, BaoError, bao, podman, read_private, replace_private
+from stack_common import STATE, NAMES, BaoError, bao, podman, read_private, replace_private, read_owned_regular_bounded
 from stack_resources import owned, stop
 import stack_resources
 from stack_vault import provisioning_values, runtime_values
 import stack
 import stack_common
+from audit_evidence import snapshot_audit, audit_text
 from stack_files import fixture_lock
 from stack_smoke import smoke
 
@@ -102,13 +103,16 @@ def leakage(values, bootstrap_root=None):
     needles.append(read_private(STATE / 'bao.key').splitlines()[1])
     for service, name in NAMES.items():
         require(owned('container', name, service), 'Owned service missing')
-        for args in (('inspect', name), ('logs', name)):
-            result = podman(*args)
+        for args in (('inspect', name), ('logs', '--tail', '2000', name)):
+            result = podman(*args, output_limit=1024 * 1024, timeout=30)
             text = result.stdout + result.stderr
             require(not any(value in text for value in needles), 'Secret found in container metadata/logs')
-    audit = (STATE / 'bao-audit/audit.log').read_text()
+    snapshot_audit(owned('container', NAMES['openbao'], 'openbao'))
+    audit = audit_text()
     require(not any(value in audit for value in needles), 'Secret found in audit log')
-    require('random' in audit and 'runasmidja/data/' in audit, 'Required issuance/read audit evidence missing')
+    require('runasmidja/data/' in audit, 'Required read audit evidence missing')
+    if bootstrap_root:
+        require('random' in audit, 'Required issuance audit evidence missing')
     print('Credential/recovery/TLS disclosure scan of container metadata/logs and vault audit: PASS')
 
 
@@ -116,7 +120,7 @@ def collisions():
     # Deliberately wrong-label test objects have independent, captured cleanup custody.
     owner = str(uuid.uuid4())
     name = 'runasmidja-qualification-' + owner
-    image = json.loads((stack.ROOT / 'deploy/podman/images.json').read_text())['postgres']
+    image = stack.fixture_images()['postgres']
     made = []
     try:
         for kind in ('network', 'volume', 'container'):
@@ -155,6 +159,8 @@ def qualify():
         print('Retained fixture: initial empty-state test belongs to the first qualification run.')
         stack.up()
     smoke()
+    if bootstrap_root:
+        leakage(provisioning_values(), bootstrap_root)
     bad_ca()
     values = provisioning_values()
     require(runtime_values() == {k: values[k] for k in ('database_password', 'valkey_password')}, 'Runtime projection mismatch')
@@ -193,6 +199,8 @@ def qualify():
     smoke()
     leakage(values, bootstrap_root)
     collisions()
+    from qualification_postgres import qualify as qualify_postgres
+    qualify_postgres()
     print('Real outage, root-revoked restart, version reuse and persistent PostgreSQL data: PASS')
 
 

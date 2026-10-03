@@ -20,6 +20,22 @@ fingerprints/races remain v0.5. Persistent delivery/legacy migration are v0.8;
 rotation, tmpfs cleanup and private-build/CI wrong-claim/fork denials require
 later qualification. Public Rust builds remain secret-free.
 
+The submitted v0.2 review adds actual verified-archive/offline Cargo install
+regressions, adversarial child floods/pipe deadlock/timeouts, safe bounded audit
+reads/retention, fsync faults and exact-image signature/inventory/scan denials.
+`qualification_bounds.py` scans the exact Valkey image before its isolated real
+Podman ENOSPC/log-rotation/capture/reuse test and cleans up only its captured
+owned container. That test does not qualify the whole three-service stack.
+The authorized Wolfi/PostgreSQL source build passes scans and full remediated
+service qualification. `qualification_postgres.py` additionally exercises 12
+real initialization denials without altering rejected fixture data, verifies
+UTF8/C.UTF-8 and excludes compiler/Perl/gosu runtime packages. Archive regressions
+bind config/platform/every layer to the image that runs and reject receipt/input
+drift, unsafe members and tampering. The original PostgreSQL image remains
+rejected; its historical scan is retained. GitHub and maintainer retest remain
+pending. See the
+[assessment](../security/pentest/v0.2.0.md).
+
 Search qualification runs the same hosted metadata/authorization contracts
 against real PostgreSQL and Meilisearch, with the optional feature compiled both
 ways and each runtime selector. Test stale index after tenant/object revocation,

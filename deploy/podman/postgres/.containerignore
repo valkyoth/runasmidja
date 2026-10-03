@@ -1,0 +1,4 @@
+*
+!Containerfile
+!entrypoint.sh
+!postgresql-19beta4.tar.bz2

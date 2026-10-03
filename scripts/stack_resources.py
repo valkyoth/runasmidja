@@ -49,10 +49,21 @@ def start_container(service, image, args):
         expected = podman('image', 'inspect', image, '--format', '{{.Id}}').stdout.strip()
         if not expected or info.get('Image', '').removeprefix('sha256:') != expected.removeprefix('sha256:'):
             raise RuntimeError('Refusing fixture image drift')
+        log = info.get('HostConfig', {}).get('LogConfig', {})
+        # Podman reports the effective size as a display string and Config=null.
+        size = (log.get('Config') or {}).get('max-size', log.get('Size'))
+        if log.get('Type') != 'k8s-file' or size not in ('1048576', '1.049MB'):
+            raise RuntimeError('Fixture needs explicit security-bounds upgrade')
+        if service == 'openbao':
+            options = set(info.get('HostConfig', {}).get('Tmpfs', {}).get('/audit', '').split(','))
+            if not {'rw', 'noexec', 'nosuid', 'nodev'}.issubset(options) or not (
+                    {'size=16777216', 'size=16m'} & options):
+                raise RuntimeError('Vault needs bounded audit sink upgrade')
         if not info['State']['Running']:
             podman('start', name)
         return
     podman('run', '-d', '--name', name, *label_args(service),
+        '--log-driver', 'k8s-file', '--log-opt', 'max-size=1048576',
         '--network', NETWORK, '--memory', '512m', '--cpus', '1', '--pids-limit', '128',
         '--security-opt', 'no-new-privileges', *args, image,
         *({'openbao': ['server', '-config=/config/bao.hcl'],
@@ -65,5 +76,30 @@ def stop():
     for service, name in NAMES.items():
         info = owned('container', name, service)
         if info and info['State']['Running']:
+            if service == 'openbao':
+                from audit_evidence import snapshot_audit
+                snapshot_audit(info)
             podman('stop', name)
     print('Owned test containers stopped; data retained.')
+
+
+def upgrade_bounds(images):
+    """Explicitly recreate only verified fixture containers; retain all data/custody."""
+    preflight()
+    for service, name in NAMES.items():
+        info = owned('container', name, service)
+        if not info:
+            continue
+        expected = podman('image', 'inspect', images[service], '--format', '{{.Id}}').stdout.strip()
+        if info.get('Image', '').removeprefix('sha256:') != expected.removeprefix('sha256:'):
+            raise RuntimeError('Image drift blocks bounds upgrade')
+        mounts = {m['Destination']: m for m in info.get('Mounts', [])}
+        if service == 'postgres' and mounts.get('/var/lib/postgresql', {}).get('Name') != NAMES['postgres']:
+            raise RuntimeError('Database volume drift blocks bounds upgrade')
+        if service == 'openbao' and mounts.get('/data', {}).get('Source') != str(STATE / 'bao-data'):
+            raise RuntimeError('Vault data drift blocks bounds upgrade')
+    stop()
+    for service, name in NAMES.items():
+        if owned('container', name, service):
+            podman('rm', name)
+    print('Verified fixture containers removed for bounds upgrade; all data/custody retained.')

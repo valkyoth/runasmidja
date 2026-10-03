@@ -6,6 +6,7 @@ import uuid
 import fcntl
 from contextlib import contextmanager
 from stack_common import STATE, private, read_private, replace_private, run
+from custody import sync_parent
 
 CONFIG = '''ui = false
 disable_mlock = true
@@ -24,7 +25,14 @@ listener "tcp" {
 
 
 def directory(path):
-    path.mkdir(mode=0o700, parents=True, exist_ok=True)
+    pending = []
+    current = path
+    while not current.exists():
+        pending.append(current)
+        current = current.parent
+    for created in reversed(pending):
+        created.mkdir(mode=0o700)
+        sync_parent(created)
     info = path.lstat()
     if not stat.S_ISDIR(info.st_mode) or info.st_uid != os.getuid() or info.st_mode & 0o077:
         raise RuntimeError('Private fixture directory has invalid custody')
@@ -57,6 +65,13 @@ def files():
             '-subj', '/CN=localhost', '-addext', 'subjectAltName=DNS:localhost,DNS:openbao,IP:127.0.0.1')
         os.chmod(STATE / 'bao.key', 0o600)
         os.chmod(STATE / 'bao.crt', 0o600)
+        for name in ('bao.key', 'bao.crt'):
+            descriptor = os.open(STATE / name, os.O_RDONLY | os.O_NOFOLLOW)
+            try:
+                os.fsync(descriptor)
+            finally:
+                os.close(descriptor)
+            sync_parent(STATE / name)
     for name in ('bao.crt', 'bao.key'):
         value = read_private(STATE / name)
         target = STATE / 'bao-config' / name

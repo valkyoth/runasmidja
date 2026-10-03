@@ -1,6 +1,8 @@
 # Runasmidja Implementation Plan
 
-Status: planning contract; v0.1.0 tagged, v0.2.0 implementation candidate awaiting pentest.
+Status: planning contract; v0.1.0 tagged, v0.2.0 review remediation awaiting retest.
+The authorized Wolfi/PostgreSQL fixture passes scans and real qualification; see the
+[assessment](../security/pentest/v0.2.0.md).
 
 The goal is a complete modern CyberChef-style online website, reusable Rust
 engine and durable public API. Users visit a normal hosted website; ordinary
@@ -105,6 +107,12 @@ viewers. Optional hosted persistence/API work follows local contracts and adds
 real PostgreSQL repositories, OpenBao database leases, Valkey
 failure behavior, authentication, isolation and quotas. Production service TLS,
 recovery custody and PostgreSQL beta-to-GA migration have explicit owner passes.
+The [container and Fluxheim plan](CONTAINER_DEPLOYMENT_PLAN.md) proposes small
+compatible Wolfi image follow-ups and requires actual Fluxheim reverse-proxy
+tests from v0.11.0's health fixture through v0.129.0/v0.130.0/v0.133.0 and release
+artifacts. Direct hosting remains a tested profile; one shared base does not
+replace per-service security/runtime evidence. Meilisearch's preferred base is
+qualified at its existing v0.115.0 admission, including disabled mode.
 Actual artifact storage/transaction discipline precedes full whole-input/seekable
 replay qualification. Cross-store publication follows repository/authorization
 contracts. Public untrusted-job endpoints remain disabled until the integrated

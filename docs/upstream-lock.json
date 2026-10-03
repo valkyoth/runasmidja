@@ -1,7 +1,10 @@
 {
   "checked_at": "2026-10-03",
   "github_releases": {
+    "aquasecurity/trivy": "v0.75.0",
+    "sigstore/cosign": "v3.1.3",
     "actions/checkout": "v7.0.1",
+    "actions/upload-artifact": "v7.0.1",
     "openbao/openbao": "v2.7.1",
     "valkey-io/valkey": "9.1.2",
     "gchq/CyberChef": "v11.5.0"

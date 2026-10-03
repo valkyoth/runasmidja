@@ -9,6 +9,10 @@
 | Dependency/source/license policy | Configured | deny.toml, Cargo.lock, audit gate |
 | CI action provenance | Configured | Full commit pins; weekly Actions Dependabot |
 | Tool provenance/freshness | Configured | Exact archive SHA-256 and versions; live freshness workflow |
+| Verified tool compilation | Implemented; retest required | CI compiles exact verified archive offline; corrupt/offline/traversal regressions |
+| Fixture image provenance/inventory | Implemented gate; PostgreSQL blocked | Signed OpenBao index-to-leaf binding, exact PostgreSQL/Valkey unsigned exceptions, per-image OS/Go/C/native SBOM and HIGH/CRITICAL rejection |
+| Child/log/audit resource bounds | Implemented; retest required | Concurrent child budgets/kill/reap, 1 MiB log rotation, 16 MiB live audit tmpfs, two bounded no-follow snapshots; real Podman bounds qualification |
+| Local custody durability | Implemented; retest required | File and parent fsync for create/rename/unlink, fault regressions; remote init/local capture remains non-atomic |
 | GitHub CodeQL | External setting required | GitHub Default setup only; no advanced workflow |
 | Local secret isolation | Implemented harness | Ignored .local state, private permissions, limited container mounts |
 | OpenBao test bootstrap | Implemented harness | TLS validation, declarative audit, KV v2, AppRole, root revoke |

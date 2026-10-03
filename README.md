@@ -25,7 +25,10 @@ external network operations are distinct explicit actions.
 
 **Current status:** `v0.1.0` is tagged with accepted pentest and green GitHub
 checks. `0.2.0` adds OpenBao-first service provisioning and is a locally committed
-candidate awaiting the maintainer's pentest. No workbench, transformation,
+candidate with tested review fixes committed locally for maintainer retest.
+The authorized minimal Wolfi/PostgreSQL source build passes scans and real service
+qualification without a vulnerability waiver; see the
+[remediation report](security/pentest/v0.2.0.md). No workbench, transformation,
 browser UI, production HTTP server or CyberChef parity is implemented yet.
 See the [0.2 scope](docs/releases/v0.2.0-scope.md) and
 [0.1 assessment](security/pentest/v0.1.0.md).
@@ -54,16 +57,21 @@ It is disposable test infrastructure and will be replaced by a qualified HTTP
 adapter. It is not the planned public API.
 
 ```sh
+python3 scripts/install_image_tools.py
 python3 scripts/stack.py up
 python3 scripts/stack.py smoke
 python3 scripts/stack.py stop
 ```
 
 Dependencies run in rootless Podman: PostgreSQL **19 beta 4**, OpenBao **2.7.1**
-and Valkey **9.1.2**. The new fixture keeps private custody in ignored `.local/stacks/v02`; legacy
-`.local/stack` data is retained separately.
+and Valkey **9.1.2**. PostgreSQL is built automatically from pinned official source
+on a verified Wolfi base. Private custody lives in ignored `.local/stacks/v02-wolfi-ready`;
+earlier `.local/stacks/*` and `.local/stack` data remain separate and retained.
 OpenBao is initialized over TLS with declarative audit, KV v2, scoped AppRole
-and revoked bootstrap root token. See [local stack](docs/local-stack.md).
+and revoked bootstrap root token. Image provenance and exact-digest scans run
+before startup. All three current images have zero reported HIGH/CRITICAL
+findings. See [local stack](docs/local-stack.md) and the
+[image recipe](deploy/podman/postgres/README.md).
 The new fixture obtains database/cache passwords from OpenBao before dependent
 startup, using separate scoped provisioning/runtime identities and version reuse.
 Private password/ACL delivery copies remain until the v0.8 qualification. All project-operated secrets, including initialization/private

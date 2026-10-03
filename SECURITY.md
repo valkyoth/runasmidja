@@ -3,7 +3,11 @@
 Runasmidja is security-sensitive data-transformation software. Inputs, imported
 recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins,
 workers and supply-chain changes require threat review and executable tests.
-The repository has a tagged v0.1.0 foundation and a v0.2.0 candidate; neither is a production service.
+The repository has a tagged v0.1.0 foundation and a v0.2.0 remediation candidate;
+neither is a production service. Maintainer retest is required. The authorized
+Wolfi/PostgreSQL fixture passes scans and actual service qualification; this
+does not establish production security or a pentest PASS. See the
+[assessment](security/pentest/v0.2.0.md).
 
 Report vulnerabilities privately through [GitHub private advisories](https://github.com/valkyoth/runasmidja/security/advisories/new).
 Do not disclose exploitable details in public issues before remediation.

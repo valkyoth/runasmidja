@@ -3,15 +3,16 @@ import json
 import os
 import socket
 import ssl
-import subprocess
 import re
 import time
 import urllib.error
 import urllib.request
 from pathlib import Path
+from process_limits import run_bounded
+from custody import private, read_private, replace_private, durable_unlink, read_owned_regular_bounded
 
 ROOT = Path(__file__).resolve().parent.parent
-INSTANCE = os.environ.get('RUNASMIDJA_STACK_ID', 'v02')
+INSTANCE = os.environ.get('RUNASMIDJA_STACK_ID', 'v02-wolfi-ready')
 if not re.fullmatch(r'[a-z0-9][a-z0-9-]{0,31}', INSTANCE):
     raise RuntimeError('Invalid test stack identifier')
 STATE = ROOT / '.local/stacks' / INSTANCE
@@ -22,43 +23,11 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         return None
 
-def run(*args, data=None, allowed=(0,)):
-    result = subprocess.run(args, input=data, text=True, capture_output=True, timeout=180)
-    if result.returncode not in allowed:
-        raise RuntimeError(f'{args[0]} failed (exit {result.returncode}); output withheld')
-    return result
+def run(*args, **kwargs):
+    return run_bounded(*args, **kwargs)
 
 def podman(*args, **kwargs):
     return run('podman', *args, **kwargs)
-
-def private(path, content):
-    descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
-    with os.fdopen(descriptor, 'w') as handle:
-        handle.write(content)
-        handle.flush()
-        os.fsync(handle.fileno())
-
-def read_private(path):
-    import stat
-    descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
-    with os.fdopen(descriptor, 'rb') as handle:
-        info = os.fstat(handle.fileno())
-        if not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_mode & 0o077:
-            raise RuntimeError('Private fixture file has invalid custody')
-        value = handle.read(65537)
-        if len(value) > 65536:
-            raise RuntimeError('Private fixture file exceeds budget')
-        return value.decode('utf-8')
-
-def replace_private(path, content):
-    if path.exists() or path.is_symlink():
-        read_private(path)
-    temporary = path.with_name(path.name + '.next')
-    if temporary.exists():
-        read_private(temporary)
-        temporary.unlink()
-    private(temporary, content)
-    os.replace(temporary, path)
 
 def wait_for(check):
     deadline = time.monotonic() + 90

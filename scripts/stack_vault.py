@@ -2,7 +2,7 @@
 import json
 import re
 from contextlib import contextmanager
-from stack_common import STATE, BaoError, bao, private, read_private, replace_private, wait_for
+from stack_common import STATE, BaoError, bao, private, read_private, replace_private, wait_for, durable_unlink
 
 KEYS = ('postgres_admin_password', 'database_password', 'valkey_password')
 REVOKE = 'path "auth/token/revoke-self" { capabilities = ["update"] }\n'
@@ -169,4 +169,4 @@ def revoke_root(root):
                 raise
         else:
             raise RuntimeError('Bootstrap root revocation not confirmed')
-        (STATE / 'bootstrap.json').unlink()
+        durable_unlink(STATE / 'bootstrap.json')

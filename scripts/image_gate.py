@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+"""Verify reviewed publishers and scan exact fixture images before execution."""
+import hashlib
+import json
+import os
+import platform
+import stat
+from pathlib import Path
+from custody import MAX_AUDIT, replace_private
+from process_limits import run_bounded
+
+ROOT = Path(__file__).resolve().parent.parent
+EVIDENCE = ROOT / '.local/image-evidence'
+
+
+def tool(name):
+    pin = json.loads((ROOT / 'scripts/image-tools.lock.json').read_text())[name]
+    path = ROOT / '.local/tools' / name
+    descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    with os.fdopen(descriptor, 'rb') as source:
+        info = os.fstat(source.fileno())
+        if not stat.S_ISREG(info.st_mode) or info.st_size > 256 * 1024 * 1024:
+            raise RuntimeError('Image tool is not a bounded regular file')
+        digest = hashlib.file_digest(source, 'sha256').hexdigest()
+    if digest != pin['binary_sha256']:
+        raise RuntimeError('Image tool digest rejected; run scripts/install_image_tools.py')
+    return str(path)
+
+
+def provenance(service, image, policy, cosign):
+    rule = policy[service]
+    if policy.get('platform') != 'linux/amd64':
+        raise RuntimeError('Image platform has no reviewed provenance policy')
+    if service == 'postgres' and rule.get('method') == 'local-build' and rule.get('image') == 'local:postgres-wolfi':
+        from postgres_image import validate_image
+        validate_image(image)
+        provenance('wolfi-base', policy['wolfi-base']['image'], policy, cosign)
+        return 'local-build (trusted host custody; verified base/source)'
+    if rule.get('image') != image or policy.get('platform') != 'linux/amd64':
+        raise RuntimeError('Image/platform has no reviewed provenance policy')
+    if rule.get('method') == 'maintainer-exception':
+        if service not in ('postgres', 'valkey') or not all(rule.get(key) for key in
+                ('approved_by', 'approved_on', 'reason', 'scope')):
+            raise RuntimeError('Unsigned image exception incomplete or out of scope')
+        return 'maintainer-exception'
+    if service not in ('openbao', 'wolfi-base') or rule.get('method') != 'signed-index':
+        raise RuntimeError('Unsupported image provenance policy')
+    result = run_bounded(cosign, 'verify', '--certificate-identity', rule['identity'],
+        '--certificate-oidc-issuer', rule['issuer'], rule['index'], timeout=180)
+    index_digest = rule['index'].split('@', 1)[1]
+    signatures = json.loads(result.stdout)
+    if not signatures or any(item['critical']['image']['docker-manifest-digest'] != index_digest
+                             for item in signatures):
+        raise RuntimeError('Signature did not bind reviewed index digest')
+    raw = run_bounded('skopeo', 'inspect', '--raw', 'docker://' + rule['index']).stdout
+    if 'sha256:' + hashlib.sha256(raw.encode()).hexdigest() != index_digest:
+        raise RuntimeError('Signed index bytes failed digest verification')
+    selected = [item for item in json.loads(raw)['manifests']
+                if item.get('platform', {}).get('os') == 'linux'
+                and item.get('platform', {}).get('architecture') == 'amd64']
+    if len(selected) != 1 or selected[0]['digest'] != image.split('@', 1)[1]:
+        raise RuntimeError('Signed index does not authorize selected platform image')
+    return 'signed-index'
+
+
+def scan(service, image, scanner, archive=None):
+    target = EVIDENCE / (service + '.cdx.json')
+    # Never consume stale evidence after a failed scanner run or follow an output link.
+    result = run_bounded(scanner, 'image', '--image-src', 'remote', '--platform', 'linux/amd64',
+        '--cache-dir', str(ROOT / '.local/trivy'), '--scanners', 'vuln', '--format', 'cyclonedx',
+        '--severity', 'HIGH,CRITICAL', '--exit-code', '1', '--quiet', '--ignore-unfixed=false',
+        '--config', '', '--ignorefile', '/dev/null', '--ignore-policy', '', '--ignore-status', '',
+        '--vex', '', '--skip-db-update=false', '--disable-telemetry',
+        *(['--input', str(archive)] if archive else [image]),
+        allowed=(0, 1), timeout=900, output_limit=MAX_AUDIT,
+        env={key: value for key, value in os.environ.items() if not key.startswith('TRIVY_')})
+    evidence = json.loads(result.stdout)
+    if evidence.get('bomFormat') != 'CycloneDX' or not evidence.get('components'):
+        raise RuntimeError('Image SBOM is missing dependency inventory')
+    if archive:
+        from postgres_image import validate_image
+        validate_image(image)  # Bind both sides of scanning to the captured immutable build.
+        source = json.loads((ROOT / 'deploy/podman/postgres/source.lock.json').read_text())
+        evidence['components'].append({'type': 'application', 'name': 'PostgreSQL',
+            'version': source['version'], 'bom-ref': 'runasmidja-postgresql-source',
+            'purl': 'pkg:generic/postgresql@' + source['version'],
+            'licenses': [{'license': {'id': 'PostgreSQL'}}],
+            'externalReferences': [{'type': 'distribution', 'url': source['url'],
+                                    'hashes': [{'alg': 'SHA-256', 'content': source['sha256']}]}]})
+    replace_private(target, json.dumps(evidence, indent=2) + '\n', limit=MAX_AUDIT)
+    findings = [item for item in evidence.get('vulnerabilities', [])
+                if any(rating.get('severity', '').lower() in ('high', 'critical')
+                       for rating in item.get('ratings', []))]
+    return result.returncode == 0 and not findings, len(findings)
+
+
+def verify_images(images):
+    if platform.system() != 'Linux' or platform.machine() not in ('x86_64', 'amd64'):
+        raise RuntimeError('Fixture image qualification is limited to Linux/amd64')
+    if set(images) != {'openbao', 'postgres', 'valkey'}:
+        raise RuntimeError('Fixture image set differs from reviewed policy')
+    policy = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())
+    EVIDENCE.mkdir(parents=True, mode=0o700, exist_ok=True)
+    scanner, cosign = tool('trivy'), tool('cosign')
+    blocked = []
+    for service, image in images.items():
+        method = provenance(service, image, policy, cosign)
+        archive = None
+        if policy[service].get('method') == 'local-build':
+            from postgres_image import validate_image
+            archive = validate_image(image)
+        clean, count = scan(service, image, scanner, **({'archive': archive} if archive else {}))
+        print(f'{service}: {method}; exact-digest SBOM; {count} HIGH/CRITICAL findings', flush=True)
+        if not clean:
+            blocked.append(service)
+    if blocked:
+        raise RuntimeError('Image vulnerability gate rejected: ' + ', '.join(blocked))
+
+
+if __name__ == '__main__':
+    try:
+        from postgres_image import fixture_images
+        verify_images(fixture_images())
+    except (RuntimeError, ValueError, KeyError, OSError) as error:
+        raise SystemExit(f'Image gate failed ({type(error).__name__}); no execution authorized') from None

@@ -161,6 +161,18 @@ def build():
         for title, deliverable, acceptance in ADDITIONS.get(minor, []) + EXTRAS.get(minor, []):
             add(title, deliverable, acceptance, item['phase'])
     by_title = {row['title']: row for row in rows}
+    container_context = {
+        'Service lifecycle harness': 'At v0.11.0 add an actual rootless Fluxheim Wolfi proxy fixture for the bounded health probe, using only the official published proxy-wolfi image pinned by digest; do not build or repackage Fluxheim. Verify current version, publisher/platform, scans and inventory before admission. Test direct native/container backends and real proxy routing/rejections, outage/restart, timeout bounds and spoofed forwarding headers; freeze the minimal HTTP/TLS trust scope. Automate owned private-network configuration and cleanup without exposing admin services. This is health-fixture evidence only, not production/browser/session/upload qualification.',
+        'Freshness and supply-chain controls': 'Include the admitted Fluxheim image/release, exact proxy/base/source identities and per-image scan/SBOM evidence. Review current accessible Wolfi service images; same-base packaging never replaces publisher, runtime or vulnerability checks.',
+        'Meilisearch Podman fixture': 'Prefer a reviewed current minimal Wolfi runtime at v0.115.0 admission, with actual source/ABI/TLS/access/provenance qualification. Do not build an unused search service during v0.2 patches or assume a paid Chainguard OS image is Wolfi. Disabled search remains independent of its image and credentials.',
+        'Server deployment profile': 'At v0.129.0 run the actual website/API directly and behind the current reviewed official focused Fluxheim Wolfi proxy image, pinned by digest without a Runasmidja rebuild. Qualify trusted proxy peers, forged Forwarded/X-Forwarded/PROXY claims, external scheme/host/origin, secure cookies/redirects, streaming/cancellation, limits, cache exclusions and admitted WebSocket/SSE behavior. Backend/admin bypass stays private; sibling paths are not deployment dependencies.',
+        'Service TLS deployment policy': 'At v0.130.0 include real Fluxheim client and admitted upstream TLS/mTLS, wrong identities/roots/expiry and spoofed TLS-termination metadata, plus direct-TLS parity. Proxy termination does not replace database/cache/vault TLS. All project keys/credentials follow OpenBao policy and enumerated vault bootstrap trust custody.',
+        'Server security gate': 'At v0.133.0 pentest the combined Fluxheim/Runasmidja deployment for forwarded identity, request framing/smuggling, auth/object/origin/cache/rate-limit bypass and backend/admin exposure. A separately green proxy cannot attest application integration.',
+        'Release packaging': 'At v0.366.0 and RC/1.0 rerun direct and Fluxheim Wolfi deployment qualification on exact artifacts with reviewed proxy/config versions, notices/inventories and restore/rollback/upgrade evidence; retain both Meilisearch profiles.',
+    }
+    for title, context in container_context.items():
+        row = by_title[title]
+        row['scope_context'] = (row.get('scope_context', '') + ' ' + context).strip()
     publication = by_title['Hosted artifact publication fencing']
     publication['prerequisites'] = [by_title[title]['version'] for title in PUBLICATION_PREREQUISITES]
     if any(int(version.split('.')[1]) >= int(publication['version'].split('.')[1])
@@ -172,7 +184,9 @@ def build():
         f'Actual additional Runasmidja passes start at v{continuation}; do not reuse historical reference versions.')
     plans = DOCS / 'releases'; plans.mkdir(exist_ok=True)
     data_dir = DOCS / 'roadmap'; data_dir.mkdir(exist_ok=True)
-    index = ['# Runasmidja Release Plan To 1.0.0', '', 'Status: roadmap contract; v0.1.0 tagged, v0.2.0 implementation candidate awaiting pentest.', '',
+    index = ['# Runasmidja Release Plan To 1.0.0', '', 'Status: roadmap contract; v0.1.0 tagged, v0.2.0 review remediation awaiting retest.',
+             'The authorized Wolfi/PostgreSQL fixture passes scans and real qualification; see the',
+             '[assessment](../security/pentest/v0.2.0.md).', '',
         f'{len(rows)} small pre-1.0 passes, starting at 0.1.0 and ending at {rows[-1]["version"]}. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.', '',
         'The supplied 240-release bundle is preserved under [reference](reference/workbench-plan/README.md). Runasmidja adds operational services and splits multi-provider/algorithm work; source-version mappings preserve every original workstream. Nothing in this plan claims an implementation or a completed pentest.', '',
         f'If mandatory gaps remain after {rows[-1]["version"]}, actual additional passes start at **v{continuation}**. Historical reference continuation numbers remain preserved as provenance, not actual version assignments.', '',
@@ -194,6 +208,7 @@ def build():
         'Run `scripts/checks.sh`, current dependency/license/advisory checks, freshness, applicable browser/reference/service/fuzz/fault suites and artifact SBOM generation. Update threat controls, limitations, parity evidence, CHANGELOG and release notes. Every numbered minor, patch, RC and 1.0 needs its own exact-source pentest, remediation and clean retesting before tagging; passing tests alone do not authorize a PASS report.', '',
         'The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Build and verify locally, stop for the maintainer’s pentest, and commit only after green. The maintainer pushes; repeat GitHub fixes and affected pentest retests until green. Tag and push the version tag only when explicitly requested; distribution publication needs separate authorization.', '',
         'The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The current bounded pass is [v0.2.0 OpenBao-first provisioning](releases/v0.2.0-scope.md). Its separate fixture issues database/cache passwords in OpenBao; the legacy v0.1 fixture is retained unchanged. Temporary delivery, build/release identity and full drift qualification remain later numbered passes.', '',
+        'The [container and Fluxheim plan](CONTAINER_DEPLOYMENT_PLAN.md) proposes compatible v0.2.1-v0.2.3 image follow-ups, without renumbering the minor workstreams. Fluxheim Wolfi proxy qualification is required at v0.11.0 (health fixture), v0.12.0 (freshness), v0.129.0/v0.130.0/v0.133.0 (actual deployment/TLS/security) and v0.366.0/RC/1.0 (exact artifacts). Meilisearch preferred-base admission remains v0.115.0. Proposed patch scopes are not shipped or approved implementation.', '',
         'The [2026-10-03 planning revision](plan-revision-2026-10-03.md) records moved owners and qualification limits. Unpublished version assignments changed; the supplied source-version mapping remains intact.', '',
         'The [gap reconciliation](gap-reconciliation-2026-10-03.md), [execution contracts](EXECUTION_CONTRACTS.md), [browser/performance policy](BROWSER_PERFORMANCE.md), [storage/host policy](STORAGE_HOST_CONTRACTS.md) and [strict gates](VERIFICATION_GATES.md) add reviewed requirements; no runtime remediation is claimed by this plan.', '',
         '## Per-version handoffs', '', '| Phase | Versions | Detailed handoffs |', '| --- | --- | --- |']

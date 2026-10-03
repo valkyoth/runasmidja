@@ -1,0 +1,8 @@
+{
+  "version": "19beta4",
+  "url": "https://ftp.postgresql.org/pub/source/v19beta4/postgresql-19beta4.tar.bz2",
+  "sha256": "83157ee9c599d03b2f7a3d73ef3a56ec24e0e79cc2b3501a64d1364f56398c86",
+  "checksum_source": "https://ftp.postgresql.org/pub/source/v19beta4/postgresql-19beta4.tar.bz2.sha256",
+  "base": "cgr.dev/chainguard/wolfi-base@sha256:fbcaceb3a1eedec23eb80df9328f9be4a438546836ec15a67df39a104096d44a",
+  "scope": "disposable Linux/amd64 development fixture; fresh profile only"
+}

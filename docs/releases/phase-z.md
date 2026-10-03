@@ -174,7 +174,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Exercise idempotent start, stop/restart, readiness deadlines and failed provisioning recovery without touching unrelated containers. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Exercise idempotent start, stop/restart, readiness deadlines and failed provisioning recovery without touching unrelated containers. At v0.11.0 add an actual rootless Fluxheim Wolfi proxy fixture for the bounded health probe, using only the official published proxy-wolfi image pinned by digest; do not build or repackage Fluxheim. Verify current version, publisher/platform, scans and inventory before admission. Test direct native/container backends and real proxy routing/rejections, outage/restart, timeout bounds and spoofed forwarding headers; freeze the minimal HTTP/TLS trust scope. Automate owned private-network configuration and cleanup without exposing admin services. This is health-fixture evidence only, not production/browser/session/upload qualification. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
 **Verification:** Two starts converge; sealed OpenBao is unsealed from local test recovery material; PostgreSQL persists; cache can be empty; failures return nonzero. Exercise real services, startup failure, authorization denials, restart and redacted diagnostics. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
@@ -190,7 +190,7 @@ Verification checklists apply only to introduced or retained behavior in the rev
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Schedule weekly upstream checks, pin tool archive hashes and action commits, monitor SDK/services and record review decisions. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Schedule weekly upstream checks, pin tool archive hashes and action commits, monitor SDK/services and record review decisions. Include the admitted Fluxheim image/release, exact proxy/base/source identities and per-image scan/SBOM evidence. Review current accessible Wolfi service images; same-base packaging never replaces publisher, runtime or vulnerability checks. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
 **Verification:** Newer stable, yanked, unavailable and prerelease metadata fixtures fail as specified; exact current upstream versions are verified before dependency changes. Exercise real services, startup failure, authorization denials, restart and redacted diagnostics. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 

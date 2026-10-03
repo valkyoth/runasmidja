@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "platform": "linux/amd64",
+  "scan_policy": "Reject all HIGH/CRITICAL findings; no ignored IDs or ignore-unfixed filter.",
+  "openbao": {
+    "image": "ghcr.io/openbao/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005",
+    "method": "signed-index",
+    "index": "ghcr.io/openbao/openbao@sha256:6d2b93856e3fcf7b18ad855a0b51eaba474dc8b79cf554379ea32034797d2acf",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "identity": "https://github.com/openbao/openbao/.github/workflows/release-images.yml@refs/tags/v2.7.1"
+  },
+  "postgres": {
+    "image": "local:postgres-wolfi",
+    "method": "local-build",
+    "approved_by": "project maintainer",
+    "approved_on": "2026-10-03",
+    "scope": "public-source disposable Linux/amd64 Wolfi build; trusted local host only",
+    "recipe": "deploy/podman/postgres/Containerfile",
+    "reason": "Maintainer authorized own Wolfi/PostgreSQL 19beta4 image; original image retained only as blocked historical evidence."
+  },
+  "valkey": {
+    "image": "docker.io/valkey/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d",
+    "method": "maintainer-exception",
+    "approved_by": "project maintainer",
+    "approved_on": "2026-10-03",
+    "scope": "disposable Linux/amd64 fixture only",
+    "reason": "Exact official image has no Cosign signature; maintainer explicitly accepted this provenance limitation. Scans/SBOM remain mandatory."
+  },
+  "wolfi-base": {
+    "image": "cgr.dev/chainguard/wolfi-base@sha256:fbcaceb3a1eedec23eb80df9328f9be4a438546836ec15a67df39a104096d44a",
+    "method": "signed-index",
+    "index": "cgr.dev/chainguard/wolfi-base@sha256:9c2092b053779e14c82fb50f77b37bcc38b7d2c83972352d5813280f9d035b03",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "identity": "https://github.com/chainguard-images/images/.github/workflows/release.yaml@refs/heads/main"
+  },
+  "historical_postgres": {
+    "image": "docker.io/library/postgres@sha256:0f06bb68e8704361a8972fd9916a3bb9e72ff43f025d22a05b1750c6f6db418b",
+    "method": "maintainer-exception",
+    "approved_by": "project maintainer",
+    "approved_on": "2026-10-03",
+    "scope": "disposable Linux/amd64 fixture only",
+    "reason": "Exact official image has no Cosign signature; maintainer explicitly accepted this provenance limitation. Scans/SBOM remain mandatory."
+  }
+}

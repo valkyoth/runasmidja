@@ -1,6 +1,8 @@
 # Runasmidja Release Plan To 1.0.0
 
-Status: roadmap contract; v0.1.0 tagged, v0.2.0 implementation candidate awaiting pentest.
+Status: roadmap contract; v0.1.0 tagged, v0.2.0 review remediation awaiting retest.
+The authorized Wolfi/PostgreSQL fixture passes scans and real qualification; see the
+[assessment](../security/pentest/v0.2.0.md).
 
 386 small pre-1.0 passes, starting at 0.1.0 and ending at 0.386.0. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.
 
@@ -32,6 +34,8 @@ Run `scripts/checks.sh`, current dependency/license/advisory checks, freshness, 
 The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Build and verify locally, stop for the maintainer’s pentest, and commit only after green. The maintainer pushes; repeat GitHub fixes and affected pentest retests until green. Tag and push the version tag only when explicitly requested; distribution publication needs separate authorization.
 
 The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The current bounded pass is [v0.2.0 OpenBao-first provisioning](releases/v0.2.0-scope.md). Its separate fixture issues database/cache passwords in OpenBao; the legacy v0.1 fixture is retained unchanged. Temporary delivery, build/release identity and full drift qualification remain later numbered passes.
+
+The [container and Fluxheim plan](CONTAINER_DEPLOYMENT_PLAN.md) proposes compatible v0.2.1-v0.2.3 image follow-ups, without renumbering the minor workstreams. Fluxheim Wolfi proxy qualification is required at v0.11.0 (health fixture), v0.12.0 (freshness), v0.129.0/v0.130.0/v0.133.0 (actual deployment/TLS/security) and v0.366.0/RC/1.0 (exact artifacts). Meilisearch preferred-base admission remains v0.115.0. Proposed patch scopes are not shipped or approved implementation.
 
 The [2026-10-03 planning revision](plan-revision-2026-10-03.md) records moved owners and qualification limits. Unpublished version assignments changed; the supplied source-version mapping remains intact.
 

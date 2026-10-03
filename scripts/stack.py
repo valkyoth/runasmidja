@@ -5,14 +5,17 @@ import json
 import os
 from stack_common import ROOT, STATE, NAMES, podman, read_private, wait_for
 from stack_files import files, delivery, fixture_lock
-from stack_resources import infrastructure, owned, preflight, start_container, stop
+from stack_resources import infrastructure, owned, preflight, start_container, stop, upgrade_bounds
 from stack_vault import bootstrap, provisioning_values, runtime_values, revoke_root
+from image_gate import verify_images
+from postgres_image import fixture_images
 
 
 def up():
     files()
     preflight()
-    images = json.loads((ROOT / 'deploy/podman/images.json').read_text())
+    images = fixture_images()
+    verify_images(images)
     for image in images.values():
         if podman('image', 'exists', image, allowed=(0, 1)).returncode:
             podman('pull', image)
@@ -21,7 +24,7 @@ def up():
     start_container('openbao', images['openbao'], ['-p', '127.0.0.1:18200:8200',
         '--userns', 'keep-id', '--user', identity, '--cap-drop', 'ALL',
         '-v', f'{STATE}/bao-config:/config:ro,Z', '-v', f'{STATE}/bao-data:/data:Z',
-        '-v', f'{STATE}/bao-audit:/audit:Z'])
+        '--tmpfs', '/audit:rw,noexec,nosuid,nodev,size=16777216,mode=1777'])
     root = bootstrap()
     # No consumer is started and no delivery copy is read without a fresh scoped vault read.
     values = provisioning_values()
@@ -29,6 +32,9 @@ def up():
         raise RuntimeError('Scoped runtime retrieval mismatch')
     delivery(values)
     start_container('postgres', images['postgres'], ['-p', '127.0.0.1:15432:5432',
+        '--userns', 'keep-id:uid=999,gid=999', '--user', '999:999', '--cap-drop', 'ALL', '--read-only',
+        '--tmpfs', '/var/run/postgresql:rw,noexec,nosuid,nodev,size=16777216,mode=1777',
+        '--tmpfs', '/tmp:rw,noexec,nosuid,nodev,size=33554432,mode=1777',
         '-e', 'POSTGRES_PASSWORD_FILE=/run/secrets/postgres.password', '-e', 'POSTGRES_DB=runasmidja',
         '-e', 'POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256',
         '-v', f'{STATE}/postgres.password:/run/secrets/postgres.password:ro,Z',
@@ -56,7 +62,7 @@ GRANT CONNECT ON DATABASE runasmidja TO runasmidja;
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=('up', 'stop', 'status', 'smoke'))
+    parser.add_argument('action', choices=('up', 'stop', 'status', 'smoke', 'upgrade-bounds'))
     action = parser.parse_args().action
     if action == 'status':
         for service, name in NAMES.items():
@@ -68,8 +74,11 @@ def main():
             up()
         elif action == 'stop':
             stop()
+        elif action == 'upgrade-bounds':
+            upgrade_bounds(fixture_images())
         else:
             preflight()
+            verify_images(fixture_images())
             from stack_smoke import smoke
             smoke()
 

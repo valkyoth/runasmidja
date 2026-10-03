@@ -5,6 +5,13 @@ from pathlib import Path
 from check_repository import check
 
 class RepositoryTests(unittest.TestCase):
+    def test_container_recipes_have_the_same_code_limit(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            for name in ('Containerfile', 'Dockerfile'):
+                (root / name).write_text('# recipe\n' * 501)
+            self.assertEqual(len(check(root)), 2)
+
     def test_limits_and_unpinned_actions_fail(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

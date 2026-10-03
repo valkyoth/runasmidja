@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: EUPL-1.2
+FROM cgr.dev/chainguard/wolfi-base@sha256:fbcaceb3a1eedec23eb80df9328f9be4a438546836ec15a67df39a104096d44a AS build
+RUN apk add --no-cache build-base bison flex openssl-dev zlib-dev pkgconf bzip2 perl
+COPY postgresql-19beta4.tar.bz2 /tmp/postgresql.tar.bz2
+RUN echo '83157ee9c599d03b2f7a3d73ef3a56ec24e0e79cc2b3501a64d1364f56398c86  /tmp/postgresql.tar.bz2' | sha256sum -c - \
+ && mkdir /src && tar -xjf /tmp/postgresql.tar.bz2 -C /src --strip-components=1 \
+ && cd /src && ./configure --prefix=/usr/local --without-readline --without-icu --with-openssl --with-system-tzdata=/usr/share/zoneinfo \
+ && make -s -j4 && make -s DESTDIR=/out install \
+ && cd contrib && make -s -j4 && make -s DESTDIR=/out install
+FROM cgr.dev/chainguard/wolfi-base@sha256:fbcaceb3a1eedec23eb80df9328f9be4a438546836ec15a67df39a104096d44a
+RUN apk add --no-cache libssl3 zlib glibc-locale-posix tzdata \
+ && addgroup -g 999 postgres && adduser -u 999 -G postgres -H -D -s /bin/sh postgres \
+ && mkdir -p /var/lib/postgresql /var/run/postgresql \
+ && chown postgres:postgres /var/lib/postgresql /var/run/postgresql
+COPY --from=build /out/usr/local /usr/local
+COPY entrypoint.sh /usr/local/bin/runasmidja-postgres
+RUN chmod 0755 /usr/local/bin/runasmidja-postgres
+ENV PGDATA=/var/lib/postgresql/19/wolfi PGHOST=/var/run/postgresql LANG=C.UTF-8
+USER 999:999
+EXPOSE 5432
+STOPSIGNAL SIGINT
+ENTRYPOINT ["/usr/local/bin/runasmidja-postgres"]

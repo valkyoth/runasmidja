@@ -4,6 +4,7 @@ import os
 import tempfile
 import unittest
 import urllib.error
+import sys
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -146,6 +147,8 @@ class SequencingTests(unittest.TestCase):
         from contextlib import ExitStack
         with ExitStack() as patches:
             for name, result in (('files', None), ('preflight', None), ('infrastructure', None),
+                                 ('fixture_images', {'postgres': 'reviewed', 'openbao': 'reviewed', 'valkey': 'reviewed'}),
+                                 ('verify_images', None),
                                  ('bootstrap', 'fixture'), ('provisioning_values', VALUES),
                                  ('runtime_values', {k: VALUES[k] for k in vault.KEYS[1:]}),
                                  ('delivery', None), ('revoke_root', None)):
@@ -163,17 +166,20 @@ class SequencingTests(unittest.TestCase):
 
     def test_vault_and_scoped_reads_precede_consumers_root_revoke_last(self):
         events = self.execute()
+        self.assertLess(events.index('verify_images'), events.index('start-openbao'))
         for event in ('bootstrap', 'provisioning_values', 'runtime_values', 'delivery'):
             self.assertLess(events.index(event), events.index('start-postgres'))
         self.assertLess(events.index('start-openbao'), events.index('bootstrap'))
         self.assertEqual(events[-1], 'revoke_root')
 
     def test_unavailable_sealed_or_denied_vault_starts_no_consumer(self):
-        for failure in ('bootstrap', 'provisioning_values', 'runtime_values', 'delivery', 'preflight'):
+        for failure in ('bootstrap', 'provisioning_values', 'runtime_values', 'delivery', 'preflight', 'verify_images'):
             events = self.execute(failure)
             self.assertNotIn('start-postgres', events)
             self.assertNotIn('start-valkey', events)
             self.assertNotIn('revoke_root', events)
+            if failure == 'verify_images':
+                self.assertNotIn('start-openbao', events)
 
 
 class OwnershipTests(unittest.TestCase):
@@ -204,10 +210,9 @@ class OwnershipTests(unittest.TestCase):
 
 class CustodyTests(unittest.TestCase):
     def test_child_error_never_echoes_secret_output(self):
-        with patch.object(common.subprocess, 'run', return_value=SimpleNamespace(returncode=1, stdout='sentinel', stderr='sentinel')):
-            with self.assertRaises(RuntimeError) as caught:
-                common.run('test-program', data='sentinel')
-            self.assertNotIn('sentinel', str(caught.exception))
+        with self.assertRaises(RuntimeError) as caught:
+            common.run(sys.executable, '-c', "print('sentinel'); raise SystemExit(1)", data='sentinel')
+        self.assertNotIn('sentinel', str(caught.exception))
 
     def test_http_error_never_echoes_body_path_or_token(self):
         error = urllib.error.HTTPError('https://sentinel.invalid', 403, 'sentinel', {}, None)
@@ -237,7 +242,8 @@ class CustodyTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 common.read_private(path)
             large = Path(folder) / 'large'
-            common.private(large, 'x' * 65537)
+            large.write_text('x' * 65537)
+            large.chmod(0o600)
             with self.assertRaises(RuntimeError):
                 common.read_private(large)
 

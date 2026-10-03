@@ -11,7 +11,22 @@
   image identity before container reuse. Add unit and real-service fault tests.
 - Retain legacy fixture data; use a separate v02 profile without silent migration.
 
-Pentest NOT RUN. This candidate is committed locally for the maintainer-requested pentest and not tagged.
+Pentest remediation (2026-10-03): bind CI installation to the verified archive,
+bound child/log/audit resources, add exact-image provenance/vulnerability/SBOM
+gates and fsync custody directory mutations. Maintainer approved unsigned-image
+exceptions for the two original exact PostgreSQL/Valkey fixture pins. The original
+PostgreSQL image's 42 reported HIGH/CRITICAL findings remain blocked and retained
+as historical evidence. The authorized replacement builds official PostgreSQL
+19beta4 on a signed Wolfi base, removes gosu/compiler/Perl from the runtime, and
+binds every scanned archive layer/config to the executed immutable image ID.
+All current images scan clean at that threshold without a CVE waiver. Full
+remediated service qualification and 12 real PostgreSQL initialization denials
+pass. Earlier fixture data is retained separately; GitHub and maintainer retest
+remain pending.
+
+Pentest RETEST REQUIRED. The original candidate was committed locally for the
+maintainer-requested review; remediation is committed locally at their explicit
+request for retest and no tag is authorized.
 See [candidate notes](release-notes/v0.2.0.md).
 
 ## 0.1.0 — 2026-10-03
