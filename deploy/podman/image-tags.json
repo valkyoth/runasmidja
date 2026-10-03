@@ -1,0 +1,5 @@
+{
+  "postgres": "docker.io/library/postgres:19beta4",
+  "openbao": "ghcr.io/openbao/openbao:2.7.1",
+  "valkey": "docker.io/valkey/valkey:9.1.2-alpine"
+}

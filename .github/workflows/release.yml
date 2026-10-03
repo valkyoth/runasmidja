@@ -1,0 +1,22 @@
+name: Release readiness
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Candidate version, e.g. 0.1.0
+        required: true
+permissions:
+  contents: read
+jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate candidate evidence
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: python3 scripts/check_release.py "$RELEASE_VERSION"

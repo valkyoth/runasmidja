@@ -1,0 +1,23 @@
+[workspace]
+members = ["crates/runasmidja", "crates/runasmidja-core", "crates/runasmidja-ports", "crates/runasmidja-html", "crates/runasmidja-crypto", "crates/runasmidja-server"]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+license = "EUPL-1.2"
+repository = "https://github.com/valkyoth/runasmidja"
+homepage = "https://github.com/valkyoth/runasmidja"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "deny"
+
+[workspace.lints.clippy]
+all = "deny"
+
+[profile.release]
+overflow-checks = true
+panic = "abort"
+strip = "symbols"

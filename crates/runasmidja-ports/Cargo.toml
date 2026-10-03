@@ -1,0 +1,12 @@
+[package]
+name = "runasmidja-ports"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Portable boundaries for hosted adapters"
+publish = false
+
+[lints]
+workspace = true

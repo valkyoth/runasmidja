@@ -1,0 +1,42 @@
+name: Rust CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: rustup show
+      - run: rustup target add thumbv7em-none-eabihf wasm32-unknown-unknown
+      - run: scripts/checks.sh
+      - run: python3 scripts/smoke_probe.py
+      - run: scripts/install_ci_tools.sh
+      - run: cargo deny check
+      - run: cargo audit --deny warnings
+      - run: scripts/generate-sbom.sh
+  containers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: sudo apt-get update && sudo apt-get install -y podman openssl
+      - run: rustup target add x86_64-unknown-linux-musl
+      - run: python3 scripts/smoke_probe.py --container
+      - run: python3 scripts/stack.py up
+      - run: python3 scripts/stack.py smoke
+      - run: python3 scripts/stack.py up
+      - run: python3 scripts/stack.py stop
+      - run: python3 scripts/stack.py up
+      - run: python3 scripts/stack.py smoke
+      - if: always()
+        run: python3 scripts/stack.py stop

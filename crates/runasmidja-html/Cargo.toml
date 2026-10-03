@@ -1,0 +1,12 @@
+[package]
+name = "runasmidja-html"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "HTML boundary reserved for future Vef extraction"
+publish = false
+
+[lints]
+workspace = true

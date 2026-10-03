@@ -1,0 +1,5 @@
+{
+  "postgres": "docker.io/library/postgres@sha256:0f06bb68e8704361a8972fd9916a3bb9e72ff43f025d22a05b1750c6f6db418b",
+  "openbao": "ghcr.io/openbao/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005",
+  "valkey": "docker.io/valkey/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d"
+}

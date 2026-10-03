@@ -1,0 +1,2829 @@
+{
+  "schema_version": 1,
+  "planning_date": "2026-10-02",
+  "project_name": null,
+  "toolchain": "1.99.0",
+  "edition": "2024",
+  "status": "proposed_not_implemented",
+  "baseline": {
+    "reference_project": "gchq/CyberChef",
+    "reviewed_tag": "v11.5.0",
+    "immutable_commit": null,
+    "commit_resolution_release": "0.2.0",
+    "inventory_status": "to_be_generated_and_verified",
+    "current_branch_reconciliation_required": true,
+    "observed_current_delta": [
+      "Parse X.509 certificate bundles"
+    ]
+  },
+  "numbered_minor_releases": 240,
+  "ordering_note": "Dependencies are a conservative sequential baseline. Independent work may proceed in parallel after technical prerequisites. Split or insert releases for unresolved gaps; 1.0 is acceptance-based.",
+  "phases": [
+    {
+      "id": "A",
+      "title": "Foundation and useful vertical slice",
+      "goal": "Prove the same Rust transformation works in a real browser worker and a native host, then establish the contracts that prevent later rewrites.",
+      "exit_gate": "Do not expand into dozens of packages until the browser/native slice works and the difficult compatibility risks have explicit owners and evidence.",
+      "start_minor": 1,
+      "end_minor": 15
+    },
+    {
+      "id": "B",
+      "title": "Bytes, text and foundational encodings",
+      "goal": "Build common operations on the portable kernel while making text semantics and chunk boundaries explicit.",
+      "exit_gate": "Common recipes work correctly, but the overall product is not advertised as CyberChef-complete. Full regex dialect compatibility is a tracked later gate.",
+      "start_minor": 16,
+      "end_minor": 30
+    },
+    {
+      "id": "C",
+      "title": "Streaming, artifacts and execution foundations",
+      "goal": "Make large inputs, multi-input operations and resource limits real before adding heavyweight operation families.",
+      "exit_gate": "The engine can distinguish streaming from whole-input work, maintain bounded resources and publish only complete artifacts. This gate precedes broad archive and crypto expansion.",
+      "start_minor": 31,
+      "end_minor": 45
+    },
+    {
+      "id": "D",
+      "title": "Modern browser workbench",
+      "goal": "Build the daily-use experience without making a complex graph or GPU a prerequisite.",
+      "exit_gate": "The web application is useful as a self-contained tool. Native desktop/mobile packaging is still out of scope until after 1.0.0.",
+      "start_minor": 46,
+      "end_minor": 60
+    },
+    {
+      "id": "E",
+      "title": "Remote API, PostgreSQL and secure server execution",
+      "goal": "Add optional persistence and explicitly selected remote execution without changing local behavior.",
+      "exit_gate": "A server may be deployed safely with PostgreSQL, but local processing remains the default. Database replacement contracts exist before a second SQL backend is implemented.",
+      "start_minor": 61,
+      "end_minor": 75
+    },
+    {
+      "id": "F",
+      "title": "Structured formats, queries and utilities",
+      "goal": "Deliver data transformation breadth while preserving dialect and numeric semantics.",
+      "exit_gate": "Language interpreters and structured parsers are treated as high-risk providers with limits, not assumed interchangeable Rust crates.",
+      "start_minor": 76,
+      "end_minor": 90
+    },
+    {
+      "id": "G",
+      "title": "Compression and archives",
+      "goal": "Provide full compression/archive operation parity with explicit expansion, memory and file-system boundaries.",
+      "exit_gate": "All selected formats are available locally where the reference supports local execution. Native-only decompression is a parity gap, not a substitute.",
+      "start_minor": 91,
+      "end_minor": 105
+    },
+    {
+      "id": "H",
+      "title": "Modern hashing and cryptographic operations",
+      "goal": "Use reviewed providers and typed key material; do not confuse forensic capability with application security policy.",
+      "exit_gate": "Production cryptography is not written from scratch solely to reduce crate counts. Analysis operations and service TLS remain separate security domains.",
+      "start_minor": 106,
+      "end_minor": 120
+    },
+    {
+      "id": "I",
+      "title": "Legacy cryptography, hashes and classical ciphers",
+      "goal": "Close the long-tail compatibility scope without enabling obsolete security in the service.",
+      "exit_gate": "This phase may require substantial extra releases. A cipher name in a list is not evidence of compatible implementation or validated security.",
+      "start_minor": 121,
+      "end_minor": 135
+    },
+    {
+      "id": "J",
+      "title": "Public keys, certificates and tokens",
+      "goal": "Deliver parsing and cryptographic workflows without conflating parse, verify and trust decisions.",
+      "exit_gate": "No user analysis certificate or imported root is allowed to alter the application’s HTTPS/identity trust configuration.",
+      "start_minor": 136,
+      "end_minor": 150
+    },
+    {
+      "id": "K",
+      "title": "Network and forensic analysis",
+      "goal": "Cover network and forensic operations while separating passive parsing from controlled network effects.",
+      "exit_gate": "Native networking uses the central gateway and TLS seam. Passive protocol analysis uses independent parsers and cannot change application security settings.",
+      "start_minor": 151,
+      "end_minor": 165
+    },
+    {
+      "id": "L",
+      "title": "Images, media and document presentation",
+      "goal": "Deliver the complete relevant media catalogue without making GPU or cloud services mandatory.",
+      "exit_gate": "Media is a required parity workstream, not a reason to silently introduce cloud processing. Heavy packs may load on demand and must be available in offline bundles.",
+      "start_minor": 166,
+      "end_minor": 180
+    },
+    {
+      "id": "M",
+      "title": "Complete recipe semantics, Magic and compatibility",
+      "goal": "Finish behavioral compatibility at the workflow level, not just the operation list.",
+      "exit_gate": "This is the first feature-complete candidate, not general availability. Full functional parity cannot be established by counting operation names alone.",
+      "start_minor": 181,
+      "end_minor": 195
+    },
+    {
+      "id": "N",
+      "title": "Extensibility and replacement-adapter proof",
+      "goal": "Prove additions and infrastructure changes do not force edits throughout the engine or UI.",
+      "exit_gate": "Third-party plugins may be disabled by policy. First-party extensibility is mandatory. Future sibling readiness is not a blocker for 1.0 if the replacement boundaries are proven.",
+      "start_minor": 196,
+      "end_minor": 210
+    },
+    {
+      "id": "O",
+      "title": "Portability, collaboration and operations",
+      "goal": "Prove SQL portability and deployability while keeping optional server features separate from local processing.",
+      "exit_gate": "Supporting another database still requires its adapter, migrations and qualification. Independence means no core rewrite, not a promise that database switches are free.",
+      "start_minor": 211,
+      "end_minor": 225
+    },
+    {
+      "id": "P",
+      "title": "Qualification and general-availability readiness",
+      "goal": "Convert a feature-complete candidate into a defensible full release.",
+      "exit_gate": "After a passing 0.240.0-equivalent gate, publish 1.0.0-rc.1 and further candidates as required, then 1.0.0. The date and number of additional releases are intentionally not promised.",
+      "start_minor": 226,
+      "end_minor": 240
+    }
+  ],
+  "releases": [
+    {
+      "title": "Executable seed",
+      "deliverable": "Pin Rust 1.99.0; create kernel, engine, browser and native host packages; run one hex operation from a real browser worker.",
+      "acceptance": "Native and browser fixtures agree; the example needs neither PostgreSQL nor a sibling repository.",
+      "version": "0.1.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": []
+    },
+    {
+      "title": "Reference baseline",
+      "deliverable": "Resolve the reviewed tag and adopted current-source deltas to immutable commits; inventory operations, arguments, workflow features and licenses, including observed certificate-bundle parsing.",
+      "acceptance": "Every discovered operation has a stable tracking record; the reference commit and file hashes are recorded, not guessed.",
+      "version": "0.2.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.1.0"
+      ]
+    },
+    {
+      "title": "Application contracts",
+      "deliverable": "Define operation IDs, semantic revisions, structured errors, recipe envelopes, artifact references and local EngineClient commands.",
+      "acceptance": "Round-trip tests reject unknown required fields and preserve large offsets without JavaScript number truncation.",
+      "version": "0.3.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.2.0"
+      ]
+    },
+    {
+      "title": "Portable kernel",
+      "deliverable": "Separate no_std/no-alloc kernel, alloc-enabled compiler and std hosts; establish feature and target matrices.",
+      "acceptance": "Bare-metal-style compile checks catch std leakage; unsafe code is forbidden in first-party portable core by default.",
+      "version": "0.4.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.3.0"
+      ]
+    },
+    {
+      "title": "Bounded buffer contract",
+      "deliverable": "Add caller-provided input/output windows, consumed/produced counts, partial progress, cancellation checkpoints and finish states.",
+      "acceptance": "Zero-sized windows, short writes, empty inputs and repeated finish calls have defined results without panics.",
+      "version": "0.5.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.4.0"
+      ]
+    },
+    {
+      "title": "Operation descriptors",
+      "deliverable": "Define typed arguments, defaults, help, execution class, secret fields and capabilities; generate a minimal catalogue.",
+      "acceptance": "One new operation registers once and appears in catalogue, validation, documentation and generated argument controls.",
+      "version": "0.6.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.5.0"
+      ]
+    },
+    {
+      "title": "Linear execution",
+      "deliverable": "Compile and run a sequence of hex, text and XOR operations with explicit byte/text conversion.",
+      "acceptance": "Chunk partitions do not alter outputs; invalid intermediate types fail before execution where statically knowable.",
+      "version": "0.7.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.6.0"
+      ]
+    },
+    {
+      "title": "Worker protocol",
+      "deliverable": "Introduce versioned worker messages, input transfers, job generations, progress and error events.",
+      "acceptance": "Processing runs outside the UI thread; stale generations and malformed messages cannot update active results.",
+      "version": "0.8.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.7.0"
+      ]
+    },
+    {
+      "title": "Cancellation lifecycle",
+      "deliverable": "Implement cooperative cancellation and browser worker termination/recreation for non-cooperative work.",
+      "acceptance": "A cancelled job cannot publish a successful artifact; cancellation leaves the next job usable.",
+      "version": "0.9.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.8.0"
+      ]
+    },
+    {
+      "title": "First browser workbench",
+      "deliverable": "Build accessible input, recipe and output panes, operation search and a manual Run button.",
+      "acceptance": "Keyboard-only use completes a sample recipe; raw output is never interpreted as trusted HTML.",
+      "version": "0.10.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.9.0"
+      ]
+    },
+    {
+      "title": "Loopback API host",
+      "deliverable": "Expose capabilities, catalogue, validate, run, status and cancel through a replaceable HTTP adapter.",
+      "acceptance": "Local and HTTP clients pass the same contract suite; the development server binds loopback by default.",
+      "version": "0.11.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.10.0"
+      ]
+    },
+    {
+      "title": "Hard-feature feasibility",
+      "deliverable": "Exercise candidate regex, query-language, YARA, crypto, compression, disassembly and OCR strategies in browser and native spikes.",
+      "acceptance": "Record dialect, licensing, dependencies, limits and remaining gaps; unsupported candidates do not become assumed dependencies.",
+      "version": "0.12.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.11.0"
+      ]
+    },
+    {
+      "title": "Differential harness",
+      "deliverable": "Build a reference runner, fixture provenance rules and partitioned-input comparison harness.",
+      "acceptance": "Positive, negative, binary and Unicode cases run reproducibly; upstream bugs are recorded rather than blindly copied.",
+      "version": "0.13.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.12.0"
+      ]
+    },
+    {
+      "title": "First threat review",
+      "deliverable": "Review imported recipes, worker boundaries, preview escaping, logging and dependency graph.",
+      "acceptance": "No payload telemetry or automatic network side effects; hostile samples produce bounded failures.",
+      "version": "0.14.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.13.0"
+      ]
+    },
+    {
+      "title": "Usable vertical alpha",
+      "deliverable": "Package a small offline-capable workbench with recipe save/load, loopback API examples and developer operation guide.",
+      "acceptance": "A fresh clone builds and runs without sibling projects or a database; phase A contracts are demonstrated end to end.",
+      "version": "0.15.0",
+      "phase": "A",
+      "status": "planned",
+      "depends_on": [
+        "0.14.0"
+      ]
+    },
+    {
+      "title": "Byte inspection",
+      "deliverable": "Add hex dumps, binary, octal, decimal byte views and reversible dump parsing.",
+      "acceptance": "Offsets, delimiters, malformed rows and partial final lines match the selected compatibility profile.",
+      "version": "0.16.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.15.0"
+      ]
+    },
+    {
+      "title": "Integer and float formats",
+      "deliverable": "Add charcode, text-integer, arbitrary-width numeric conversion, BCD, float bit views and endianness controls.",
+      "acceptance": "Signedness, precision, overflow, NaN payloads and byte-order behavior have explicit tests.",
+      "version": "0.17.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.16.0"
+      ]
+    },
+    {
+      "title": "Base64 family",
+      "deliverable": "Add configured alphabets, padding policies, URL-safe forms and source/output offset mapping.",
+      "acceptance": "RFC vectors and reference arguments pass across every short-input chunk partition; padding is accepted only in valid positions.",
+      "version": "0.18.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.17.0"
+      ]
+    },
+    {
+      "title": "Base32 and Base45",
+      "deliverable": "Add available alphabet variants, whitespace policies and precise invalid-symbol diagnostics.",
+      "acceptance": "Case handling, trailing bits and incomplete blocks have separate strict and compatibility fixtures.",
+      "version": "0.19.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.18.0"
+      ]
+    },
+    {
+      "title": "Base58 and Bech32",
+      "deliverable": "Add leading-zero handling, checksummed forms and selected alphabet variants.",
+      "acceptance": "Checksums, mixed-case policy, network prefixes and maximum-length limits are enforced without ambiguous repair.",
+      "version": "0.20.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.19.0"
+      ]
+    },
+    {
+      "title": "Other base encodings",
+      "deliverable": "Add Base62, Base85, Base92 and generic-base operations from the inventory.",
+      "acceptance": "Exact alphabets, escaping and output lengths match fixtures; base conversion cannot request unbounded integer storage.",
+      "version": "0.21.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.20.0"
+      ]
+    },
+    {
+      "title": "URL and entities",
+      "deliverable": "Implement percent encoding/decoding, HTML entities and quoted-printable with explicit byte/text boundaries.",
+      "acceptance": "Reserved characters, malformed escapes and newline handling match documented profiles; results remain inert data.",
+      "version": "0.22.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.21.0"
+      ]
+    },
+    {
+      "title": "Unicode escapes and normalization",
+      "deliverable": "Add Unicode escapes, smart-character handling, normalization and versioned Unicode data.",
+      "acceptance": "Surrogate and invalid-sequence policy is explicit; normalization is tested at chunk boundaries and against table versions.",
+      "version": "0.23.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.22.0"
+      ]
+    },
+    {
+      "title": "Character encodings",
+      "deliverable": "Add an initial encoding-table pack, encode/decode operations and a complete remaining-encoding checklist.",
+      "acceptance": "Every enabled encoding has round-trip and lossy-mode tests; unimplemented table variants remain visible gaps.",
+      "version": "0.24.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.23.0"
+      ]
+    },
+    {
+      "title": "Text transformations",
+      "deliverable": "Add case transforms, trimming, diacritic removal, reverse, padding and character/word/line selection.",
+      "acceptance": "Byte, Unicode scalar, grapheme and legacy UTF-16 behaviors are not silently interchanged.",
+      "version": "0.25.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.24.0"
+      ]
+    },
+    {
+      "title": "Lines and collections",
+      "deliverable": "Add split/join, line filtering, numbering, deduplication and stable sorting.",
+      "acceptance": "Long lines and whole-input sorting obey budgets; ordering and empty-record semantics match fixtures.",
+      "version": "0.26.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.25.0"
+      ]
+    },
+    {
+      "title": "Search and replace core",
+      "deliverable": "Add literal search, bounded safe-regex mode, captures, replacement and highlighting as structured spans.",
+      "acceptance": "Safe-mode syntax is labelled distinctly from full compatibility regex; all highlighting is escaped by renderers.",
+      "version": "0.27.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.26.0"
+      ]
+    },
+    {
+      "title": "Bitwise and byte arithmetic",
+      "deliverable": "Add AND, OR, NOT, XOR, shifts, rotates, add/subtract and bounded brute-force primitives.",
+      "acceptance": "Key repetition, carry, signedness and integer overflow rules are deterministic across targets.",
+      "version": "0.28.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.27.0"
+      ]
+    },
+    {
+      "title": "Additional text encodings",
+      "deliverable": "Deliver Braille, Punycode, Modhex, COBS, caret/control encodings and MIME decoding from inventory.",
+      "acceptance": "Embedded zeroes, invalid framing, malformed labels and nested MIME limits have adversarial fixtures.",
+      "version": "0.29.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.28.0"
+      ]
+    },
+    {
+      "title": "Encoding completeness gate",
+      "deliverable": "Reconcile every basic encoding and text inventory row, including missing variants discovered during implementation.",
+      "acceptance": "A generated report separates complete operations, argument gaps and intentionally different safe defaults; no hidden omissions.",
+      "version": "0.30.0",
+      "phase": "B",
+      "status": "planned",
+      "depends_on": [
+        "0.29.0"
+      ]
+    },
+    {
+      "title": "Resource ledger",
+      "deliverable": "Account for input windows, queued bytes, operation state, output, cache, artifacts and provider allocations.",
+      "acceptance": "A deliberately expanding operation hits the declared budget; reported totals do not omit retained branch buffers.",
+      "version": "0.31.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.30.0"
+      ]
+    },
+    {
+      "title": "Backpressure scheduler",
+      "deliverable": "Add deterministic ready queues, bounded channels or equivalent credits and partial-output resumption.",
+      "acceptance": "Slow consumers cannot grow memory indefinitely; synchronous CPU work does not depend on an async task per node.",
+      "version": "0.32.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.31.0"
+      ]
+    },
+    {
+      "title": "Stream state machines",
+      "deliverable": "Standardize EOF, truncation, cancellation, errors, logical record boundaries and output completion.",
+      "acceptance": "Every state transition is tested; EOF is neither duplicated nor inferred from an arbitrary chunk boundary.",
+      "version": "0.33.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.32.0"
+      ]
+    },
+    {
+      "title": "Multi-input ports",
+      "deliverable": "Add constant parameters, immutable keys and synchronized data inputs with explicit joining policies.",
+      "acceptance": "Arrival order cannot change XOR/key semantics; unresolved inputs block safely and never grow unbounded buffers.",
+      "version": "0.34.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.33.0"
+      ]
+    },
+    {
+      "title": "Branches and joins",
+      "deliverable": "Implement graph regions, ordered fork/join, fan-out reference sharing and explicit merge policies.",
+      "acceptance": "Reconverging branches, slow consumers and early exits do not deadlock or lose output.",
+      "version": "0.35.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.34.0"
+      ]
+    },
+    {
+      "title": "Whole-input and seekable adapters",
+      "deliverable": "Support bounded accumulation, two-pass operations and seekable artifact readers.",
+      "acceptance": "Non-streaming operations declare their class and reject oversized jobs before uncontrolled allocation.",
+      "version": "0.36.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.35.0"
+      ]
+    },
+    {
+      "title": "Native artifact storage",
+      "deliverable": "Introduce staged artifacts, immutable manifests, range reads, leases and verified finalization on local disk.",
+      "acceptance": "Crash simulation cannot expose a partial artifact as complete; offsets and lengths are checked.",
+      "version": "0.37.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.36.0"
+      ]
+    },
+    {
+      "title": "Browser artifact storage",
+      "deliverable": "Implement IndexedDB metadata and optional OPFS chunk storage with memory/file fallbacks.",
+      "acceptance": "Firefox and other supported browsers work without optional APIs; quota failures never trigger silent upload.",
+      "version": "0.38.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.37.0"
+      ]
+    },
+    {
+      "title": "Storage transaction discipline",
+      "deliverable": "Add transaction-completion waits, chunk manifests, orphan cleanup and storage schema migrations.",
+      "acceptance": "Aborted transactions and interrupted writes are reported; no successful-write result precedes commit confirmation.",
+      "version": "0.39.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.38.0"
+      ]
+    },
+    {
+      "title": "Semantic content identities",
+      "deliverable": "Define canonical typed parameters, ordered ports, operation revision and chunk-independent input digests.",
+      "acceptance": "Repartitioning input leaves identity unchanged; different parameters or operation semantics never reuse an entry accidentally.",
+      "version": "0.40.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.39.0"
+      ]
+    },
+    {
+      "title": "Selective computation cache",
+      "deliverable": "Cache only deterministic, completed, permitted jobs using immutable input identities or completed spool hashes.",
+      "acceptance": "Unknown streams are not fully buffered merely to attempt an early hit; secrets and failed jobs are excluded by default.",
+      "version": "0.41.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.40.0"
+      ]
+    },
+    {
+      "title": "Cache lifecycle",
+      "deliverable": "Add per-workspace quotas, reference pinning, eviction, cancellation cleanup and encrypted-at-rest hooks where configured.",
+      "acceptance": "Eviction cannot delete a live artifact; cache misses and storage failures do not corrupt authoritative recipes.",
+      "version": "0.42.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.41.0"
+      ]
+    },
+    {
+      "title": "Bounded control-flow IR",
+      "deliverable": "Represent labels, conditional branches, bounded repeats, registers and subrecipes separately from DAG regions.",
+      "acceptance": "Graph-cycle rejection does not mistakenly eliminate required recipe loops; iteration/work budgets are enforced.",
+      "version": "0.43.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.42.0"
+      ]
+    },
+    {
+      "title": "Execution provenance",
+      "deliverable": "Record operation revisions, argument redactions, input references, diagnostics and exact reproducibility conditions.",
+      "acceptance": "Sensitive arguments stay out of logs; nondeterministic jobs cannot masquerade as reproducible cached results.",
+      "version": "0.44.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.43.0"
+      ]
+    },
+    {
+      "title": "Engine stress qualification",
+      "deliverable": "Exercise huge streams, joins, cancellation, expansion bombs, temporary storage exhaustion and corrupt artifacts.",
+      "acceptance": "Measured memory stays within each declared profile and errors remain recoverable; no universal constant-memory claim.",
+      "version": "0.45.0",
+      "phase": "C",
+      "status": "planned",
+      "depends_on": [
+        "0.44.0"
+      ]
+    },
+    {
+      "title": "Workspace shell",
+      "deliverable": "Add responsive resizable panes, themes, remembered non-sensitive preferences and command navigation.",
+      "acceptance": "Layout remains usable at narrow widths and high zoom; theme preference does not capture input content.",
+      "version": "0.46.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.45.0"
+      ]
+    },
+    {
+      "title": "Recipe editing",
+      "deliverable": "Add drag/drop with keyboard alternatives, undo/redo, duplicate, disable, reorder and parameter validation.",
+      "acceptance": "Editing preserves stable node identities and annotations; purely visual movement does not rerun processing.",
+      "version": "0.47.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.46.0"
+      ]
+    },
+    {
+      "title": "Generated operation inspector",
+      "deliverable": "Render argument forms, examples, defaults, capability warnings and semantic-version details from descriptors.",
+      "acceptance": "New descriptors require no handwritten duplicate API schema or form definition for supported field types.",
+      "version": "0.48.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.47.0"
+      ]
+    },
+    {
+      "title": "Safe automatic preview",
+      "deliverable": "Add debounced, bounded previews for permitted pure operations and an explicit full-run action.",
+      "acceptance": "Imported recipes and effectful/expensive operations never start merely because they were pasted or opened.",
+      "version": "0.49.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.48.0"
+      ]
+    },
+    {
+      "title": "Paged text viewer",
+      "deliverable": "Add incremental decoding, line indexing, search, selection and bounded text previews.",
+      "acceptance": "Large single lines and invalid UTF sequences do not force a full document string allocation.",
+      "version": "0.50.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.49.0"
+      ]
+    },
+    {
+      "title": "Virtual hex viewer",
+      "deliverable": "Add range-backed hex/ASCII viewing, exact offset navigation, selection and export.",
+      "acceptance": "Offsets above 32-bit ranges remain correct; UI memory is measured separately from underlying artifact storage.",
+      "version": "0.51.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.50.0"
+      ]
+    },
+    {
+      "title": "Structured and table viewers",
+      "deliverable": "Add lossless tree/table views, typed cell rendering, pagination and safe copy/export.",
+      "acceptance": "Large integers and binary values remain exact; untrusted strings cannot inject markup or spreadsheet formulas without warning.",
+      "version": "0.52.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.51.0"
+      ]
+    },
+    {
+      "title": "Graph editor",
+      "deliverable": "Add an optional visual graph for typed ports, branches, joins and structured control regions.",
+      "acceptance": "Invalid edges are rejected by the engine compiler, not only by visual UI rules; keyboard editing remains possible.",
+      "version": "0.53.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.52.0"
+      ]
+    },
+    {
+      "title": "Debugging controls",
+      "deliverable": "Add breakpoints, single-step, node diagnostics, intermediate inspection and cancellation status.",
+      "acceptance": "Viewing a preview does not prematurely terminate a full output stream or leak a secret artifact into history.",
+      "version": "0.54.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.53.0"
+      ]
+    },
+    {
+      "title": "Offset provenance UI",
+      "deliverable": "Show source/output correspondences where transformations provide them, including encoded-byte relationships.",
+      "acceptance": "Non-local or lossy transforms say unmappable/approximate explicitly rather than invent exact positions.",
+      "version": "0.55.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.54.0"
+      ]
+    },
+    {
+      "title": "Multiple inputs and batches",
+      "deliverable": "Add named inputs, file sets, deterministic batch ordering and per-item error policy.",
+      "acceptance": "A failed batch item cannot silently discard other results; files are not duplicated into UI state.",
+      "version": "0.56.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.55.0"
+      ]
+    },
+    {
+      "title": "Local recipe library",
+      "deliverable": "Add folders/tags, favourites, search, revision history and exportable local workspaces.",
+      "acceptance": "Persistence is opt-in for sensitive data; recipe export omits secrets and bulk inputs by default.",
+      "version": "0.57.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.56.0"
+      ]
+    },
+    {
+      "title": "Sharing and imports",
+      "deliverable": "Support recipe-only links/files, explicit input inclusion, compatibility links and import previews.",
+      "acceptance": "Users see capabilities and embedded data before running; history and URL exposure are clearly distinguished.",
+      "version": "0.58.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.57.0"
+      ]
+    },
+    {
+      "title": "Offline packaging",
+      "deliverable": "Cache versioned app assets and selected operation packs; provide a complete offline distribution option.",
+      "acceptance": "Offline operation availability is visible; service-worker upgrades cannot mix incompatible engine and pack revisions.",
+      "version": "0.59.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.58.0"
+      ]
+    },
+    {
+      "title": "Browser accessibility gate",
+      "deliverable": "Test keyboard, screen reader, focus, reduced motion, high contrast and touch-friendly responsive layouts.",
+      "acceptance": "Core tasks work without canvas-only controls, GPU acceleration, shared memory or a mouse.",
+      "version": "0.60.0",
+      "phase": "D",
+      "status": "planned",
+      "depends_on": [
+        "0.59.0"
+      ]
+    },
+    {
+      "title": "Public API specification",
+      "deliverable": "Stabilize pre-1.0 JSON envelopes, binary artifact routes, pagination, errors and capability negotiation.",
+      "acceptance": "Local and HTTP transports pass shared use-case tests; framework request types never enter the application layer.",
+      "version": "0.61.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.60.0"
+      ]
+    },
+    {
+      "title": "Job lifecycle API",
+      "deliverable": "Add queued/running/succeeded/failed/cancelled/expired states, progress events and resumable observation.",
+      "acceptance": "Reconnection and duplicated requests cannot create ambiguous terminal states or leak another principal’s job.",
+      "version": "0.62.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.61.0"
+      ]
+    },
+    {
+      "title": "Artifact transfer API",
+      "deliverable": "Add bounded uploads, integrity checks, range downloads, retention and explicit remote-consent UX.",
+      "acceptance": "Incomplete uploads remain staged; large files do not travel as JSON Base64 payloads by default.",
+      "version": "0.63.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.62.0"
+      ]
+    },
+    {
+      "title": "Repository contracts",
+      "deliverable": "Define atomic recipe revision saves, job leases, permissions, metadata search and transaction boundaries.",
+      "acceptance": "Contracts describe domain semantics instead of generic execute-SQL methods; an in-memory adapter passes the suite.",
+      "version": "0.64.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.63.0"
+      ]
+    },
+    {
+      "title": "PostgreSQL adapter",
+      "deliverable": "Implement parameterized queries, pool configuration and migrations outside core domain packages.",
+      "acceptance": "Recipes and jobs pass repository tests on an actual PostgreSQL instance; driver row types stay in the adapter.",
+      "version": "0.65.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.64.0"
+      ]
+    },
+    {
+      "title": "Database TLS seam",
+      "deliverable": "Wire tokio-postgres through a replaceable TLS connector and explicit identity/trust configuration.",
+      "acceptance": "Certificate validation failures are fatal; a mock provider proves database TLS is not permanently tied to rustls.",
+      "version": "0.66.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.65.0"
+      ]
+    },
+    {
+      "title": "Identity and sessions",
+      "deliverable": "Add server authentication, bounded sessions, token expiry, CSRF defenses and optional identity-provider integration.",
+      "acceptance": "Authorization is enforced server-side for every object; browser-local use remains anonymous and database-free.",
+      "version": "0.67.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.66.0"
+      ]
+    },
+    {
+      "title": "Workspace authorization",
+      "deliverable": "Add owner/editor/viewer roles, tenant scoping and explicit service-account permissions.",
+      "acceptance": "Cross-workspace and confused-deputy tests fail closed even without database-specific row-security features.",
+      "version": "0.68.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.67.0"
+      ]
+    },
+    {
+      "title": "Isolated execution workers",
+      "deliverable": "Move remotely submitted CPU work into restricted processes with memory, CPU, disk and egress policies.",
+      "acceptance": "A parser crash or non-cooperative job can be killed without taking down API or other tenants.",
+      "version": "0.69.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.68.0"
+      ]
+    },
+    {
+      "title": "Admission and quotas",
+      "deliverable": "Add principal/workspace job quotas, maximum artifacts, rate limits and queue backpressure.",
+      "acceptance": "Repeated tiny requests and large expanding jobs cannot bypass aggregate resource accounting.",
+      "version": "0.70.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.69.0"
+      ]
+    },
+    {
+      "title": "Durable jobs and leases",
+      "deliverable": "Add job leases, fencing tokens, worker heartbeat, retry eligibility and idempotency records.",
+      "acceptance": "Expired workers cannot finalize duplicate results; retry is prohibited for unsafe external side effects.",
+      "version": "0.71.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.70.0"
+      ]
+    },
+    {
+      "title": "Server networking policy",
+      "deliverable": "Centralize outbound connections, redirects, destination restrictions, credentials and HTTP limits.",
+      "acceptance": "SSRF, rebinding, private/metadata destinations and mapped-address cases are covered before user HTTP operations are public.",
+      "version": "0.72.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.71.0"
+      ]
+    },
+    {
+      "title": "Metadata-only observability",
+      "deliverable": "Add health, readiness, redacted audit events, bounded metrics and structured operational errors.",
+      "acceptance": "Default logs contain no raw inputs, outputs, secrets or high-cardinality user payload labels.",
+      "version": "0.73.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.72.0"
+      ]
+    },
+    {
+      "title": "Server deployment profile",
+      "deliverable": "Ship a hardened single-node deployment with reverse-proxy and direct-TLS options, backups and cleanup jobs.",
+      "acceptance": "Restart and restore drills preserve metadata/artifact consistency; insecure development defaults cannot silently become public.",
+      "version": "0.74.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.73.0"
+      ]
+    },
+    {
+      "title": "Server security gate",
+      "deliverable": "Test authentication, object authorization, uploads, worker isolation, cancellation and resource abuse.",
+      "acceptance": "Public remote execution stays disabled until isolation and quota tests pass; local web mode remains independently releasable.",
+      "version": "0.75.0",
+      "phase": "E",
+      "status": "planned",
+      "depends_on": [
+        "0.74.0"
+      ]
+    },
+    {
+      "title": "JSON and CSV foundations",
+      "deliverable": "Add strict/lossless JSON, CSV conversion, configurable delimiters, quoting and invalid-input diagnostics.",
+      "acceptance": "Large integers, duplicate-key policy, multiline fields and final newline behavior are fixture-tested.",
+      "version": "0.76.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.75.0"
+      ]
+    },
+    {
+      "title": "XML and HTML data",
+      "deliverable": "Add XML/HTML extraction, formatting and escaping with external entity/network access disabled by default.",
+      "acceptance": "Entity expansion, excessive depth and malformed documents fail within budgets; renderers receive inert data.",
+      "version": "0.77.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.76.0"
+      ]
+    },
+    {
+      "title": "XPath and CSS selectors",
+      "deliverable": "Implement the selected reference dialects through isolated query providers and result adapters.",
+      "acceptance": "Namespaces, selector syntax and output formatting match compatibility fixtures; unsupported syntax is not silently simplified.",
+      "version": "0.78.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.77.0"
+      ]
+    },
+    {
+      "title": "JSON query dialects",
+      "deliverable": "Deliver the required JSONPath, JMESPath, jq/JSONata-style capabilities actually present in the pinned inventory.",
+      "acceptance": "Each discovered language has its own dialect/version tests; equivalent branding is not accepted as compatibility evidence.",
+      "version": "0.79.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.78.0"
+      ]
+    },
+    {
+      "title": "YAML and Rison",
+      "deliverable": "Add parse/emit and JSON conversions with explicit type inference and alias behavior.",
+      "acceptance": "Alias bombs, implicit scalar differences and non-string mapping keys are handled according to documented profiles.",
+      "version": "0.80.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.79.0"
+      ]
+    },
+    {
+      "title": "MessagePack and CBOR",
+      "deliverable": "Add lossless tagged/binary/numeric mappings and round-trip conversions.",
+      "acceptance": "Indefinite lengths, nesting, duplicate keys and extension types are bounded and represented without accidental loss.",
+      "version": "0.81.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.80.0"
+      ]
+    },
+    {
+      "title": "AMF and Avro",
+      "deliverable": "Add the pinned AMF variants and Avro-to-JSON requirements behind separate provider modules.",
+      "acceptance": "Unsupported schema features become tracked gaps; hostile references and lengths cannot escape limits.",
+      "version": "0.82.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.81.0"
+      ]
+    },
+    {
+      "title": "TLV and binary structures",
+      "deliverable": "Add configurable TLV parsing, field bounds and related binary-to-structured helpers from inventory.",
+      "acceptance": "Truncation, overlapping lengths, large tags and signed/unsigned decoding have negative tests.",
+      "version": "0.83.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.82.0"
+      ]
+    },
+    {
+      "title": "Code formatting and minification",
+      "deliverable": "Add the inventoried language beautifiers/minifiers using syntax-aware providers where semantics require them.",
+      "acceptance": "Strings, comments, regex literals and template syntax survive correctly; substitutions are not advertised as parsers.",
+      "version": "0.84.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.83.0"
+      ]
+    },
+    {
+      "title": "Mathematics and statistics",
+      "deliverable": "Add bounded integer arithmetic, modular functions, aggregates and statistical operations.",
+      "acceptance": "Precision, divide-by-zero, overflow and ordering are explicit and consistent across browser/native targets.",
+      "version": "0.85.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.84.0"
+      ]
+    },
+    {
+      "title": "Set and combinatorial operations",
+      "deliverable": "Add unions, intersections, differences, Cartesian products, power sets and permutation-style utilities.",
+      "acceptance": "Output cardinality is estimated and capped before exponential expansion; ordering matches fixtures.",
+      "version": "0.86.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.85.0"
+      ]
+    },
+    {
+      "title": "Time and identifiers",
+      "deliverable": "Add timestamp formats, duration helpers, UUID/object-ID interpretation and versioned time-zone data where required.",
+      "acceptance": "Invalid dates, offset transitions, precision and deterministic clock injection have tests.",
+      "version": "0.87.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.86.0"
+      ]
+    },
+    {
+      "title": "Distances and miscellaneous utilities",
+      "deliverable": "Add unit conversions, geographical calculations, formatting and remaining small utility operations.",
+      "acceptance": "Numeric units, coordinate ranges and rounding are explicit; map/network resources require declared capability or offline assets.",
+      "version": "0.88.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.87.0"
+      ]
+    },
+    {
+      "title": "Remaining text and encoding tables",
+      "deliverable": "Close missing code pages, language data, tokenization and utility variants discovered by the inventory.",
+      "acceptance": "Every claimed encoding/dialect identifies its data-table version and has native/browser fixtures.",
+      "version": "0.89.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.88.0"
+      ]
+    },
+    {
+      "title": "Structured-format gate",
+      "deliverable": "Run the full query/format corpus and publish per-argument, per-platform parity results.",
+      "acceptance": "Unsupported syntax remains a release blocker for 1.0; the plan extends rather than hiding difficult languages.",
+      "version": "0.90.0",
+      "phase": "F",
+      "status": "planned",
+      "depends_on": [
+        "0.89.0"
+      ]
+    },
+    {
+      "title": "Compression provider contract",
+      "deliverable": "Standardize streaming encoder/decoder state, trailing-data policy, dictionary limits and byte counters.",
+      "acceptance": "Truncated streams and short output buffers resume or fail deterministically without hiding retained state.",
+      "version": "0.91.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.90.0"
+      ]
+    },
+    {
+      "title": "Deflate",
+      "deliverable": "Add raw Deflate compression/decompression and reference parameter mapping.",
+      "acceptance": "Stored, fixed and dynamic blocks pass reference fixtures across all tested chunk boundaries.",
+      "version": "0.92.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.91.0"
+      ]
+    },
+    {
+      "title": "Zlib",
+      "deliverable": "Add wrappers, dictionary handling and checksums with strict and compatibility framing policies.",
+      "acceptance": "Header, dictionary-ID and checksum failures are distinguished; limits include dictionary memory.",
+      "version": "0.93.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.92.0"
+      ]
+    },
+    {
+      "title": "Gzip",
+      "deliverable": "Add gzip metadata, concatenated members, checksums and deterministic-output options.",
+      "acceptance": "Member boundaries and trailing garbage follow documented semantics; preview cannot skip final integrity validation.",
+      "version": "0.94.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.93.0"
+      ]
+    },
+    {
+      "title": "Bzip2",
+      "deliverable": "Deliver required compression/decompression variants through a reviewed provider.",
+      "acceptance": "Block limits, corrupt indexes and expansion attacks are tested in browser and native builds.",
+      "version": "0.95.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.94.0"
+      ]
+    },
+    {
+      "title": "LZMA and containers",
+      "deliverable": "Add the inventory’s LZMA/container variants with configurable but bounded dictionaries.",
+      "acceptance": "Dictionary size is validated before allocation; unsupported container variants remain named gaps.",
+      "version": "0.96.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.95.0"
+      ]
+    },
+    {
+      "title": "LZ4",
+      "deliverable": "Add required block/frame operations, checksums and content-size handling.",
+      "acceptance": "Frame flags, dictionaries, short blocks and independent/dependent block behavior match fixtures.",
+      "version": "0.97.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.96.0"
+      ]
+    },
+    {
+      "title": "LZ string encodings",
+      "deliverable": "Add LZ-based string and transport variants present in the reference.",
+      "acceptance": "UTF-16/code-unit behavior is reproduced explicitly rather than replaced with a superficially similar byte codec.",
+      "version": "0.98.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.97.0"
+      ]
+    },
+    {
+      "title": "Platform compression families",
+      "deliverable": "Add NT/XPRESS and other inventoried platform-specific formats without calling local shell utilities.",
+      "acceptance": "Published/reference samples and malformed streams work identically in the browser and native engine.",
+      "version": "0.99.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.98.0"
+      ]
+    },
+    {
+      "title": "ZIP listing and extraction",
+      "deliverable": "Add multi-entry archives, data descriptors, name encodings and password variants required by inventory.",
+      "acceptance": "Entry count, expansion, encryption errors and path normalization are bounded; extraction never writes arbitrary host paths.",
+      "version": "0.100.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.99.0"
+      ]
+    },
+    {
+      "title": "ZIP creation",
+      "deliverable": "Add selected compression methods, metadata mapping and deterministic archive options.",
+      "acceptance": "Round trips preserve required names and bytes; archives larger than basic format limits use supported extensions or fail clearly.",
+      "version": "0.101.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.100.0"
+      ]
+    },
+    {
+      "title": "TAR operations",
+      "deliverable": "Add listing, extraction and creation for required header variants and links.",
+      "acceptance": "Traversal, absolute paths, devices, symlinks and hardlinks cannot bypass the artifact namespace.",
+      "version": "0.102.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.101.0"
+      ]
+    },
+    {
+      "title": "Nested archive workflows",
+      "deliverable": "Connect archive outputs to file collections and bounded recursive processing.",
+      "acceptance": "Total nesting, members, bytes and work are capped across the whole job, not reset per nested archive.",
+      "version": "0.103.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.102.0"
+      ]
+    },
+    {
+      "title": "Archive UX and integrity",
+      "deliverable": "Add per-member inspection, safe selection, artifact exports and verification status.",
+      "acceptance": "Incomplete or checksum-failed outputs never appear as verified; selected member export preserves authorization.",
+      "version": "0.104.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.103.0"
+      ]
+    },
+    {
+      "title": "Compression qualification",
+      "deliverable": "Close all compression inventory gaps and run corpus-based fuzzing and expansion stress tests.",
+      "acceptance": "Every provider declares measured memory profiles; unsupported methods cannot be omitted from the parity denominator.",
+      "version": "0.105.0",
+      "phase": "G",
+      "status": "planned",
+      "depends_on": [
+        "0.104.0"
+      ]
+    },
+    {
+      "title": "Crypto provider boundary",
+      "deliverable": "Define key/nonce/tag types, randomness injection, algorithm identifiers and capability metadata.",
+      "acceptance": "Raw keys are redacted and excluded from default persistence/cache; no application transport depends on operation-pack crypto.",
+      "version": "0.106.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.105.0"
+      ]
+    },
+    {
+      "title": "SHA-2 and HMAC",
+      "deliverable": "Add required SHA-2 variants, HMAC parameters and streaming hash operations.",
+      "acceptance": "Known-answer vectors, long inputs and arbitrary partitions agree across targets.",
+      "version": "0.107.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.106.0"
+      ]
+    },
+    {
+      "title": "SHA-3 and Keccak",
+      "deliverable": "Add distinct SHA-3/Keccak variants and SHAKE-style extendable outputs where in scope.",
+      "acceptance": "Domain separation and output length are explicit; similar algorithm names cannot be substituted.",
+      "version": "0.108.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.107.0"
+      ]
+    },
+    {
+      "title": "BLAKE families",
+      "deliverable": "Add required BLAKE variants and optional BLAKE3 enhancement through narrow provider features.",
+      "acceptance": "Keyed/context modes and tree boundaries have vectors; provider upgrades cannot silently alter cache identities.",
+      "version": "0.109.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.108.0"
+      ]
+    },
+    {
+      "title": "Checksums and CRCs",
+      "deliverable": "Add inventory checksum families and parameterized CRC configurations.",
+      "acceptance": "Polynomial reflection, initial/final values and output byte order are independently tested.",
+      "version": "0.110.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.109.0"
+      ]
+    },
+    {
+      "title": "KDF primitives",
+      "deliverable": "Add PBKDF2, HKDF and related modern derivations with parameter ceilings.",
+      "acceptance": "Salt/info distinctions, output bounds and excessive iteration requests are tested; secrets remain tainted.",
+      "version": "0.111.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.110.0"
+      ]
+    },
+    {
+      "title": "Password derivation",
+      "deliverable": "Add bcrypt/scrypt and a separately labelled Argon2 enhancement when provider review permits.",
+      "acceptance": "CPU/memory costs are validated before scheduling; compatibility variants and truncation rules are explicit.",
+      "version": "0.112.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.111.0"
+      ]
+    },
+    {
+      "title": "AES block modes",
+      "deliverable": "Add inventoried AES modes, key lengths, padding and byte-format mappings.",
+      "acceptance": "Standard vectors and negative padding cases pass; insecure modes are analysis tools, never default application encryption.",
+      "version": "0.113.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.112.0"
+      ]
+    },
+    {
+      "title": "Authenticated encryption",
+      "deliverable": "Add required AEAD forms with staged decryption output and explicit tag verification.",
+      "acceptance": "A failed tag releases no plaintext artifact; all input/tag/nonce changes have negative vectors.",
+      "version": "0.114.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.113.0"
+      ]
+    },
+    {
+      "title": "AES key wrap",
+      "deliverable": "Add wrap/unwrap variants and integrity checks required by the reference.",
+      "acceptance": "Invalid key lengths, padding and integrity failures do not expose partially unwrapped material.",
+      "version": "0.115.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.114.0"
+      ]
+    },
+    {
+      "title": "ChaCha and Poly1305",
+      "deliverable": "Add exact ChaCha variants, counters and authenticated combinations when in scope.",
+      "acceptance": "Counter overflow and nonce construction are checked; variant differences remain visible in descriptors.",
+      "version": "0.116.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.115.0"
+      ]
+    },
+    {
+      "title": "Salsa family",
+      "deliverable": "Add Salsa20/XSalsa20 operations with exact key, nonce and counter semantics.",
+      "acceptance": "Known vectors and boundary conditions work in streaming and one-shot paths.",
+      "version": "0.117.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.116.0"
+      ]
+    },
+    {
+      "title": "Fernet and authenticated wrappers",
+      "deliverable": "Add Fernet and related required wrappers with timestamp and token-format handling.",
+      "acceptance": "Authentication precedes plaintext publication; injected clock and expiry policy are testable.",
+      "version": "0.118.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.117.0"
+      ]
+    },
+    {
+      "title": "Random and prime generation",
+      "deliverable": "Add explicit deterministic PRNG operations and secure random/prime generation through distinct providers.",
+      "acceptance": "Seeded analysis tools are not mistaken for CSPRNG; entropy failure is fatal where secure randomness is required.",
+      "version": "0.119.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.118.0"
+      ]
+    },
+    {
+      "title": "Modern crypto qualification",
+      "deliverable": "Run independent vectors, malformed inputs, cross-provider comparisons and secret-lifecycle checks.",
+      "acceptance": "No known high-severity provider issue remains; side-channel claims are limited to evidence and platform capabilities.",
+      "version": "0.120.0",
+      "phase": "H",
+      "status": "planned",
+      "depends_on": [
+        "0.119.0"
+      ]
+    },
+    {
+      "title": "Legacy safety separation",
+      "deliverable": "Package historical algorithms with explicit analysis labels and separate features from application security.",
+      "acceptance": "Enabling every operation cannot weaken HTTPS, sessions, storage encryption or identity verification.",
+      "version": "0.121.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.120.0"
+      ]
+    },
+    {
+      "title": "DES and Triple DES",
+      "deliverable": "Add modes, padding and historical key conventions required by reference fixtures.",
+      "acceptance": "Weak-key and parity-bit handling is documented; outputs match independent known-answer tests.",
+      "version": "0.122.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.121.0"
+      ]
+    },
+    {
+      "title": "Blowfish and RC2",
+      "deliverable": "Deliver required modes and parameter variants through reviewed implementations.",
+      "acceptance": "Key expansion limits, effective key bits and legacy padding have positive and negative fixtures.",
+      "version": "0.123.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.122.0"
+      ]
+    },
+    {
+      "title": "RC4 and Rabbit",
+      "deliverable": "Add stream variants, RC4-drop controls and exact byte semantics.",
+      "acceptance": "State persists across chunks; skip/drop parameters cannot cause uncontrolled work.",
+      "version": "0.124.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.123.0"
+      ]
+    },
+    {
+      "title": "TEA family",
+      "deliverable": "Add TEA, XTEA and XXTEA with explicit word order and length conventions.",
+      "acceptance": "Short messages, padding and unusual variants have independently sourced compatibility cases.",
+      "version": "0.125.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.124.0"
+      ]
+    },
+    {
+      "title": "Additional block ciphers",
+      "deliverable": "Add required RC6, Twofish, PRESENT and other inventoried block families.",
+      "acceptance": "Each algorithm/variant is separately tracked; an unavailable provider causes more 0.x work, not an unlabelled replacement.",
+      "version": "0.126.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.125.0"
+      ]
+    },
+    {
+      "title": "SM4 and GOST encryption",
+      "deliverable": "Add required modes and parameter sets with explicit identifiers.",
+      "acceptance": "Parameter-set selection is reproducible; names alone cannot choose an incompatible implementation.",
+      "version": "0.127.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.126.0"
+      ]
+    },
+    {
+      "title": "Ascon variants",
+      "deliverable": "Add the exact Ascon versions exposed by the pinned reference and separately identify newer variants.",
+      "acceptance": "Algorithm revision, nonce/tag lengths and byte-order differences are verified rather than conflated.",
+      "version": "0.128.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.127.0"
+      ]
+    },
+    {
+      "title": "Historical hashes",
+      "deliverable": "Add required MD/SHA-0/RIPEMD and other legacy digest families.",
+      "acceptance": "Every inventoried variant has test vectors; obsolete digests remain labelled unsuitable for modern integrity security.",
+      "version": "0.129.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.128.0"
+      ]
+    },
+    {
+      "title": "Specialist hashes",
+      "deliverable": "Add inventoried GOST/SM3/Whirlpool/Snefru/HAS-160 and other uncommon digests as applicable.",
+      "acceptance": "Provider absence, missing variants and licensing restrictions stay visible until resolved.",
+      "version": "0.130.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.129.0"
+      ]
+    },
+    {
+      "title": "Fuzzy and similarity hashes",
+      "deliverable": "Add the reference’s fuzzy/context-triggered hashes and comparison utilities.",
+      "acceptance": "Similarity scores, block sizes and edge cases match reference behavior; results are not represented as cryptographic proofs.",
+      "version": "0.131.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.130.0"
+      ]
+    },
+    {
+      "title": "Classical substitution",
+      "deliverable": "Add ROT families, Vigenere, Morse, Bacon, Affine, Atbash, A1Z26, substitution and related inventory entries.",
+      "acceptance": "Alphabet, case, punctuation and non-ASCII policies are explicit and fixture-tested.",
+      "version": "0.132.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.131.0"
+      ]
+    },
+    {
+      "title": "Classical transposition",
+      "deliverable": "Add Bifid, Rail Fence, Caesar Box and other inventoried transposition/novel encodings.",
+      "acceptance": "Incomplete grids, key validation and reverse transforms preserve the required conventions.",
+      "version": "0.133.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.132.0"
+      ]
+    },
+    {
+      "title": "Historical machines",
+      "deliverable": "Add Enigma/Typex/Lorenz/SIGABA and associated analysis tools such as Bombe/Colossus when inventoried.",
+      "acceptance": "Machine settings and known historical/reference fixtures agree; expensive searches have strict work budgets.",
+      "version": "0.134.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.133.0"
+      ]
+    },
+    {
+      "title": "Legacy completeness gate",
+      "deliverable": "Deliver remaining EVP/CipherSaber/Citrix/LS47 and other residual legacy entries, splitting releases as necessary.",
+      "acceptance": "Generated coverage shows no unowned long-tail algorithm or argument gap; all required browser paths are tested.",
+      "version": "0.135.0",
+      "phase": "I",
+      "status": "planned",
+      "depends_on": [
+        "0.134.0"
+      ]
+    },
+    {
+      "title": "ASN.1 and OIDs",
+      "deliverable": "Add bounded BER/DER parsing, ASN.1 display and OID conversions required by inventory.",
+      "acceptance": "Excessive lengths, recursion, non-canonical encodings and truncated objects have precise failures.",
+      "version": "0.136.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.135.0"
+      ]
+    },
+    {
+      "title": "PEM and key representations",
+      "deliverable": "Add PEM/hex/JWK conversions and typed private/public key containers.",
+      "acceptance": "Key types, curves, leading zeros and private-field redaction survive round trips.",
+      "version": "0.137.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.136.0"
+      ]
+    },
+    {
+      "title": "X.509 parsing",
+      "deliverable": "Add certificate fields, extensions, public-key extraction, certificate-bundle parsing and required display forms; pin the adopted current-source delta.",
+      "acceptance": "Parsing success is never labelled certificate trust; unknown extensions remain available as data.",
+      "version": "0.138.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.137.0"
+      ]
+    },
+    {
+      "title": "CRLs and CSRs",
+      "deliverable": "Add revocation-list and signing-request parsing with explicit signature-verification actions.",
+      "acceptance": "Invalid signatures and malformed fields are distinguished from mere parsing errors.",
+      "version": "0.139.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.138.0"
+      ]
+    },
+    {
+      "title": "RSA operations",
+      "deliverable": "Add key generation, encrypt/decrypt and sign/verify with exact padding/hash options.",
+      "acceptance": "Entropy, key-size budgets, padding failures and reference compatibility are tested; no raw-secret logging.",
+      "version": "0.140.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.139.0"
+      ]
+    },
+    {
+      "title": "ECDSA operations",
+      "deliverable": "Add selected curves, key generation, signing/verification and signature-format conversion.",
+      "acceptance": "DER versus fixed-width forms, low-S policy and invalid curve points are handled explicitly.",
+      "version": "0.141.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.140.0"
+      ]
+    },
+    {
+      "title": "SM2 and GOST signatures",
+      "deliverable": "Add inventoried public-key operations, identity parameters and GOST wrap/sign variants.",
+      "acceptance": "Parameter sets and user-identity fields have vectors; missing provider variants remain blocking gaps.",
+      "version": "0.142.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.141.0"
+      ]
+    },
+    {
+      "title": "OpenPGP parsing and keys",
+      "deliverable": "Add packet/key inspection and generation with the pinned reference’s capability matrix.",
+      "acceptance": "Unsupported packets or algorithms are reported precisely; packet lengths and recursion are bounded.",
+      "version": "0.143.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.142.0"
+      ]
+    },
+    {
+      "title": "OpenPGP encryption",
+      "deliverable": "Add encrypt/decrypt and key-selection behavior for required OpenPGP formats.",
+      "acceptance": "Integrity-protected output stays staged until verified; legacy insecure forms are clearly identified.",
+      "version": "0.144.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.143.0"
+      ]
+    },
+    {
+      "title": "OpenPGP signatures",
+      "deliverable": "Add sign/verify and combined encrypt/sign workflows with separate validity and trust reports.",
+      "acceptance": "Detached/embedded signatures, canonical text and multi-signature cases match fixtures.",
+      "version": "0.145.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.144.0"
+      ]
+    },
+    {
+      "title": "SSH key analysis",
+      "deliverable": "Add host-key parsing, fingerprints and inventoried conversions.",
+      "acceptance": "Algorithm distinctions and malformed length fields are bounded; no SSH connection is implied by parsing a key.",
+      "version": "0.146.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.145.0"
+      ]
+    },
+    {
+      "title": "JWT and token inspection",
+      "deliverable": "Add decode/sign/verify with explicit permitted algorithms and key types.",
+      "acceptance": "Decode never implies validation; algorithm confusion, missing signatures and key-type mismatch tests fail closed.",
+      "version": "0.147.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.146.0"
+      ]
+    },
+    {
+      "title": "Signed session formats",
+      "deliverable": "Add Flask-session and other inventoried signed-container workflows.",
+      "acceptance": "Timestamp, compression, secret encoding and serializer variants are fixture-tested without persisting signing secrets.",
+      "version": "0.148.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.147.0"
+      ]
+    },
+    {
+      "title": "Key and secret UX",
+      "deliverable": "Add ephemeral secret slots, import warnings, copy/export confirmation and reproducibility redaction.",
+      "acceptance": "Recipe sharing cannot accidentally include private keys; browser/OS memory erasure limitations are documented honestly.",
+      "version": "0.149.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.148.0"
+      ]
+    },
+    {
+      "title": "Public-key qualification",
+      "deliverable": "Run independent vectors, malformed corpora, interoperability and browser/native conformance.",
+      "acceptance": "Every advertised algorithm/format is tested; a successful parse, a valid signature and a trusted identity remain distinct states.",
+      "version": "0.150.0",
+      "phase": "J",
+      "status": "planned",
+      "depends_on": [
+        "0.149.0"
+      ]
+    },
+    {
+      "title": "IP and network primitives",
+      "deliverable": "Add IP-format conversion, subnets, CIDR calculations and related byte/address operations.",
+      "acceptance": "IPv4/IPv6, mapped addresses and boundary masks have fixtures without accidental outbound traffic.",
+      "version": "0.151.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.150.0"
+      ]
+    },
+    {
+      "title": "URL and domain analysis",
+      "deliverable": "Add URL parsing, extraction, defang/refang and domain helpers from inventory.",
+      "acceptance": "Decoding order and Unicode display cannot silently change a network destination.",
+      "version": "0.152.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.151.0"
+      ]
+    },
+    {
+      "title": "HTTP data parsing",
+      "deliverable": "Add request/response, headers, cookies, content metadata and related format operations.",
+      "acceptance": "Ambiguous framing is reported; parsing hostile HTTP never routes it through the live service parser as a trusted request.",
+      "version": "0.153.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.152.0"
+      ]
+    },
+    {
+      "title": "User HTTP request operation",
+      "deliverable": "Expose explicit browser-fetch and controlled native-gateway modes with credential/redirection policy.",
+      "acceptance": "Browser CORS limitations are visible; remote mode passes SSRF and egress tests and never runs automatically on import.",
+      "version": "0.154.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.153.0"
+      ]
+    },
+    {
+      "title": "DNS data and queries",
+      "deliverable": "Add required DNS parsing/lookup capabilities with separate local-data and network modes.",
+      "acceptance": "Network use requires consent/capability; responses, name compression and timeout/work limits are bounded.",
+      "version": "0.155.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.154.0"
+      ]
+    },
+    {
+      "title": "TLS and SSH fingerprints",
+      "deliverable": "Add inventoried JA3/JA4/HASSH and related passive fingerprint operations.",
+      "acceptance": "Fingerprint versions and normalization rules are explicit; analysis of legacy handshakes does not enable legacy TLS transport.",
+      "version": "0.156.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.155.0"
+      ]
+    },
+    {
+      "title": "Packet and protocol extraction",
+      "deliverable": "Add required packet/protocol field parsers, protobuf/varint helpers and payload extraction.",
+      "acceptance": "Truncation, nested lengths and reassembly limits are tested; unsupported protocol revisions are reported.",
+      "version": "0.157.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.156.0"
+      ]
+    },
+    {
+      "title": "File identification",
+      "deliverable": "Add versioned signatures, confidence explanations, strings and binary structure probes.",
+      "acceptance": "Detection is labelled heuristic where appropriate; input-controlled paths or extensions do not override byte evidence.",
+      "version": "0.158.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.157.0"
+      ]
+    },
+    {
+      "title": "Executable analysis",
+      "deliverable": "Add the inventoried executable formats and section/header extraction with bounded reads.",
+      "acceptance": "Corrupt offsets and huge section counts fail safely; extracted code is never executed.",
+      "version": "0.159.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.158.0"
+      ]
+    },
+    {
+      "title": "Disassembly",
+      "deliverable": "Integrate the required architectures/modes through isolated providers and structured instruction results.",
+      "acceptance": "Native/browser outputs and syntax options match the selected reference; architecture support is enumerated, not implied.",
+      "version": "0.160.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.159.0"
+      ]
+    },
+    {
+      "title": "YARA language support",
+      "deliverable": "Deliver the exact required YARA syntax/module behavior and compiler diagnostics.",
+      "acceptance": "Rule corpus covers modules, strings, conditions and language variants; a subset implementation cannot claim full parity.",
+      "version": "0.161.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.160.0"
+      ]
+    },
+    {
+      "title": "YARA execution controls",
+      "deliverable": "Add match offsets, metadata, warnings, cost limits and killable worker execution.",
+      "acceptance": "Hostile rules and many matches respect budgets; scanning requires no filesystem/network privileges.",
+      "version": "0.162.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.161.0"
+      ]
+    },
+    {
+      "title": "Carving and extraction",
+      "deliverable": "Add byte signatures, embedded artifact carving and bounded output collections.",
+      "acceptance": "Overlapping candidates, nested files and excessive matches cannot exceed job-wide quotas.",
+      "version": "0.163.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.162.0"
+      ]
+    },
+    {
+      "title": "Forensic analysis views",
+      "deliverable": "Add entropy maps, byte frequency, comparisons and inventoried statistical/search helpers.",
+      "acceptance": "Sampling versus full analysis is labelled; results are deterministic for a fixed input and algorithm revision.",
+      "version": "0.164.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.163.0"
+      ]
+    },
+    {
+      "title": "Forensic completeness gate",
+      "deliverable": "Reconcile network/forensic inventory, capabilities, passive/active distinctions and offline availability.",
+      "acceptance": "No browser-local reference capability is silently replaced by a server-only implementation.",
+      "version": "0.165.0",
+      "phase": "K",
+      "status": "planned",
+      "depends_on": [
+        "0.164.0"
+      ]
+    },
+    {
+      "title": "Media provider boundary",
+      "deliverable": "Define bounded image/frame/audio artifacts, metadata, dimensions and deterministic decode policy.",
+      "acceptance": "Pixel/frame/duration limits are checked before allocation; corrupted metadata cannot request unbounded buffers.",
+      "version": "0.166.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.165.0"
+      ]
+    },
+    {
+      "title": "Image decoding",
+      "deliverable": "Add every required input image format and animated variant via reviewed feature-selected providers.",
+      "acceptance": "Browser/native decode fixtures record color, alpha and frame semantics; unavailable codecs remain explicit gaps.",
+      "version": "0.167.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.166.0"
+      ]
+    },
+    {
+      "title": "Image encoding",
+      "deliverable": "Add reference output formats, metadata policy and deterministic options where possible.",
+      "acceptance": "Quality settings and byte-level nondeterminism are documented; exact output comparisons use the right compatibility criteria.",
+      "version": "0.168.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.167.0"
+      ]
+    },
+    {
+      "title": "Geometry transforms",
+      "deliverable": "Add resize, crop, rotate, flip and related inventoried image operations.",
+      "acceptance": "Coordinate bounds, interpolation options, orientation and very large dimensions are fixture-tested.",
+      "version": "0.169.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.168.0"
+      ]
+    },
+    {
+      "title": "Color transforms",
+      "deliverable": "Add channels, grayscale, inversion, brightness/contrast and required color operations.",
+      "acceptance": "Color space, alpha premultiplication and clamping rules are explicit and reproducible.",
+      "version": "0.170.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.169.0"
+      ]
+    },
+    {
+      "title": "Filters and effects",
+      "deliverable": "Add required blur/sharpen/convolution and other image effects from inventory.",
+      "acceptance": "Kernel costs and edge behavior are bounded; arbitrary filter input cannot cause uncontrolled GPU/CPU allocation.",
+      "version": "0.171.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.170.0"
+      ]
+    },
+    {
+      "title": "Image composition",
+      "deliverable": "Add layering, text/annotation and inventoried composition helpers.",
+      "acceptance": "Fonts/assets are local and versioned; untrusted text remains inert and export respects declared dimensions.",
+      "version": "0.172.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.171.0"
+      ]
+    },
+    {
+      "title": "Steganography and bit planes",
+      "deliverable": "Add required image byte/bit extraction and embedding operations.",
+      "acceptance": "Capacity limits, channel order and malformed payloads have round-trip and negative tests.",
+      "version": "0.173.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.172.0"
+      ]
+    },
+    {
+      "title": "QR and barcode generation",
+      "deliverable": "Add required symbologies and rendering options.",
+      "acceptance": "Payload capacity, error correction and invalid character sets are checked against reference fixtures.",
+      "version": "0.174.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.173.0"
+      ]
+    },
+    {
+      "title": "QR and barcode recognition",
+      "deliverable": "Add local recognition for inventoried formats with deterministic input preprocessing.",
+      "acceptance": "Recognition failure is explicit; no image is uploaded to a third-party recognition service.",
+      "version": "0.175.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.174.0"
+      ]
+    },
+    {
+      "title": "OCR",
+      "deliverable": "Add a local OCR provider and required language/model pack handling with bounded worker execution.",
+      "acceptance": "Model availability, accuracy corpus, memory costs and browser support are measured; absent languages are tracked gaps.",
+      "version": "0.176.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.175.0"
+      ]
+    },
+    {
+      "title": "Image and audio metadata",
+      "deliverable": "Add EXIF/ID3 and required metadata extraction/editing or display operations.",
+      "acceptance": "Nested metadata, thumbnails and encoding variants are bounded; metadata is not interpreted as trusted markup.",
+      "version": "0.177.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.176.0"
+      ]
+    },
+    {
+      "title": "Audio and other media operations",
+      "deliverable": "Deliver inventoried playback/visualization/transforms using provider or browser presentation adapters.",
+      "acceptance": "User activation requirements and codec support are visible; playback is never automatic for imported recipes.",
+      "version": "0.178.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.177.0"
+      ]
+    },
+    {
+      "title": "PDF/HTML/media preview",
+      "deliverable": "Add the presentation behaviors actually required by the reference, with isolated preview surfaces and download fallback.",
+      "acceptance": "Active content cannot access app origin, secrets or APIs; no unsupported claim of a full Rust PDF renderer.",
+      "version": "0.179.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.178.0"
+      ]
+    },
+    {
+      "title": "Media qualification",
+      "deliverable": "Close format/argument gaps, compare outputs using declared tolerances and test malicious media corpora.",
+      "acceptance": "Baseline use works without WebGPU; optional acceleration produces equivalent results within documented tolerances.",
+      "version": "0.180.0",
+      "phase": "L",
+      "status": "planned",
+      "depends_on": [
+        "0.179.0"
+      ]
+    },
+    {
+      "title": "Compatibility interpreter",
+      "deliverable": "Complete execution of imported reference recipe sequences using the bounded control-flow IR.",
+      "acceptance": "Recipes with disabled operations, defaults and mixed data types preserve documented semantics.",
+      "version": "0.181.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.180.0"
+      ]
+    },
+    {
+      "title": "Fork and Merge compatibility",
+      "deliverable": "Map reference branch/delimiter behavior to typed graph regions and ordered joins.",
+      "acceptance": "Empty branches, delimiters and nested forks match fixtures independently of runtime chunking.",
+      "version": "0.182.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.181.0"
+      ]
+    },
+    {
+      "title": "Subsection processing",
+      "deliverable": "Add bounded subsequence selection and reinsertion with exact offset/text semantics.",
+      "acceptance": "Boundary, Unicode and changing-output-length cases preserve the required surrounding data.",
+      "version": "0.183.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.182.0"
+      ]
+    },
+    {
+      "title": "Registers and variables",
+      "deliverable": "Implement reference register capture/substitution plus typed native variables and secret references.",
+      "acceptance": "Scope, escaping, missing registers and lifetime rules are deterministic; secrets do not leak into recipe serialization.",
+      "version": "0.184.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.183.0"
+      ]
+    },
+    {
+      "title": "Labels and jumps",
+      "deliverable": "Deliver forward/backward and conditional jumps with explicit iteration and total-work limits.",
+      "acceptance": "Looping reference fixtures pass; exhausted limits return a precise diagnostic rather than hang.",
+      "version": "0.185.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.184.0"
+      ]
+    },
+    {
+      "title": "Return and nested recipes",
+      "deliverable": "Add early return, comments, subrecipe calls and reusable parameterized recipe blocks.",
+      "acceptance": "Return scopes and nested budget inheritance are tested; recursion is bounded or rejected by the declared profile.",
+      "version": "0.186.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.185.0"
+      ]
+    },
+    {
+      "title": "Compatibility recipe importer",
+      "deliverable": "Import supported JSON and URL recipe encodings into the canonical model with a diagnostic report.",
+      "acceptance": "Unknown operations/arguments are preserved for review or rejected, never silently dropped.",
+      "version": "0.187.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.186.0"
+      ]
+    },
+    {
+      "title": "Compatibility exporter",
+      "deliverable": "Export representable recipes to the reference format and native full-fidelity format.",
+      "acceptance": "Unrepresentable graph features produce an explicit report; no misleading successful export loses behavior.",
+      "version": "0.188.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.187.0"
+      ]
+    },
+    {
+      "title": "Detection primitives",
+      "deliverable": "Add versioned signature, alphabet, entropy and structure detectors with bounded sampling.",
+      "acceptance": "Detectors explain evidence and uncertainty; a score is not advertised as a calibrated probability without validation.",
+      "version": "0.189.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.188.0"
+      ]
+    },
+    {
+      "title": "Magic one-step suggestions",
+      "deliverable": "Suggest candidate reversible transforms and display previews without changing the active recipe.",
+      "acceptance": "Suggestions require user acceptance; network, secret-revealing or expensive actions are excluded by default.",
+      "version": "0.190.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.189.0"
+      ]
+    },
+    {
+      "title": "Magic bounded search",
+      "deliverable": "Add multi-layer transform search with deduplication, depth/work budgets and reproducible ranking.",
+      "acceptance": "Adversarial recursive inputs terminate; repeated runs on the same data/revision produce stable candidate ordering.",
+      "version": "0.191.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.190.0"
+      ]
+    },
+    {
+      "title": "Brute-force analysis",
+      "deliverable": "Complete required XOR/rotation/encoding/language-scoring searches and ranked result presentation.",
+      "acceptance": "Work estimates, candidate limits and cancellation are effective; heavy searches are never automatic by default.",
+      "version": "0.192.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.191.0"
+      ]
+    },
+    {
+      "title": "Full regex compatibility",
+      "deliverable": "Close remaining XRegExp/JavaScript syntax, Unicode, capture, replacement and formatting gaps through the approved strategy.",
+      "acceptance": "Reference dialect corpus passes locally and natively; safe-regex mode remains separately identified.",
+      "version": "0.193.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.192.0"
+      ]
+    },
+    {
+      "title": "End-to-end reference recipes",
+      "deliverable": "Run a broad versioned corpus combining formats, crypto, loops, archives, media and forensic operations.",
+      "acceptance": "Equality criteria cover bytes, structure, diagnostics and allowed nondeterminism; every mismatch has a tracked disposition.",
+      "version": "0.194.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.193.0"
+      ]
+    },
+    {
+      "title": "Feature-complete parity candidate",
+      "deliverable": "Reconcile operation, argument, recipe, UI and browser/native matrices against the frozen reference.",
+      "acceptance": "No required capability is missing; any open gap creates additional 0.x releases before qualification.",
+      "version": "0.195.0",
+      "phase": "M",
+      "status": "planned",
+      "depends_on": [
+        "0.194.0"
+      ]
+    },
+    {
+      "title": "Operation SDK",
+      "deliverable": "Publish first-party operation scaffolding, descriptor validators, fixture templates and threat-review guidance.",
+      "acceptance": "A sample operation is added without modifying scheduler, HTTP routes, database schema or handwritten UI forms.",
+      "version": "0.196.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.195.0"
+      ]
+    },
+    {
+      "title": "Operation pack manifests",
+      "deliverable": "Group operation implementations by capability, version, dependency footprint and platform support.",
+      "acceptance": "Required dependencies are explicit; removing a pack cannot produce silently incomplete loaded recipes.",
+      "version": "0.197.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.196.0"
+      ]
+    },
+    {
+      "title": "Lazy browser packs",
+      "deliverable": "Add on-demand loading and an explicit complete offline-pack catalogue.",
+      "acceptance": "App, engine and pack versions are verified before activation; failed downloads leave a usable previous state.",
+      "version": "0.198.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.197.0"
+      ]
+    },
+    {
+      "title": "Provider replacement tests",
+      "deliverable": "Run selected operations against alternate providers behind stable semantic descriptors.",
+      "acceptance": "Replacement requires byte/behavior conformance and security review; provider identity participates where it affects reproducibility.",
+      "version": "0.199.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.198.0"
+      ]
+    },
+    {
+      "title": "Core-Wasm plugin ABI",
+      "deliverable": "Specify a narrow versioned ABI for memory, metadata, bounded I/O, errors and capability requests.",
+      "acceptance": "The ABI contains no host pointers, unrestricted syscalls or implicit network/file access.",
+      "version": "0.200.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.199.0"
+      ]
+    },
+    {
+      "title": "Browser plugin sandbox",
+      "deliverable": "Load plugins in a separate worker/instance with allowlisted imports, resource limits and explicit grants.",
+      "acceptance": "An infinite loop, memory growth or hostile output can be terminated without accessing app state or persistent secrets.",
+      "version": "0.201.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.200.0"
+      ]
+    },
+    {
+      "title": "Native plugin sandbox",
+      "deliverable": "Add a reviewed Wasm runtime adapter with fuel/epoch or equivalent limits and constrained host calls.",
+      "acceptance": "Resource and capability tests cover malicious modules; signatures are not treated as proof of safety.",
+      "version": "0.202.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.201.0"
+      ]
+    },
+    {
+      "title": "Plugin package integrity",
+      "deliverable": "Add manifests, hashes, optional signatures, provenance, revocation and administrator policy.",
+      "acceptance": "Unknown publishers are not automatically trusted; rollback protection and offline integrity checks have tests.",
+      "version": "0.203.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.202.0"
+      ]
+    },
+    {
+      "title": "Plugin conformance kit",
+      "deliverable": "Publish ABI vectors, boundary fuzzing, malformed-module tests and example portable operations.",
+      "acceptance": "Plugin authors can validate behavior without depending on the web framework or database.",
+      "version": "0.204.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.203.0"
+      ]
+    },
+    {
+      "title": "Component-model evaluation",
+      "deliverable": "Evaluate a WIT/component adapter using the required JavaScript shims/transpilation where needed.",
+      "acceptance": "Keep it optional unless browser/native portability and resource enforcement match the established plugin contract.",
+      "version": "0.205.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.204.0"
+      ]
+    },
+    {
+      "title": "HTTP server replacement seam",
+      "deliverable": "Implement a second minimal/mock HTTP adapter and route conformance suite for a future Vef provider.",
+      "acceptance": "All application endpoints run without importing the original framework outside its adapter package.",
+      "version": "0.206.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.205.0"
+      ]
+    },
+    {
+      "title": "Outbound HTTP replacement seam",
+      "deliverable": "Centralize identity, user HTTP, object-storage and other outbound clients behind application-owned gateway policy.",
+      "acceptance": "No native subsystem opens an unreviewed HTTP/TLS path; destination and trust policies survive provider substitution.",
+      "version": "0.207.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.206.0"
+      ]
+    },
+    {
+      "title": "TLS replacement seam",
+      "deliverable": "Test inbound/outbound TLS and database TLS connectors with alternate/mock providers for future Brynja integration.",
+      "acceptance": "Trust, hostname verification, ALPN, timeouts and errors remain explicit; browser-owned TLS is documented as outside this seam.",
+      "version": "0.208.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.207.0"
+      ]
+    },
+    {
+      "title": "Conditional sibling integrations",
+      "deliverable": "Add real Vef/Brynja adapter packages only when their APIs and security properties are usable; otherwise ship contract harnesses.",
+      "acceptance": "The default build works without sibling paths; integration is not claimed complete when only a placeholder exists.",
+      "version": "0.209.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.208.0"
+      ]
+    },
+    {
+      "title": "Extensibility qualification",
+      "deliverable": "Demonstrate a new operation, new pack, provider swap and transport replacement through the public contracts.",
+      "acceptance": "No domain/database/UI rewrite is needed; every accepted extra dependency has a documented purpose and feature budget.",
+      "version": "0.210.0",
+      "phase": "N",
+      "status": "planned",
+      "depends_on": [
+        "0.209.0"
+      ]
+    },
+    {
+      "title": "Shared recipe collections",
+      "deliverable": "Add server-backed folders/tags and permission-aware recipe sharing without default input sharing.",
+      "acceptance": "Revoking access prevents future reads; links and searches cannot enumerate another workspace.",
+      "version": "0.211.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.210.0"
+      ]
+    },
+    {
+      "title": "Recipe revisions and conflicts",
+      "deliverable": "Add optimistic revision checks, compare/restore and explicit multi-client conflict handling.",
+      "acceptance": "Two clients cannot silently overwrite each other; no real-time collaboration framework is required.",
+      "version": "0.212.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.211.0"
+      ]
+    },
+    {
+      "title": "Administrative policy",
+      "deliverable": "Add operation/pack allowlists, egress policy, resource profiles and retention settings.",
+      "acceptance": "Policy is enforced server-side and reported through capabilities; clients cannot self-authorize forbidden operations.",
+      "version": "0.213.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.212.0"
+      ]
+    },
+    {
+      "title": "Audit and retention lifecycle",
+      "deliverable": "Add bounded audit export, retention jobs, object deletion and backup-retention documentation.",
+      "acceptance": "Payloads are absent by default; deleted live records and retained backups are not misleadingly described as immediate erasure everywhere.",
+      "version": "0.214.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.213.0"
+      ]
+    },
+    {
+      "title": "Logical storage export",
+      "deliverable": "Export portable recipe, identity-reference, job and artifact manifests using versioned logical records.",
+      "acceptance": "Export is independent of PostgreSQL SQL syntax and contains explicit integrity/referential checks.",
+      "version": "0.215.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.214.0"
+      ]
+    },
+    {
+      "title": "MySQL portability prototype",
+      "deliverable": "Implement actual MySQL repository methods and backend-specific migrations in a separate adapter.",
+      "acceptance": "Shared contracts run against a real MySQL instance; merely compiling a generic driver is insufficient.",
+      "version": "0.216.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.215.0"
+      ]
+    },
+    {
+      "title": "SQL semantic parity",
+      "deliverable": "Exercise collation, uniqueness, JSON values, booleans, timestamps, pagination and transaction behavior on both databases.",
+      "acceptance": "Results and conflict semantics agree despite different SQL dialects; deviations stay inside adapters.",
+      "version": "0.217.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.216.0"
+      ]
+    },
+    {
+      "title": "PostgreSQL-to-MySQL migration drill",
+      "deliverable": "Import a logical export into MySQL, verify hashes/counts/references, rehearse cutover and rollback.",
+      "acceptance": "Application use cases work without domain or API changes; failures leave the original deployment recoverable.",
+      "version": "0.218.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.217.0"
+      ]
+    },
+    {
+      "title": "MySQL-to-PostgreSQL reverse drill",
+      "deliverable": "Reimport the same logical model and repeat repository and authorization tests.",
+      "acceptance": "Round trips retain identifiers/revisions; the project makes no unsupported zero-downtime migration guarantee.",
+      "version": "0.219.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.218.0"
+      ]
+    },
+    {
+      "title": "Artifact backend portability",
+      "deliverable": "Exercise local-disk and an optional object-storage adapter against the same artifact contracts.",
+      "acceptance": "Range reads, integrity, leases and orphan cleanup work without tying metadata schema to one cloud provider.",
+      "version": "0.220.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.219.0"
+      ]
+    },
+    {
+      "title": "Backup and disaster recovery",
+      "deliverable": "Document and test coordinated metadata/artifact backups, schema recovery and corruption detection.",
+      "acceptance": "Restore drills actually read and execute restored recipes/artifacts instead of only checking backup file existence.",
+      "version": "0.221.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.220.0"
+      ]
+    },
+    {
+      "title": "Release packaging",
+      "deliverable": "Produce versioned static offline bundles, native API binaries and container images with manifests and notices.",
+      "acceptance": "Builds identify exact dependency and operation-pack revisions; no desktop/mobile application is shipped yet.",
+      "version": "0.222.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.221.0"
+      ]
+    },
+    {
+      "title": "Upgrade and rollback",
+      "deliverable": "Add compatible server/browser/pack upgrade rules, migration prechecks and rollback guidance.",
+      "acceptance": "An interrupted upgrade cannot mix incompatible schema/engine assets or corrupt saved recipes.",
+      "version": "0.223.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.222.0"
+      ]
+    },
+    {
+      "title": "Operational load qualification",
+      "deliverable": "Exercise realistic multi-user mixes, expensive-job fairness, disk pressure and process failure.",
+      "acceptance": "Published limits come from measurements; API responsiveness survives isolated worker exhaustion.",
+      "version": "0.224.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.223.0"
+      ]
+    },
+    {
+      "title": "Portability and operations gate",
+      "deliverable": "Close deployment docs, actual second-database contract tests and Vef/Brynja replacement rehearsals.",
+      "acceptance": "PostgreSQL is the initial production-supported backend; MySQL support level is stated separately from the proven portability contract.",
+      "version": "0.225.0",
+      "phase": "O",
+      "status": "planned",
+      "depends_on": [
+        "0.224.0"
+      ]
+    },
+    {
+      "title": "Scope freeze",
+      "deliverable": "Freeze the 1.0 reference commit, operation revisions, recipe schema, API and required browser profiles.",
+      "acceptance": "Later upstream additions enter a separate backlog; security fixes remain eligible for inclusion.",
+      "version": "0.226.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.225.0"
+      ]
+    },
+    {
+      "title": "Catalogue audit",
+      "deliverable": "Independently reconcile every operation and argument against the pinned baseline and category/source inventories.",
+      "acceptance": "No unexplained omissions, duplicate counting or native-only substitutions inflate the compatibility claim.",
+      "version": "0.227.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.226.0"
+      ]
+    },
+    {
+      "title": "Workflow and UI audit",
+      "deliverable": "Verify save/load, links, multiple inputs, breakpoints, offsets, Magic and complete control flow.",
+      "acceptance": "Workbench parity is demonstrated beyond unit tests; safety differences are documented prominently.",
+      "version": "0.228.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.227.0"
+      ]
+    },
+    {
+      "title": "Cross-target conformance",
+      "deliverable": "Run native and actual Chromium, Firefox and WebKit suites with and without optional browser features.",
+      "acceptance": "Required capabilities work on the published baseline; simulated wasm compilation alone is not sufficient.",
+      "version": "0.229.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.228.0"
+      ]
+    },
+    {
+      "title": "Resource and denial-of-service audit",
+      "deliverable": "Fuzz parsers, recipe compilation, regex, queries, archives, images and plugin host interfaces.",
+      "acceptance": "Memory/work/depth/output limits hold; discovered crashes and hangs are triaged and fixed before release.",
+      "version": "0.230.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.229.0"
+      ]
+    },
+    {
+      "title": "Unsafe and dependency audit",
+      "deliverable": "Review unsafe islands, crypto providers, build scripts, generated tables and transitive dependency changes.",
+      "acceptance": "No unreviewed dependency exception or known unmitigated high-severity issue remains in the release profile.",
+      "version": "0.231.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.230.0"
+      ]
+    },
+    {
+      "title": "API and authorization assessment",
+      "deliverable": "Exercise adversarial authentication, sessions, object permissions, uploads, egress and worker isolation.",
+      "acceptance": "Confirmed critical/high findings are fixed and regression-tested; accepted lower risks have owners and rationale.",
+      "version": "0.232.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.231.0"
+      ]
+    },
+    {
+      "title": "Data and cache assessment",
+      "deliverable": "Verify secret handling, cache isolation, completed-artifact publication, deletion and backup behavior.",
+      "acceptance": "Cross-tenant cache probing and partial-result disclosure tests fail closed; documentation matches actual retention.",
+      "version": "0.233.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.232.0"
+      ]
+    },
+    {
+      "title": "Accessibility and usability assessment",
+      "deliverable": "Test realistic tasks with keyboard, screen readers, high zoom, narrow layouts and error recovery.",
+      "acceptance": "Essential tasks have non-canvas alternatives; accessibility failures are fixed rather than deferred to native apps.",
+      "version": "0.234.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.233.0"
+      ]
+    },
+    {
+      "title": "Performance characterization",
+      "deliverable": "Publish reference hardware/browser measurements for startup, interaction, throughput, memory and cancellation.",
+      "acceptance": "Claims distinguish streaming from whole-input operations and cold from warm caches; no invented speedup multipliers.",
+      "version": "0.235.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.234.0"
+      ]
+    },
+    {
+      "title": "Supply-chain release proof",
+      "deliverable": "Produce dependency/asset manifests, license notices, signed checksums and reproducibility evidence for distributed artifacts.",
+      "acceptance": "Independent clean builds can verify the release process; supplied models/fonts/data are licensed for redistribution.",
+      "version": "0.236.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.235.0"
+      ]
+    },
+    {
+      "title": "Migration and disaster drill",
+      "deliverable": "Re-run PostgreSQL/MySQL portability, schema upgrade/rollback and metadata/artifact restore on release candidates.",
+      "acceptance": "Recovery preserves recipe revision and authorization invariants; operational instructions are executable.",
+      "version": "0.237.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.236.0"
+      ]
+    },
+    {
+      "title": "Documentation and SDK freeze",
+      "deliverable": "Finalize API reference, operation docs, extension guide, offline setup, threat model and migration contracts.",
+      "acceptance": "Examples are exercised in CI; docs disclose compatibility limits and browser-owned TLS boundaries.",
+      "version": "0.238.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.237.0"
+      ]
+    },
+    {
+      "title": "Release-candidate rehearsal",
+      "deliverable": "Produce a feature-frozen candidate build and run the full acceptance checklist with representative users.",
+      "acceptance": "Blocking issues produce further 0.x releases; the version number cannot waive missing functionality or security gates.",
+      "version": "0.239.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.238.0"
+      ]
+    },
+    {
+      "title": "GA acceptance decision",
+      "deliverable": "Assemble evidence for all mandatory capabilities, parity matrices, security, accessibility, recovery and provider boundaries.",
+      "acceptance": "Advance to 1.0.0-rc only when every mandatory gate passes; otherwise continue 0.241.0 and beyond with concrete gap releases.",
+      "version": "0.240.0",
+      "phase": "P",
+      "status": "planned",
+      "depends_on": [
+        "0.239.0"
+      ]
+    }
+  ],
+  "ga_gate": "Full baseline operation/argument/workflow/UI and required browser/native parity; API v1; PostgreSQL production; actual second-database portability proof; proven HTTP/TLS replacement boundaries; security/accessibility/recovery qualification.",
+  "future_apps": "Desktop and mobile application delivery occurs only after 1.0.0.",
+  "release_candidates": [
+    {
+      "version": "1.0.0-rc.1",
+      "gate": "All pre-1.0 mandatory capabilities and qualification gates pass; exact artifacts enter candidate verification."
+    },
+    {
+      "version": "1.0.0-rc.N",
+      "gate": "Repeat candidate qualification as needed; substantial missing capabilities return to additional 0.x work."
+    }
+  ],
+  "general_availability": {
+    "version": "1.0.0",
+    "scope": "Complete website, engine, API, PostgreSQL production deployment and verified parity; no desktop/mobile applications yet."
+  },
+  "post_1_0_milestones": [
+    {
+      "proposed_product_version": "1.1",
+      "scope": "Desktop preview"
+    },
+    {
+      "proposed_product_version": "1.2",
+      "scope": "Desktop stable"
+    },
+    {
+      "proposed_product_version": "1.3",
+      "scope": "Mobile preview"
+    },
+    {
+      "proposed_product_version": "1.4",
+      "scope": "Mobile stable"
+    },
+    {
+      "proposed_product_version": "1.5+",
+      "scope": "Further qualified on-device, collaboration or database capabilities"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+vendor/** linguist-vendored
+
+# Preserve supplied reference bytes, including Markdown hard line breaks.
+docs/reference/workbench-plan/*.md whitespace=-blank-at-eol

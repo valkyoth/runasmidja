@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-10-03",
+  "github_releases": {
+    "actions/checkout": "v7.0.1",
+    "openbao/openbao": "v2.7.1",
+    "valkey-io/valkey": "9.1.2",
+    "gchq/CyberChef": "v11.5.0"
+  },
+  "openbao_sdk": "2.2.1",
+  "postgres": "19beta4",
+  "postgres_release_source": "https://www.postgresql.org/about/news/postgresql-19-beta-4-released-3386/",
+  "optional_github_releases": {
+    "meilisearch/meilisearch": "v1.54.3"
+  }
+}

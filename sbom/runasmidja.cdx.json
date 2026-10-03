@@ -1,0 +1,229 @@
+{
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-ports-0.1.0",
+      "description": "Portable boundaries for hosted adapters",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-ports",
+      "type": "library",
+      "version": "0.1.0"
+    },
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.1.0",
+      "description": "HTML boundary reserved for future Vef extraction",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-html",
+      "type": "library",
+      "version": "0.1.0"
+    },
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.1.0",
+      "description": "Bounded portable domain foundations",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-core",
+      "type": "library",
+      "version": "0.1.0"
+    },
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-crypto-0.1.0",
+      "description": "Cryptography boundary reserved for future Brynja extraction",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-crypto",
+      "type": "library",
+      "version": "0.1.0"
+    }
+  ],
+  "dependencies": [
+    {
+      "dependsOn": [
+        "CycloneDxRef-Component-runasmidja-crypto-0.1.0",
+        "CycloneDxRef-Component-runasmidja-ports-0.1.0",
+        "CycloneDxRef-Component-runasmidja-core-0.1.0",
+        "CycloneDxRef-Component-runasmidja-html-0.1.0"
+      ],
+      "ref": "CycloneDxRef-Component-runasmidja-0.1.0"
+    }
+  ],
+  "metadata": {
+    "authors": [
+      {
+        "name": "Eldryoth"
+      }
+    ],
+    "component": {
+      "components": [
+        {
+          "author": "",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-0.1.0",
+          "description": "Portable facade for Runasmidja",
+          "externalReferences": [
+            {
+              "type": "vcs",
+              "url": "https://github.com/valkyoth/runasmidja"
+            }
+          ],
+          "licenses": [
+            {
+              "expression": "EUPL-1.2"
+            }
+          ],
+          "name": "runasmidja",
+          "type": "library",
+          "version": "0.1.0"
+        },
+        {
+          "author": "",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.1.0",
+          "description": "Bounded portable domain foundations",
+          "externalReferences": [
+            {
+              "type": "vcs",
+              "url": "https://github.com/valkyoth/runasmidja"
+            }
+          ],
+          "licenses": [
+            {
+              "expression": "EUPL-1.2"
+            }
+          ],
+          "name": "runasmidja-core",
+          "type": "library",
+          "version": "0.1.0"
+        },
+        {
+          "author": "",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-crypto-0.1.0",
+          "description": "Cryptography boundary reserved for future Brynja extraction",
+          "externalReferences": [
+            {
+              "type": "vcs",
+              "url": "https://github.com/valkyoth/runasmidja"
+            }
+          ],
+          "licenses": [
+            {
+              "expression": "EUPL-1.2"
+            }
+          ],
+          "name": "runasmidja-crypto",
+          "type": "library",
+          "version": "0.1.0"
+        },
+        {
+          "author": "",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.1.0",
+          "description": "HTML boundary reserved for future Vef extraction",
+          "externalReferences": [
+            {
+              "type": "vcs",
+              "url": "https://github.com/valkyoth/runasmidja"
+            }
+          ],
+          "licenses": [
+            {
+              "expression": "EUPL-1.2"
+            }
+          ],
+          "name": "runasmidja-html",
+          "type": "library",
+          "version": "0.1.0"
+        },
+        {
+          "author": "",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-ports-0.1.0",
+          "description": "Portable boundaries for hosted adapters",
+          "externalReferences": [
+            {
+              "type": "vcs",
+              "url": "https://github.com/valkyoth/runasmidja"
+            }
+          ],
+          "licenses": [
+            {
+              "expression": "EUPL-1.2"
+            }
+          ],
+          "name": "runasmidja-ports",
+          "type": "library",
+          "version": "0.1.0"
+        },
+        {
+          "author": "",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-server-0.1.0",
+          "description": "Linux health probe scaffold for Runasmidja",
+          "externalReferences": [
+            {
+              "type": "vcs",
+              "url": "https://github.com/valkyoth/runasmidja"
+            }
+          ],
+          "licenses": [
+            {
+              "expression": "EUPL-1.2"
+            }
+          ],
+          "name": "runasmidja-server",
+          "type": "application",
+          "version": "0.1.0"
+        }
+      ],
+      "name": "runasmidja",
+      "type": "application"
+    },
+    "timestamp": "2026-10-03T07:02:38.947Z",
+    "tools": [
+      {
+        "name": "cargo-sbom",
+        "version": "0.10.0"
+      }
+    ]
+  },
+  "serialNumber": "urn:uuid:9649a68f-c895-4369-8671-015a3147413a",
+  "specVersion": "1.5",
+  "version": 1
+}

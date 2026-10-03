@@ -1,0 +1,387 @@
+# Phase E: Remote API, PostgreSQL and secure server execution
+
+Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
+
+## v0.88.0 — Public API specification
+
+**Status:** planned.
+
+**Setup:** baseline 0.87.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Public API specification.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Stabilize pre-1.0 JSON envelopes, binary artifact routes, pagination, errors and capability negotiation. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Local and HTTP transports pass shared use-case tests; framework request types never enter the application layer. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.88.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.89.0 — Job lifecycle API
+
+**Status:** planned.
+
+**Setup:** baseline 0.88.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Job lifecycle API.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Add queued/running/succeeded/failed/cancelled/expired states, progress events and resumable observation. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Reconnection and duplicated requests cannot create ambiguous terminal states or leak another principal’s job. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.89.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.90.0 — Artifact transfer API
+
+**Status:** planned.
+
+**Setup:** baseline 0.89.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Artifact transfer API.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Add bounded uploads, integrity checks, range downloads, retention and explicit remote-consent UX. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Incomplete uploads remain staged; large files do not travel as JSON Base64 payloads by default. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.90.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.91.0 — Repository contracts
+
+**Status:** planned.
+
+**Setup:** baseline 0.90.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Repository contracts.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Define atomic recipe revision saves, job leases, permissions, metadata search and transaction boundaries. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Contracts describe domain semantics instead of generic execute-SQL methods; an in-memory adapter passes the suite. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.91.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.92.0 — PostgreSQL adapter
+
+**Status:** planned.
+
+**Setup:** baseline 0.91.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** PostgreSQL adapter.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Implement parameterized queries, pool configuration and migrations outside core domain packages. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Recipes and jobs pass repository tests on an actual PostgreSQL instance; driver row types stay in the adapter. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.92.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.93.0 — Database TLS seam
+
+**Status:** planned.
+
+**Setup:** baseline 0.92.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Database TLS seam.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Wire tokio-postgres through a replaceable TLS connector and explicit identity/trust configuration. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Certificate validation failures are fatal; a mock provider proves database TLS is not permanently tied to rustls. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.93.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.94.0 — OpenBao SDK admission
+
+**Status:** planned.
+
+**Setup:** baseline 0.93.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** OpenBao SDK admission.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Admit the latest stable openbao SDK into a dedicated std adapter with minimal reviewed features and server compatibility checks; keep it outside portable defaults. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Use the real TLS OpenBao fixture and compatibility policy; token and error diagnostics are redacted; no SDK transport types reach application APIs. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.94.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.95.0 — Application secret references
+
+**Status:** planned.
+
+**Setup:** baseline 0.94.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Application secret references.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Connect service configuration and SecretRef resolution to scoped AppRole with leased credentials; exclude recipe-operation keys from default persistence. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Missing, expired and revoked credentials fail closed; no root token or recovery key is delivered to API/worker processes; cross-workspace secret requests fail. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.95.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.96.0 — Secret rotation lifecycle
+
+**Status:** planned.
+
+**Setup:** baseline 0.95.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Secret rotation lifecycle.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Implement token renewal, AppRole re-provisioning, credential rotation and restart convergence behind secret-store contracts. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Expiry, rotation during work, OpenBao outage and audit failure are exercised; old grants cannot be reused and no static secret fallback appears. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.96.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.97.0 — OpenBao database leases
+
+**Status:** planned.
+
+**Setup:** baseline 0.96.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** OpenBao database leases.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Evaluate and qualify the current PostgreSQL database plugin; separate migration and runtime identities and map lease revocation to pool behavior. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Real leased login/expiry/revocation fixtures pass; stale pooled credentials are discarded; unsupported beta/plugin compatibility gets a new owned pass. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.97.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.98.0 — Identity and sessions
+
+**Status:** planned.
+
+**Setup:** baseline 0.97.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Identity and sessions.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Add server authentication, bounded sessions, token expiry, CSRF defenses and optional identity-provider integration. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Authorization is enforced server-side for every object; browser-local use remains anonymous and database-free. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.98.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.99.0 — Workspace authorization
+
+**Status:** planned.
+
+**Setup:** baseline 0.98.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Workspace authorization.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Add owner/editor/viewer roles, tenant scoping and explicit service-account permissions. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Cross-workspace and confused-deputy tests fail closed even without database-specific row-security features. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.99.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.100.0 — Isolated execution workers
+
+**Status:** planned.
+
+**Setup:** baseline 0.99.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Isolated execution workers.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Move remotely submitted CPU work into restricted processes with memory, CPU, disk and egress policies. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** A parser crash or non-cooperative job can be killed without taking down API or other tenants. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.100.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.101.0 — Admission and quotas
+
+**Status:** planned.
+
+**Setup:** baseline 0.100.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Admission and quotas.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Add principal/workspace job quotas, maximum artifacts, rate limits and queue backpressure. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Repeated tiny requests and large expanding jobs cannot bypass aggregate resource accounting. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.101.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.102.0 — Valkey application adapter
+
+**Status:** planned.
+
+**Setup:** baseline 0.101.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Valkey application adapter.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Implement bounded optional metadata/cache access behind application-owned CacheStore with scoped keys and revision-aware identities. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Cache miss, outage, poison, stale revision and cross-tenant probes pass against Valkey; authoritative data and permissions survive without cache. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.102.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.103.0 — Valkey invalidation and outage
+
+**Status:** planned.
+
+**Setup:** baseline 0.102.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Valkey invalidation and outage.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Prove TTL, revocation invalidation, resource ceilings and eviction behavior without giving cache authority over authorization. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Revoked grants are checked against authoritative state; connection failures do not bypass quotas; cache poisoning and invalidation races have regressions. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.103.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.104.0 — Durable jobs and leases
+
+**Status:** planned.
+
+**Setup:** baseline 0.103.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Durable jobs and leases.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Add job leases, fencing tokens, worker heartbeat, retry eligibility and idempotency records. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Expired workers cannot finalize duplicate results; retry is prohibited for unsafe external side effects. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.104.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.105.0 — Server networking policy
+
+**Status:** planned.
+
+**Setup:** baseline 0.104.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Server networking policy.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Centralize outbound connections, redirects, destination restrictions, credentials and HTTP limits. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** SSRF, rebinding, private/metadata destinations and mapped-address cases are covered before user HTTP operations are public. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.105.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.106.0 — Metadata-only observability
+
+**Status:** planned.
+
+**Setup:** baseline 0.105.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Metadata-only observability.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Add health, readiness, redacted audit events, bounded metrics and structured operational errors. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Default logs contain no raw inputs, outputs, secrets or high-cardinality user payload labels. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.106.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.107.0 — Server deployment profile
+
+**Status:** planned.
+
+**Setup:** baseline 0.106.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Server deployment profile.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Ship a hardened single-node deployment with reverse-proxy and direct-TLS options, backups and cleanup jobs. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Restart and restore drills preserve metadata/artifact consistency; insecure development defaults cannot silently become public. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.107.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.108.0 — Service TLS deployment policy
+
+**Status:** planned.
+
+**Setup:** baseline 0.107.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Service TLS deployment policy.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Qualify native PostgreSQL/Valkey/OpenBao TLS, certificate identity, trust roots and private service networks independently of local fixture shortcuts. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Wrong names, unknown roots, expired certificates, missing TLS and unauthorized service clients fail; deployment never publishes administrative endpoints. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.108.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.109.0 — OpenBao production recovery custody
+
+**Status:** planned.
+
+**Setup:** baseline 0.108.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** OpenBao production recovery custody.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Separate production recovery shares, initial bootstrap identity and app credentials; automate operational configuration and rehearse restore and rotation. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Independent custody/recovery, audit-disk failure, snapshot restore and expired bootstrap identity are tested; one-share local test material is rejected in production. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.109.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.110.0 — PostgreSQL beta-to-GA upgrade drill
+
+**Status:** planned.
+
+**Setup:** baseline 0.109.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** PostgreSQL beta-to-GA upgrade drill.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** When available admit PostgreSQL 19 GA after upstream review; rehearse dump/restore or documented upgrade from the beta baseline. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Restore and repository/authorization fixtures pass on pinned GA; no beta data directory is reused blindly; rollback is executable and 1.0 uses GA. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.110.0 implementation stop reached. Run pentest for this exact commit.
+
+## v0.111.0 — Server security gate
+
+**Status:** planned.
+
+**Setup:** baseline 0.110.0; verify current upstream sources and record a bounded scope manifest before coding.
+
+**Goal:** Server security gate.
+
+**Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
+
+**Deliverables:** Test authentication, object authorization, uploads, worker isolation, cancellation and resource abuse. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+
+**Verification:** Public remote execution stays disabled until isolation and quota tests pass; local web mode remains independently releasable. Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+
+**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.111.0 implementation stop reached. Run pentest for this exact commit.

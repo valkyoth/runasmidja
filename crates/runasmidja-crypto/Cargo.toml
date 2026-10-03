@@ -1,0 +1,12 @@
+[package]
+name = "runasmidja-crypto"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Cryptography boundary reserved for future Brynja extraction"
+publish = false
+
+[lints]
+workspace = true
