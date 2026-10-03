@@ -18,6 +18,10 @@
 - Added 15 bounded ownership/admission/seed/pack/privacy/performance/migration/
   isolation/egress/distribution prerequisites; actual artifacts now precede full
   seekable replay. Documented verified enforcement gaps without claiming fixes.
+- Tightened unchanged 386-pass numbering: minimal SQL fencing at 0.107.0 precedes
+  hosted publication at 0.112.0; local storage and early API test scopes are
+  explicit, and actual continuation starts at 0.387.0. Generator rejects blank
+  or nonstring verification gates before writing output.
 
 No product parity or production readiness is claimed. Pentest, tagging and
 publication are pending. See release-notes/v0.1.0.md.

@@ -2,6 +2,8 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
+Verification checklists apply only to introduced or retained behavior in the reviewed bounded scope. Record absent later capabilities as pending with numbered owners; contract fixtures never attest their runtime PASS. A prerequisite needed by this pass must be implemented and verified first, rather than deferred. Every future owner still owes its full acceptance before exposure/1.0.
+
 ## v0.372.0 — Scope freeze
 
 **Status:** planned.
@@ -236,7 +238,7 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Assemble evidence for all mandatory capabilities, parity matrices, security, accessibility, recovery and provider boundaries. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Assemble evidence for all mandatory capabilities, parity matrices, security, accessibility, recovery and provider boundaries. The retained reference acceptance mentions 0.241.0 as historical reference numbering. Actual additional Runasmidja passes start at v0.387.0; do not reuse historical reference versions. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
 **Verification:** Advance to 1.0.0-rc only when every mandatory gate passes; otherwise continue 0.241.0 and beyond with concrete gap releases. All mandatory five-matrix, resource/security/privacy/accessibility/recovery/provider/artifact gates close before RC; otherwise add 0.x passes, never waive blockers. Run the cumulative capability/argument/recipe/UI/target inventory on exact artifacts; missing evidence blocks production claims. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 

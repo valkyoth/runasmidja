@@ -2,6 +2,8 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
+Verification checklists apply only to introduced or retained behavior in the reviewed bounded scope. Record absent later capabilities as pending with numbered owners; contract fixtures never attest their runtime PASS. A prerequisite needed by this pass must be implemented and verified first, rather than deferred. Every future owner still owes its full acceptance before exposure/1.0.
+
 ## v0.73.0 — Resource ledger
 
 **Status:** planned.
@@ -124,9 +126,9 @@ Status: planned. Requirements below are additive to the [common gates](../RELEAS
 
 **Scope:** one reviewable pass in this workstream. Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.
 
-**Deliverables:** Add transaction-completion waits, chunk manifests, orphan cleanup and storage schema migrations. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
+**Deliverables:** Add transaction-completion waits, chunk manifests, orphan cleanup and storage schema migrations. This pass qualifies local native artifact manifests and browser IndexedDB/OPFS transaction completion, local event/outbox records and orphan recovery only. Hosted SQL manifest/run/outbox publication is owned by v0.112.0, not assumed here. Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.
 
-**Verification:** Aborted transactions and interrupted writes are reported; no successful-write result precedes commit confirmation. Crash each object-finalize/manifest/outbox transition; idempotent recovery restores only authorized completed manifests and leaves no premature readable result. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
+**Verification:** Aborted transactions and interrupted writes are reported; no successful-write result precedes commit confirmation. Crash local native object-finalize/manifest and browser IndexedDB/OPFS transaction/local-event cut points; idempotent recovery exposes only completed locally authorized artifacts. This proves local storage discipline, not hosted SQL run/manifest/outbox publication, which qualifies in v0.112.0. Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts. Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.
 
 **Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v0.80.0 implementation stop reached. Run pentest for this exact commit.
 

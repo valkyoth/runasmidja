@@ -100,6 +100,11 @@ replay qualification. Cross-store publication follows repository/authorization
 contracts. Public untrusted-job endpoints remain disabled until the integrated
 server security gate, including kernel isolation/faults, admission, authoritative
 fencing, destination-bound egress, TLS and recovery; early API work is private.
+v0.106.0 defines minimal publication lease/fencing, v0.107.0 implements it on
+real PostgreSQL, and v0.112.0 requires that tested primitive. v0.124.0 expands
+heartbeat/retry/reclaim; local transaction tests at v0.80.0 do not prove hosted
+SQL publication. Early private API tests cover only their existing interfaces;
+absent later runtime suites stay pending with explicit numbered owners.
 
 Implement repository search, transactional projection/outbox, the optional
 Meilisearch fixture/adapter, live authorization rechecks and backend-switching

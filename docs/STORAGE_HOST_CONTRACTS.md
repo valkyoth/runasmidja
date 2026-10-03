@@ -14,6 +14,13 @@ not the only authorization source. Recipes can contain payload literals/secrets:
 serialization must inspect sensitivity/size, even when storing recipe metadata.
 Bulk input/output belongs to artifact storage, never incidental SQL blobs.
 
+Version ownership: v0.106.0 defines the minimal monotonic per-run fencing/
+expiry/revocation/CAS contract; v0.107.0 implements and tests atomic committed
+acquisition/reassignment/completion on real PostgreSQL. v0.112.0 consumes that
+qualified primitive with v0.111.0 current authorization for hosted SQL publication.
+v0.124.0 adds heartbeat/renewal/reclaim/retry/idempotency lifecycle and reruns the
+earlier fencing regressions; it does not first introduce fencing.
+
 Artifact ports own immutable IDs/revisions, bounded sequential/range reads,
 staged writes, quota reservation, completion/abort, integrity, leases and retention.
 Handles are scoped opaque capabilities rather than paths/public content hashes.
@@ -29,6 +36,9 @@ Finalized unreferenced objects remain inaccessible. Reconcile stages/orphans
 idempotently after a grace interval; stale indexes cannot delete live objects.
 Crash each boundary plus duplicate/failed commit, corrupt bytes, disk full,
 expired lease and revoked reader. Read actual bytes to verify hashes.
+v0.80.0 crash/transaction tests concern local native manifests and browser
+IndexedDB/OPFS/local events only. The SQL run/manifest/outbox sequence above
+belongs to v0.112.0 and cannot be claimed from those local tests.
 
 ## Database migration and recovery
 

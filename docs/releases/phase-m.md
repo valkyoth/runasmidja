@@ -2,6 +2,8 @@
 
 Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).
 
+Verification checklists apply only to introduced or retained behavior in the reviewed bounded scope. Record absent later capabilities as pending with numbered owners; contract fixtures never attest their runtime PASS. A prerequisite needed by this pass must be implemented and verified first, rather than deferred. Every future owner still owes its full acceptance before exposure/1.0.
+
 ## v0.323.0 — Compatibility interpreter
 
 **Status:** planned.

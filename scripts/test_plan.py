@@ -118,3 +118,51 @@ class PlanTests(unittest.TestCase):
             with patch.object(build_plan, 'DOCS', docs):
                 with self.assertRaisesRegex(ValueError, 'Every source workstream'):
                     build_plan.build()
+
+    def test_blank_or_nonstring_gate_rejects_before_output_mutation(self):
+        original = json.loads((ROOT / 'docs/roadmap-input/reference-verification.json').read_text())
+        for invalid in ('', ' \n\t', '\u2003', None, False, 17, [], {}):
+            with self.subTest(value=invalid), tempfile.TemporaryDirectory() as folder:
+                docs = Path(folder)
+                inputs = docs / 'roadmap-input'
+                inputs.mkdir()
+                gates = dict(original)
+                gates['0.240.0'] = invalid
+                (inputs / 'reference-verification.json').write_text(json.dumps(gates))
+                (docs / 'RELEASE_PLAN.md').write_text('previous reviewed output')
+                before = {p.relative_to(docs): p.read_bytes() for p in docs.rglob('*') if p.is_file()}
+                with patch.object(build_plan, 'DOCS', docs):
+                    with self.assertRaisesRegex(ValueError, 'nonblank string'):
+                        build_plan.build()
+                self.assertEqual(before, {p.relative_to(docs): p.read_bytes()
+                                         for p in docs.rglob('*') if p.is_file()})
+                self.assertFalse((docs / 'releases').exists())
+                self.assertFalse((docs / 'roadmap').exists())
+
+    def test_minimal_fencing_and_local_publication_have_explicit_owners(self):
+        rows = {row['title']: row for row in ordered_rows()}
+        publication = rows['Hosted artifact publication fencing']
+        self.assertIn(rows['PostgreSQL adapter']['version'], publication['prerequisites'])
+        self.assertIn(rows['Repository contracts']['version'], publication['prerequisites'])
+        self.assertIn(rows['Workspace authorization']['version'], publication['prerequisites'])
+        self.assertIn(rows['Storage transaction discipline']['version'], publication['prerequisites'])
+        self.assertIn('Implement the v0.106.0 minimal lease/fencing contract',
+                      rows['PostgreSQL adapter']['scope_context'])
+        self.assertIn('does not introduce fencing for the first time',
+                      rows['Durable jobs and leases']['scope_context'])
+        self.assertIn('Hosted SQL', rows['Storage transaction discipline']['scope_context'])
+        for title in ('Public API specification', 'Job lifecycle API', 'Artifact transfer API'):
+            self.assertIn('v0.119.0', rows[title]['scope_context'])
+            self.assertIn('v0.125.0', rows[title]['scope_context'])
+        phase = (ROOT / 'docs/releases/phase-e.md').read_text()
+        self.assertNotIn('Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures.', phase)
+        self.assertIn('contract fixtures never attest their runtime PASS', phase)
+
+    def test_actual_continuation_does_not_replace_historical_acceptance(self):
+        rows = ordered_rows()
+        continuation = f'v0.{len(rows) + 1}.0'
+        ga = next(row for row in rows if row['source_version'] == '0.240.0')
+        self.assertIn('continue 0.241.0', ga['acceptance'])
+        self.assertIn(continuation, ga['scope_context'])
+        for path in ('docs/RELEASE_PLAN.md', 'docs/VERSION_PLAN.md', 'docs/releases/phase-p.md'):
+            self.assertIn(continuation, (ROOT / path).read_text())

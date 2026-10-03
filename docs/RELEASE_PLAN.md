@@ -6,6 +6,8 @@ Status: planned; workspace initialized, no release tagged.
 
 The supplied 240-release bundle is preserved under [reference](reference/workbench-plan/README.md). Runasmidja adds operational services and splits multi-provider/algorithm work; source-version mappings preserve every original workstream. Nothing in this plan claims an implementation or a completed pentest.
 
+If mandatory gaps remain after 0.386.0, actual additional passes start at **v0.387.0**. Historical reference continuation numbers remain preserved as provenance, not actual version assignments.
+
 ## Setup and scope rules
 
 - Run Rust 1.99.0 initially; review official stable, crate, tool, action and service metadata weekly and before changes.

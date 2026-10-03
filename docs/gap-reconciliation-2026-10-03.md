@@ -107,3 +107,28 @@ additive gate coverage, prerequisite ordering, deterministic generated files and
 rejection of missing source gates. The original reference bytes remain unchanged.
 The official freshness check passed. Pentest remains NOT RUN; no tag, publishing
 or runtime-control remediation follows from these planning checks.
+
+## Follow-up review of 4ac7ebc
+
+The four remaining refinements are incorporated without adding/renumbering passes:
+
+- v0.106.0 owns the minimal authoritative lease/fencing contract; v0.107.0 must
+  implement it on real PostgreSQL before v0.112.0 hosted publication. That
+  publication handoff now lists explicit qualified prerequisites: v0.80.0 local
+  storage, v0.106.0 contracts, v0.107.0 implementation and v0.111.0 authority.
+  v0.124.0 expands heartbeat/renewal/reclaim/retry and reruns earlier regressions.
+- v0.80.0 tests local native manifests and browser IndexedDB/OPFS/local events.
+  Hosted SQL manifest/run/outbox crash cuts remain v0.112.0 requirements.
+- Generated phase checklists apply to the current introduced/retained scope.
+  Early API handoffs name later runtime authority, fencing, supervision and
+  egress owners; contract fixtures cannot attest their runtime PASS. Needed
+  prerequisites remain blocking and all later acceptance still applies.
+- Historical reference "continue 0.241.0" stays intact; actual additional
+  Runasmidja passes begin at v0.387.0. The generator now rejects blank/whitespace
+  and nonstring gate values before creating or overwriting output.
+
+`scripts/checks.sh` passed with 23 Python tests. New regressions cover the
+explicit publication owners, current/future verification scope, actual versus
+historical continuation and invalid gate values preserving existing reviewed
+files. Count/source owners remain 386 passes/240 workstreams/345 mapped owners.
+Runtime implementation remains pending and v0.2.0 remains the next bounded pass.

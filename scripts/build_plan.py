@@ -2,7 +2,8 @@
 """Render Runasmidja release handoffs from reviewed source plus service passes."""
 import json
 from pathlib import Path
-from plan_hardening import ADDITIONS, order_source, strengthen_foundation
+from plan_hardening import (ADDITIONS, PUBLICATION_PREREQUISITES, SOURCE_CONTEXT,
+    order_source, strengthen_foundation)
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / 'docs'
@@ -112,7 +113,7 @@ PHASE_VERIFY = {
 'B': 'Run independent/reference vectors, malformed/empty inputs, each argument variant and exhaustive short-input chunk partitions.',
 'C': 'Use tiny budgets, reconverging joins, cancellation at terminal transitions, process crashes and orphaned artifacts.',
 'D': 'Run real Chromium/Firefox/WebKit workflows with keyboard use, hostile output, quota failure and no optional browser APIs.',
-'E': 'Run real PostgreSQL/OpenBao/Valkey tests, cross-principal object denials, lease races, egress and supervisor failures.',
+'E': 'Run real services and permission/lifecycle negatives only for behavior introduced or retained by this bounded pass. Minimal SQL lease races belong to v0.107.0, hosted publication to v0.112.0, supervisor faults to v0.119.0–v0.120.0, heartbeat/retry to v0.124.0 and egress to v0.125.0–v0.127.0; run each suite when its implemented scope is reached. Earlier API schema/loopback fixtures do not attest these later runtime controls.',
 'F': 'Run exact dialect fixtures, invalid syntax, depth/length/work exhaustion and browser/native representation comparisons.',
 'G': 'Run truncated/corrupt format corpora, expansion/nesting/entry ceilings, short output windows and traversal/link attacks.',
 'H': 'Run independently sourced crypto vectors, secret-lifecycle and bad-parameter tests; authenticated plaintext stays staged until verification.',
@@ -130,8 +131,10 @@ PHASE_VERIFY = {
 def build():
     baseline = json.loads(SOURCE.read_text())
     strict = json.loads((DOCS / 'roadmap-input/reference-verification.json').read_text())
-    if set(strict) != {row['version'] for row in baseline['releases']}:
+    if not isinstance(strict, dict) or set(strict) != {row['version'] for row in baseline['releases']}:
         raise ValueError('Every source workstream needs one reviewed verification gate')
+    if any(not isinstance(gate, str) or not gate.strip() for gate in strict.values()):
+        raise ValueError('Every verification gate must be a nonblank string')
     rows = []
     def add(title, deliverable, acceptance, phase, source=None, narrow=False):
         number = len(rows) + 1
@@ -139,6 +142,8 @@ def build():
             acceptance=acceptance, phase=phase, source_version=source, narrow=narrow,
             strict_verification=strict[source] if source else '',
             status='planned', depends_on=[] if number == 1 else [f'0.{number-1}.0']))
+        if source in SOURCE_CONTEXT:
+            rows[-1]['scope_context'] = SOURCE_CONTEXT[source]
     for title, deliverable, acceptance in strengthen_foundation(EXTRAS[0]):
         add(title, deliverable, acceptance, 'Z')
     for item in order_source(baseline['releases']):
@@ -155,11 +160,22 @@ def build():
         # Concrete artifact/authority prerequisites precede their search consumers.
         for title, deliverable, acceptance in ADDITIONS.get(minor, []) + EXTRAS.get(minor, []):
             add(title, deliverable, acceptance, item['phase'])
+    by_title = {row['title']: row for row in rows}
+    publication = by_title['Hosted artifact publication fencing']
+    publication['prerequisites'] = [by_title[title]['version'] for title in PUBLICATION_PREREQUISITES]
+    if any(int(version.split('.')[1]) >= int(publication['version'].split('.')[1])
+           for version in publication['prerequisites']):
+        raise ValueError('Hosted publication requires earlier qualified fencing/storage/authority')
+    continuation = f'0.{len(rows) + 1}.0'
+    ga = next(row for row in rows if row['source_version'] == '0.240.0')
+    ga['scope_context'] = ('The retained reference acceptance mentions 0.241.0 as historical reference numbering. '
+        f'Actual additional Runasmidja passes start at v{continuation}; do not reuse historical reference versions.')
     plans = DOCS / 'releases'; plans.mkdir(exist_ok=True)
     data_dir = DOCS / 'roadmap'; data_dir.mkdir(exist_ok=True)
     index = ['# Runasmidja Release Plan To 1.0.0', '', 'Status: planned; workspace initialized, no release tagged.', '',
         f'{len(rows)} small pre-1.0 passes, starting at 0.1.0 and ending at {rows[-1]["version"]}. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.', '',
         'The supplied 240-release bundle is preserved under [reference](reference/workbench-plan/README.md). Runasmidja adds operational services and splits multi-provider/algorithm work; source-version mappings preserve every original workstream. Nothing in this plan claims an implementation or a completed pentest.', '',
+        f'If mandatory gaps remain after {rows[-1]["version"]}, actual additional passes start at **v{continuation}**. Historical reference continuation numbers remain preserved as provenance, not actual version assignments.', '',
         '## Setup and scope rules', '',
         '- Run Rust 1.99.0 initially; review official stable, crate, tool, action and service metadata weekly and before changes.',
         '- Before each pass, write its exact API/operation/argument scope, target profile, numeric resource ceilings and test IDs. One new algorithm, dialect, persistent contract or trust boundary per pass.',
@@ -184,15 +200,18 @@ def build():
         group = [row for row in rows if row['phase'] == phase]
         filename = f'phase-{phase.lower()}.md'
         title = 'Repository and service foundation' if phase == 'Z' else next(p['title'] for p in baseline['phases'] if p['id'] == phase)
-        text = [f'# Phase {phase}: {title}', '', 'Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).', '']
+        text = [f'# Phase {phase}: {title}', '', 'Status: planned. Requirements below are additive to the [common gates](../RELEASE_PLAN.md).', '',
+            'Verification checklists apply only to introduced or retained behavior in the reviewed bounded scope. Record absent later capabilities as pending with numbered owners; contract fixtures never attest their runtime PASS. A prerequisite needed by this pass must be implemented and verified first, rather than deferred. Every future owner still owes its full acceptance before exposure/1.0.', '']
         for row in group:
             version = row['version']
             predecessor = ', '.join(row['depends_on']) or 'empty initialized repository'
+            prerequisite_note = (' Required qualified prerequisites: ' + ', '.join(row['prerequisites']) +
+                '; PostgreSQL minimal lease/fencing implementation must already pass.') if row.get('prerequisites') else ''
             text += [f'## v{version} — {row["title"]}', '', '**Status:** planned.', '',
-                f'**Setup:** baseline {predecessor}; verify current upstream sources and record a bounded scope manifest before coding.', '',
+                f'**Setup:** baseline {predecessor}; verify current upstream sources and record a bounded scope manifest before coding.' + prerequisite_note, '',
                 f'**Goal:** {row["title"]}.', '',
                 f'**Scope:** one reviewable pass in this workstream. ' + (f'Source bundle owner {row["source_version"]}; implement only the named topic. Retained family acceptance/strict gates apply to this topic; other algorithms remain with their mapped owners. The source workstream closes only when every mapped owner qualifies.' if row['narrow'] else 'Split independent remaining implementations before starting if the reconciled inventory exceeds this pass.'), '',
-                '**Deliverables:** ' + row['deliverable'].replace('workbench-', 'runasmidja-') + ' Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.', '',
+                '**Deliverables:** ' + ' '.join(filter(None, [row['deliverable'].replace('workbench-', 'runasmidja-'), row.get('scope_context')])) + ' Include descriptor/API documentation, negative fixtures, limitations and release notes for the scoped behavior.', '',
                 '**Verification:** ' + ' '.join(filter(None, [row['acceptance'], row['strict_verification'], PHASE_VERIFY[phase]])) + ' Apply G0–G6 and applicable G7 from the strict gates. Run common gates and record actual commands, targets and evidence; mocks do not prove a real service/browser/provider capability.', '',
                 f'**Exit criteria:** the scoped deliverables and verification pass, all required gaps have numbered owners, and security/doc/evidence deltas are reviewed. v{version} implementation stop reached. Run pentest for this exact commit.', '']
         (plans / filename).write_text('\n'.join(text))
@@ -219,7 +238,7 @@ def build():
         '## After 1.0', '', '1.1: Linux/Windows/BSD/macOS desktop preview. 1.2: qualified desktop stable. 1.3: Android/iOS preview. 1.4: qualified mobile stable. Aesynx receives a separate conditional adapter/GUI milestone once runnable APIs exist. Each platform needs its own compile, runtime, filesystem/secret-storage, accessibility, packaging and update-security evidence. API compatibility survives independent client release versions.', '']
     (DOCS / 'RELEASE_PLAN.md').write_text('\n'.join(index))
     (DOCS / 'VERSION_PLAN.md').write_text('# Runasmidja Version Plan\n\nThe authoritative [release plan](RELEASE_PLAN.md) links every detailed handoff.\n\n' +
-        f'Pre-1.0: 0.1.0 through {rows[-1]["version"]}, then further 0.x passes as required. RCs and 1.0 are evidence gates, not dates.\n\n' +
+        f'Pre-1.0: 0.1.0 through {rows[-1]["version"]}, then actual further passes starting at v{continuation} as required. RCs and 1.0 are evidence gates, not dates.\n\n' +
         'The [phase data](roadmap/phase-z.json) and remaining phase files preserve source-version mappings, predecessors, original acceptance and additive strict verification. Regenerate with `python3 scripts/build_plan.py`; every original baseline release has at least one mapped owner.\n\n' +
         'Current version owners and reviewed scheduling corrections are recorded in the [gap reconciliation](gap-reconciliation-2026-10-03.md). The preserved reference and earlier evidence/revisions keep their original version numbers.\n')
     print(f'Rendered {len(rows)} pre-1.0 milestones, through {rows[-1]["version"]}')

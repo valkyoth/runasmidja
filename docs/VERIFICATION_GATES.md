@@ -9,6 +9,17 @@ Source-bundle family gates are checklists for each named split topic; they do no
 make one cipher/dialect owner implement all its siblings. Close a source owner
 only after all mapped passes qualify. Additional inventory gaps get new minors.
 
+Apply phase checklists to the current introduced/retained scope, not future
+runtime implementations. Early private API/schema fixtures can test wire/state
+contracts but cannot attest hosted lease, supervisor or egress behavior. Record
+those suites as pending with their actual owners. A capability used as a concrete
+prerequisite must already qualify; it cannot be excused as later work.
+
+Publication ordering is explicit: v0.106.0 defines the minimal lease/fencing
+contract and v0.107.0 implements it on real PostgreSQL, before v0.112.0 hosted
+manifest/run/outbox publication. v0.124.0 expands heartbeat/retry/reclaim semantics.
+v0.80.0 is local native/browser storage discipline; it is no SQL publication proof.
+
 | Gate | Required closure |
 | --- | --- |
 | G0 Scope/prerequisites | Reviewed manifest names exact variants/arguments/defaults, target/feature profiles, semantic/provider/dataset revisions, numeric resource/deadline ceilings, capability policy, prerequisite evidence, fixture provenance, test IDs and evidence locations. TBD/missing fields block acceptance. |

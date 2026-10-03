@@ -1,5 +1,20 @@
 """Reviewed prerequisite passes; source owners and acceptance remain additive."""
 
+SOURCE_CONTEXT = {
+'0.39.0': 'This pass qualifies local native artifact manifests and browser IndexedDB/OPFS transaction completion, local event/outbox records and orphan recovery only. Hosted SQL manifest/run/outbox publication is owned by v0.112.0, not assumed here.',
+'0.61.0': 'Current scope: private API schemas and the existing loopback transport, including lossless offsets/errors and bounded commands. Live session/object authority arrives in v0.110.0–v0.111.0, isolated-worker/supervisor proof in v0.119.0–v0.120.0, durable heartbeat/retry in v0.124.0 and egress in v0.125.0–v0.127.0. Those runtime suites remain pending, not schema-test PASS.',
+'0.62.0': 'Current scope: lifecycle messages and existing private loopback runs with local generation/cancellation tests; future lease/authorization cases are contract fixtures only. Minimal real SQL fencing is implemented in v0.107.0; deployed object authority qualifies in v0.110.0–v0.111.0, worker supervision in v0.119.0–v0.120.0, durable heartbeat/retry in v0.124.0 and egress in v0.125.0–v0.127.0 before v0.133.0 exposure. Do not claim durable or isolated execution here.',
+'0.63.0': 'Current scope: bounded private upload/range/checksum/abort behavior on existing local artifact ports with local capability/generation tests. Hosted SQL publication/fencing waits for v0.112.0; live session/object authority for v0.110.0–v0.111.0; worker/supervisor and egress suites for v0.119.0–v0.120.0 and v0.125.0–v0.127.0. Contract fixtures do not qualify absent runtime controls.',
+'0.64.0': 'Define the minimal authoritative publication lease: per-run monotonic checked fencing generation, committed acquisition/reassignment, expiry/revocation and compare-and-swap completion/publication. Contract fixtures cover duplicate/racing/stale callers. The actual PostgreSQL implementation is required in v0.107.0 before v0.112.0 publication; heartbeat/retry expansion belongs to v0.124.0.',
+'0.65.0': 'Implement the v0.106.0 minimal lease/fencing contract on real PostgreSQL now: atomic committed acquisition/reassignment, checked generation advance, expiry/revocation and conditional completion/publication. Test concurrent claimers, rollback, duplicate completion and stale/expired/revoked tokens with controlled time. Issue tokens only after commit; authorization remains a separate current-state check. This is a prerequisite of v0.112.0, not deferred to v0.124.0.',
+'0.71.0': 'Expand the minimal SQL lease/fencing primitive already qualified in v0.107.0 and used by v0.112.0. Add durable queue/heartbeat/renewal/reclaim, retry eligibility and idempotency lifecycle; rerun the earlier concurrent/stale/expiry/publication suite. This pass does not introduce fencing for the first time.',
+}
+
+PUBLICATION_PREREQUISITES = (
+    'Storage transaction discipline', 'Repository contracts',
+    'PostgreSQL adapter', 'Workspace authorization',
+)
+
 FOUNDATION_AFTER_BAO = [
 ('Workflow reference policy',
  'Harden workflow admission for both .yml and .yaml, quoted/block/expression forms and action/reusable-workflow references. Define separate full-commit remote, reviewed same-repository local and digest-pinned container policies; preserve CodeQL Default setup.',
