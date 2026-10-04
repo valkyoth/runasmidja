@@ -54,6 +54,17 @@ uppercase placeholders below; do not select a report merely by service name:
 python3 scripts/export_image_evidence.py SERVICE IMAGE .local/image-evidence/PRINTED_SNAPSHOT sbom/images/SERVICE.cdx.json
 ```
 
+The production exporter accepts only `openbao`, `postgres`, `probe`, `probe-base`,
+`valkey` and `wolfi-base`, each at `sbom/images/SERVICE.cdx.json` in this repository.
+The destination's resolved parent must match that canonical location. Unknown
+services, cross-service names and arbitrary public paths fail before publication.
+Repository checks independently require all six files and verify their internal
+service identity plus a nonempty image reference, catching manual swaps as well.
+Historical inventories keep their existing filenames and are not export targets.
+The lower-level `copy_sbom` helper remains a general identity-checked copy utility;
+canonical publication must use the production CLI. These checks bind service
+identity, not acceptance of a newer image or authorization to release it.
+
 Export takes the service lock and validates the snapshot's image, filename,
 content hash, regular-file type, ownership and private permissions. It writes
 the public destination atomically using a unique temporary file. A mismatched

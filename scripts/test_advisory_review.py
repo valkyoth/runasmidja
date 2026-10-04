@@ -8,7 +8,7 @@ from datetime import date
 from pathlib import Path
 from advisory_review import disposition
 from advisory_evidence import verified_reviews
-from sbom_privacy import public_sbom, check_sboms
+from sbom_privacy import public_sbom, check_sboms, PUBLIC_SERVICES
 
 
 class AdvisoryTests(unittest.TestCase):
@@ -62,6 +62,9 @@ class PrivacyTests(unittest.TestCase):
     def test_repository_gate_rejects_private_paths_anywhere_in_sboms(self):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);(root/'sbom/images').mkdir(parents=True);path=root/'sbom/images/fixture.json'
+            for service in PUBLIC_SERVICES:
+                (root/'sbom/images'/f'{service}.cdx.json').write_text(json.dumps(
+                    {'metadata':{'component':{'name':f'runasmidja/{service}@image'}}}))
             for value in ('/home/person/project','/Users/person/project',r'C:\Work\project',str(root)):
                 path.write_text(json.dumps({'metadata':{'properties':[{'value':value}]}}))
                 self.assertTrue(check_sboms(root))

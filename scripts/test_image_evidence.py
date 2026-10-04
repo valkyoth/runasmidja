@@ -106,13 +106,6 @@ class EvidenceTests(unittest.TestCase):
             evidence.copy_sbom(root,'probe','image',path,destination)
             link=Path(folder)/'symlink.json'; link.symlink_to(destination)
             with self.assertRaises(RuntimeError): evidence.copy_sbom(root,'probe','image',path,link)
-            import export_image_evidence as exporter
-            with patch.object(exporter,'EVIDENCE',root), patch('sys.argv',
-                    ['export','probe','image',str(path),str(destination)]): exporter.main()
-            alias=root/'alias-snapshot.json'; alias.symlink_to(path)
-            with patch.object(exporter,'EVIDENCE',root), patch('sys.argv',
-                    ['export','probe','image',str(alias),str(destination)]):
-                with self.assertRaises(RuntimeError): exporter.main()
             with self.assertRaises(RuntimeError): evidence.copy_sbom(root,'probe','wrong',path,destination)
             with evidence.evidence_transaction(root,'probe','image') as tx:
                 with self.assertRaises(RuntimeError): tx.read(destination)

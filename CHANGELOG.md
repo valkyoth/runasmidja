@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Bind public SBOM export destinations to services and independently check
+  canonical inventory identities, including concurrent and manual-swap regressions.
+
 - Bound per-service evidence retention and reject private-tree/source-alias
   export destinations; add quota, custody, concurrency and no-mutation regressions.
 
