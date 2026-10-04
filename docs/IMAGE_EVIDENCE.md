@@ -129,3 +129,17 @@ JSON parsing rejects duplicate object keys at every nesting level, including
 escaped spellings that decode to the same key. This applies to canonical,
 historical and other public JSON alike; privacy, structure and service checks
 all consume the same unambiguous parsed record.
+
+
+Image service binding applies to `.cdx.json` files at every depth beneath
+`sbom/images`, not only direct children. Nested directories do not create an
+exception: any image inventory without an explicit reviewed relative-path binding
+fails, including a canonical filename copied into a subdirectory.
+
+Public JSON must be strictly UTF-8 encoded without a leading byte-order mark.
+UTF-16/UTF-32, malformed UTF-8, `NaN`, `Infinity`, `-Infinity` and floating-point
+exponents overflowing to infinity fail before structural/service checks. Duplicate
+key rejection still applies at every level. Ordinary finite JSON numbers, Unicode
+text and quoted strings such as `"Infinity"` remain supported. This is an accepted
+input profile, not canonical serialization or an arbitrary-precision number API;
+it does not establish signature or inventory completeness guarantees.

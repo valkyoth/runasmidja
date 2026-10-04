@@ -1,5 +1,6 @@
 """Public evidence uses image identities, never workstation filesystem paths."""
 import json
+import math
 import os
 import stat
 import re
@@ -39,6 +40,17 @@ def unique_object(pairs):
     return result
 
 
+def reject_constant(value):
+    raise ValueError('Non-standard JSON constant')
+
+
+def finite_float(value):
+    parsed = float(value)
+    if not math.isfinite(parsed):
+        raise ValueError('Non-finite JSON number')
+    return parsed
+
+
 @contextmanager
 def custody_directory(name, parent=None):
     descriptor = os.open(name, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | os.O_CLOEXEC,
@@ -65,7 +77,10 @@ def load_public_json(name, directory):
         content = source.read(MAX_PUBLIC_SBOM + 1)
         if len(content) > MAX_PUBLIC_SBOM:
             raise RuntimeError('Public inventory exceeds size limit')
-    return json.loads(content, object_pairs_hook=unique_object)
+    # Text input prevents Python's bytes-based UTF-16/32 autodetection. A UTF-8
+    # BOM is rejected by the JSON decoder, rather than silently stripped.
+    return json.loads(content.decode('utf-8'), object_pairs_hook=unique_object,
+                      parse_constant=reject_constant, parse_float=finite_float)
 
 
 def load_canonical_sbom(name, directory):
@@ -112,7 +127,7 @@ def check_sboms(root):
                         if (not isinstance(identity, str) or not identity.startswith(prefix) or
                                 not identity[len(prefix):].strip()):
                             raise RuntimeError('SBOM service/destination mismatch')
-                    elif path.parent == Path('images') and name.endswith('.cdx.json'):
+                    elif path.is_relative_to(Path('images')) and name.endswith('.cdx.json'):
                         raise RuntimeError('Image inventory filename has no reviewed service binding')
                     content = json.dumps(report, ensure_ascii=False)
                     if PRIVATE_PATH.search(content) or str(root) in content:

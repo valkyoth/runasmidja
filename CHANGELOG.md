@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Enforce image service binding at every directory depth; require BOM-free
+  UTF-8 public JSON and reject non-standard or overflowing non-finite numbers.
+
 - Anchor public inventory reads to verified directory descriptors, reject
   unsafe ownership/write permissions, and reject duplicate JSON keys.
 
