@@ -5,7 +5,7 @@ import os
 import stat
 import re
 from pathlib import Path
-from custody import read_private, replace_private
+from custody import read_private, replace_private, durable_unlink, sync_parent
 from process_limits import run_bounded
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -36,13 +36,43 @@ def fingerprint():
     return hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
 
 
-def record(image):
+def candidate_receipt(path, image, expected_recipe):
+    if fingerprint() != expected_recipe:
+        raise RuntimeError('Build recipe changed during candidate admission')
+    digest = bounded_hash(path, 512 * 1024 * 1024)
     from image_archive import verify
-    verify(STATE / 'image.tar', image)
-    receipt = {'schema': 1, 'recipe': fingerprint(), 'image': image,
-               'archive_sha256': bounded_hash(STATE / 'image.tar', 512 * 1024 * 1024),
-               'trust': 'local host/build custody only; unsigned and not portable release provenance'}
+    verify(path, image)
+    return {'schema': 1, 'recipe': expected_recipe, 'image': image,
+            'archive_sha256': digest,
+            'trust': 'local host/build custody only; unsigned and not portable release provenance'}
+
+
+def verify_loaded_image(image):
+    actual = run_bounded('podman', 'image', 'inspect', image, '--format', '{{.Id}}').stdout.strip()
+    if 'sha256:' + actual.removeprefix('sha256:') != image:
+        raise RuntimeError('Local PostgreSQL image identity drift')
+
+
+def record(image, expected=None):
+    receipt = candidate_receipt(STATE / 'image.tar', image, fingerprint())
+    if expected is not None and receipt != expected:
+        raise RuntimeError('Published archive differs from admitted candidate')
     replace_private(STATE / 'receipt.json', json.dumps(receipt))
+
+
+def commit_candidate(receipt):
+    candidate = STATE / 'candidate.tar'
+    if candidate_receipt(candidate, receipt['image'], receipt['recipe']) != receipt:
+        raise RuntimeError('Candidate changed after scan')
+    verify_loaded_image(receipt['image'])
+    final = STATE / 'receipt.json'
+    if final.exists() or final.is_symlink():
+        read_private(final)
+        durable_unlink(final)
+    # A failure during publication leaves no final receipt: ensure_image retries.
+    os.replace(candidate, STATE / 'image.tar')
+    sync_parent(STATE / 'image.tar')
+    record(receipt['image'], expected=receipt)
 
 
 def validate_image(image, *, require_local=True):
@@ -56,9 +86,7 @@ def validate_image(image, *, require_local=True):
     from image_archive import verify
     verify(STATE / 'image.tar', image)
     if require_local:
-        actual = run_bounded('podman', 'image', 'inspect', image, '--format', '{{.Id}}').stdout.strip()
-        if 'sha256:' + actual.removeprefix('sha256:') != image:
-            raise RuntimeError('Local PostgreSQL image identity drift')
+        verify_loaded_image(image)
     return STATE / 'image.tar'
 
 

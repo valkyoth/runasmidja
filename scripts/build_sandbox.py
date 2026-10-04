@@ -94,7 +94,7 @@ def worker(arena, recipe, mode):
         print('Actual build CPU/memory/process cgroup limits and quota-backed ENOSPC: PASS', flush=True)
         return
     image = (root / 'image.id').read_text().strip()
-    save_bounded_archive([*podman, 'save', '--format', 'docker-archive', image], STATE / 'image.tar')
+    save_bounded_archive([*podman, 'save', '--format', 'docker-archive', image], STATE / 'candidate.tar')
     replace_private(STATE / 'contained-image.id', image)
 
 

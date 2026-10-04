@@ -65,23 +65,31 @@ def provenance(service, image, policy, cosign):
     return 'signed-index'
 
 
-def scan(service, image, scanner, archive=None):
+def scan(service, image, scanner, archive=None, candidate_recipe=None):
     target = EVIDENCE / (service + '.cdx.json')
+    before = None
+    if archive and candidate_recipe is not None:
+        from postgres_image import candidate_receipt
+        before = candidate_receipt(archive, image, candidate_recipe)
     # Never consume stale evidence after a failed scanner run or follow an output link.
     result = run_bounded(scanner, 'image', '--image-src', 'remote', '--platform', 'linux/amd64',
         '--cache-dir', str(ROOT / '.local/trivy'), '--scanners', 'vuln', '--format', 'cyclonedx',
-        '--severity', BLOCKING_SEVERITIES, '--exit-code', '1', '--quiet', '--ignore-unfixed=false',
+        '--severity', BLOCKING_SEVERITIES, '--exit-code', '0', '--quiet', '--ignore-unfixed=false',
         '--config', '', '--ignorefile', '/dev/null', '--ignore-policy', '', '--ignore-status', '',
         '--vex', '', '--skip-db-update=false', '--disable-telemetry',
         *(['--input', str(archive)] if archive else [image]),
-        allowed=(0, 1), timeout=900, output_limit=MAX_AUDIT,
+        allowed=(0,), timeout=900, output_limit=MAX_AUDIT,
         env={key: value for key, value in os.environ.items() if not key.startswith('TRIVY_')})
     evidence = json.loads(result.stdout)
     if evidence.get('bomFormat') != 'CycloneDX' or not evidence.get('components'):
         raise RuntimeError('Image SBOM is missing dependency inventory')
     if archive:
-        from postgres_image import validate_image
-        validate_image(image, require_local=False)  # Validate before loading the scanned archive.
+        if before is not None:
+            if candidate_receipt(archive, image, candidate_recipe) != before:
+                raise RuntimeError('Candidate changed during scan')
+        else:
+            from postgres_image import validate_image
+            validate_image(image, require_local=False)
         source = json.loads((ROOT / 'deploy/podman/postgres/source.lock.json').read_text())
         evidence['components'].append({'type': 'application', 'name': 'PostgreSQL',
             'version': source['version'], 'bom-ref': 'runasmidja-postgresql-source',
@@ -101,9 +109,7 @@ def scan(service, image, scanner, archive=None):
         evidence.setdefault('metadata', {}).setdefault('properties', []).append(
             {'name': 'runasmidja:unknown-not-affected-reviews', 'value': str(reviewed)})
     replace_private(target, json.dumps(evidence, indent=2) + '\n', limit=MAX_AUDIT)
-    # Exit 1 is expected when Trivy retains a reviewed UNKNOWN finding; never
-    # accept an error status with no such documented advisory evidence.
-    clean = 'blocked' not in statuses and (result.returncode == 0 or (result.returncode == 1 and reviewed > 0))
+    clean = 'blocked' not in statuses
     return clean, statuses.count('blocked')
 
 

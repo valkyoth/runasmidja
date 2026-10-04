@@ -65,7 +65,7 @@ python3 scripts/stack.py stop
 
 Dependencies run in rootless Podman: PostgreSQL **19 beta 4**, OpenBao **2.7.1**
 and Valkey **9.1.2**. PostgreSQL is built automatically from pinned official source
-on a verified Wolfi base. Private custody lives in ignored `.local/stacks/v02-reviewed`;
+on a verified Wolfi base. Private custody lives in ignored `.local/stacks/v02-admission-ready`;
 earlier `.local/stacks/*` and `.local/stack` data remain separate and retained.
 OpenBao is initialized over TLS with declarative audit, KV v2, scoped AppRole
 and revoked bootstrap root token. Image provenance and exact-digest scans run

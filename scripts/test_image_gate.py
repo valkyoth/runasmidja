@@ -16,6 +16,44 @@ IMAGES = {key: POLICY[key]['image'] for key in ('openbao', 'postgres', 'valkey')
 
 
 class ImageTests(unittest.TestCase):
+    def test_candidate_scan_requires_no_final_receipt_and_rejects_changed_bytes(self):
+        import postgres_image
+        from test_postgres_image import archive
+        with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
+             patch.object(postgres_image, 'STATE', Path(folder)), \
+             patch.object(postgres_image, 'fingerprint', return_value='recipe'):
+            path = Path(folder) / 'candidate.tar'
+            identity = archive(path)
+            report = json.dumps({'bomFormat': 'CycloneDX', 'components': [{'name': 'fixture'}]})
+            result = SimpleNamespace(returncode=0, stdout=report)
+            with patch.object(gate, 'run_bounded', return_value=result):
+                self.assertEqual(gate.scan('postgres', identity, 'trivy', archive=path, candidate_recipe='recipe'), (True, 0))
+            self.assertFalse((Path(folder) / 'receipt.json').exists())
+            def changed(*args, **kwargs):
+                with path.open('ab') as output: output.write(b'changed')
+                return result
+            with patch.object(gate, 'run_bounded', side_effect=changed), self.assertRaisesRegex(RuntimeError, 'changed during scan'):
+                gate.scan('postgres', identity, 'trivy', archive=path, candidate_recipe='recipe')
+
+    def test_real_scanner_nonzero_exit_rejects_even_a_reviewed_report(self):
+        import sys
+        review = json.loads((gate.ROOT / 'deploy/podman/advisory-reviews.json').read_text())[0]
+        report = {'bomFormat': 'CycloneDX',
+            'components': [{'bom-ref': 'module', 'name': review['module'], 'version': review['version']}],
+            'vulnerabilities': [{'id': review['id'], 'affects': [{'ref': 'module'}]}]}
+        with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)):
+            scanner = Path(folder) / 'scanner'
+            evidence = Path(folder) / 'openbao.cdx.json'
+            evidence.write_text('previous evidence')
+            for code in (1, 2, 125):
+                scanner.write_text('#!' + sys.executable + '\nimport sys\n'
+                    'if sys.argv[sys.argv.index("--exit-code")+1] != "0": raise SystemExit(99)\n'
+                    + 'print(' + repr(json.dumps(report)) + ')\nraise SystemExit(' + str(code) + ')\n')
+                scanner.chmod(0o700)
+                with self.subTest(code=code), self.assertRaises(RuntimeError):
+                    gate.scan('openbao', review['image'], str(scanner))
+                self.assertEqual(evidence.read_text(), 'previous evidence')
+
     def test_unknown_advisory_requires_bound_review_and_is_retained(self):
         review = json.loads((gate.ROOT / 'deploy/podman/advisory-reviews.json').read_text())[0]
         report = {'bomFormat': 'CycloneDX',
@@ -24,9 +62,11 @@ class ImageTests(unittest.TestCase):
             'vulnerabilities': [{'id': review['id'], 'ratings': [{}], 'affects': [{'ref': 'module'}]}]}
         with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
              patch.object(gate, 'disposition', side_effect=lambda *args: disposition(*args, today=date.fromisoformat(review['reviewed_on']))), \
-             patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=1, stdout=json.dumps(report))) as call:
+             patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=0, stdout=json.dumps(report))) as call:
             self.assertEqual(gate.scan('openbao', review['image'], 'trivy'), (True, 0))
             self.assertIn('UNKNOWN,HIGH,CRITICAL', call.call_args.args)
+            self.assertEqual(call.call_args.args[call.call_args.args.index('--exit-code') + 1], '0')
+            self.assertEqual(call.call_args.kwargs['allowed'], (0,))
             retained = json.loads((Path(folder) / 'openbao.cdx.json').read_text())
             self.assertEqual(retained['vulnerabilities'], report['vulnerabilities'])
             self.assertEqual(retained['metadata']['component']['name'], 'runasmidja/openbao@' + review['image'])
@@ -36,7 +76,7 @@ class ImageTests(unittest.TestCase):
                         {'id': 'new-advisory', 'ratings': [{'severity': 'unknown'}]}):
             report['vulnerabilities'] = [finding]
             with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
-                 patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=1, stdout=json.dumps(report))):
+                 patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=0, stdout=json.dumps(report))):
                 self.assertEqual(gate.scan('openbao', review['image'], 'trivy'), (False, 1))
                 self.assertEqual(json.loads((Path(folder) / 'openbao.cdx.json').read_text())['vulnerabilities'], [finding])
 
@@ -78,7 +118,7 @@ class ImageTests(unittest.TestCase):
         base = {'bomFormat': 'CycloneDX', 'components': [{'name': 'fixture'}]}
         with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
              patch.dict(gate.os.environ, {'TRIVY_IGNORE_UNFIXED': 'true', 'TRIVY_VEX': 'fixture-vex'}):
-            for code, report, clean in ((0, base, True), (1, base, False),
+            for code, report, clean in ((0, base, True),
                     (0, {**base, 'vulnerabilities': [{'ratings': [{'severity': 'critical'}]}]}, False)):
                 with patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=code, stdout=json.dumps(report))) as call:
                     self.assertEqual(gate.scan('postgres', IMAGES['postgres'], 'trivy')[0], clean)

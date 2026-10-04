@@ -53,13 +53,24 @@ Archive stdout is streamed through a 512 MiB byte counter before disk writes;
 stderr is capped at 1 MiB. A 0600 exclusive no-follow temporary file is synced,
 then atomically renamed and its parent synced. Producer/flood/deadline failures
 preserve the old archive and reap the producer. Old and in-progress archives
-can each occupy at most 512 MiB. A leftover temporary file blocks retry rather
+can each occupy at most 512 MiB. The committed archive, retained candidate and
+in-progress replacement can coexist (at most 1,536 MiB total). A leftover temporary file blocks retry rather
 than being silently trusted. Config/layer validation and a strict image scan
 precede import into the ordinary Podman store. Source is capped at 30 MB;
 build output at 1 MiB, steps at 1,500 seconds and the whole unit at 1,800 seconds.
 Private logs/receipt/archive are local-only; public SBOM identities never contain
 workstation paths. Run `python3 scripts/build_sandbox.py --qualify` for real
 kernel-limit checks, a bounded build step and tmpfs ENOSPC evidence.
+
+The builder exports `candidate.tar`, validates its recipe/config/layers/hash,
+scans it without requiring a final receipt, imports it and verifies the loaded
+image ID. Only then does publication replace `image.tar` and write `receipt.json`
+last. Scanner/import failures leave any previous committed archive and receipt
+intact. Publication first removes the old receipt, so an interruption between
+archive replacement and final receipt leaves `ensure_image()` free to rebuild
+on retry. A visible valid receipt after a directory-sync error is resynced and
+validated on retry. No image is admitted from partial scanner output: every
+nonzero scanner exit fails, while completed reports determine vulnerability policy.
 
 Weekly freshness checks detect upstream PostgreSQL releases/checksum drift and
 new Wolfi base indexes. Review/update pins, rebuild, rescan and requalify before

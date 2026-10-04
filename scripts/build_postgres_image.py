@@ -10,7 +10,7 @@ from pathlib import Path
 from image_gate import ROOT, EVIDENCE, tool, provenance, scan
 from process_limits import run_bounded
 from custody import replace_private, read_private
-from postgres_image import fingerprint, record, bounded_hash
+from postgres_image import fingerprint, candidate_receipt, commit_candidate, bounded_hash
 from build_sandbox import sandbox
 from custody import sync_parent
 
@@ -49,12 +49,14 @@ def build():
     image = read_private(STATE / 'contained-image.id').strip()
     if not re.fullmatch(r'sha256:[0-9a-f]{64}', image) or fingerprint() != started:
         raise RuntimeError('Build image/input binding changed during compilation')
-    record(image)
-    if not scan('postgres', image, tool('trivy'), archive=STATE / 'image.tar')[0]:
+    archive = STATE / 'candidate.tar'
+    candidate = candidate_receipt(archive, image, started)
+    if not scan('postgres', image, tool('trivy'), archive=archive, candidate_recipe=started)[0]:
         raise RuntimeError('Built PostgreSQL vulnerability gate failed')
-    run_bounded('podman', 'load', '--input', str(STATE / 'image.tar'), timeout=180)
-    from postgres_image import validate_image
-    validate_image(image)
+    if candidate_receipt(archive, image, started) != candidate:
+        raise RuntimeError('Candidate changed during scan')
+    run_bounded('podman', 'load', '--input', str(archive), timeout=180)
+    commit_candidate(candidate)
     print('Public-source PostgreSQL Wolfi build completed.', flush=True)
 
 

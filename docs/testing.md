@@ -42,8 +42,17 @@ expiry/evidence denials, SBOM path privacy checks and the reaped-PID regression.
 `build_sandbox.py --qualify` checks actual delegated kernel ceilings and a real
 bounded build step, and forces ENOSPC on a size-limited tmpfs. The complete
 PostgreSQL build runs inside the same checked 3 GiB private storage and owned
-cgroup. Normal and optimized suites have 106 tests. No automated test accepts
+cgroup. That remediation's normal and optimized suites had 106 tests. No automated test accepts
 the maintainer's pentest; this remains a retest candidate.
+
+The following review adds a real scanner-process regression that emits a valid
+reviewed report but exits 1/2/125, plus candidate archive mutation checks.
+Build fault injection covers scanner failure, denied findings, load/identity
+failure, receipt writes before/after visible publication, and successful automatic
+retry. Failed replacement scans/imports preserve previous committed artifacts;
+failed publication leaves rebuild possible. Normal and PYTHONOPTIMIZE=2 suites
+now have 111 tests. CI checks committed whitespace with `git show --check` and
+fetches the parent needed for that diff.
 
 Search qualification runs the same hosted metadata/authorization contracts
 against real PostgreSQL and Meilisearch, with the optional feature compiled both

@@ -43,8 +43,8 @@ do not waive CVEs and must be reviewed again on digest changes. Startup always
 scans, with unfixed findings included and no ignore/VEX filter. CI retains
 per-image SBOMs even when scans fail.
 
-The v0.2 fixture uses `.local/stacks/v02-reviewed` and
-`runasmidja-v02-reviewed-*` containers,
+The v0.2 fixture uses `.local/stacks/v02-admission-ready` and
+`runasmidja-v02-admission-ready-*` containers,
 network and PostgreSQL volume. `RUNASMIDJA_STACK_ID` accepts a bounded lowercase
 identifier for a separate test profile; ports stay fixed, so run only one profile
 at a time. Every mutation verifies project/service/instance ownership labels.
@@ -64,7 +64,7 @@ Existing containers with unbounded logs/audit mounts require an explicit
 image IDs and database/vault data mounts before stopping/removing containers;
 volumes, vault data, credentials and recovery custody remain intact. Run `up`
 after the image gate is clean. Ordinary startup never silently replaces a
-container. Earlier `v02`, `v02-wolfi-ready` and development `v02-wolfi` profiles are stopped,
+container. Earlier `v02-reviewed`, `v02`, `v02-wolfi-ready` and development `v02-wolfi` profiles are stopped,
 preserving all data/custody. The latter contains an incomplete experimental
 initialization; it is not silently resumed or reset. The qualified fresh default
 is independent of these profiles, not a migration. PostgreSQL cannot reuse the

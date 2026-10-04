@@ -2,6 +2,15 @@
 
 ## Unreleased — 0.2.0 OpenBao-first provisioning
 
+Latest re-review (2026-10-04): reject every scanner operational failure before
+parsing output; enforce vulnerability policy only on completed reports. Validate
+and scan a candidate PostgreSQL archive, import/verify it, then publish the final
+receipt. Failed scans/imports preserve prior committed artifacts; interrupted
+publication allows automatic rebuild. Added scanner/candidate-mutation/publication/
+retry regressions (111 normal/optimized tests), removed trailing EOF whitespace,
+and added a committed-whitespace CI check. Earlier fixture data is retained;
+the rebuilt image uses v02-admission-ready. Maintainer retest is pending.
+
 - Start TLS OpenBao and verify scoped identities before any dependent startup.
 - Issue PostgreSQL admin/runtime and Valkey passwords through OpenBao; preserve
   version-1 KV records with CAS=0 and reject schema/version/projection drift.

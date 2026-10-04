@@ -70,4 +70,3 @@ def save_bounded_archive(args, target, *, limit=MAX_ARCHIVE, timeout=180, stderr
         selector.close()
         if temporary.exists():
             durable_unlink(temporary)
-

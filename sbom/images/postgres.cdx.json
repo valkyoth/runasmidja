@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:4ccb0594-b18e-4530-bacc-fd285b543e86",
+  "serialNumber": "urn:uuid:c9c1695e-6e1a-4bfb-96da-1b68c2b6cfe0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T06:13:02+00:00",
+    "timestamp": "2026-10-04T06:37:04+00:00",
     "tools": {
       "components": [
         {
@@ -20,9 +20,9 @@
       ]
     },
     "component": {
-      "bom-ref": "0353a891-cb5a-4291-8fc1-d1164be6f869",
+      "bom-ref": "9fe8d65d-8c68-4a7e-be4d-72c91a48b54b",
       "type": "container",
-      "name": "runasmidja/postgres@sha256:ff0f7c9071b8bcbf0d58c52f365853deed5cf5c097560b95023be46aba91f4a9",
+      "name": "runasmidja/postgres@sha256:3c7b03ac458ad149f7521c6083b06c3390595473f353447bee16426805a2a0b9",
       "properties": [
         {
           "name": "aquasecurity:trivy:DiffID",
@@ -58,11 +58,11 @@
         },
         {
           "name": "aquasecurity:trivy:DiffID",
-          "value": "sha256:c973a0a6b9a42183eb4677632cd093d847fc43418ffe5e02dd101b2df6575ddf"
+          "value": "sha256:e009e298aa7dd9dae75efaf17087d903278ad3037d422ba314c6035eaa68217f"
         },
         {
           "name": "aquasecurity:trivy:DiffID",
-          "value": "sha256:e009e298aa7dd9dae75efaf17087d903278ad3037d422ba314c6035eaa68217f"
+          "value": "sha256:e0789fc88e0c1843000216cabbd44ac179d9200a07e5c8ca8a539485e0b895cf"
         },
         {
           "name": "aquasecurity:trivy:DiffID",
@@ -74,7 +74,7 @@
         },
         {
           "name": "aquasecurity:trivy:ImageID",
-          "value": "sha256:ff0f7c9071b8bcbf0d58c52f365853deed5cf5c097560b95023be46aba91f4a9"
+          "value": "sha256:3c7b03ac458ad149f7521c6083b06c3390595473f353447bee16426805a2a0b9"
         },
         {
           "name": "aquasecurity:trivy:Labels:io.buildah.version",
@@ -86,7 +86,7 @@
         },
         {
           "name": "aquasecurity:trivy:Labels:io.runasmidja.recipe",
-          "value": "3429483affb8de66dc589d3fc035c615f1e57e9c87bda9254c17aefe7177c265"
+          "value": "aaee87b4dce7c2b115734179be162aa0fdd994cc12a0c280ef7f9d1a18e9b603"
         },
         {
           "name": "aquasecurity:trivy:Labels:io.runasmidja.service",
@@ -105,7 +105,7 @@
   },
   "components": [
     {
-      "bom-ref": "0caac737-93e2-457f-a625-94428ae75e48",
+      "bom-ref": "ab4bf596-1a5e-4af3-be86-4bed3e698c53",
       "type": "operating-system",
       "name": "wolfi",
       "version": "20230201",
@@ -640,7 +640,7 @@
       "properties": [
         {
           "name": "aquasecurity:trivy:LayerDiffID",
-          "value": "sha256:c973a0a6b9a42183eb4677632cd093d847fc43418ffe5e02dd101b2df6575ddf"
+          "value": "sha256:e0789fc88e0c1843000216cabbd44ac179d9200a07e5c8ca8a539485e0b895cf"
         },
         {
           "name": "aquasecurity:trivy:PkgID",
@@ -732,7 +732,7 @@
       "properties": [
         {
           "name": "aquasecurity:trivy:LayerDiffID",
-          "value": "sha256:c973a0a6b9a42183eb4677632cd093d847fc43418ffe5e02dd101b2df6575ddf"
+          "value": "sha256:e0789fc88e0c1843000216cabbd44ac179d9200a07e5c8ca8a539485e0b895cf"
         },
         {
           "name": "aquasecurity:trivy:PkgID",
@@ -978,7 +978,7 @@
       "properties": [
         {
           "name": "aquasecurity:trivy:LayerDiffID",
-          "value": "sha256:c973a0a6b9a42183eb4677632cd093d847fc43418ffe5e02dd101b2df6575ddf"
+          "value": "sha256:e0789fc88e0c1843000216cabbd44ac179d9200a07e5c8ca8a539485e0b895cf"
         },
         {
           "name": "aquasecurity:trivy:PkgID",
@@ -1225,13 +1225,13 @@
   ],
   "dependencies": [
     {
-      "ref": "0353a891-cb5a-4291-8fc1-d1164be6f869",
+      "ref": "9fe8d65d-8c68-4a7e-be4d-72c91a48b54b",
       "dependsOn": [
-        "0caac737-93e2-457f-a625-94428ae75e48"
+        "ab4bf596-1a5e-4af3-be86-4bed3e698c53"
       ]
     },
     {
-      "ref": "0caac737-93e2-457f-a625-94428ae75e48",
+      "ref": "ab4bf596-1a5e-4af3-be86-4bed3e698c53",
       "dependsOn": [
         "pkg:apk/wolfi/libssl3@3.6.5-r1?arch=x86_64&distro=20230201",
         "pkg:apk/wolfi/tzdata@2026e-r0?arch=x86_64&distro=20230201",

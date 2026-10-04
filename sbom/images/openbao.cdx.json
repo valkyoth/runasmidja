@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:2c2eb37b-e768-4aa4-b96d-79ad846ee58e",
+  "serialNumber": "urn:uuid:3bb35968-cc61-4c77-ae57-5820c71f6d53",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T06:13:07+00:00",
+    "timestamp": "2026-10-04T06:37:09+00:00",
     "tools": {
       "components": [
         {
@@ -172,7 +172,22 @@
   },
   "components": [
     {
-      "bom-ref": "01c9d8c7-faeb-49b9-a058-c8e710bb6020",
+      "bom-ref": "1692fe2d-f49d-4552-a577-cf7a643b2ad4",
+      "type": "application",
+      "name": "usr/bin/bao",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "1fb34fe2-08d3-4f00-a368-2d869f65d712",
       "type": "operating-system",
       "name": "alpine",
       "version": "3.24.2",
@@ -188,7 +203,30 @@
       ]
     },
     {
-      "bom-ref": "1545cdb8-8159-49f5-8140-70e5bf4f5a5b",
+      "bom-ref": "2754a5f7-6c63-4d35-b342-4e82ba81ac62",
+      "type": "library",
+      "name": "./internal/helper/stubbolt",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:90ac85229a4324b8c9d989c7bcc0bcfd24a86d3ea95937be09f2d065d07a22a7"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:0e9fa07592f841ab139f5f25e92580a8b9303c56b88f03688095815c2e04f08f"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "./internal/helper/stubbolt"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "3c2838af-535b-452c-834d-37531397c5b2",
       "type": "library",
       "name": "./api/auth/kubernetes",
       "properties": [
@@ -211,45 +249,7 @@
       ]
     },
     {
-      "bom-ref": "260bfa81-7957-4070-83d4-1d17dc4a60a0",
-      "type": "application",
-      "name": "usr/bin/bao",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "gobinary"
-        }
-      ]
-    },
-    {
-      "bom-ref": "48117221-80ef-40f8-9490-d9049ea36166",
-      "type": "library",
-      "name": "./api",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:LayerDiffID",
-          "value": "sha256:90ac85229a4324b8c9d989c7bcc0bcfd24a86d3ea95937be09f2d065d07a22a7"
-        },
-        {
-          "name": "aquasecurity:trivy:LayerDigest",
-          "value": "sha256:0e9fa07592f841ab139f5f25e92580a8b9303c56b88f03688095815c2e04f08f"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "./api"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "gobinary"
-        }
-      ]
-    },
-    {
-      "bom-ref": "6ebf2128-5ea5-4c5b-9b20-d9a1cd7c99f6",
+      "bom-ref": "46c43897-8d56-4422-9f13-c808cfb5a5cd",
       "type": "library",
       "name": "./sdk",
       "properties": [
@@ -272,9 +272,9 @@
       ]
     },
     {
-      "bom-ref": "cea88313-f4a7-4e01-b8aa-93b743622f10",
+      "bom-ref": "f00692e3-6979-4117-bd00-11bdc51c4ca0",
       "type": "library",
-      "name": "./internal/helper/stubbolt",
+      "name": "./api",
       "properties": [
         {
           "name": "aquasecurity:trivy:LayerDiffID",
@@ -286,7 +286,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "./internal/helper/stubbolt"
+          "value": "./api"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -8911,7 +8911,13 @@
   ],
   "dependencies": [
     {
-      "ref": "01c9d8c7-faeb-49b9-a058-c8e710bb6020",
+      "ref": "1692fe2d-f49d-4552-a577-cf7a643b2ad4",
+      "dependsOn": [
+        "pkg:golang/github.com/openbao/openbao/v2@v2.7.1"
+      ]
+    },
+    {
+      "ref": "1fb34fe2-08d3-4f00-a368-2d869f65d712",
       "dependsOn": [
         "pkg:apk/alpine/alpine-baselayout@3.7.2-r1?arch=x86_64&distro=3.24.2",
         "pkg:apk/alpine/alpine-release@3.24.2-r0?arch=x86_64&distro=3.24.2",
@@ -8927,25 +8933,19 @@
       ]
     },
     {
-      "ref": "1545cdb8-8159-49f5-8140-70e5bf4f5a5b",
+      "ref": "2754a5f7-6c63-4d35-b342-4e82ba81ac62",
       "dependsOn": []
     },
     {
-      "ref": "260bfa81-7957-4070-83d4-1d17dc4a60a0",
-      "dependsOn": [
-        "pkg:golang/github.com/openbao/openbao/v2@v2.7.1"
-      ]
-    },
-    {
-      "ref": "48117221-80ef-40f8-9490-d9049ea36166",
+      "ref": "3c2838af-535b-452c-834d-37531397c5b2",
       "dependsOn": []
     },
     {
-      "ref": "6ebf2128-5ea5-4c5b-9b20-d9a1cd7c99f6",
+      "ref": "46c43897-8d56-4422-9f13-c808cfb5a5cd",
       "dependsOn": []
     },
     {
-      "ref": "cea88313-f4a7-4e01-b8aa-93b743622f10",
+      "ref": "f00692e3-6979-4117-bd00-11bdc51c4ca0",
       "dependsOn": []
     },
     {
@@ -9917,10 +9917,10 @@
     {
       "ref": "pkg:golang/github.com/openbao/openbao/v2@v2.7.1",
       "dependsOn": [
-        "1545cdb8-8159-49f5-8140-70e5bf4f5a5b",
-        "48117221-80ef-40f8-9490-d9049ea36166",
-        "6ebf2128-5ea5-4c5b-9b20-d9a1cd7c99f6",
-        "cea88313-f4a7-4e01-b8aa-93b743622f10",
+        "2754a5f7-6c63-4d35-b342-4e82ba81ac62",
+        "3c2838af-535b-452c-834d-37531397c5b2",
+        "46c43897-8d56-4422-9f13-c808cfb5a5cd",
+        "f00692e3-6979-4117-bd00-11bdc51c4ca0",
         "pkg:golang/cel.dev/cel-go@v0.32.0",
         "pkg:golang/cel.dev/expr@v0.25.2",
         "pkg:golang/cloud.google.com/go/auth/oauth2adapt@v0.2.8",
@@ -10573,8 +10573,8 @@
     {
       "ref": "pkg:oci/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005?arch=amd64&repository_url=ghcr.io%2Fopenbao%2Fopenbao",
       "dependsOn": [
-        "01c9d8c7-faeb-49b9-a058-c8e710bb6020",
-        "260bfa81-7957-4070-83d4-1d17dc4a60a0"
+        "1692fe2d-f49d-4552-a577-cf7a643b2ad4",
+        "1fb34fe2-08d3-4f00-a368-2d869f65d712"
       ]
     }
   ],

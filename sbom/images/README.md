@@ -20,9 +20,9 @@ The database was updated at 2026-10-03T14:28:08Z and downloaded at 17:22:49Z.
 | Original official PostgreSQL (historical) | 151 | 42 HIGH/CRITICAL | BLOCKED; not executed by current fixture |
 
 The qualified local PostgreSQL image ID is
-`sha256:ff0f7c9071b8bcbf0d58c52f365853deed5cf5c097560b95023be46aba91f4a9`.
+`sha256:3c7b03ac458ad149f7521c6083b06c3390595473f353447bee16426805a2a0b9`.
 Its scanned Docker archive SHA-256 is
-`1a219e5b8cfc3ab417f77b859b079991df81f6158171f572fba67b7d3d3fe3ab`.
+`558034bcb70593eacfc9f4b176d60d65127b88d8f4bfa834420d303ea07d12f9`.
 The [recipe/source pins](../../deploy/podman/postgres/README.md) describe official
 source custody, base publisher verification, current signed APK dependencies,
 runtime configuration and the trusted-host receipt limitation. Builds are not

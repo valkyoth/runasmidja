@@ -54,6 +54,10 @@ does not claim automatic advisory analysis of that compiled C source. Official
 PostgreSQL release/advisory review remains required. The Cargo inventory
 does not cover these image graphs. See [image evidence](../sbom/images/README.md).
 CI uploads per-image SBOMs for failed as well as successful scans.
+Trivy uses `--exit-code 0` for completed reports, including reports with findings.
+Every nonzero scanner exit is an operational failure and blocks admission before
+report parsing. Policy is enforced from the completed report; a reviewed UNKNOWN
+can never excuse scanner failure or make partial output admissible.
 Public inventory names use immutable image identities. Other private paths
 cause generation/repository checks to fail rather than being published.
 Public builds use checked cgroup CPU/memory/process ceilings, private bounded
