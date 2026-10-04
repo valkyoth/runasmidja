@@ -4,6 +4,13 @@ Linux/rootless Podman, Python 3.11+, OpenSSL/Skopeo CLIs and free loopback ports
 15432/18200/16379 are required. Python orchestrates tests; product code is Rust.
 The public PostgreSQL build additionally requires systemd 254+ user delegation
 and cgroup v2 CPU/memory/PID controllers; unsupported containment fails closed.
+Podman must support `build --inherit-labels=false --inherit-annotations=false`.
+CI uses `ubuntu-26.04`: its reviewed [runner inventory](https://github.com/actions/runner-images/blob/ubuntu26/20260927.149/images/ubuntu/Ubuntu2604-Readme.md)
+includes Podman 5.7.0 and systemd 259. The failed Ubuntu 24.04 runner had
+Podman 4.9.3, which lacks those build switches. CI checks the switches and runs
+the actual build-resource qualification before service provisioning; the job's
+45-minute ceiling accommodates the existing 30-minute bounded build plus
+admission and service checks. This does not require local OS/Podman upgrades.
 
 ```sh
 python3 scripts/install_image_tools.py

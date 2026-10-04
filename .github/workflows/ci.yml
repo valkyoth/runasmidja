@@ -25,13 +25,16 @@ jobs:
       - run: cargo audit --deny warnings
       - run: scripts/generate-sbom.sh
   containers:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # ubuntu-latest still uses 24.04/Podman 4.9, without build inheritance controls.
+    runs-on: ubuntu-26.04
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - run: sudo apt-get update && sudo apt-get install -y podman openssl skopeo
+      - name: Check required build options
+        run: podman --remote=false build --inherit-labels=false --inherit-annotations=false --help > /dev/null
       - name: Enable delegated user build cgroups
         run: |
           sudo loginctl enable-linger "$USER"
@@ -40,6 +43,8 @@ jobs:
       - run: rustup target add x86_64-unknown-linux-musl
       - run: python3 scripts/smoke_probe.py --container
       - run: python3 scripts/install_image_tools.py
+      - name: Qualify actual build resource limits
+        run: python3 scripts/build_sandbox.py --qualify
       - run: python3 scripts/stack_qualification.py
       - if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

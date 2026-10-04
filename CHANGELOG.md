@@ -2,6 +2,13 @@
 
 ## 0.2.0 — release prepared, GitHub and tag pending
 
+GitHub follow-up (2026-10-04): pin the container runner to Ubuntu 26.04 for
+required Podman build inheritance controls, check those switches explicitly,
+and run existing kernel build-limit qualification before service startup.
+Raise the overall job deadline to 45 minutes to accommodate the bounded build
+and remaining gates. No runtime/build script or security limit changes; hosted
+verification of the correction remains pending.
+
 Release review (2026-10-04): the maintainer accepted the c73805e retest with
 zero new Critical/High/Medium/Low findings. All prior issues are resolved within
 the bounded fixture scope. Final verification and release-automation review
