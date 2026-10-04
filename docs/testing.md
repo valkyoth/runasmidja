@@ -32,8 +32,8 @@ real initialization denials without altering rejected fixture data, verifies
 UTF8/C.UTF-8 and excludes compiler/Perl/gosu runtime packages. Archive regressions
 bind config/platform/every layer to the image that runs and reject receipt/input
 drift, unsafe members and tampering. The original PostgreSQL image remains
-rejected; its historical scan is retained. GitHub and maintainer retest remain
-pending. See the
+rejected; its historical scan is retained. The maintainer accepted the final
+retest; GitHub remains pending. See the
 [assessment](../security/pentest/v0.2.0.md).
 
 The second review adds binary archive flood/EOF/deadline/stderr/exit and fsync/
@@ -43,7 +43,7 @@ expiry/evidence denials, SBOM path privacy checks and the reaped-PID regression.
 bounded build step, and forces ENOSPC on a size-limited tmpfs. The complete
 PostgreSQL build runs inside the same checked 3 GiB private storage and owned
 cgroup. That remediation's normal and optimized suites had 106 tests. No automated test accepts
-the maintainer's pentest; this remains a retest candidate.
+the maintainer's pentest; acceptance is recorded separately in the assessment.
 
 The following review adds a real scanner-process regression that emits a valid
 reviewed report but exits 1/2/125, plus candidate archive mutation checks.

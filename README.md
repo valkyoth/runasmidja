@@ -24,8 +24,8 @@ Browser processing is the default; saving, sharing, server execution and
 external network operations are distinct explicit actions.
 
 **Current status:** `v0.1.0` is tagged with accepted pentest and green GitHub
-checks. `0.2.0` adds OpenBao-first service provisioning and is a locally committed
-candidate with tested review fixes committed locally for maintainer retest.
+checks. `0.2.0` adds OpenBao-first service provisioning. Its maintainer pentest
+is accepted with no new findings; final commits await GitHub checks and tagging.
 The authorized minimal Wolfi/PostgreSQL source build passes scans and real service
 qualification without a vulnerability waiver; see the
 [remediation report](security/pentest/v0.2.0.md). No workbench, transformation,

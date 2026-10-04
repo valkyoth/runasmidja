@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:bc7202a0-565b-4192-84bd-736a22021f47",
+  "serialNumber": "urn:uuid:a8cad379-5f08-49be-b91f-9bd0d5385eb5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T06:37:10+00:00",
+    "timestamp": "2026-10-04T07:00:32+00:00",
     "tools": {
       "components": [
         {
@@ -82,7 +82,7 @@
   },
   "components": [
     {
-      "bom-ref": "6e9e30bf-7b0f-4828-bc16-5f2fdc8bfc44",
+      "bom-ref": "36ce9b2b-aa45-4a03-9afe-aa71a7c17f47",
       "type": "operating-system",
       "name": "alpine",
       "version": "3.24.2",
@@ -1252,7 +1252,7 @@
   ],
   "dependencies": [
     {
-      "ref": "6e9e30bf-7b0f-4828-bc16-5f2fdc8bfc44",
+      "ref": "36ce9b2b-aa45-4a03-9afe-aa71a7c17f47",
       "dependsOn": [
         "pkg:apk/alpine/alpine-baselayout@3.7.2-r1?arch=x86_64&distro=3.24.2",
         "pkg:apk/alpine/alpine-release@3.24.2-r0?arch=x86_64&distro=3.24.2",
@@ -1413,7 +1413,7 @@
     {
       "ref": "pkg:oci/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d?arch=amd64&repository_url=index.docker.io%2Fvalkey%2Fvalkey",
       "dependsOn": [
-        "6e9e30bf-7b0f-4828-bc16-5f2fdc8bfc44"
+        "36ce9b2b-aa45-4a03-9afe-aa71a7c17f47"
       ]
     }
   ],

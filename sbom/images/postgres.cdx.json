@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:c9c1695e-6e1a-4bfb-96da-1b68c2b6cfe0",
+  "serialNumber": "urn:uuid:c8d90aee-0bb4-46b7-adbf-1cd50d4128a3",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T06:37:04+00:00",
+    "timestamp": "2026-10-04T06:58:24+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "9fe8d65d-8c68-4a7e-be4d-72c91a48b54b",
+      "bom-ref": "d4b82ff3-b548-416f-a6a3-0d2fde3f6a10",
       "type": "container",
       "name": "runasmidja/postgres@sha256:3c7b03ac458ad149f7521c6083b06c3390595473f353447bee16426805a2a0b9",
       "properties": [
@@ -105,7 +105,7 @@
   },
   "components": [
     {
-      "bom-ref": "ab4bf596-1a5e-4af3-be86-4bed3e698c53",
+      "bom-ref": "7affc97a-f553-49d3-b211-3758994ad23e",
       "type": "operating-system",
       "name": "wolfi",
       "version": "20230201",
@@ -1225,17 +1225,17 @@
   ],
   "dependencies": [
     {
-      "ref": "9fe8d65d-8c68-4a7e-be4d-72c91a48b54b",
-      "dependsOn": [
-        "ab4bf596-1a5e-4af3-be86-4bed3e698c53"
-      ]
-    },
-    {
-      "ref": "ab4bf596-1a5e-4af3-be86-4bed3e698c53",
+      "ref": "7affc97a-f553-49d3-b211-3758994ad23e",
       "dependsOn": [
         "pkg:apk/wolfi/libssl3@3.6.5-r1?arch=x86_64&distro=20230201",
         "pkg:apk/wolfi/tzdata@2026e-r0?arch=x86_64&distro=20230201",
         "pkg:apk/wolfi/wolfi-base@1-r7?arch=x86_64&distro=20230201"
+      ]
+    },
+    {
+      "ref": "d4b82ff3-b548-416f-a6a3-0d2fde3f6a10",
+      "dependsOn": [
+        "7affc97a-f553-49d3-b211-3758994ad23e"
       ]
     },
     {

@@ -1,6 +1,13 @@
 # Changelog
 
-## Unreleased — 0.2.0 OpenBao-first provisioning
+## 0.2.0 — release prepared, GitHub and tag pending
+
+Release review (2026-10-04): the maintainer accepted the c73805e retest with
+zero new Critical/High/Medium/Low findings. All prior issues are resolved within
+the bounded fixture scope. Final verification and release-automation review
+pass; all crates remain publish=false and release readiness performs no push or
+publish. GitHub and explicit tag authorization remain pending. The following
+entries preserve the preparation history and its then-pending assessment states.
 
 Latest re-review (2026-10-04): reject every scanner operational failure before
 parsing output; enforce vulnerability policy only on completed reports. Validate

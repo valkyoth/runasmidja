@@ -3,44 +3,6 @@
   "components": [
     {
       "author": "",
-      "bom-ref": "CycloneDxRef-Component-runasmidja-crypto-0.2.0",
-      "description": "Cryptography boundary reserved for future Brynja extraction",
-      "externalReferences": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/valkyoth/runasmidja"
-        }
-      ],
-      "licenses": [
-        {
-          "expression": "EUPL-1.2"
-        }
-      ],
-      "name": "runasmidja-crypto",
-      "type": "library",
-      "version": "0.2.0"
-    },
-    {
-      "author": "",
-      "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.2.0",
-      "description": "HTML boundary reserved for future Vef extraction",
-      "externalReferences": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/valkyoth/runasmidja"
-        }
-      ],
-      "licenses": [
-        {
-          "expression": "EUPL-1.2"
-        }
-      ],
-      "name": "runasmidja-html",
-      "type": "library",
-      "version": "0.2.0"
-    },
-    {
-      "author": "",
       "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.2.0",
       "description": "Bounded portable domain foundations",
       "externalReferences": [
@@ -76,15 +38,53 @@
       "name": "runasmidja-ports",
       "type": "library",
       "version": "0.2.0"
+    },
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.2.0",
+      "description": "HTML boundary reserved for future Vef extraction",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-html",
+      "type": "library",
+      "version": "0.2.0"
+    },
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-crypto-0.2.0",
+      "description": "Cryptography boundary reserved for future Brynja extraction",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-crypto",
+      "type": "library",
+      "version": "0.2.0"
     }
   ],
   "dependencies": [
     {
       "dependsOn": [
+        "CycloneDxRef-Component-runasmidja-html-0.2.0",
         "CycloneDxRef-Component-runasmidja-crypto-0.2.0",
-        "CycloneDxRef-Component-runasmidja-core-0.2.0",
         "CycloneDxRef-Component-runasmidja-ports-0.2.0",
-        "CycloneDxRef-Component-runasmidja-html-0.2.0"
+        "CycloneDxRef-Component-runasmidja-core-0.2.0"
       ],
       "ref": "CycloneDxRef-Component-runasmidja-0.2.0"
     }
@@ -215,7 +215,7 @@
       "name": "runasmidja",
       "type": "application"
     },
-    "timestamp": "2026-10-03T16:43:23.749Z",
+    "timestamp": "2026-10-04T06:59:24.390Z",
     "tools": [
       {
         "name": "cargo-sbom",
@@ -223,7 +223,7 @@
       }
     ]
   },
-  "serialNumber": "urn:uuid:bc24baea-30b5-46bd-9ac3-716c53c24a25",
+  "serialNumber": "urn:uuid:699171d3-3ca4-4e16-9d8d-399d7a7d0a86",
   "specVersion": "1.5",
   "version": 1
 }
