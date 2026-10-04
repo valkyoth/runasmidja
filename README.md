@@ -27,7 +27,8 @@ external network operations are distinct explicit actions.
 tagged with accepted pentests and green GitHub checks. The `0.2.3` candidate
 packages the exact upstream OpenBao executable on a signed Wolfi base, with
 vault data preserved across tested official/Wolfi image switches.
-Maintainer pentest is **RETEST REQUIRED**; automated verification is separate.
+Maintainer accepted `11f92bc` with no findings; pentest is **PASS**.
+GitHub and tag are pending; automated verification is separate.
 No workbench, transformation, browser UI, production HTTP server or CyberChef
 parity is implemented yet. See the [0.2.3 scope](docs/releases/v0.2.3-scope.md)
 and [candidate assessment](security/pentest/v0.2.3.md).

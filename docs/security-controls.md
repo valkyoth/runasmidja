@@ -13,7 +13,7 @@
 | Wolfi static probe qualification | Implemented; maintainer accepted v0.2.1 | Signed base/platform, exact archive/executable binding, live kernel limits/capabilities, owned cleanup; native/scratch regressions |
 | Fixture image provenance/inventory | Implemented; v0.2.0 accepted, v0.2.2 maintainer accepted | Signed OpenBao/Wolfi index-to-leaf binding, signed Wolfi Valkey index (exact official exception only for rollback), source-built PostgreSQL config/layer binding, per-image inventory and UNKNOWN/HIGH/CRITICAL rejection; only evidence-bound expiring UNKNOWN not-affected reviews; original PostgreSQL remains blocked |
 | Public build containment | Implemented; maintainer retest accepted | Checked CPU/memory/PID owned cgroup and build-step limits, private 3 GiB store, pre-write 512 MiB atomic archive cap; actual build/kernel/tmpfs and failure regressions |
-| Public SBOM privacy | Implemented; maintainer retest accepted | Stable image names; generator/repository rejection of home/macOS/Windows/workspace paths |
+| Public SBOM privacy | Implemented; maintainer retest accepted | Known host-root/URI/traversal detection in parsed keys and values; explicit module-name compatibility and privacy limits; see [evidence policy](IMAGE_EVIDENCE.md) |
 | Scanner completion and build publication | Implemented; maintainer retest accepted | Nonzero scanner exits always reject; findings evaluated only after completion; candidate scan/import/identity checks precede final receipt; failure/retry and previous-artifact preservation regressions |
 | Process cleanup identity | Implemented; maintainer retest accepted | No signal after leader reaping; real flood/deadline/pipe-descendant regressions; dedicated build cgroup |
 | Child/log/audit resource bounds | Implemented; maintainer retest accepted | Concurrent child budgets/kill/reap, 1 MiB log rotation, 16 MiB live audit tmpfs, two bounded no-follow snapshots; real Podman bounds qualification |
@@ -48,5 +48,12 @@ The v0.2.3 development candidate adds signed-input/static-binary Wolfi OpenBao
 assembly, exact exported-archive admission and explicit same-version retained
 vault switching. Actual audit-full refusal/recovery is qualified. These controls
 retain trusted-host custody and finite audit limits; they are not production
-vault recovery, external plugin qualification or pentest PASS. See the
+vault recovery or external plugin qualification; automated evidence alone does
+not attest pentest PASS. See the
 [bounded scope](releases/v0.2.3-scope.md).
+
+The v0.2.3 maintainer retest accepted `11f92bc`: global artifact and per-service
+evidence locks, immutable snapshots, canonical exports, descriptor custody,
+strict JSON/Unicode, resource budgets and known-path detection have tested
+remediation. This is bounded fixture/evidence assurance, not production approval;
+see [assessment](../security/pentest/v0.2.3.md). GitHub and tagging remain pending.

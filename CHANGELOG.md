@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
+## 0.2.3 — pentest PASS; GitHub and tag pending
+
+Maintainer accepted `11f92bc` on 2026-10-04 with no new findings. All SAST-001
+through SAST-017 remediation is accepted for this bounded fixture scope.
+No crate publishing or distribution is authorized.
 
 - Detect embedded relative traversal at punctuation/token boundaries, retaining
   the strict source-relative module exception and ordinary prose controls.
