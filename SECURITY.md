@@ -3,11 +3,10 @@
 Runasmidja is security-sensitive data-transformation software. Inputs, imported
 recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins,
 workers and supply-chain changes require threat review and executable tests.
-The foundations through v0.2.2 are signed and tagged with accepted maintainer
-pentests and green GitHub checks. The v0.2.3 Wolfi OpenBao fixture candidate has
-maintainer pentest **PASS**; GitHub and tag pending. Automated tests do not attest pentest PASS.
-None is a production service. See the
-[candidate assessment](security/pentest/v0.2.3.md).
+The foundations through v0.2.3 are signed and tagged with accepted maintainer
+pentests and green GitHub checks. The v0.3.0 workflow-reference candidate awaits
+its maintainer pentest (**NOT RUN**). Automated tests do not attest pentest PASS.
+None is a production service. See the [candidate assessment](security/pentest/v0.3.0.md).
 
 Runasmidja targets a normal public website. Review findings against its actual
 supported behavior, exploitability and trust boundaries, and choose controls
@@ -47,9 +46,9 @@ Search is optional infrastructure; current database permissions govern hits
 and aggregates in both backends. See [search design](docs/SEARCH_DESIGN.md).
 
 Apply the additive [verification gates](docs/VERIFICATION_GATES.md) and
-[versioned gap owners](docs/gap-reconciliation-2026-10-03.md). Existing textual
-workflow/portable-graph checks, fixture ownership and source/report metadata
-validation have confirmed enforcement limits. Their hardening is planned;
+[versioned gap owners](docs/gap-reconciliation-2026-10-03.md). The v0.3.0 [workflow policy](docs/WORKFLOW_POLICY.md) addresses reference-admission
+bypasses. Portable-graph checks, fixture ownership and source/report metadata
+validation retain confirmed enforcement limits with later owners;
 metadata PASS cannot authenticate an assessor or distributed artifacts.
 Public untrusted-job endpoints remain disabled until authority, admission,
 kernel isolation, fencing, egress, TLS and recovery qualify together.

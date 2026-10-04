@@ -1,0 +1,30 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "name": "runasmidja-workflow-checking-tools",
+      "version": "0.3.0",
+      "description": "Development-only parser inventory; excludes host Python/pip and product runtime."
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "purl": "pkg:pypi/pyyaml@6.0.3",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "properties": [
+        {"name": "runasmidja:scope", "value": "workflow validation tooling only"},
+        {"name": "runasmidja:wheel-lock", "value": "scripts/python-tools.lock"}
+      ],
+      "externalReferences": [
+        {"type": "distribution", "url": "https://pypi.org/project/PyYAML/6.0.3/"},
+        {"type": "vcs", "url": "https://github.com/yaml/pyyaml"}
+      ]
+    }
+  ]
+}

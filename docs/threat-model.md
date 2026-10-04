@@ -58,3 +58,9 @@ The [execution](EXECUTION_CONTRACTS.md), [browser/performance](BROWSER_PERFORMAN
 and [storage/host](STORAGE_HOST_CONTRACTS.md) contracts require positive global
 fuel, secret publication checks, supervisor cleanup, actual kernel fault evidence,
 cross-store crash cuts and DNS/connect/redirect policy before support claims.
+
+Workflow policy (v0.3.0 candidate) treats YAML as untrusted structured input, bounds
+parsing, and validates executable reference fields and reviewed local descendants.
+Remote pinned content, shell commands, checkout mutations, parser installation and
+policy edits still require trusted review. This is an accidental-regression gate,
+not a sandbox for malicious repository authors. See [workflow policy](WORKFLOW_POLICY.md).

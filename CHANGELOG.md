@@ -1,6 +1,18 @@
 # Changelog
 
-## 0.2.3 — pentest PASS; GitHub and tag pending
+## 0.3.0 — candidate; pentest NOT RUN
+
+- Parse workflow YAML structurally for both suffixes; validate static full-commit
+  action/reusable-workflow references and SHA256 container references.
+- Admit explicitly reviewed local composite actions/workflows with recursive
+  reference validation, bounded documents and symlink/traversal/cycle rejection.
+- Reject ambiguous YAML and dynamic references; ignore comments/unrelated text.
+- Add a hash-pinned tooling-only PyYAML environment, freshness checks and
+  adversarial regressions. Keep CodeQL Default and lightweight GitHub CI.
+- See [scope](docs/releases/v0.3.0-scope.md), [policy](docs/WORKFLOW_POLICY.md),
+  [notes](release-notes/v0.3.0.md) and [assessment](security/pentest/v0.3.0.md).
+
+## 0.2.3 — released; signed tag, pentest and GitHub PASS
 
 Maintainer accepted `11f92bc` on 2026-10-04 with no new findings. All SAST-001
 through SAST-017 remediation is accepted for this bounded fixture scope.

@@ -84,7 +84,7 @@ selected short-corpus partitions through 12 bytes, every declared resource-bound
 edge, real host faults and trusted assessment/distribution identity. Detailed
 [execution](EXECUTION_CONTRACTS.md), [browser/performance](BROWSER_PERFORMANCE.md)
 and [storage/host](STORAGE_HOST_CONTRACTS.md) rules apply by feature. The current
-textual graph/workflow guards, fixture ownership checks and report metadata
+textual graph guards, fixture ownership checks and report metadata
 validator have verified limits; see [reconciliation](gap-reconciliation-2026-10-03.md).
 Their planned hardening is not a claim that current tests enforce those rules.
 
@@ -106,3 +106,14 @@ switch checkpoint/identity/custody failure recovery. Freshness detects drift
 between the packaging lock and monitored upstream/base pins. Heavy tests remain
 local; see the [handoff](releases/v0.2.3-handoff.md). Automated success does not
 attest maintainer pentest acceptance.
+
+## Workflow reference admission (v0.3.0)
+
+Install the hash-pinned tooling parser with `scripts/install_python_tools.sh`;
+`scripts/checks.sh` selects `.local/check-tools/bin/python3` when installed.
+Direct Python tests should use that interpreter (or the exact reviewed system
+PyYAML version). `test_workflow_policy.py`, `test_workflow_local.py` and
+`test_workflow_bounds.py` cover syntax, context, recursive local admission and
+resource/ambiguity boundaries. Repository regressions exercise integration.
+See [policy](WORKFLOW_POLICY.md) for the deliberately limited YAML/reference
+profile. Tests cannot authenticate remote action content or a maintainer review.

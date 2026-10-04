@@ -27,9 +27,10 @@ class RepositoryTests(unittest.TestCase):
             root = Path(folder)
             self.canonical_inventories(root)
             (root / "crates").mkdir()
-            (root / ".github").mkdir()
+            (root / ".github/workflows").mkdir(parents=True)
+            (root / ".github/workflow-policy.toml").write_text("version = 1\n[local_actions]\n[local_workflows]\n")
             (root / "crates/bad.rs").write_text("x\n" * 501)
-            (root / ".github/ci.yml").write_text("uses: actions/checkout@main\n")
+            (root / ".github/workflows/ci.yaml").write_text("jobs: {check: {steps: [{uses: actions/checkout@main}]}}")
             self.assertEqual(len(check(root)), 2)
 
     def test_broken_document_link_fails(self):
@@ -43,8 +44,9 @@ class RepositoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             self.canonical_inventories(root)
-            (root / ".github").mkdir()
-            (root / ".github/codeql.yml").write_text("name: CodeQL\n")
+            (root / ".github/workflows").mkdir(parents=True)
+            (root / ".github/workflow-policy.toml").write_text("version = 1\n[local_actions]\n[local_workflows]\n")
+            (root / ".github/workflows/codeql.yaml").write_text("jobs: {check: {steps: [{uses: github/codeql-action/init@" + "a" * 40 + "}]}}")
             self.assertEqual(len(check(root)), 1)
 
     def test_angle_bracket_links_accept_urls_and_existing_paths(self):

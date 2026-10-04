@@ -25,7 +25,8 @@
 | Search optionality and live authorization | Planned | Early SearchService, repository/Meilisearch profiles, metadata allowlist, outbox and current-authority rechecks; see [design](SEARCH_DESIGN.md) |
 | PostgreSQL/Valkey test controls | Implemented harness | Runtime DB role, cache ACL/prefix/TTL/memory, loopback ports |
 | Release metadata readiness | Configured; limited | Report shape/digest/lineage/SBOM-presence only; no assessor/artifact authentication; trusted review required |
-| Workflow/graph enforcement hardening | Required; planned | Reproduced .yaml action/CodeQL omission and no_std comment spoof; versioned rejection/admission owners in [reconciliation](gap-reconciliation-2026-10-03.md) |
+| Workflow reference admission | Implemented candidate; pentest NOT RUN | Bounded structural YAML for both suffixes, remote commits, container digests and reviewed recursive local references; [policy and limits](WORKFLOW_POLICY.md) |
+| Portable graph enforcement hardening | Required; v0.4.0 | no_std comment spoof and dependency/feature graph limits retain their [owners](gap-reconciliation-2026-10-03.md) |
 | Fixture ownership/drift | Minimum ownership implemented; full drift pending v0.5 | Project/service/instance labels before network/volume/container reuse and stop; pinned image ID checked. Full fingerprints and inspect/mutate races unqualified |
 | Wolfi Valkey fixture | Implemented; v0.2.2 maintainer accepted | Exact version/base, auth/ACL/key denials, real eviction, kernel restrictions, outage/restart/nonpersistence and preserved-instance-only official rollback; nonzero host/container UID and selected-engine rootless enforcement |
 | Valkey expiry evidence | Required; planned | Current smoke accepts EX then deletes; actual TTL/countdown/expiry qualification remains pending |
@@ -44,7 +45,7 @@ requires the nonroot host UID mapping and owned resource cgroup. The Python AST
 gate prevents accidental raw command paths, not arbitrary hostile source changes.
 
 
-The v0.2.3 development candidate adds signed-input/static-binary Wolfi OpenBao
+The released v0.2.3 development fixture adds signed-input/static-binary Wolfi OpenBao
 assembly, exact exported-archive admission and explicit same-version retained
 vault switching. Actual audit-full refusal/recovery is qualified. These controls
 retain trusted-host custody and finite audit limits; they are not production
@@ -56,4 +57,4 @@ The v0.2.3 maintainer retest accepted `11f92bc`: global artifact and per-service
 evidence locks, immutable snapshots, canonical exports, descriptor custody,
 strict JSON/Unicode, resource budgets and known-path detection have tested
 remediation. This is bounded fixture/evidence assurance, not production approval;
-see [assessment](../security/pentest/v0.2.3.md). GitHub and tagging remain pending.
+see [assessment](../security/pentest/v0.2.3.md). GitHub passed and v0.2.3 is signed/tagged.

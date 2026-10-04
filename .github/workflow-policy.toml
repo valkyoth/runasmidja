@@ -1,0 +1,7 @@
+# Local references require a maintainer-reviewed path and a nonempty rationale.
+# Remote action/workflow commits and container digests are checked structurally.
+version = 1
+
+[local_actions]
+
+[local_workflows]

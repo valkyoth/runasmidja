@@ -1,6 +1,6 @@
 # Runasmidja Implementation Plan
 
-Status: planning contract; v0.1.0/v0.2.0/v0.2.1/v0.2.2 tagged; v0.2.3 implementation candidate; maintainer pentest PASS; GitHub and tag pending.
+Status: planning contract; v0.1.0/v0.2.0/v0.2.1/v0.2.2/v0.2.3 tagged; v0.3.0 workflow-reference candidate; maintainer pentest NOT RUN.
 The authorized Wolfi/PostgreSQL fixture passes scans and real qualification; see the
 [assessment](../security/pentest/v0.2.0.md).
 
@@ -87,8 +87,8 @@ provider footprint or review size justify separation. `lib.rs` exports;
 ## Implementation order
 
 Repository and container fixtures come first so every later hosted feature can
-test itself. The current bounded patch is [Wolfi OpenBao fixture](releases/v0.2.3-scope.md);
-v0.3.0 remains the next minor. Released [OpenBao-first provisioning](releases/v0.2.0-scope.md) ensures vault
+test itself. The current bounded pass is [workflow reference policy](releases/v0.3.0-scope.md);
+v0.4.0 feature/target admission remains next. Released [OpenBao-first provisioning](releases/v0.2.0-scope.md) ensures vault
 initialization precedes PostgreSQL/Valkey credentials and startup. Qualify private
 temporary delivery and build/release identity separately. Then prove one
 transformation on native and actual browser hosts using the preceding checked

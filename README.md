@@ -23,15 +23,12 @@ The same Rust engine will execute in a browser worker and native hosts.
 Browser processing is the default; saving, sharing, server execution and
 external network operations are distinct explicit actions.
 
-**Current status:** `v0.1.0`, `v0.2.0`, `v0.2.1` and `v0.2.2` are signed and
-tagged with accepted pentests and green GitHub checks. The `0.2.3` candidate
-packages the exact upstream OpenBao executable on a signed Wolfi base, with
-vault data preserved across tested official/Wolfi image switches.
-Maintainer accepted `11f92bc` with no findings; pentest is **PASS**.
-GitHub and tag are pending; automated verification is separate.
-No workbench, transformation, browser UI, production HTTP server or CyberChef
-parity is implemented yet. See the [0.2.3 scope](docs/releases/v0.2.3-scope.md)
-and [candidate assessment](security/pentest/v0.2.3.md).
+**Current status:** foundations through `v0.2.3` are signed and tagged with
+accepted pentests and green GitHub checks. The `0.3.0` candidate replaces textual
+workflow-reference checks with bounded YAML admission. Maintainer pentest is
+**NOT RUN**. No workbench, transformation, browser UI, production HTTP server or
+CyberChef parity is implemented yet. See the [0.3.0 scope](docs/releases/v0.3.0-scope.md)
+and [candidate assessment](security/pentest/v0.3.0.md).
 
 GitHub checks code and dependencies; CodeQL uses Default setup. Container builds,
 image scans and real service tests run locally before pushing. See the
@@ -48,10 +45,13 @@ workstreams. These are planned controls, not implemented remediation.
 ## Development
 
 Rust **1.99.0**, edition 2024; EUPL-1.2. Weekly automation checks stable Rust,
-crates, security tools, GitHub Actions and service upstream releases.
+crates, security tools, the pinned tooling-only PyYAML parser, GitHub Actions and
+service upstream releases. Python checks use the private `.local/check-tools`
+environment; no Rust/runtime dependency is added. See [workflow policy](docs/WORKFLOW_POLICY.md).
 
 ```sh
 rustup target add --toolchain 1.99.0 thumbv7em-none-eabihf wasm32-unknown-unknown
+scripts/install_python_tools.sh
 scripts/checks.sh
 cargo run -p runasmidja-server -- 18080
 ```
@@ -109,7 +109,7 @@ Every code file has a hard 500-line ceiling.
 [release runbook](docs/RELEASE_RUNBOOK.md),
 [security controls](docs/security-controls.md),
 [dependency policy](docs/supply-chain-security.md),
-[candidate release notes](release-notes/v0.2.3.md),
+[candidate release notes](release-notes/v0.3.0.md),
 [tagged foundation notes](release-notes/v0.1.0.md).
 
 The [original idea](docs/IDEA.md) and [supplied planning bundle](docs/reference/workbench-plan/README.md)

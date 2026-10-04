@@ -1,6 +1,7 @@
 # Contributing To Runasmidja
 
-Use pinned Rust 1.99.0 and run scripts/checks.sh plus applicable real-service,
+Use pinned Rust 1.99.0, install `scripts/install_python_tools.sh`, and run
+`scripts/checks.sh` plus applicable real-service,
 browser and security tests. Contributions are EUPL-1.2 as described in LICENSE.
 
 Keep portable code no_std, first-party unsafe forbidden and every code file at

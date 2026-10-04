@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
+if [[ -x .local/check-tools/bin/python3 ]]; then
+    export PATH="$PWD/.local/check-tools/bin:$PATH"
+fi
 python3 scripts/check_repository.py
 cargo fmt --all -- --check
 cargo clippy --locked --workspace --all-targets --all-features -- -D warnings

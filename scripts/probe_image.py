@@ -54,7 +54,7 @@ def build(state):
     guarded_archive(run_bounded, save_bounded_archive, image, archive)
     binding = archive_binding(archive, image)
     component = {'type': 'application', 'name': 'runasmidja-server',
-        'version': '0.2.3', 'bom-ref': 'runasmidja-static-probe',
+        'version': '0.3.0', 'bom-ref': 'runasmidja-static-probe',
         'hashes': [{'alg': 'SHA-256', 'content': digest}],
         'licenses': [{'license': {'id': 'EUPL-1.2'}}],
         'properties': [{'name': 'runasmidja:inventory-origin',
@@ -72,7 +72,7 @@ def evidence(image, binary, archive):
     from check_release import source_digest
     record = {'schema': 1, 'profile': 'linux/amd64 Wolfi development probe',
         'image': image, 'binary_sha256': binary, 'archive_sha256': archive,
-        'source_sha256': source_digest(), 'version': '0.2.3',
+        'source_sha256': source_digest(), 'version': '0.3.0',
         'trust': 'local build/test custody; not distributed publisher signing'}
     with evidence_transaction(EVIDENCE, 'probe', image) as transaction:
         return transaction.publish(record, kind='qualification')

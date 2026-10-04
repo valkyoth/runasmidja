@@ -194,6 +194,9 @@ class BuildTests(unittest.TestCase):
                     self.assertEqual(set(path.name for path in (state / 'context').iterdir()), {'Containerfile', 'runasmidja-server'})
                     evidence = json.loads((state / 'probe.cdx.json').read_text())
                     self.assertEqual(evidence['components'][-1]['hashes'][0]['content'], result[1])
+                    import tomllib
+                    version = tomllib.loads((image.ROOT / 'Cargo.toml').read_text())['workspace']['package']['version']
+                    self.assertEqual(evidence['components'][-1]['version'], version)
                 else:
                     with self.assertRaises(RuntimeError): image.build(state)
                 if fault in ('provenance', 'base-scan'): self.assertEqual(commands, [])

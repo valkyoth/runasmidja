@@ -1,9 +1,8 @@
 # Container bases and Fluxheim qualification
 
-Status: v0.2.1 probe and v0.2.2 Valkey packaging are signed/tagged. The current
-bounded candidate is [v0.2.3 Wolfi OpenBao](releases/v0.2.3-scope.md), with
-maintainer pentest PASS; GitHub and tag pending. Required Fluxheim coverage and all 386 minor
-workstreams/source mappings remain unchanged.
+Status: v0.2.1 probe, v0.2.2 Valkey and v0.2.3 OpenBao packaging are signed/tagged.
+The current v0.3.0 workflow-policy candidate does not change service images.
+Required Fluxheim coverage and all 386 minor workstreams remain unchanged.
 
 ## Decision and maintenance scope
 
@@ -36,7 +35,7 @@ add a paid registry dependency or accept an older service merely to match bases.
 
 ## Compatible patch sequence
 
-v0.2.3 is the authorized current patch; v0.2.1 and v0.2.2 are released.
+v0.2.1, v0.2.2 and v0.2.3 are released.
 They harden packaging of existing foundation behavior. If an image requires new
 application features or changes secret/storage/auth contracts, split that work
 into a bounded minor instead of hiding it in a patch. v0.3/v0.4 workflow/graph

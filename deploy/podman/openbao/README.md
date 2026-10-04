@@ -64,7 +64,7 @@ describes explicit official/Wolfi switching, failure checkpoints and retained
 custody. This is same-version development rollback, not storage migration or
 production recovery. KV v2, AppRole, HTTPS and PebbleDB are exercised; no external
 plugin, HA, mlock, durable audit or production filesystem-hardening claim follows
-from static linking or a green scan. Maintainer accepted the final v0.2.3 retest at `11f92bc`; GitHub and tag remain pending.
+from static linking or a green scan. Maintainer accepted the final v0.2.3 retest at `11f92bc`; GitHub passed and v0.2.3 is signed/tagged.
 
 
 ## Concurrent cache custody

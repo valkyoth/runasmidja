@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def check(root=ROOT):
     errors = []
+    from workflow_policy import check as check_workflows
+    errors.extend(check_workflows(root))
     from podman_policy import check as check_podman_policy
     errors.extend(check_podman_policy(root))
     from sbom_privacy import check_sboms
@@ -23,12 +25,6 @@ def check(root=ROOT):
             content = path.read_text()
             if len(content.splitlines()) > 500:
                 errors.append(f"{path}: exceeds 500 lines")
-            if path.suffix == ".yml":
-                for action in re.findall(r"uses:\s*([^\s#]+)", content):
-                    if not re.fullmatch(r"[^@]+@[0-9a-f]{40}", action):
-                        errors.append(f"{path}: unpinned action {action}")
-                if "codeql" in content.lower():
-                    errors.append(f"{path}: CodeQL must use GitHub Default setup")
     for path in root.rglob("*.md"):
         if any(part in {"target", ".git", ".local", ".cargo-deny-advisory-dbs"} for part in path.parts):
             continue

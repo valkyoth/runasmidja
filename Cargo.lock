@@ -4,7 +4,7 @@ version = 4
 
 [[package]]
 name = "runasmidja"
-version = "0.2.3"
+version = "0.3.0"
 dependencies = [
  "runasmidja-core",
  "runasmidja-crypto",
@@ -14,20 +14,20 @@ dependencies = [
 
 [[package]]
 name = "runasmidja-core"
-version = "0.2.3"
+version = "0.3.0"
 
 [[package]]
 name = "runasmidja-crypto"
-version = "0.2.3"
+version = "0.3.0"
 
 [[package]]
 name = "runasmidja-html"
-version = "0.2.3"
+version = "0.3.0"
 
 [[package]]
 name = "runasmidja-ports"
-version = "0.2.3"
+version = "0.3.0"
 
 [[package]]
 name = "runasmidja-server"
-version = "0.2.3"
+version = "0.3.0"

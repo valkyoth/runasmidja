@@ -26,6 +26,16 @@ def crate_version(data):
         raise ValueError('no non-yanked stable release')
     return max(versions, key=lambda value: tuple(int(part) for part in value.split('.')))
 
+def python_release(data):
+    """Require explicit upstream advisory inventory as well as release identity."""
+    if data.get('vulnerabilities') != []:
+        raise ValueError('Python tool advisory inventory missing or nonempty')
+    version = data['info']['version']
+    if not isinstance(version, str) or not re.fullmatch(r'\d+\.\d+\.\d+', version):
+        raise ValueError('Python tool release version malformed')
+    return version
+
+
 def postgres_version(document):
     versions = set(re.findall(r'\bv(19(?:\.\d+|beta\d+|rc\d+)?)/', document))
     if not versions:
@@ -64,6 +74,8 @@ def main():
     for line in (ROOT / 'scripts/ci-tools.lock').read_text().splitlines():
         name, version, _digest = line.split()
         compare(name, version, lambda name=name: crate_version(json.loads(fetch(f'https://crates.io/api/v1/crates/{name}'))))
+    python_pin = re.search(r'^PyYAML==([0-9.]+)', (ROOT / 'scripts/python-tools.lock').read_text(), re.MULTILINE)[1]
+    compare('PyYAML workflow parser', python_pin, lambda: python_release(json.loads(fetch('https://pypi.org/pypi/PyYAML/json'))))
     metadata = json.loads((ROOT / 'docs/upstream-lock.json').read_text())
     for repo, version in metadata['github_releases'].items():
         compare(repo, version, lambda repo=repo: json.loads(fetch(f'https://api.github.com/repos/{repo}/releases/latest'))['tag_name'])

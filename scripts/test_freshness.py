@@ -39,3 +39,15 @@ class FreshnessTests(unittest.TestCase):
                     (root/name).parent.mkdir(parents=True, exist_ok=True)
                     (root/name).write_text(json.dumps(value))
                 with self.assertRaises(RuntimeError): check_openbao_packaging(root)
+
+    def test_python_tool_version_needs_explicit_empty_advisories(self):
+        from check_freshness import python_release
+        self.assertEqual(python_release({'info': {'version': '6.0.3'}, 'vulnerabilities': []}), '6.0.3')
+        for advisories in (None, {}, '', [{'id': 'PYSEC-example'}]):
+            with self.assertRaises(ValueError):
+                python_release({'info': {'version': '6.0.3'}, 'vulnerabilities': advisories})
+        with self.assertRaises(ValueError):
+            python_release({'info': {'version': '6.0.3'}})
+        for version in (None, '6.0.4rc1', ''):
+            with self.assertRaises(ValueError):
+                python_release({'info': {'version': version}, 'vulnerabilities': []})
