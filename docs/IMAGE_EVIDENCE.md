@@ -143,3 +143,11 @@ key rejection still applies at every level. Ordinary finite JSON numbers, Unicod
 text and quoted strings such as `"Infinity"` remain supported. This is an accepted
 input profile, not canonical serialization or an arbitrary-precision number API;
 it does not establish signature or inventory completeness guarantees.
+
+
+After parsing, every string value and object key must contain only Unicode scalar
+values. Escaped lone high/low surrogates and invalid pairs fail before structural,
+service or privacy checks. Valid surrogate pairs decode to their scalar character;
+literal UTF-8 Unicode and ordinary backslash text remain valid. The iterative
+walk retains iterator frames instead of duplicating wide objects or arrays.
+This check applies equally to canonical, historical and other public JSON.

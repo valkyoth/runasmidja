@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Reject unpaired Unicode surrogates in public JSON keys and string values;
+  preserve valid surrogate pairs and literal Unicode with regression coverage.
+
 - Enforce image service binding at every directory depth; require BOM-free
   UTF-8 public JSON and reject non-standard or overflowing non-finite numbers.
 

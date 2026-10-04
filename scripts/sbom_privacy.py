@@ -51,6 +51,25 @@ def finite_float(value):
     return parsed
 
 
+def require_unicode_scalars(document):
+    # Iterator frames avoid copying wide objects/arrays into a second worklist.
+    pending = [iter((document,))]
+    while pending:
+        try:
+            value = next(pending[-1])
+        except StopIteration:
+            pending.pop()
+            continue
+        if isinstance(value, str):
+            value.encode('utf-8', errors='strict')
+        elif isinstance(value, dict):
+            pending.append(iter(value.keys()))
+            pending.append(iter(value.values()))
+        elif isinstance(value, list):
+            pending.append(iter(value))
+    return document
+
+
 @contextmanager
 def custody_directory(name, parent=None):
     descriptor = os.open(name, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | os.O_CLOEXEC,
@@ -79,8 +98,9 @@ def load_public_json(name, directory):
             raise RuntimeError('Public inventory exceeds size limit')
     # Text input prevents Python's bytes-based UTF-16/32 autodetection. A UTF-8
     # BOM is rejected by the JSON decoder, rather than silently stripped.
-    return json.loads(content.decode('utf-8'), object_pairs_hook=unique_object,
-                      parse_constant=reject_constant, parse_float=finite_float)
+    document = json.loads(content.decode('utf-8'), object_pairs_hook=unique_object,
+                          parse_constant=reject_constant, parse_float=finite_float)
+    return require_unicode_scalars(document)
 
 
 def load_canonical_sbom(name, directory):
