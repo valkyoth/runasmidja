@@ -78,6 +78,8 @@ def denied(image, folder, case, expected):
 
 
 def qualify():
+    from stack_common import require_rootless
+    require_rootless()
     image = ensure_image()
     validate_image(image)
     info = owned('container', NAMES['postgres'], 'postgres')

@@ -33,7 +33,8 @@ are 512 MiB, one CPU and 128 PIDs, read-only root, dropped capabilities and
 no-new-privileges. Secret config is a private read-only mount, never argv.
 
 The previous official digest and its narrowly reviewed unsigned-image exception
-remain available only via `RUNASMIDJA_VALKEY_PROFILE=official`. It is rescanned,
+remain available only via `RUNASMIDJA_VALKEY_PROFILE=official` with the validated
+`RUNASMIDJA_STACK_ID=v02-admission-ready`; other instance IDs fail closed. It is rescanned,
 not implicitly trusted because it was previously accepted. The new default
 fixture has separate vault/database custody; no automatic data migration or
 credential copying occurs. See [rollback commands](../../../docs/local-stack.md#valkey-profile-rollback-v022).

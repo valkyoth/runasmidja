@@ -26,7 +26,7 @@ external network operations are distinct explicit actions.
 **Current status:** `v0.1.0`, `v0.2.0` and `v0.2.1` are signed and tagged with
 accepted pentests and green GitHub checks. The `0.2.2` candidate adopts the
 public signed Wolfi Valkey image for the development fixture, with explicit
-rollback and real cache/resource tests. Maintainer pentest is **NOT RUN**.
+rollback and real cache/resource tests. Maintainer pentest is **RETEST REQUIRED**.
 OpenBao-first service provisioning and the Wolfi/PostgreSQL fixture remain
 available. No workbench, transformation, browser UI, production HTTP server or
 CyberChef parity is implemented yet. See the [0.2.2 scope](docs/releases/v0.2.2-scope.md)

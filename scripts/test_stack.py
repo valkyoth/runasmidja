@@ -146,7 +146,7 @@ class SequencingTests(unittest.TestCase):
             return run
         from contextlib import ExitStack
         with ExitStack() as patches:
-            for name, result in (('files', None), ('preflight', None), ('infrastructure', None),
+            for name, result in (('require_rootless', None), ('files', None), ('preflight', None), ('infrastructure', None),
                                  ('fixture_images', {'postgres': 'reviewed', 'openbao': 'reviewed', 'valkey': 'reviewed'}),
                                  ('verify_images', None),
                                  ('bootstrap', 'fixture'), ('provisioning_values', VALUES),

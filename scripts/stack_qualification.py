@@ -152,6 +152,8 @@ def collisions():
 
 
 def qualify():
+    from stack_common import require_rootless
+    require_rootless()
     bootstrap_root = None
     if not (STATE / 'provision-role.json').exists():
         bootstrap_root = cold_start()

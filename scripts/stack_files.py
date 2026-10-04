@@ -40,6 +40,10 @@ def directory(path):
 
 @contextmanager
 def fixture_lock():
+    from stack_common import require_rootless, INSTANCE
+    from valkey_image import selected_image
+    require_rootless()
+    selected_image(INSTANCE)
     directory(STATE)
     path = STATE / 'bootstrap.lock'
     descriptor = os.open(path, os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600)

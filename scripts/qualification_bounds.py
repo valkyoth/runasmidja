@@ -7,6 +7,8 @@ from stack_common import podman
 
 
 def qualify():
+    from stack_common import require_rootless
+    require_rootless()
     policy = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())
     image = policy['wolfi-base']['image']
     provenance('wolfi-base', image, policy, tool('cosign'))

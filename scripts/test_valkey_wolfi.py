@@ -32,16 +32,18 @@ class ImageTests(unittest.TestCase):
     def test_only_explicit_reviewed_profiles_are_selectable(self):
         for profile, expected in (('wolfi', WOLFI), ('official', OFFICIAL)):
             with patch.dict(os.environ, {'RUNASMIDJA_VALKEY_PROFILE': profile}):
-                self.assertEqual(images.selected_image(), expected)
+                self.assertEqual(images.selected_image(images.ROLLBACK_INSTANCE), expected)
         for invalid in ('', 'latest', 'arbitrary:tag', '../official'):
             with patch.dict(os.environ, {'RUNASMIDJA_VALKEY_PROFILE': invalid}):
-                with self.assertRaises(RuntimeError): images.selected_image()
+                with self.assertRaises(RuntimeError): images.selected_image(images.ROLLBACK_INSTANCE)
 
     def test_policy_and_entrypoint_do_not_transfer_unsigned_exception(self):
         self.assertEqual(images.admission_policy({'valkey': WOLFI}, POLICY)['valkey']['method'], 'signed-index')
-        self.assertEqual(images.admission_policy({'valkey': OFFICIAL}, POLICY)['valkey']['method'], 'maintainer-exception')
+        with patch('stack_common.INSTANCE', images.ROLLBACK_INSTANCE):
+            self.assertEqual(images.admission_policy({'valkey': OFFICIAL}, POLICY)['valkey']['method'], 'maintainer-exception')
         self.assertEqual(images.arguments(WOLFI), ['/config/valkey.conf'])
-        self.assertEqual(images.arguments(OFFICIAL), ['valkey-server', '/config/valkey.conf'])
+        with patch('stack_common.INSTANCE', images.ROLLBACK_INSTANCE):
+            self.assertEqual(images.arguments(OFFICIAL), ['valkey-server', '/config/valkey.conf'])
         for unknown in (WOLFI + 'bad', OFFICIAL + 'bad', 'unreviewed'):
             with self.assertRaises(RuntimeError): images.admission_policy({'valkey': unknown}, POLICY)
             with self.assertRaises(RuntimeError): images.arguments(unknown)

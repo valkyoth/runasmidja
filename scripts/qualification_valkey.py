@@ -6,7 +6,7 @@ import re
 import tempfile
 import uuid
 from pathlib import Path
-from stack_common import ROOT, STATE, NAMES, podman, valkey, read_private, wait_for
+from stack_common import ROOT, STATE, NAMES, INSTANCE, podman, valkey, read_private, wait_for
 from stack_resources import owned
 from stack_vault import runtime_values
 from smoke_probe import require
@@ -19,7 +19,10 @@ def configuration(info, image):
     require(info.get('Image', '').removeprefix('sha256:') == expected.removeprefix('sha256:') and expected,
             'Valkey executed image mismatch')
     host = info['HostConfig']
-    require(info['Config'].get('User') == f'{os.getuid()}:{os.getgid()}', 'Valkey user mismatch')
+    user = info['Config'].get('User', '')
+    require(re.fullmatch(r'[0-9]+:[0-9]+', user) is not None and int(user.split(':')[0]) != 0,
+            'Valkey must run as a nonroot numeric UID')
+    require(user == f'{os.getuid()}:{os.getgid()}', 'Valkey user mismatch')
     require(host.get('ReadonlyRootfs') is True and host.get('Privileged') is False, 'Valkey root/privilege drift')
     require('no-new-privileges' in (host.get('SecurityOpt') or []), 'Valkey escalation policy drift')
     require(not info.get('EffectiveCaps') and not info.get('BoundingCaps'), 'Valkey capabilities remain')
@@ -80,7 +83,9 @@ def memory_and_denials():
 
 
 def qualify():
-    image = selected_image()
+    from stack_common import require_rootless
+    require_rootless()
+    image = selected_image(INSTANCE)
     info = owned('container', NAMES['valkey'], 'valkey')
     require(info and info['State']['Running'], 'Owned Valkey fixture is unavailable')
     configuration(info, image); kernel(info)

@@ -213,3 +213,12 @@ real bounded maxmemory eviction, outage and restart with cache nonpersistence
 and unchanged OpenBao credential versions. It grants no administrative ACL
 commands. Actual TTL/countdown remains v0.7. This is a disposable local fixture,
 not production cache migration, TLS, high availability or a website feature.
+
+The service fixture rejects real/effective UID 0 and checks the selected Podman
+engine's rootless flag before each operation, including stop and bounds upgrade.
+Engine-info failure or unexpected output blocks work. Startup/locking check
+before custody creation; qualification also rejects container UID 0 independently.
+The official Valkey profile is restricted in selection, admission and entrypoint
+handling to the validated `v02-admission-ready` instance; another stack ID fails
+before custody creation or image building. These checks trust the local engine
+and CLI under the development fixture's existing trusted-host model.

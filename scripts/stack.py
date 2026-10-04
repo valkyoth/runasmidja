@@ -3,7 +3,7 @@
 import argparse
 import json
 import os
-from stack_common import ROOT, STATE, NAMES, podman, read_private, wait_for
+from stack_common import ROOT, STATE, NAMES, require_rootless, podman, read_private, wait_for
 from stack_files import files, delivery, fixture_lock
 from stack_resources import infrastructure, owned, preflight, start_container, stop, upgrade_bounds
 from stack_vault import bootstrap, provisioning_values, runtime_values, revoke_root
@@ -12,6 +12,10 @@ from postgres_image import fixture_images
 
 
 def up():
+    require_rootless()
+    from valkey_image import selected_image
+    from stack_common import INSTANCE
+    selected_image(INSTANCE)
     files()
     preflight()
     images = fixture_images()

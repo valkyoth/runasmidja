@@ -1,6 +1,6 @@
 # Runasmidja Release Plan To 1.0.0
 
-Status: roadmap contract; v0.1.0/v0.2.0/v0.2.1 tagged; v0.2.2 implementation candidate; maintainer pentest NOT RUN.
+Status: roadmap contract; v0.1.0/v0.2.0/v0.2.1 tagged; v0.2.2 implementation candidate; maintainer pentest RETEST REQUIRED.
 The authorized Wolfi/PostgreSQL fixture passes scans and real qualification; see the
 [assessment](../security/pentest/v0.2.0.md).
 

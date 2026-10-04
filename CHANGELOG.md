@@ -1,7 +1,9 @@
 # Changelog
 
-## 0.2.2 — implementation candidate; pentest NOT RUN
+## 0.2.2 — implementation candidate; pentest RETEST REQUIRED
 
+- Remediate the Medium rootless-enforcement and Low rollback-scope findings;
+  add side-effect-denial regressions and require maintainer retest.
 - Adopt public signed Wolfi Valkey 9.1.2 with exact index/platform admission and
   weekly/manual freshness checks; retain the previous official digest for rollback.
 - Separate fixture custody, OpenBao-issued ACLs, real eviction, outage/restart,
