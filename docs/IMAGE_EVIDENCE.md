@@ -109,3 +109,23 @@ explicit bindings in the validator. Unknown image `.cdx.json` filenames fail
 until reviewed into that mapping, so manual cross-service historical swaps cannot
 silently become accepted evidence. Historical records remain historical; passing
 these checks never admits a blocked image or makes an old scan current.
+
+
+The selected repository root is the custody trust anchor. The checker opens it
+as a no-follow directory and verifies current-user ownership and no group/world
+write permissions. It then traverses `sbom`, `images` and any nested directories
+using descriptor-relative no-follow opens, retaining each verified descriptor
+through its children's reads. Symlinks anywhere in the inventory tree fail.
+Directories must have the same ownership/write restrictions; public files also
+require current-user ownership and no group/world writes. Modes 0755 for directories
+and 0644 for files are accepted; shared-writable 0770/0777 or 0660/0666 are not.
+Paths above the explicitly selected repository root remain trusted host setup.
+Traversal is bounded to 32 nested inventory directories and does not change modes
+or ownership automatically. An opened directory cannot be redirected by replacing
+its pathname; this is point-in-time validation, not protection from a malicious
+owner or a guarantee that a later consumer reads unchanged files.
+
+JSON parsing rejects duplicate object keys at every nesting level, including
+escaped spellings that decode to the same key. This applies to canonical,
+historical and other public JSON alike; privacy, structure and service checks
+all consume the same unambiguous parsed record.

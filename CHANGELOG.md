@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Anchor public inventory reads to verified directory descriptors, reject
+  unsafe ownership/write permissions, and reject duplicate JSON keys.
+
 - Reject placeholder, linked and oversized public inventories; validate minimum
   CycloneDX structure and explicit historical service identities.
 

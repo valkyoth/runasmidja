@@ -19,6 +19,10 @@ class StructureTests(unittest.TestCase):
             (self.images/f'{service}.cdx.json').write_text(json.dumps(record(service)))
         self.path = self.images/'postgres.cdx.json'
 
+    def load(self):
+        with policy.custody_directory(self.images) as directory:
+            return policy.load_canonical_sbom(self.path.name, directory)
+
     def test_minimum_structure_and_supported_specifications(self):
         valid = record('postgres')
         cases = [[], None, {'metadata': valid['metadata']}]
@@ -59,14 +63,14 @@ class StructureTests(unittest.TestCase):
     def test_size_boundary_and_growth_after_stat(self):
         content = self.path.read_bytes()
         with patch.object(policy, 'MAX_PUBLIC_SBOM', len(content)):
-            self.assertEqual(policy.load_canonical_sbom(self.path), record('postgres'))
+            self.assertEqual(self.load(), record('postgres'))
             self.path.write_bytes(content + b' ')
-            with self.assertRaises(RuntimeError): policy.load_canonical_sbom(self.path)
+            with self.assertRaises(RuntimeError): self.load()
             info = self.path.stat()
             with patch.object(policy.os, 'fstat', return_value=SimpleNamespace(
-                    st_mode=info.st_mode, st_nlink=1, st_size=0)):
+                    st_mode=info.st_mode, st_uid=os.getuid(), st_nlink=1, st_size=0)):
                 with self.assertRaisesRegex(RuntimeError, 'exceeds size'):
-                    policy.load_canonical_sbom(self.path)
+                    self.load()
         # Actual production limit, using a sparse oversized file rather than allocating it.
         with self.path.open('wb') as output: output.truncate(policy.MAX_PUBLIC_SBOM + 1)
         self.assertTrue(policy.check_sboms(self.root))
