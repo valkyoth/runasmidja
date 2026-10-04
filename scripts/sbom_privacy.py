@@ -1,25 +1,40 @@
-"""Public evidence uses image identities, never workstation filesystem paths."""
+"""Validate public inventory custody, structure, budgets and known host-path privacy."""
 import json
 import math
 import os
 import stat
-import re
 from pathlib import Path
 from contextlib import contextmanager
+from inventory_privacy import reject_private_paths
 
-PRIVATE_PATH = re.compile(r'/home/|/Users/|(?<![A-Za-z0-9])[A-Za-z]:[\\/]')
 PUBLIC_SERVICES = frozenset(('openbao', 'postgres', 'probe', 'probe-base', 'valkey', 'wolfi-base'))
 
 
-def public_sbom(evidence, service, image, root):
+def public_sbom(evidence, service, image, root, extra_roots=()):
     evidence.setdefault('metadata', {}).setdefault('component', {})['name'] = f'runasmidja/{service}@{image}'
-    encoded = json.dumps(evidence, ensure_ascii=False)
-    if PRIVATE_PATH.search(encoded) or str(root) in encoded:
-        raise RuntimeError('Scanner inventory contains a private filesystem path')
+    reject_private_paths(evidence, root, extra_roots)
     return evidence
 
 
 MAX_PUBLIC_SBOM = 16 * 1024 * 1024
+MAX_PUBLIC_ENTRIES = 256
+MAX_PUBLIC_TOTAL_BYTES = 128 * 1024 * 1024
+
+
+class InventoryBudgetExceeded(RuntimeError):
+    """Stop the complete traversal when aggregate resources are exhausted."""
+
+
+def bounded_names(directory, budget):
+    names = []
+    with os.scandir(directory) as entries:
+        for entry in entries:
+            budget['entries'] += 1
+            if budget['entries'] > MAX_PUBLIC_ENTRIES:
+                raise InventoryBudgetExceeded('Public inventory entry limit exceeded')
+            names.append(entry.name)
+    return sorted(names)
+
 # Formats actually emitted by the reviewed Cargo and image inventory tools.
 SUPPORTED_SPEC_VERSIONS = frozenset(('1.5', '1.7'))
 HISTORICAL_IDENTITIES = {
@@ -83,7 +98,11 @@ def custody_directory(name, parent=None):
         os.close(descriptor)
 
 
-def load_public_json(name, directory):
+def load_public_json(name, directory, budget=None):
+    if budget is None:
+        budget = {'entries': 0, 'bytes': 0}
+    remaining = MAX_PUBLIC_TOTAL_BYTES - budget['bytes']
+    limit = min(MAX_PUBLIC_SBOM, remaining)
     if not isinstance(name, str) or '/' in name or name in ('', '.', '..'):
         raise ValueError('Invalid inventory filename')
     descriptor = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK | os.O_CLOEXEC,
@@ -93,7 +112,12 @@ def load_public_json(name, directory):
         if (not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or
                 info.st_mode & 0o022 or info.st_nlink != 1 or info.st_size > MAX_PUBLIC_SBOM):
             raise RuntimeError('Public inventory has invalid file custody or size')
-        content = source.read(MAX_PUBLIC_SBOM + 1)
+        if info.st_size > remaining:
+            raise InventoryBudgetExceeded('Public inventory byte limit exceeded')
+        content = source.read(limit + 1)
+        budget['bytes'] += len(content)
+        if len(content) > remaining:
+            raise InventoryBudgetExceeded('Public inventory byte limit exceeded')
         if len(content) > MAX_PUBLIC_SBOM:
             raise RuntimeError('Public inventory exceeds size limit')
     # Text input prevents Python's bytes-based UTF-16/32 autodetection. A UTF-8
@@ -103,8 +127,8 @@ def load_public_json(name, directory):
     return require_unicode_scalars(document)
 
 
-def load_canonical_sbom(name, directory):
-    report = load_public_json(name, directory)
+def load_canonical_sbom(name, directory, budget=None):
+    report = load_public_json(name, directory, budget)
     if (not isinstance(report, dict) or report.get('bomFormat') != 'CycloneDX' or
             not isinstance(report.get('specVersion'), str) or
             report['specVersion'] not in SUPPORTED_SPEC_VERSIONS or
@@ -118,8 +142,9 @@ def load_canonical_sbom(name, directory):
     return report
 
 
-def check_sboms(root):
+def check_sboms(root, extra_roots=()):
     errors, seen = [], set()
+    budget = {'entries': 0, 'bytes': 0}
     bindings = {Path('images') / f'{service}.cdx.json': f'runasmidja/{service}@'
                 for service in PUBLIC_SERVICES}
     required = set(bindings)
@@ -128,7 +153,7 @@ def check_sboms(root):
     def walk(directory, relative):
         if len(relative.parts) > 32:
             raise RuntimeError('Inventory directory nesting exceeds limit')
-        for name in sorted(os.listdir(directory)):
+        for name in bounded_names(directory, budget):
             path = relative / name
             try:
                 info = os.stat(name, dir_fd=directory, follow_symlinks=False)
@@ -139,8 +164,8 @@ def check_sboms(root):
                         walk(child, path)
                 elif name.endswith('.json'):
                     seen.add(path)
-                    report = (load_canonical_sbom(name, directory) if name.endswith('.cdx.json')
-                              else load_public_json(name, directory))
+                    report = (load_canonical_sbom(name, directory, budget) if name.endswith('.cdx.json')
+                              else load_public_json(name, directory, budget))
                     if path in bindings:
                         identity = report.get('metadata', {}).get('component', {}).get('name', '')
                         prefix = bindings[path]
@@ -149,9 +174,9 @@ def check_sboms(root):
                             raise RuntimeError('SBOM service/destination mismatch')
                     elif path.is_relative_to(Path('images')) and name.endswith('.cdx.json'):
                         raise RuntimeError('Image inventory filename has no reviewed service binding')
-                    content = json.dumps(report, ensure_ascii=False)
-                    if PRIVATE_PATH.search(content) or str(root) in content:
-                        raise RuntimeError('Private filesystem path in public inventory')
+                    reject_private_paths(report, root, extra_roots)
+            except InventoryBudgetExceeded:
+                raise
             except (ValueError, OSError, RuntimeError, AttributeError, TypeError, RecursionError):
                 errors.append(f'{root / "sbom" / path}: invalid inventory custody, JSON, structure or identity')
 
@@ -161,6 +186,8 @@ def check_sboms(root):
         with custody_directory(root) as repository:
             with custody_directory('sbom', repository) as directory:
                 walk(directory, Path())
+    except InventoryBudgetExceeded as error:
+        errors.append(f'{root}: {error}')
     except (ValueError, OSError, RuntimeError):
         errors.append(f'{root}: invalid repository/inventory directory custody')
     for path in sorted(required - seen):

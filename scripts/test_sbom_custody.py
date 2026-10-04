@@ -55,13 +55,13 @@ class CustodyTests(unittest.TestCase):
         alternate = self.root/'alternate'; alternate.mkdir()
         (alternate/self.path.name).write_text(json.dumps(record('probe')))
         changed = False
-        def replace_parent(name, directory):
+        def replace_parent(name, directory, budget=None):
             nonlocal changed
             if name == self.path.name and not changed:
                 self.images.rename(retained)
                 self.images.symlink_to(alternate, target_is_directory=True)
                 changed = True
-            return real_load(name, directory)
+            return real_load(name, directory, budget)
         try:
             with patch.object(policy, 'load_public_json', side_effect=replace_parent):
                 self.assertEqual(policy.check_sboms(self.root), [])

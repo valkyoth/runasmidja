@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Check parsed evidence strings/keys against known private build/temp/cache roots
+  and network paths; bound the public tree to 256 entries and 128 MiB of JSON.
+
 - Reject unpaired Unicode surrogates in public JSON keys and string values;
   preserve valid surrogate pairs and literal Unicode with regression coverage.
 

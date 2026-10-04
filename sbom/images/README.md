@@ -50,7 +50,9 @@ Heavy qualification and evidence retention are local, not GitHub CI. Committed
 snapshots are evidence for these specific images and scanner database, not future
 rebuilds or advisory databases.
 Public root component names are stable image identities; generation and
-repository checks reject private home/Windows/workspace paths elsewhere.
+repository checks reject known private home/temp/Windows/network/workspace path
+patterns in parsed keys and values; this is not proof that arbitrary text is
+nonsensitive. See [privacy scope and resource budgets](../../docs/IMAGE_EVIDENCE.md#known-host-paths-and-public-tree-resource-limits).
 
 ## Probe inventories (available since v0.2.1)
 

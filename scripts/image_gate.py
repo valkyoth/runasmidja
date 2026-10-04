@@ -124,7 +124,8 @@ def _scan(service, image, scanner, archive, candidate_recipe, archive_check, com
                 any(item.get('bom-ref') == component['bom-ref'] for item in evidence['components'])):
             raise RuntimeError('First-party inventory annotation conflicts with scanner evidence')
         evidence['components'].append(component)
-    public_sbom(evidence, service, image, ROOT)
+    public_sbom(evidence, service, image, ROOT, extra_roots=(
+        ROOT / '.local/trivy', EVIDENCE, *((Path(archive).parent,) if archive else ())))
     reviews = json.loads((ROOT / 'deploy/podman/advisory-reviews.json').read_text())
     from advisory_evidence import verified_reviews
     reviews = verified_reviews(reviews, ROOT)

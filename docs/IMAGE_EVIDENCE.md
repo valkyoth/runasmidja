@@ -151,3 +151,35 @@ service or privacy checks. Valid surrogate pairs decode to their scalar characte
 literal UTF-8 Unicode and ordinary backslash text remain valid. The iterative
 walk retains iterator frames instead of duplicating wide objects or arrays.
 This check applies equally to canonical, historical and other public JSON.
+
+
+## Known host paths and public-tree resource limits
+
+Privacy checks inspect parsed string values and object keys, not a JSON-serialized
+copy. Known private roots include the selected repository, current home and temp
+roots, `/home`, `/Users`, `/root`, `/tmp`, `/var/tmp` and macOS private temp roots.
+Configured and resolved root spellings are checked with path boundaries. Windows
+drive paths and UNC/network shares are rejected; normal HTTPS/package URLs and
+container inventory paths such as `/usr/bin/bao` remain allowed.
+
+Both scanner publication and repository checks accept explicit `extra_roots`.
+The scanner supplies its cache, evidence workspace and input-archive/extraction
+parent. Repository-root matching covers local build/extraction directories beneath
+it. CI workspace, runner temp/tool cache, Cargo home and XDG cache locations are
+also read from their standard environment settings. External workspaces must be
+supplied explicitly by their caller. These checks detect known host-path patterns;
+they do not prove arbitrary free text is nonsensitive or distinguish every host
+path from every legitimate container path. Field-level inventory review remains
+necessary before public export; no general sanitization/privacy guarantee follows.
+
+The whole `sbom` traversal shares a budget of **256 directory entries** and
+**128 MiB of JSON bytes**, in addition to the 16 MiB per-file and 32-level nesting
+limits. Entries include directories and non-JSON files. Directory names are read
+incrementally and sorting begins only after the bounded enumeration. A shared
+budget charges actual bytes before parsing, including malformed JSON; reads check
+remaining bytes both before and after reading. Growth can cause at most one
+sentinel byte beyond the remaining read allowance before failure. Exceeding either
+aggregate budget stops the complete traversal, not just that directory/file.
+No inventories are automatically deleted or limits silently raised. Review and
+remove obsolete evidence or explicitly review a policy change when limits fill.
+These bounds cover this validator, not every other repository/CI operation.
