@@ -8,6 +8,8 @@ import stat
 from pathlib import Path
 from custody import MAX_AUDIT, replace_private
 from process_limits import run_bounded
+from advisory_review import BLOCKING_SEVERITIES, disposition
+from sbom_privacy import public_sbom
 
 ROOT = Path(__file__).resolve().parent.parent
 EVIDENCE = ROOT / '.local/image-evidence'
@@ -68,7 +70,7 @@ def scan(service, image, scanner, archive=None):
     # Never consume stale evidence after a failed scanner run or follow an output link.
     result = run_bounded(scanner, 'image', '--image-src', 'remote', '--platform', 'linux/amd64',
         '--cache-dir', str(ROOT / '.local/trivy'), '--scanners', 'vuln', '--format', 'cyclonedx',
-        '--severity', 'HIGH,CRITICAL', '--exit-code', '1', '--quiet', '--ignore-unfixed=false',
+        '--severity', BLOCKING_SEVERITIES, '--exit-code', '1', '--quiet', '--ignore-unfixed=false',
         '--config', '', '--ignorefile', '/dev/null', '--ignore-policy', '', '--ignore-status', '',
         '--vex', '', '--skip-db-update=false', '--disable-telemetry',
         *(['--input', str(archive)] if archive else [image]),
@@ -79,7 +81,7 @@ def scan(service, image, scanner, archive=None):
         raise RuntimeError('Image SBOM is missing dependency inventory')
     if archive:
         from postgres_image import validate_image
-        validate_image(image)  # Bind both sides of scanning to the captured immutable build.
+        validate_image(image, require_local=False)  # Validate before loading the scanned archive.
         source = json.loads((ROOT / 'deploy/podman/postgres/source.lock.json').read_text())
         evidence['components'].append({'type': 'application', 'name': 'PostgreSQL',
             'version': source['version'], 'bom-ref': 'runasmidja-postgresql-source',
@@ -87,11 +89,22 @@ def scan(service, image, scanner, archive=None):
             'licenses': [{'license': {'id': 'PostgreSQL'}}],
             'externalReferences': [{'type': 'distribution', 'url': source['url'],
                                     'hashes': [{'alg': 'SHA-256', 'content': source['sha256']}]}]})
+    public_sbom(evidence, service, image, ROOT)
+    reviews = json.loads((ROOT / 'deploy/podman/advisory-reviews.json').read_text())
+    from advisory_evidence import verified_reviews
+    reviews = verified_reviews(reviews, ROOT)
+    components = {item.get('bom-ref'): (item.get('name'), item.get('version')) for item in evidence['components']}
+    findings = evidence.get('vulnerabilities', [])
+    statuses = [disposition(item, image, reviews, components) for item in findings]
+    reviewed = statuses.count('reviewed_not_affected')
+    if reviewed:
+        evidence.setdefault('metadata', {}).setdefault('properties', []).append(
+            {'name': 'runasmidja:unknown-not-affected-reviews', 'value': str(reviewed)})
     replace_private(target, json.dumps(evidence, indent=2) + '\n', limit=MAX_AUDIT)
-    findings = [item for item in evidence.get('vulnerabilities', [])
-                if any(rating.get('severity', '').lower() in ('high', 'critical')
-                       for rating in item.get('ratings', []))]
-    return result.returncode == 0 and not findings, len(findings)
+    # Exit 1 is expected when Trivy retains a reviewed UNKNOWN finding; never
+    # accept an error status with no such documented advisory evidence.
+    clean = 'blocked' not in statuses and (result.returncode == 0 or (result.returncode == 1 and reviewed > 0))
+    return clean, statuses.count('blocked')
 
 
 def verify_images(images):
@@ -110,7 +123,7 @@ def verify_images(images):
             from postgres_image import validate_image
             archive = validate_image(image)
         clean, count = scan(service, image, scanner, **({'archive': archive} if archive else {}))
-        print(f'{service}: {method}; exact-digest SBOM; {count} HIGH/CRITICAL findings', flush=True)
+        print(f'{service}: {method}; exact-image SBOM; {count} blocking UNKNOWN/HIGH/CRITICAL findings', flush=True)
         if not clean:
             blocked.append(service)
     if blocked:

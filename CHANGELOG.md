@@ -29,6 +29,17 @@ maintainer-requested review; remediation is committed locally at their explicit
 request for retest and no tag is authorized.
 See [candidate notes](release-notes/v0.2.0.md).
 
+Re-review remediation (2026-10-04): address one medium/three low findings with
+checked CPU/memory/PID build cgroups, private 3 GiB rootless storage, pre-write
+512 MiB atomic archive bounds, strict UNKNOWN admission, expiring exact-image
+not-affected evidence, public SBOM path rejection and safe unreaped-only process
+group signalling. OpenBao's affected legacy OpenPGP packages are absent from
+its pinned binary; its UNKNOWN advisory stays visible and the review expires
+2026-11-02. All 106 normal/optimized regressions, actual contained build/resource
+probe and fresh full service qualification pass. Earlier data is retained;
+default v02-reviewed uses the rebuilt image without migration/reset. Locally
+committed for maintainer retest; GitHub, acceptance and tagging remain pending.
+
 ## 0.1.0 — 2026-10-03
 
 Signed `v0.1.0` points to `9d6ec75`; GitHub checks, containers and CodeQL passed.

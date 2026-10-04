@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "platform": "linux/amd64",
-  "scan_policy": "Reject all HIGH/CRITICAL findings; no ignored IDs or ignore-unfixed filter.",
+  "scan_policy": "Reject UNKNOWN/HIGH/CRITICAL, including missing/unrecognized severity. Only exact-image, evidence-bound, unexpired not-affected UNKNOWN reviews may satisfy admission; advisories remain in SBOMs. No HIGH/CRITICAL waiver or scanner ignore/VEX filter.",
   "openbao": {
     "image": "ghcr.io/openbao/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005",
     "method": "signed-index",

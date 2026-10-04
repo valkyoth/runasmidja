@@ -31,7 +31,7 @@ The [browser security profiles](BROWSER_SECURITY_PROFILES.md) define origin-comp
 
 Run `scripts/checks.sh`, current dependency/license/advisory checks, freshness, applicable browser/reference/service/fuzz/fault suites and artifact SBOM generation. Update threat controls, limitations, parity evidence, CHANGELOG and release notes. Every numbered minor, patch, RC and 1.0 needs its own exact-source pentest, remediation and clean retesting before tagging; passing tests alone do not authorize a PASS report.
 
-The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Build and verify locally, stop for the maintainer’s pentest, and commit only after green. The maintainer pushes; repeat GitHub fixes and affected pentest retests until green. Tag and push the version tag only when explicitly requested; distribution publication needs separate authorization.
+The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Build and verify locally, commit completed candidates as needed, and stop for the maintainer’s pentest. Finalize acceptance only after green. The maintainer pushes; repeat GitHub fixes and affected pentest retests until green. Tag and push the version tag only when explicitly requested; distribution publication needs separate authorization.
 
 The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The current bounded pass is [v0.2.0 OpenBao-first provisioning](releases/v0.2.0-scope.md). Its separate fixture issues database/cache passwords in OpenBao; the legacy v0.1 fixture is retained unchanged. Temporary delivery, build/release identity and full drift qualification remain later numbered passes.
 

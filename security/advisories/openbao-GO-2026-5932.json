@@ -1,0 +1,38 @@
+{
+  "id": "GO-2026-5932",
+  "image": "ghcr.io/openbao/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005",
+  "binary_path": "/usr/bin/bao",
+  "binary_sha256": "535cf827b13753046757f5ec8b97ae0ef21f10a40ffe673f0d5e75616170f5ea",
+  "go_version": "go1.27.1",
+  "govulncheck_version": "v1.8.0",
+  "govulncheck_binary_sha256": "0a00df45eb092df6ca5c659ec948ce45fb881134271af6ee9c5d80653702193f",
+  "command": "govulncheck -mode=extract bao",
+  "analysis": "affected packages absent from complete binary symbol inventory",
+  "symbol_count": 153297,
+  "package_count": 1642,
+  "affected_packages": [
+    "golang.org/x/crypto/openpgp",
+    "golang.org/x/crypto/openpgp/packet",
+    "golang.org/x/crypto/openpgp/armor",
+    "golang.org/x/crypto/openpgp/clearsign",
+    "golang.org/x/crypto/openpgp/errors",
+    "golang.org/x/crypto/openpgp/elgamal",
+    "golang.org/x/crypto/openpgp/s2k"
+  ],
+  "affected_package_symbols": 0,
+  "maintained_fork_symbols": 538,
+  "package_inventory_sha256": "e02dee93eaabf085bf4dbb1f44e8d9beb4be58e1a326090908042aa827cac1c4",
+  "package_inventory_encoding": "UTF-8 json.dumps(sorted unique nonempty pkgSymbols.pkg values), default separators and ensure_ascii=true",
+  "module": "golang.org/x/crypto",
+  "version": "v0.56.0",
+  "reviewed_on": "2026-10-03",
+  "sources": [
+    "https://pkg.go.dev/vuln/GO-2026-5932",
+    "https://raw.githubusercontent.com/openbao/openbao/v2.7.1/internal/helper/pgpkeys/encrypt_decrypt.go"
+  ],
+  "limitations": [
+    "Module presence alone does not establish affected-package inclusion.",
+    "Binary absence review covers this immutable bundled executable only; external plugins and changed images require new analysis.",
+    "Not a runtime call-graph or general OpenPGP security assessment."
+  ]
+}

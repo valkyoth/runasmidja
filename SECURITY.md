@@ -9,6 +9,12 @@ Wolfi/PostgreSQL fixture passes scans and actual service qualification; this
 does not establish production security or a pentest PASS. See the
 [assessment](security/pentest/v0.2.0.md).
 
+Runasmidja targets a normal public website. Review findings against its actual
+supported behavior, exploitability and trust boundaries, and choose controls
+that a solo maintainer can operate. Rigorous reviews do not establish a separate
+military assurance profile. Document not-affected and out-of-scope determinations
+with evidence rather than silently disabling relevant security checks.
+
 Report vulnerabilities privately through [GitHub private advisories](https://github.com/valkyoth/runasmidja/security/advisories/new).
 Do not disclose exploitable details in public issues before remediation.
 
@@ -17,8 +23,10 @@ Run scripts/checks.sh, current freshness checks, cargo deny check and cargo audi
 to the feature being claimed. Keep security docs, limitations, CHANGELOG and
 release notes with each pass. Every minor/patch/RC/tag needs an exact-source
 pentest and tested remediation; NOT RUN never qualifies as PASS.
-The maintainer performs that pentest. Commit new candidate work only after their
-green result; GitHub failures follow the fix/report/retest loop in the runbook.
+The maintainer performs that pentest. Completed candidate work may be committed
+locally for their retest; a commit does not attest acceptance. The maintainer
+pushes unless they explicitly delegate it. GitHub failures follow the
+fix/report/retest loop in the runbook.
 
 See [release runbook](docs/RELEASE_RUNBOOK.md), [threat model](docs/threat-model.md)
 and [controls](docs/security-controls.md). GitHub uses CodeQL **Default setup**;

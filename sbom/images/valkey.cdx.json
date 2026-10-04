@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:53eee6d2-54be-4fd2-98bc-4b2658533d25",
+  "serialNumber": "urn:uuid:d33a830f-b508-4f12-ae5e-02f9a310aab9",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T19:34:35+00:00",
+    "timestamp": "2026-10-04T06:13:08+00:00",
     "tools": {
       "components": [
         {
@@ -22,7 +22,7 @@
     "component": {
       "bom-ref": "pkg:oci/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d?arch=amd64&repository_url=index.docker.io%2Fvalkey%2Fvalkey",
       "type": "container",
-      "name": "docker.io/valkey/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d",
+      "name": "runasmidja/valkey@docker.io/valkey/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d",
       "purl": "pkg:oci/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d?arch=amd64&repository_url=index.docker.io%2Fvalkey%2Fvalkey",
       "properties": [
         {
@@ -82,7 +82,7 @@
   },
   "components": [
     {
-      "bom-ref": "34c1241d-40f7-448c-b5e3-351479e4266c",
+      "bom-ref": "6f35b96b-7fc2-4add-b7f4-a4afde87c369",
       "type": "operating-system",
       "name": "alpine",
       "version": "3.24.2",
@@ -1252,7 +1252,7 @@
   ],
   "dependencies": [
     {
-      "ref": "34c1241d-40f7-448c-b5e3-351479e4266c",
+      "ref": "6f35b96b-7fc2-4add-b7f4-a4afde87c369",
       "dependsOn": [
         "pkg:apk/alpine/alpine-baselayout@3.7.2-r1?arch=x86_64&distro=3.24.2",
         "pkg:apk/alpine/alpine-release@3.24.2-r0?arch=x86_64&distro=3.24.2",
@@ -1413,7 +1413,7 @@
     {
       "ref": "pkg:oci/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d?arch=amd64&repository_url=index.docker.io%2Fvalkey%2Fvalkey",
       "dependsOn": [
-        "34c1241d-40f7-448c-b5e3-351479e4266c"
+        "6f35b96b-7fc2-4add-b7f4-a4afde87c369"
       ]
     }
   ],

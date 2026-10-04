@@ -2,6 +2,8 @@
 
 Linux/rootless Podman, Python 3.11+, OpenSSL/Skopeo CLIs and free loopback ports
 15432/18200/16379 are required. Python orchestrates tests; product code is Rust.
+The public PostgreSQL build additionally requires systemd 254+ user delegation
+and cgroup v2 CPU/memory/PID controllers; unsupported containment fails closed.
 
 ```sh
 python3 scripts/install_image_tools.py
@@ -13,11 +15,14 @@ python3 scripts/stack.py stop
 python3 scripts/stack_qualification.py
 python3 scripts/qualification_bounds.py
 python3 scripts/qualification_postgres.py
+python3 scripts/build_sandbox.py --qualify
 ```
 
 PostgreSQL 19beta4 now builds automatically from pinned official source on a
 verified Wolfi base; no manual database installation is needed. The three current
-runtime inventories have zero reported HIGH/CRITICAL findings. The original
+runtime inventories have zero blocking UNKNOWN/HIGH/CRITICAL findings. OpenBao
+retains one expiring not-affected UNKNOWN review; see the
+[advisory evidence](../security/advisories/README.md). The original
 official PostgreSQL image remains rejected (42 findings), not waived. See the
 [remediation report](../security/pentest/v0.2.0.md) and
 [image inventories](../sbom/images/README.md).
@@ -38,8 +43,8 @@ do not waive CVEs and must be reviewed again on digest changes. Startup always
 scans, with unfixed findings included and no ignore/VEX filter. CI retains
 per-image SBOMs even when scans fail.
 
-The v0.2 fixture uses `.local/stacks/v02-wolfi-ready` and
-`runasmidja-v02-wolfi-ready-*` containers,
+The v0.2 fixture uses `.local/stacks/v02-reviewed` and
+`runasmidja-v02-reviewed-*` containers,
 network and PostgreSQL volume. `RUNASMIDJA_STACK_ID` accepts a bounded lowercase
 identifier for a separate test profile; ports stay fixed, so run only one profile
 at a time. Every mutation verifies project/service/instance ownership labels.
@@ -59,7 +64,7 @@ Existing containers with unbounded logs/audit mounts require an explicit
 image IDs and database/vault data mounts before stopping/removing containers;
 volumes, vault data, credentials and recovery custody remain intact. Run `up`
 after the image gate is clean. Ordinary startup never silently replaces a
-container. Earlier `v02` and development `v02-wolfi` profiles are stopped,
+container. Earlier `v02`, `v02-wolfi-ready` and development `v02-wolfi` profiles are stopped,
 preserving all data/custody. The latter contains an incomplete experimental
 initialization; it is not silently resumed or reset. The qualified fresh default
 is independent of these profiles, not a migration. PostgreSQL cannot reuse the
@@ -70,8 +75,12 @@ APK packages. Missing build custody triggers this automatically; changed recipe,
 base, archive or image identity fails closed. Rebuilds do not replace running
 containers or migrate data automatically. Use a separate stopped-port profile
 to qualify a changed image. The public build has a 30 MB source-download bound,
-512 MiB retained archive bound, 1 MiB output budget and 1,800-second deadline;
-its context whitelist excludes vault state and all credentials.
+512 MiB streamed archive bound, 1 MiB output budget and 1,800-second deadline.
+Compilation uses a private 3 GiB tmpfs-backed rootless store, a 2-CPU/5 GiB/no-swap/
+512-task cgroup, and 2 GiB/no-extra-swap build steps. Its context whitelist
+excludes vault state and all credentials. Archive byte limits apply before
+writes; validated/scanned archives are imported only after containment completes.
+See the [build contract](../deploy/podman/postgres/README.md).
 
 ## OpenBao first
 
@@ -124,7 +133,10 @@ user is off; app ACL grants only get/set/del/ping on `runasmidja:*` keys.
 New containers use 1 MiB k8s-file log rotation; qualification reads only the
 latest 2,000 records with a 1 MiB aggregate capture cap. Child stdin is capped at
 64 KiB, stdout/stderr are drained concurrently, and limit/deadline failures
-terminate and reap the child group. Public image SBOM capture has a separate
+terminate and reap the child group while its leader remains unreaped. Successful
+reaped children are never signalled again; general process capture does not
+claim cleanup of detached descendants. Public builds use an owned cgroup for
+that boundary. Public image SBOM capture has a separate
 16 MiB/900-second budget. Private creation/replacement limits apply before writes.
 Live OpenBao audit is a 16 MiB tmpfs, never an unbounded host bind. Qualification
 and stop take bounded snapshots into two private regular files, each at most

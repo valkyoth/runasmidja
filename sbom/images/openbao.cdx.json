@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:0bd6225c-c330-4501-913c-6543ff8438e8",
+  "serialNumber": "urn:uuid:2c2eb37b-e768-4aa4-b96d-79ad846ee58e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T19:29:04+00:00",
+    "timestamp": "2026-10-04T06:13:07+00:00",
     "tools": {
       "components": [
         {
@@ -22,7 +22,7 @@
     "component": {
       "bom-ref": "pkg:oci/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005?arch=amd64&repository_url=ghcr.io%2Fopenbao%2Fopenbao",
       "type": "container",
-      "name": "ghcr.io/openbao/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005",
+      "name": "runasmidja/openbao@ghcr.io/openbao/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005",
       "purl": "pkg:oci/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005?arch=amd64&repository_url=ghcr.io%2Fopenbao%2Fopenbao",
       "properties": [
         {
@@ -162,57 +162,33 @@
           "value": "192442368"
         }
       ]
-    }
+    },
+    "properties": [
+      {
+        "name": "runasmidja:unknown-not-affected-reviews",
+        "value": "1"
+      }
+    ]
   },
   "components": [
     {
-      "bom-ref": "1dc84215-34d7-4549-97d0-3cb9ea87986e",
-      "type": "library",
-      "name": "./api",
+      "bom-ref": "01c9d8c7-faeb-49b9-a058-c8e710bb6020",
+      "type": "operating-system",
+      "name": "alpine",
+      "version": "3.24.2",
       "properties": [
         {
-          "name": "aquasecurity:trivy:LayerDiffID",
-          "value": "sha256:90ac85229a4324b8c9d989c7bcc0bcfd24a86d3ea95937be09f2d065d07a22a7"
+          "name": "aquasecurity:trivy:Class",
+          "value": "os-pkgs"
         },
         {
-          "name": "aquasecurity:trivy:LayerDigest",
-          "value": "sha256:0e9fa07592f841ab139f5f25e92580a8b9303c56b88f03688095815c2e04f08f"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "./api"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "gobinary"
+          "name": "aquasecurity:trivy:Type",
+          "value": "alpine"
         }
       ]
     },
     {
-      "bom-ref": "4ea81a8a-514d-401d-9be7-9cd34c0bafc4",
-      "type": "library",
-      "name": "./internal/helper/stubbolt",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:LayerDiffID",
-          "value": "sha256:90ac85229a4324b8c9d989c7bcc0bcfd24a86d3ea95937be09f2d065d07a22a7"
-        },
-        {
-          "name": "aquasecurity:trivy:LayerDigest",
-          "value": "sha256:0e9fa07592f841ab139f5f25e92580a8b9303c56b88f03688095815c2e04f08f"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "./internal/helper/stubbolt"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "gobinary"
-        }
-      ]
-    },
-    {
-      "bom-ref": "69776dc0-17e5-4ef3-9cca-f1e8e6406649",
+      "bom-ref": "1545cdb8-8159-49f5-8140-70e5bf4f5a5b",
       "type": "library",
       "name": "./api/auth/kubernetes",
       "properties": [
@@ -235,7 +211,45 @@
       ]
     },
     {
-      "bom-ref": "829ec8a1-9c87-4416-9414-59a3ced6f0e4",
+      "bom-ref": "260bfa81-7957-4070-83d4-1d17dc4a60a0",
+      "type": "application",
+      "name": "usr/bin/bao",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "48117221-80ef-40f8-9490-d9049ea36166",
+      "type": "library",
+      "name": "./api",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:90ac85229a4324b8c9d989c7bcc0bcfd24a86d3ea95937be09f2d065d07a22a7"
+        },
+        {
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:0e9fa07592f841ab139f5f25e92580a8b9303c56b88f03688095815c2e04f08f"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "./api"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "gobinary"
+        }
+      ]
+    },
+    {
+      "bom-ref": "6ebf2128-5ea5-4c5b-9b20-d9a1cd7c99f6",
       "type": "library",
       "name": "./sdk",
       "properties": [
@@ -258,32 +272,24 @@
       ]
     },
     {
-      "bom-ref": "a724be31-1673-487c-8426-52bd800d2a0a",
-      "type": "operating-system",
-      "name": "alpine",
-      "version": "3.24.2",
+      "bom-ref": "cea88313-f4a7-4e01-b8aa-93b743622f10",
+      "type": "library",
+      "name": "./internal/helper/stubbolt",
       "properties": [
         {
-          "name": "aquasecurity:trivy:Class",
-          "value": "os-pkgs"
+          "name": "aquasecurity:trivy:LayerDiffID",
+          "value": "sha256:90ac85229a4324b8c9d989c7bcc0bcfd24a86d3ea95937be09f2d065d07a22a7"
         },
         {
-          "name": "aquasecurity:trivy:Type",
-          "value": "alpine"
-        }
-      ]
-    },
-    {
-      "bom-ref": "c7683bcc-1cbd-4c6f-8c2b-827b91c6b4cb",
-      "type": "application",
-      "name": "usr/bin/bao",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
+          "name": "aquasecurity:trivy:LayerDigest",
+          "value": "sha256:0e9fa07592f841ab139f5f25e92580a8b9303c56b88f03688095815c2e04f08f"
         },
         {
-          "name": "aquasecurity:trivy:Type",
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "./internal/helper/stubbolt"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
           "value": "gobinary"
         }
       ]
@@ -8905,23 +8911,7 @@
   ],
   "dependencies": [
     {
-      "ref": "1dc84215-34d7-4549-97d0-3cb9ea87986e",
-      "dependsOn": []
-    },
-    {
-      "ref": "4ea81a8a-514d-401d-9be7-9cd34c0bafc4",
-      "dependsOn": []
-    },
-    {
-      "ref": "69776dc0-17e5-4ef3-9cca-f1e8e6406649",
-      "dependsOn": []
-    },
-    {
-      "ref": "829ec8a1-9c87-4416-9414-59a3ced6f0e4",
-      "dependsOn": []
-    },
-    {
-      "ref": "a724be31-1673-487c-8426-52bd800d2a0a",
+      "ref": "01c9d8c7-faeb-49b9-a058-c8e710bb6020",
       "dependsOn": [
         "pkg:apk/alpine/alpine-baselayout@3.7.2-r1?arch=x86_64&distro=3.24.2",
         "pkg:apk/alpine/alpine-release@3.24.2-r0?arch=x86_64&distro=3.24.2",
@@ -8937,10 +8927,26 @@
       ]
     },
     {
-      "ref": "c7683bcc-1cbd-4c6f-8c2b-827b91c6b4cb",
+      "ref": "1545cdb8-8159-49f5-8140-70e5bf4f5a5b",
+      "dependsOn": []
+    },
+    {
+      "ref": "260bfa81-7957-4070-83d4-1d17dc4a60a0",
       "dependsOn": [
         "pkg:golang/github.com/openbao/openbao/v2@v2.7.1"
       ]
+    },
+    {
+      "ref": "48117221-80ef-40f8-9490-d9049ea36166",
+      "dependsOn": []
+    },
+    {
+      "ref": "6ebf2128-5ea5-4c5b-9b20-d9a1cd7c99f6",
+      "dependsOn": []
+    },
+    {
+      "ref": "cea88313-f4a7-4e01-b8aa-93b743622f10",
+      "dependsOn": []
     },
     {
       "ref": "pkg:apk/alpine/alpine-baselayout-data@3.7.2-r1?arch=x86_64&distro=3.24.2",
@@ -9911,10 +9917,10 @@
     {
       "ref": "pkg:golang/github.com/openbao/openbao/v2@v2.7.1",
       "dependsOn": [
-        "1dc84215-34d7-4549-97d0-3cb9ea87986e",
-        "4ea81a8a-514d-401d-9be7-9cd34c0bafc4",
-        "69776dc0-17e5-4ef3-9cca-f1e8e6406649",
-        "829ec8a1-9c87-4416-9414-59a3ced6f0e4",
+        "1545cdb8-8159-49f5-8140-70e5bf4f5a5b",
+        "48117221-80ef-40f8-9490-d9049ea36166",
+        "6ebf2128-5ea5-4c5b-9b20-d9a1cd7c99f6",
+        "cea88313-f4a7-4e01-b8aa-93b743622f10",
         "pkg:golang/cel.dev/cel-go@v0.32.0",
         "pkg:golang/cel.dev/expr@v0.25.2",
         "pkg:golang/cloud.google.com/go/auth/oauth2adapt@v0.2.8",
@@ -10567,10 +10573,39 @@
     {
       "ref": "pkg:oci/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005?arch=amd64&repository_url=ghcr.io%2Fopenbao%2Fopenbao",
       "dependsOn": [
-        "a724be31-1673-487c-8426-52bd800d2a0a",
-        "c7683bcc-1cbd-4c6f-8c2b-827b91c6b4cb"
+        "01c9d8c7-faeb-49b9-a058-c8e710bb6020",
+        "260bfa81-7957-4070-83d4-1d17dc4a60a0"
       ]
     }
   ],
-  "vulnerabilities": []
+  "vulnerabilities": [
+    {
+      "id": "GO-2026-5932",
+      "source": {
+        "name": "govulndb",
+        "url": "https://pkg.go.dev/vuln/"
+      },
+      "ratings": [],
+      "description": "The golang.org/x/crypto/openpgp package is unsafe by design, has numerous known security issues, is not maintained, and should not be used.\n\nIf you are required to interoperate with OpenPGP systems and need a maintained package, consider github.com/ProtonMail/go-crypto/openpgp which is a maintained fork that aims to be a drop-in replacement for this package.",
+      "advisories": [
+        {
+          "url": "https://go.dev/issue/44226"
+        },
+        {
+          "url": "https://pkg.go.dev/vuln/GO-2026-5932"
+        }
+      ],
+      "affects": [
+        {
+          "ref": "pkg:golang/golang.org/x/crypto@v0.56.0",
+          "versions": [
+            {
+              "version": "v0.56.0",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

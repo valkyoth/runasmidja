@@ -11,8 +11,9 @@ assessor or additional approval service is required for this working loop.
    services/browsers/providers where claimed; refresh dependency/tool metadata.
 3. Update threat controls, parity matrices, limitations, CHANGELOG and notes.
 4. Stop implementation and say the candidate is ready for the maintainer's
-   pentest. Leave new work uncommitted. Record the exact source digest and test
-   results so the tested working tree can be matched to the later source commit.
+   pentest. Commit completed candidate work locally as needed, without implying
+   pentest acceptance. Record the exact source digest, candidate commit and test
+   results so the tested source can be matched to the accepted assessment.
 5. If the pentest finds issues, read the maintainer's local PENTEST.md, fix them,
    run affected tests and document remediation. Hand the candidate back for
    retest; repeat until the maintainer confirms green. Never infer pentest PASS
@@ -36,7 +37,7 @@ assessor or additional approval service is required for this working loop.
 
 This loop starts at 0.1.0 and repeats for each bounded version. Do not start the
 next version while the current candidate is awaiting pentest, GitHub results or
-the maintainer's tag instruction. Planning updates follow the same commit timing.
+the maintainer's tag instruction. Local commits do not authorize pushing or tagging.
 
 `python3 scripts/check_release.py X.Y.Z` checks report shape/source lineage and
 SBOM presence only; it does not authenticate the assessor or built artifacts.

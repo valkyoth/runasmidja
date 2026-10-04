@@ -6,6 +6,8 @@ import unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
+from datetime import date
+from advisory_review import disposition
 import image_gate as gate
 import install_image_tools as installer
 
@@ -14,6 +16,30 @@ IMAGES = {key: POLICY[key]['image'] for key in ('openbao', 'postgres', 'valkey')
 
 
 class ImageTests(unittest.TestCase):
+    def test_unknown_advisory_requires_bound_review_and_is_retained(self):
+        review = json.loads((gate.ROOT / 'deploy/podman/advisory-reviews.json').read_text())[0]
+        report = {'bomFormat': 'CycloneDX',
+            'components': [{'bom-ref': 'module', 'name': review['module'], 'version': review['version']}],
+            'metadata': {'component': {'name': '/home/fixture/private/image.tar'}},
+            'vulnerabilities': [{'id': review['id'], 'ratings': [{}], 'affects': [{'ref': 'module'}]}]}
+        with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
+             patch.object(gate, 'disposition', side_effect=lambda *args: disposition(*args, today=date.fromisoformat(review['reviewed_on']))), \
+             patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=1, stdout=json.dumps(report))) as call:
+            self.assertEqual(gate.scan('openbao', review['image'], 'trivy'), (True, 0))
+            self.assertIn('UNKNOWN,HIGH,CRITICAL', call.call_args.args)
+            retained = json.loads((Path(folder) / 'openbao.cdx.json').read_text())
+            self.assertEqual(retained['vulnerabilities'], report['vulnerabilities'])
+            self.assertEqual(retained['metadata']['component']['name'], 'runasmidja/openbao@' + review['image'])
+            self.assertEqual(retained['metadata']['properties'][-1]['value'], '1')
+            self.assertEqual(gate.scan('openbao', review['image'] + '-changed', 'trivy'), (False, 1))
+        for finding in ({'id': 'new-advisory'}, {'id': 'new-advisory', 'ratings': [{}]},
+                        {'id': 'new-advisory', 'ratings': [{'severity': 'unknown'}]}):
+            report['vulnerabilities'] = [finding]
+            with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
+                 patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=1, stdout=json.dumps(report))):
+                self.assertEqual(gate.scan('openbao', review['image'], 'trivy'), (False, 1))
+                self.assertEqual(json.loads((Path(folder) / 'openbao.cdx.json').read_text())['vulnerabilities'], [finding])
+
     def test_exceptions_are_exact_digest_platform_and_service_scoped(self):
         for service in ('valkey',):
             self.assertEqual(gate.provenance(service, IMAGES[service], POLICY, 'cosign'), 'maintainer-exception')

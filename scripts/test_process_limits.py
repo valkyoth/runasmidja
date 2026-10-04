@@ -12,6 +12,23 @@ import custody
 
 
 class ChildTests(unittest.TestCase):
+    def test_reaped_leader_is_never_signalled_again(self):
+        original = process_limits.subprocess.Popen
+        children = []
+        def launch(*args, **kwargs):
+            child = original(*args, **kwargs)
+            children.append(child)
+            return child
+        for code, allowed in (("pass", (0,)), ("raise SystemExit(3)", (3,))):
+            with patch.object(process_limits.subprocess, 'Popen', side_effect=launch), \
+                 patch.object(process_limits.os, 'killpg') as kill:
+                run_bounded(sys.executable, '-c', code, allowed=allowed)
+                kill.assert_not_called()
+                self.assertIsNotNone(children[-1].returncode)
+        with patch.object(process_limits.os, 'killpg') as kill:
+            process_limits._kill_reap(children[-1])
+            kill.assert_not_called()
+
     def test_aggregate_stdout_stderr_limit_and_oversized_line(self):
         for code in ("import os; os.write(1,b'x'*8192)",
                      "import os; os.write(1,b'x'*600); os.write(2,b'y'*600)",

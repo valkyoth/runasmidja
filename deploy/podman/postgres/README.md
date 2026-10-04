@@ -37,6 +37,30 @@ No signing secret is created: public-source builds need none. Local receipts
 trust the host user; they are not cryptographically authenticated release
 provenance. Production signing/build identity retains its later owner.
 
+Builds require Linux cgroup v2 with delegated CPU/memory/PID controllers and a
+systemd user manager supporting DelegateSubgroup (systemd 254+). Unsupported
+limits fail closed. The owned build unit has a 2-CPU quota, 5 GiB memory ceiling,
+zero swap and 512 tasks. Each build step additionally has 2 GiB memory/no extra
+swap and nproc=512. Actual kernel limits are checked, not inferred from flags.
+Rootless Podman uses an independent VFS store/run/temp tree on private 3 GiB
+tmpfs in a private mount namespace, with an empty registry auth file. The local
+engine is selected explicitly even when a remote Podman endpoint is configured.
+The fixture does not modify OS packages or the ordinary container store while
+compiling. The owned cgroup is stopped on completion/failure; it contains build
+descendants without relying on a recycled process-group ID.
+
+Archive stdout is streamed through a 512 MiB byte counter before disk writes;
+stderr is capped at 1 MiB. A 0600 exclusive no-follow temporary file is synced,
+then atomically renamed and its parent synced. Producer/flood/deadline failures
+preserve the old archive and reap the producer. Old and in-progress archives
+can each occupy at most 512 MiB. A leftover temporary file blocks retry rather
+than being silently trusted. Config/layer validation and a strict image scan
+precede import into the ordinary Podman store. Source is capped at 30 MB;
+build output at 1 MiB, steps at 1,500 seconds and the whole unit at 1,800 seconds.
+Private logs/receipt/archive are local-only; public SBOM identities never contain
+workstation paths. Run `python3 scripts/build_sandbox.py --qualify` for real
+kernel-limit checks, a bounded build step and tmpfs ENOSPC evidence.
+
 Weekly freshness checks detect upstream PostgreSQL releases/checksum drift and
 new Wolfi base indexes. Review/update pins, rebuild, rescan and requalify before
 admission. A new image ID cannot silently replace an existing container.

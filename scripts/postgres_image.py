@@ -30,7 +30,8 @@ def fingerprint():
         raise RuntimeError('Build base differs from reviewed publisher policy')
     files = {name: bounded_hash(recipe / name, 64 * 1024) for name in
              ('Containerfile', 'entrypoint.sh', '.containerignore', 'source.lock.json')}
-    files['builder'] = bounded_hash(ROOT / 'scripts/build_postgres_image.py', 64 * 1024)
+    for name in ('build_postgres_image.py', 'build_sandbox.py', 'stream_archive.py', 'process_limits.py', 'custody.py'):
+        files[name] = bounded_hash(ROOT / 'scripts' / name, 64 * 1024)
     files['base_provenance'] = policy
     return hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
 
@@ -44,7 +45,7 @@ def record(image):
     replace_private(STATE / 'receipt.json', json.dumps(receipt))
 
 
-def validate_image(image):
+def validate_image(image, *, require_local=True):
     if not re.fullmatch(r'sha256:[0-9a-f]{64}', image):
         raise RuntimeError('Local build requires immutable image config ID')
     receipt = json.loads(read_private(STATE / 'receipt.json'))
@@ -54,9 +55,10 @@ def validate_image(image):
         raise RuntimeError('Local PostgreSQL image archive tampered')
     from image_archive import verify
     verify(STATE / 'image.tar', image)
-    actual = run_bounded('podman', 'image', 'inspect', image, '--format', '{{.Id}}').stdout.strip()
-    if 'sha256:' + actual.removeprefix('sha256:') != image:
-        raise RuntimeError('Local PostgreSQL image identity drift')
+    if require_local:
+        actual = run_bounded('podman', 'image', 'inspect', image, '--format', '{{.Id}}').stdout.strip()
+        if 'sha256:' + actual.removeprefix('sha256:') != image:
+            raise RuntimeError('Local PostgreSQL image identity drift')
     return STATE / 'image.tar'
 
 

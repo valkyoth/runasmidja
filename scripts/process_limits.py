@@ -10,10 +10,13 @@ MAX_OUTPUT = 1024 * 1024
 
 
 def _kill_reap(child):
-    try:
-        os.killpg(child.pid, signal.SIGKILL)
-    except ProcessLookupError:
-        pass
+    # An unreaped leader reserves its PID, even when it has already exited.
+    # Never signal a possibly recycled group after wait/poll has reaped it.
+    if child.returncode is None:
+        try:
+            os.killpg(child.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
     child.wait(timeout=5)
 
 

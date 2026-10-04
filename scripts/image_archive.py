@@ -3,10 +3,21 @@ import hashlib
 import json
 import re
 import tarfile
+import os
+import stat
 
 
 def verify(path, image):
-    with tarfile.open(path, 'r') as archive:
+    descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    with os.fdopen(descriptor, 'rb') as source:
+        info = os.fstat(source.fileno())
+        if not stat.S_ISREG(info.st_mode) or info.st_size > 512 * 1024 * 1024:
+            raise RuntimeError('Image archive outer type/size budget rejected')
+        _verify(source, image)
+
+
+def _verify(source, image):
+    with tarfile.open(fileobj=source, mode='r') as archive:
         members = {}
         for member in archive:
             legacy_link = (member.issym() and re.fullmatch(r'[0-9a-f]{64}/layer\.tar', member.name)

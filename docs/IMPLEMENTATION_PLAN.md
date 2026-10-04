@@ -20,7 +20,8 @@ corrections and actual version owners. All 240 reference acceptances remain,
 with additive strict verification and the [G0–G7 contract](VERIFICATION_GATES.md).
 
 Use the maintainer's [release loop](RELEASE_RUNBOOK.md): build and verify, stop
-for their pentest, fix/retest until green, then commit locally. They push; repeat
+for their pentest, committing completed candidates locally as needed. Fix/retest
+until green and finalize the assessment. They push; repeat
 the GitHub fix loop until green and wait for their explicit tag/push instruction.
 
 The [browser security profiles](BROWSER_SECURITY_PROFILES.md) close the origin

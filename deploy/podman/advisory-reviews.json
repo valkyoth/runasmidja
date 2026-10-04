@@ -1,0 +1,14 @@
+[
+  {
+    "id": "GO-2026-5932",
+    "image": "ghcr.io/openbao/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005",
+    "module": "golang.org/x/crypto",
+    "version": "v0.56.0",
+    "status": "not_affected",
+    "reviewed_on": "2026-10-03",
+    "expires_on": "2026-11-02",
+    "reason": "Exact bundled binary contains no affected golang.org/x/crypto/openpgp package symbols; maintained ProtonMail fork symbols are present.",
+    "evidence": "security/advisories/openbao-GO-2026-5932.json",
+    "evidence_sha256": "3826f900e3d44299e74c96eefa71783ed166d0a339bbee13fa4eca5be60c1dbf"
+  }
+]

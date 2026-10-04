@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def check(root=ROOT):
     errors = []
+    from sbom_privacy import check_sboms
+    errors.extend(check_sboms(root))
     for base in (root,):
         for path in base.rglob("*"):
             if any(part in {"target", ".git", ".local", "__pycache__", ".cargo-deny-advisory-dbs"} for part in path.parts):

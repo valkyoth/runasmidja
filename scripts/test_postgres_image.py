@@ -40,6 +40,19 @@ def archive(path, attack=None):
 
 
 class ArchiveTests(unittest.TestCase):
+    def test_outer_archive_budget_and_special_files_reject_before_parsing(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / 'large'
+            with path.open('wb') as output:
+                output.truncate(512 * 1024 * 1024 + 1)
+            fifo = Path(folder) / 'fifo'; os.mkfifo(fifo, 0o600)
+            link = Path(folder) / 'link'; link.symlink_to(path)
+            with patch.object(image_archive.tarfile, 'open') as parser:
+                for target in (path, fifo, Path('/dev/zero'), link):
+                    with self.assertRaises((RuntimeError, OSError)):
+                        image_archive.verify(target, 'sha256:' + '0' * 64)
+                parser.assert_not_called()
+
     def test_binds_config_layers_and_platform_without_extraction(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / 'image.tar'

@@ -36,6 +36,15 @@ rejected; its historical scan is retained. GitHub and maintainer retest remain
 pending. See the
 [assessment](../security/pentest/v0.2.0.md).
 
+The second review adds binary archive flood/EOF/deadline/stderr/exit and fsync/
+rename fault tests, pre-parse outer archive limits, UNKNOWN-advisory image/module/
+expiry/evidence denials, SBOM path privacy checks and the reaped-PID regression.
+`build_sandbox.py --qualify` checks actual delegated kernel ceilings and a real
+bounded build step, and forces ENOSPC on a size-limited tmpfs. The complete
+PostgreSQL build runs inside the same checked 3 GiB private storage and owned
+cgroup. Normal and optimized suites have 106 tests. No automated test accepts
+the maintainer's pentest; this remains a retest candidate.
+
 Search qualification runs the same hosted metadata/authorization contracts
 against real PostgreSQL and Meilisearch, with the optional feature compiled both
 ways and each runtime selector. Test stale index after tenant/object revocation,

@@ -10,7 +10,10 @@
 | CI action provenance | Configured | Full commit pins; weekly Actions Dependabot |
 | Tool provenance/freshness | Configured | Exact archive SHA-256 and versions; live freshness workflow |
 | Verified tool compilation | Implemented; retest required | CI compiles exact verified archive offline; corrupt/offline/traversal regressions |
-| Fixture image provenance/inventory | Implemented gate; PostgreSQL blocked | Signed OpenBao index-to-leaf binding, exact PostgreSQL/Valkey unsigned exceptions, per-image OS/Go/C/native SBOM and HIGH/CRITICAL rejection |
+| Fixture image provenance/inventory | Implemented; retest required | Signed OpenBao/Wolfi index-to-leaf binding, exact Valkey provenance exception, source-built PostgreSQL config/layer binding, per-image inventory and UNKNOWN/HIGH/CRITICAL rejection; only evidence-bound expiring UNKNOWN not-affected reviews; original PostgreSQL remains blocked |
+| Public build containment | Implemented; retest required | Checked CPU/memory/PID owned cgroup and build-step limits, private 3 GiB store, pre-write 512 MiB atomic archive cap; actual build/kernel/tmpfs and failure regressions |
+| Public SBOM privacy | Implemented; retest required | Stable image names; generator/repository rejection of home/macOS/Windows/workspace paths |
+| Process cleanup identity | Implemented; retest required | No signal after leader reaping; real flood/deadline/pipe-descendant regressions; dedicated build cgroup |
 | Child/log/audit resource bounds | Implemented; retest required | Concurrent child budgets/kill/reap, 1 MiB log rotation, 16 MiB live audit tmpfs, two bounded no-follow snapshots; real Podman bounds qualification |
 | Local custody durability | Implemented; retest required | File and parent fsync for create/rename/unlink, fault regressions; remote init/local capture remains non-atomic |
 | GitHub CodeQL | External setting required | GitHub Default setup only; no advanced workflow |

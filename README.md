@@ -65,12 +65,13 @@ python3 scripts/stack.py stop
 
 Dependencies run in rootless Podman: PostgreSQL **19 beta 4**, OpenBao **2.7.1**
 and Valkey **9.1.2**. PostgreSQL is built automatically from pinned official source
-on a verified Wolfi base. Private custody lives in ignored `.local/stacks/v02-wolfi-ready`;
+on a verified Wolfi base. Private custody lives in ignored `.local/stacks/v02-reviewed`;
 earlier `.local/stacks/*` and `.local/stack` data remain separate and retained.
 OpenBao is initialized over TLS with declarative audit, KV v2, scoped AppRole
 and revoked bootstrap root token. Image provenance and exact-digest scans run
-before startup. All three current images have zero reported HIGH/CRITICAL
-findings. See [local stack](docs/local-stack.md) and the
+before startup. Untriaged UNKNOWN and all HIGH/CRITICAL findings block execution.
+OpenBao retains one digest-specific, expiring not-affected review; no other
+blocking findings were reported. See [local stack](docs/local-stack.md) and the
 [image recipe](deploy/podman/postgres/README.md).
 The new fixture obtains database/cache passwords from OpenBao before dependent
 startup, using separate scoped provisioning/runtime identities and version reuse.

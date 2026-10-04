@@ -39,7 +39,12 @@ identity for a distributed image. The build context excludes all project secrets
 See the [recipe](../deploy/podman/postgres/README.md); private-build/release signing
 and portable artifact attestation remain v0.9 and later distribution owners.
 
-HIGH/CRITICAL findings block execution, including unfixed ones. Local Trivy
+UNKNOWN/HIGH/CRITICAL findings block execution, including unfixed ones. An UNKNOWN
+finding can pass only with an exact-image/module/version, evidence-bound
+not-affected review valid for at most 30 days. HIGH/CRITICAL cannot use this path.
+The OpenBao binary's affected legacy OpenPGP packages are absent; its single
+UNKNOWN advisory is retained, not globally ignored. See the
+[analysis and expiry](../security/advisories/README.md). Local Trivy
 configuration/environment, ignore files/policies and VEX filters cannot remove
 findings from this gate. Original PostgreSQL has 42 reported findings; the
 qualified Wolfi replacement and both current service images have zero reported
@@ -49,6 +54,11 @@ does not claim automatic advisory analysis of that compiled C source. Official
 PostgreSQL release/advisory review remains required. The Cargo inventory
 does not cover these image graphs. See [image evidence](../sbom/images/README.md).
 CI uploads per-image SBOMs for failed as well as successful scans.
+Public inventory names use immutable image identities. Other private paths
+cause generation/repository checks to fail rather than being published.
+Public builds use checked cgroup CPU/memory/process ceilings, private bounded
+tmpfs storage and a streaming atomic archive writer; see the
+[build contract](../deploy/podman/postgres/README.md).
 
 New dependencies need current-version, source, features, license, maintenance,
 advisory, unsafe/build-script and target-footprint review plus tests for the
