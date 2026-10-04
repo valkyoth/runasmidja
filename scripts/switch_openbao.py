@@ -4,12 +4,11 @@ import argparse
 import hashlib
 import json
 import os
-from pathlib import Path
 from stack_common import STATE, NAMES, INSTANCE, podman, read_private, replace_private
 from stack_files import fixture_lock
 from stack_resources import owned, preflight, stop
 from stack_vault import runtime_values
-from openbao_image import pins, selected_image, validate_image
+from openbao_image import pins, selected_image, cached_image
 from image_gate import verify_images
 from postgres_image import fixture_images
 
@@ -56,8 +55,7 @@ def switch(target):
     info = owned('container', NAMES['openbao'], 'openbao')
     # Retrying after removal/start failure uses the same record and preserved data.
     if info:
-        wolfi = json.loads(read_private(Path(__file__).resolve().parent.parent / '.local/openbao-wolfi/receipt.json'))['image']
-        validate_image(wolfi)
+        wolfi = cached_image()
         removable(info, (pins()['upstream']['image'], wolfi))
         identity = info['Id']
         stop()

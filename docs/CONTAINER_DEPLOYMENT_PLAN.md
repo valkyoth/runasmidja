@@ -2,7 +2,7 @@
 
 Status: v0.2.1 probe and v0.2.2 Valkey packaging are signed/tagged. The current
 bounded candidate is [v0.2.3 Wolfi OpenBao](releases/v0.2.3-scope.md), with
-maintainer pentest NOT RUN. Required Fluxheim coverage and all 386 minor
+maintainer pentest RETEST REQUIRED. Required Fluxheim coverage and all 386 minor
 workstreams/source mappings remain unchanged.
 
 ## Decision and maintenance scope

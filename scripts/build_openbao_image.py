@@ -9,12 +9,22 @@ from podman_guard import podman, require_rootless, archive as export_archive
 from process_limits import run_bounded
 from stream_archive import save_bounded_archive
 from openbao_material import copied_binary
-from openbao_image import STATE, RECIPE, pins, fingerprint, binding
+from openbao_image import STATE, RECIPE, pins, fingerprint, binding, _validate_image
+from openbao_lock import artifact_lock
 
 
-def build():
+def build(if_missing=False):
     require_rootless(run_bounded)
-    STATE.mkdir(mode=0o700, parents=True, exist_ok=True)
+    with artifact_lock(STATE, exclusive=True):
+        if if_missing and (STATE / 'receipt.json').exists():
+            from custody import read_private
+            _validate_image(json.loads(read_private(STATE / 'receipt.json'))['image'])
+            return
+        _build_locked()
+
+
+def _build_locked():
+    """All shared context, candidate and publication mutations hold exclusive custody."""
     EVIDENCE.mkdir(mode=0o700, parents=True, exist_ok=True)
     lock = pins(); started = fingerprint()
     policy = {'platform': 'linux/amd64', 'openbao': lock['upstream'], 'wolfi-base': lock['base']}

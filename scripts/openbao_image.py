@@ -3,6 +3,8 @@ import hashlib
 import json
 import os
 from pathlib import Path
+from contextlib import contextmanager
+from openbao_lock import artifact_lock
 from custody import read_private
 from postgres_image import bounded_hash
 from image_archive import verify
@@ -22,7 +24,7 @@ def pins():
 def fingerprint():
     files = {name: bounded_hash(RECIPE / name, 65536) for name in
              ('Containerfile', '.containerignore', 'image.lock.json', 'OPENBAO-LICENSE')}
-    for name in ('openbao_image.py', 'build_openbao_image.py', 'openbao_material.py',
+    for name in ('openbao_image.py', 'build_openbao_image.py', 'openbao_material.py', 'openbao_lock.py',
                  'podman_guard.py', 'stream_archive.py', 'image_archive.py', 'process_limits.py'):
         files[name] = bounded_hash(ROOT / 'scripts' / name, 65536)
     return hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
@@ -33,7 +35,8 @@ def binding(path, image):
     return bounded_hash(path, 512 * 1024 * 1024)
 
 
-def validate_image(image):
+def _validate_image(image):
+    """Caller holds the cache lock through every use of the returned archive."""
     record = json.loads(read_private(STATE / 'receipt.json'))
     if record.get('image') != image or record.get('recipe') != fingerprint():
         raise RuntimeError('OpenBao build receipt/input mismatch')
@@ -44,6 +47,25 @@ def validate_image(image):
     if actual.removeprefix('sha256:') != image.removeprefix('sha256:'):
         raise RuntimeError('OpenBao loaded image mismatch')
     return archive
+
+
+@contextmanager
+def artifact(image=None):
+    """Keep a coherent receipt/archive pair pinned for the complete read/scan."""
+    with artifact_lock(STATE, exclusive=False):
+        if image is None:
+            image = json.loads(read_private(STATE / 'receipt.json'))['image']
+        yield image, _validate_image(image)
+
+
+def validate_image(image):
+    with artifact(image) as (_, archive):
+        return archive
+
+
+def cached_image():
+    with artifact() as (image, _):
+        return image
 
 
 def profile():
@@ -57,12 +79,16 @@ def selected_image():
     require_rootless(run_bounded)
     if profile() == 'official':
         return pins()['upstream']['image']
-    if not (STATE / 'receipt.json').exists():
-        from build_openbao_image import build
-        build()
-    image = json.loads(read_private(STATE / 'receipt.json'))['image']
-    validate_image(image)
-    return image
+    with artifact_lock(STATE, exclusive=False):
+        if (STATE / 'receipt.json').exists():
+            image = json.loads(read_private(STATE / 'receipt.json'))['image']
+            _validate_image(image)
+            return image
+    # Release shared custody before requesting exclusive access; the builder
+    # rechecks existence so simultaneous cold starts do not both rebuild.
+    from build_openbao_image import build
+    build(if_missing=True)
+    return cached_image()
 
 
 def admission_policy(images, policy):

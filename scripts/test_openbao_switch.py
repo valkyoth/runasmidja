@@ -36,8 +36,9 @@ class SwitchRetryTests(unittest.TestCase):
                 patches.enter_context(patch.dict(os.environ, {'RUNASMIDJA_OPENBAO_PROFILE':'wolfi'}))
                 patches.enter_context(patch.object(switch, 'STATE', root))
                 patches.enter_context(patch.object(switch, 'INSTANCE', 'v023-wolfi-bao'))
-                for name in ('selected_image', 'verify_images', 'fixture_images', 'preflight', 'validate_image', 'removable'):
+                for name in ('selected_image', 'verify_images', 'fixture_images', 'preflight', 'removable'):
                     patches.enter_context(patch.object(switch, name))
+                patches.enter_context(patch.object(switch, 'cached_image', return_value='wolfi'))
                 patches.enter_context(patch.object(switch, 'pins', return_value={'upstream':{'image':'official'}}))
                 patches.enter_context(patch.object(switch, 'runtime_values', side_effect=[runtime, {'key':'changed'}] if fault=='values' else None, return_value=runtime))
                 for name, function in {'owned':owned,'stop':stop,'podman':podman,'custody':custody,'read_private':private}.items():

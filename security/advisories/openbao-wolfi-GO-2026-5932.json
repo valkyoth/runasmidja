@@ -1,6 +1,6 @@
 {
   "id": "GO-2026-5932",
-  "image": "sha256:2e5754ec7ed9e817bc4fd343c87e4748267b3848efb7eb76c0d3507a0933f0e4",
+  "image": "sha256:9ffb8ed80617f40dfd6ade69797344d435dff809b69edf9e7e965743aae9983f",
   "binary_path": "/usr/bin/bao",
   "binary_sha256": "535cf827b13753046757f5ec8b97ae0ef21f10a40ffe673f0d5e75616170f5ea",
   "go_version": "go1.27.1",
@@ -37,5 +37,5 @@
   ],
   "derivation": "Exact COPY-only Wolfi candidate executable SHA256 equals the previously analyzed signed-upstream executable; ELF has no dynamic interpreter/dependency table.",
   "prior_evidence": "security/advisories/openbao-GO-2026-5932.json",
-  "assembly_recipe_sha256": "89a0527f8af047d0b507e5a6d8475c193f4d9786934c4aa5b24d12d55863ed0a"
+  "assembly_recipe_sha256": "8e459a192b12b859d08481b89df302b4a79d5c62c264c6d81f8a74b667be216f"
 }

@@ -144,18 +144,16 @@ def verify_images(images):
     blocked = []
     for service, image in images.items():
         method = provenance(service, image, policy, cosign)
-        archive = None
-        options = {}
-        if policy[service].get('method') == 'local-build':
-            if service == 'openbao':
-                from openbao_image import validate_image, binding
-                archive = validate_image(image)
-                options['archive_check'] = lambda: binding(archive, image)
-            else:
-                from postgres_image import validate_image
-                archive = validate_image(image)
-            options['archive'] = archive
-        clean, count = scan(service, image, scanner, **options)
+        if service == 'openbao' and policy[service].get('method') == 'local-build':
+            from openbao_image import artifact, binding
+            with artifact(image) as (_, archive):
+                clean, count = scan(service, image, scanner, archive=archive,
+                                    archive_check=lambda: binding(archive, image))
+        elif policy[service].get('method') == 'local-build':
+            from postgres_image import validate_image
+            clean, count = scan(service, image, scanner, archive=validate_image(image))
+        else:
+            clean, count = scan(service, image, scanner)
         print(f'{service}: {method}; exact-image SBOM; {count} blocking UNKNOWN/HIGH/CRITICAL findings', flush=True)
         if not clean:
             blocked.append(service)

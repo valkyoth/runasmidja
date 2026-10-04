@@ -5,7 +5,7 @@ recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins
 workers and supply-chain changes require threat review and executable tests.
 The foundations through v0.2.2 are signed and tagged with accepted maintainer
 pentests and green GitHub checks. The v0.2.3 Wolfi OpenBao fixture candidate has
-maintainer pentest **NOT RUN**. Automated tests do not attest pentest PASS.
+maintainer pentest **RETEST REQUIRED**. Automated tests do not attest pentest PASS.
 None is a production service. See the
 [candidate assessment](security/pentest/v0.2.3.md).
 

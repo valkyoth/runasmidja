@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.2.3 — implementation candidate; pentest NOT RUN
+## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
+
+- Fix SAST-001 (Low): serialize global OpenBao cache writers, lock receipt/archive
+  readers through scans, recheck concurrent automatic builds, and add real
+  multiprocessing/custody/publication-failure regressions.
 
 - Assemble the verified static OpenBao 2.7.1 executable on signed Wolfi; retain
   exact input/image/archive provenance, upstream license and per-image inventory.

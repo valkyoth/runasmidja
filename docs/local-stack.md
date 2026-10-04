@@ -273,3 +273,12 @@ scoped access. This is finite disposable audit evidence, not durable retention.
 Built-in KV/AppRole and PebbleDB are tested; external plugins are unqualified.
 OpenBao root filesystem remains writable under the existing fixture contract;
 no read-only-root claim is introduced by changing its base.
+
+
+OpenBao artifact caching is protected independently of the per-stack lock:
+direct and automatic builds share an exclusive global cache lock; receipt and
+archive readers hold shared access through validation/scanning. Competing builds
+wait without modifying each other's candidates. Automatic callers recheck a
+completed receipt after waiting. Do not delete `artifact.lock` or reset cache
+custody to interrupt work; stop the owning process normally. Kernel locking
+releases on process exit. See the [cache contract](../deploy/podman/openbao/README.md#concurrent-cache-custody).

@@ -13,7 +13,7 @@
   },
   {
     "id": "GO-2026-5932",
-    "image": "sha256:2e5754ec7ed9e817bc4fd343c87e4748267b3848efb7eb76c0d3507a0933f0e4",
+    "image": "sha256:9ffb8ed80617f40dfd6ade69797344d435dff809b69edf9e7e965743aae9983f",
     "module": "golang.org/x/crypto",
     "version": "v0.56.0",
     "status": "not_affected",
@@ -21,6 +21,6 @@
     "expires_on": "2026-11-02",
     "reason": "Exact copied executable is byte-identical to the signed upstream binary with retained complete affected-package absence evidence; only this built image is reviewed.",
     "evidence": "security/advisories/openbao-wolfi-GO-2026-5932.json",
-    "evidence_sha256": "3098bcf7e457183ac619b0ac3904caf859976df4d8f1d9db12f38b9f3489ca36"
+    "evidence_sha256": "50883ec5dec1f95624aca9861cd72bac27fa7a94f2488f1ade1b073f0e73eedf"
   }
 ]
