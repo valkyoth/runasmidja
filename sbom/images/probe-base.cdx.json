@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:2faae973-2c3a-4236-b210-0fc2581500c3",
+  "serialNumber": "urn:uuid:eb8431d6-9dbd-473c-ac68-df51cb3b6da2",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T15:34:27+00:00",
+    "timestamp": "2026-10-04T16:13:02+00:00",
     "tools": {
       "components": [
         {
@@ -82,7 +82,7 @@
   },
   "components": [
     {
-      "bom-ref": "857ddb8f-6405-4f17-8353-2c2eea0c2898",
+      "bom-ref": "ff362a40-3268-45fa-b233-8b72952a4bb2",
       "type": "operating-system",
       "name": "wolfi",
       "version": "20230201",
@@ -252,7 +252,7 @@
   ],
   "dependencies": [
     {
-      "ref": "857ddb8f-6405-4f17-8353-2c2eea0c2898",
+      "ref": "ff362a40-3268-45fa-b233-8b72952a4bb2",
       "dependsOn": [
         "pkg:apk/wolfi/tzdata@2026e-r0?arch=x86_64&distro=20230201"
       ]
@@ -276,7 +276,7 @@
     {
       "ref": "pkg:oci/static@sha256:a40219f3b0c2719e4e4220310e80a2230a4b95881644292c130e3a8e8287fc6c?arch=amd64&repository_url=cgr.dev%2Fchainguard%2Fstatic",
       "dependsOn": [
-        "857ddb8f-6405-4f17-8353-2c2eea0c2898"
+        "ff362a40-3268-45fa-b233-8b72952a4bb2"
       ]
     }
   ],

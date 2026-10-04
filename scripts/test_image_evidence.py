@@ -14,7 +14,7 @@ def scanner_worker(folder, service, image, serial, fault, started, entered, rele
     def scanner(*args, **kwargs):
         entered.set()
         if not release.wait(15): raise RuntimeError('test scanner deadline')
-        if fault: raise RuntimeError('scanner operational failure')
+        if fault is True: raise RuntimeError('scanner operational failure')
         return SimpleNamespace(stdout=json.dumps({'bomFormat':'CycloneDX', 'serialNumber':serial,
             'components':[{'name':'fixture'}]}))
     with patch.object(gate,'EVIDENCE',Path(folder)), patch.object(gate,'run_bounded',side_effect=scanner):
@@ -22,8 +22,9 @@ def scanner_worker(folder, service, image, serial, fault, started, entered, rele
         try:
             result=gate.scan(service,image,'scanner')
             output.put(('ok',str(result.snapshot)))
-        except RuntimeError:
+        except RuntimeError as error:
             if not fault: raise
+            if fault == 'publication' and 'retention budget' not in str(error): raise
             output.put(('expected-failure',None))
 
 
@@ -91,19 +92,19 @@ class EvidenceTests(unittest.TestCase):
 
     def test_publication_export_identity_integrity_and_immutable_reuse(self):
         with tempfile.TemporaryDirectory() as folder:
-            root=Path(folder); record=self.record()
+            root=Path(folder)/'private'; record=self.record()
             with evidence.evidence_transaction(root,'probe','image') as tx:
                 path=tx.publish(record); inode=path.stat().st_ino
                 self.assertEqual(tx.publish(record),path); self.assertEqual(path.stat().st_ino,inode)
                 with self.assertRaises(RuntimeError): tx.publish(self.record('wrong'))
             with self.assertRaises(RuntimeError): tx.publish(record)
             with self.assertRaises(RuntimeError): tx.read(path)
-            destination=root/'public.json'
+            destination=Path(folder)/'public.json'
             evidence.copy_sbom(root,'probe','image',path,destination)
             self.assertEqual(json.loads(destination.read_text()),record)
             destination.chmod(0o644)
             evidence.copy_sbom(root,'probe','image',path,destination)
-            link=root/'symlink.json'; link.symlink_to(destination)
+            link=Path(folder)/'symlink.json'; link.symlink_to(destination)
             with self.assertRaises(RuntimeError): evidence.copy_sbom(root,'probe','image',path,link)
             import export_image_evidence as exporter
             with patch.object(exporter,'EVIDENCE',root), patch('sys.argv',
@@ -157,7 +158,7 @@ class EvidenceTests(unittest.TestCase):
     def test_export_publication_failure_keeps_whole_files_and_retries(self):
         for fault in ('rename','directory-sync'):
             with self.subTest(fault=fault), tempfile.TemporaryDirectory() as folder:
-                root=Path(folder); target=root/'public.json'; target.write_text('previous')
+                root=Path(folder)/'private'; target=Path(folder)/'public.json'; target.write_text('previous')
                 with evidence.evidence_transaction(root,'probe','image') as tx:
                     snapshot=tx.publish(self.record())
                 sync=evidence.sync_parent
@@ -171,7 +172,7 @@ class EvidenceTests(unittest.TestCase):
                     evidence.copy_sbom(root,'probe','image',snapshot,target)
                 if fault=='rename': self.assertEqual(target.read_text(),'previous')
                 else: self.assertEqual(json.loads(target.read_text()),self.record())
-                self.assertFalse(list(root.glob('.evidence-*')))
+                self.assertFalse(list(Path(folder).glob('.evidence-*')))
                 evidence.copy_sbom(root,'probe','image',snapshot,target)
                 self.assertEqual(json.loads(target.read_text()),self.record())
 

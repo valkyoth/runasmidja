@@ -22,6 +22,29 @@ Probe first-party inventory is included in the scan transaction, not appended to
 a shared output afterward. Reference collisions are rejected. Probe qualification
 records use the same lock and image/content-keyed `.qualification.json` files.
 
+## Retention budget and maintenance
+
+Each service may retain at most 32 keyed files and 128 MiB in total. SBOM and
+qualification snapshots share that budget across all images. Interrupted `.next`
+publications count too, so repeated failed writes cannot escape the limit. The
+existing 16 MiB single-file cap remains. New publication checks regular-file
+custody, current ownership, private permissions and single links while holding
+the service lock. Exceeding either budget fails closed with “reviewed pruning
+required”; it never silently discards evidence. Identical completed snapshots
+can still be verified/reused without consuming another slot.
+
+When the limit is reached, stop starting scans, builds, fixture operations and
+exports, and wait for all existing callers to finish. Review which exact reports
+are still referenced by release/advisory records or pending retests. Export and
+retain those records first, then manually remove only reviewed obsolete keyed
+snapshots or abandoned `.next` files. Never delete `.locks` or a lock inode.
+Resume operations only after maintenance finishes. There is no automatic pruning
+or lease system: quiescence protects paths returned to earlier callers. Historical
+unkeyed reports are outside this budget and are no longer produced; review their
+retention separately. The budget covers managed evidence per service, not the
+whole workspace or hostile same-user writes. One bounded scanner report may be
+in memory during admission; publication does not start when the budget is full.
+
 ## Export the exact snapshot
 
 Use the exact image and snapshot printed by the qualifying command. Replace the
@@ -36,6 +59,11 @@ content hash, regular-file type, ownership and private permissions. It writes
 the public destination atomically using a unique temporary file. A mismatched
 image, modified snapshot or unkeyed legacy file is rejected rather than relabeled.
 Public Git destinations may already be readable; source custody stays private.
+The resolved destination parent must be outside the private evidence tree. Source
+and other snapshot destinations, new private-tree paths, symlink-parent aliases,
+leaf symlinks and hard links to the source are rejected before writing. A trusted
+maintainer must not concurrently rearrange destination directories during export;
+this is protection from accidental misuse, not a hostile same-user sandbox.
 
 Old fixed-name files such as `.local/image-evidence/openbao.cdx.json` and
 `probe-qualification.json` are historical, no longer updated, and must not be used

@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Bound per-service evidence retention and reject private-tree/source-alias
+  export destinations; add quota, custody, concurrency and no-mutation regressions.
+
 - Follow-up SAST confirms SAST-001 fixed. Fix SAST-002 (Low) with serialized
   service evidence transactions, image/content-keyed immutable snapshots,
   atomic probe annotation, bound public export and concurrency regressions.

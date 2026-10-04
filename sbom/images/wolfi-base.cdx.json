@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:eacf9fe9-8114-442e-8628-bac077bd402d",
+  "serialNumber": "urn:uuid:59376873-259c-451a-995a-090b33cb90e0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T15:37:33+00:00",
+    "timestamp": "2026-10-04T16:13:03+00:00",
     "tools": {
       "components": [
         {
@@ -122,7 +122,7 @@
   },
   "components": [
     {
-      "bom-ref": "dde0f5bf-ae23-4ab1-b343-f530fbae6a2b",
+      "bom-ref": "d8d487ba-59c6-45c1-b7e3-1156f22c9ec2",
       "type": "operating-system",
       "name": "wolfi",
       "version": "20230201",
@@ -1081,7 +1081,7 @@
   ],
   "dependencies": [
     {
-      "ref": "dde0f5bf-ae23-4ab1-b343-f530fbae6a2b",
+      "ref": "d8d487ba-59c6-45c1-b7e3-1156f22c9ec2",
       "dependsOn": [
         "pkg:apk/wolfi/wolfi-base@1-r7?arch=x86_64&distro=20230201"
       ]
@@ -1224,7 +1224,7 @@
     {
       "ref": "pkg:oci/wolfi-base@sha256:fbcaceb3a1eedec23eb80df9328f9be4a438546836ec15a67df39a104096d44a?arch=amd64&repository_url=cgr.dev%2Fchainguard%2Fwolfi-base",
       "dependsOn": [
-        "dde0f5bf-ae23-4ab1-b343-f530fbae6a2b"
+        "d8d487ba-59c6-45c1-b7e3-1156f22c9ec2"
       ]
     }
   ],

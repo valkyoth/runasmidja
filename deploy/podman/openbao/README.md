@@ -41,16 +41,16 @@ this is trusted local custody, not bit-for-bit reproducibility or a publisher
 signature on the resulting image. No registry push is performed.
 
 Observed candidate image:
-`sha256:b4fe85528d757bace7dbe14d70e0b39e3f5935d7bd94204159b4cc0dca43a9d1`.
+`sha256:c110e5c1002a0f2cb09de178fc11378c05035d2de11daf1adaca177d2342b69e`.
 
 Executable SHA256:
 `535cf827b13753046757f5ec8b97ae0ef21f10a40ffe673f0d5e75616170f5ea`.
 
 Archive SHA256:
-`4c38f842fc737d6212c307a5afc5c166100e8fcff129d1ca2097fe9ebf0453e0`.
+`200ccae0f95cf8acf7c13579ba7ae601df9da961e956357b13ccb1d3167e03c6`.
 
 Recipe fingerprint:
-`f317ab8cca7195382895cd0fa6e138f1272a54f6ce53ed04c4e114e0dd2846d6`.
+`c3936f183a854681209e080feac63692be6e38cab56b40b725fc3db4767dff0c`.
 
 The 313-component scan retains GO-2026-5932 UNKNOWN. Its separately reviewed
 exact-image not-affected evidence uses the byte-identical upstream executable
@@ -64,7 +64,7 @@ describes explicit official/Wolfi switching, failure checkpoints and retained
 custody. This is same-version development rollback, not storage migration or
 production recovery. KV v2, AppRole, HTTPS and PebbleDB are exercised; no external
 plugin, HA, mlock, durable audit or production filesystem-hardening claim follows
-from static linking or a green scan. Maintainer pentest requires retest after SAST-001 remediation.
+from static linking or a green scan. Maintainer pentest requires retest after SAST-003/004 remediation.
 
 
 ## Concurrent cache custody

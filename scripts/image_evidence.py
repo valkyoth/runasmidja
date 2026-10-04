@@ -11,6 +11,40 @@ from typing import NamedTuple
 from custody import MAX_AUDIT, read_owned_regular_bounded, replace_private, sync_parent
 from openbao_lock import artifact_lock, custody
 
+MAX_SERVICE_SNAPSHOTS = 32
+MAX_SERVICE_EVIDENCE = 128 * 1024 * 1024
+
+
+def reserve_snapshot(root, service, incoming):
+    """Caller holds the service lock; include interrupted publication files."""
+    pattern = re.compile(re.escape(service) +
+                         r'-[0-9a-f]{64}-[0-9a-f]{64}\.(?:cdx|qualification)\.json(?:\.next)?')
+    count = total = 0
+    with os.scandir(root) as entries:
+        for entry in entries:
+            if not pattern.fullmatch(entry.name):
+                continue
+            info = entry.stat(follow_symlinks=False)
+            custody(info)
+            count += 1
+            total += info.st_size
+    if (count >= MAX_SERVICE_SNAPSHOTS or total > MAX_SERVICE_EVIDENCE or
+            incoming > MAX_SERVICE_EVIDENCE - total):
+        raise RuntimeError('Evidence retention budget exhausted; reviewed pruning required')
+
+
+def checked_export_target(root, snapshot, target):
+    destination = target.parent.resolve(strict=True) / target.name
+    if destination.is_relative_to(root.resolve(strict=True)):
+        raise RuntimeError('Public evidence destination must be outside private evidence custody')
+    if destination.exists() or destination.is_symlink():
+        info = destination.lstat()
+        if not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid():
+            raise RuntimeError('Public evidence destination has invalid custody')
+        if os.path.samestat(info, snapshot.lstat()):
+            raise RuntimeError('Public destination aliases the source snapshot')
+    return destination
+
 
 class ScanResult(NamedTuple):
     clean: bool
@@ -55,6 +89,7 @@ class Evidence:
                 raise RuntimeError('Immutable evidence content changed')
             sync_parent(target)
         else:
+            reserve_snapshot(self.root, self.service, len(content.encode('utf-8')))
             replace_private(target, content, limit=MAX_AUDIT)
         return target
 
@@ -97,11 +132,7 @@ def copy_sbom(root, service, image, snapshot, target):
     """Export only the explicitly selected immutable scan, under the same lock."""
     with evidence_transaction(root, service, image) as transaction:
         report = transaction.read(snapshot)
-        target = Path(target)
-        if target.exists() or target.is_symlink():
-            info = target.lstat()
-            if not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid():
-                raise RuntimeError('Public evidence destination has invalid custody')
+        target = checked_export_target(root, Path(snapshot), Path(target))
         temporary = None
         try:
             with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=target.parent,

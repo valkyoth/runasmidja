@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:9fb9a99f-b969-4e01-a762-5c967a308dd2",
+  "serialNumber": "urn:uuid:bb23fe4e-0fd3-4793-a3a8-5e4e2b1cadfd",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T15:34:29+00:00",
+    "timestamp": "2026-10-04T16:13:04+00:00",
     "tools": {
       "components": [
         {
@@ -20,13 +20,13 @@
       ]
     },
     "component": {
-      "bom-ref": "b317b167-8fe1-4299-ba39-d885d5c960b5",
+      "bom-ref": "e1755ed8-1a5d-42cd-a2f4-1cd127f889bc",
       "type": "container",
-      "name": "runasmidja/probe@sha256:8c45b4a35e458869dd776689a8721479e8bf886b59f3225c451d447bdc7e7b18",
+      "name": "runasmidja/probe@sha256:bc5a0b14ee18c5e3f5fe26e194df0814f551fb8b439d7fcbb140f8fcee6e39ac",
       "properties": [
         {
           "name": "aquasecurity:trivy:DiffID",
-          "value": "sha256:d540ed07d59937112c2d8f3dd7d0006bac665d7d5724f89719270d1940751ed4"
+          "value": "sha256:f3bd44a990f4a8183f82014efa065faaa4cc411d8b811e29d133be6243340917"
         },
         {
           "name": "aquasecurity:trivy:DiffID",
@@ -34,7 +34,7 @@
         },
         {
           "name": "aquasecurity:trivy:ImageID",
-          "value": "sha256:8c45b4a35e458869dd776689a8721479e8bf886b59f3225c451d447bdc7e7b18"
+          "value": "sha256:bc5a0b14ee18c5e3f5fe26e194df0814f551fb8b439d7fcbb140f8fcee6e39ac"
         },
         {
           "name": "aquasecurity:trivy:Labels:io.buildah.version",
@@ -53,7 +53,7 @@
   },
   "components": [
     {
-      "bom-ref": "4e5f4e53-3a76-4216-813c-453a76930bd9",
+      "bom-ref": "504abb6d-2085-4ae4-a687-c4d5739b8afa",
       "type": "operating-system",
       "name": "wolfi",
       "version": "20230201",
@@ -248,15 +248,15 @@
   ],
   "dependencies": [
     {
-      "ref": "4e5f4e53-3a76-4216-813c-453a76930bd9",
+      "ref": "504abb6d-2085-4ae4-a687-c4d5739b8afa",
       "dependsOn": [
         "pkg:apk/wolfi/tzdata@2026e-r0?arch=x86_64&distro=20230201"
       ]
     },
     {
-      "ref": "b317b167-8fe1-4299-ba39-d885d5c960b5",
+      "ref": "e1755ed8-1a5d-42cd-a2f4-1cd127f889bc",
       "dependsOn": [
-        "4e5f4e53-3a76-4216-813c-453a76930bd9"
+        "504abb6d-2085-4ae4-a687-c4d5739b8afa"
       ]
     },
     {
