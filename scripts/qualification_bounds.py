@@ -12,7 +12,7 @@ def qualify():
     policy = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())
     image = policy['wolfi-base']['image']
     provenance('wolfi-base', image, policy, tool('cosign'))
-    clean, _count = scan('wolfi-base', image, tool('trivy'))
+    clean, _count = scan('wolfi-base', image, tool('trivy'))[:2]
     if not clean:
         raise RuntimeError('Bounds test image not admitted')
     identity = str(uuid.uuid4())

@@ -24,7 +24,7 @@ def pins():
 def fingerprint():
     files = {name: bounded_hash(RECIPE / name, 65536) for name in
              ('Containerfile', '.containerignore', 'image.lock.json', 'OPENBAO-LICENSE')}
-    for name in ('openbao_image.py', 'build_openbao_image.py', 'openbao_material.py', 'openbao_lock.py',
+    for name in ('openbao_image.py', 'build_openbao_image.py', 'openbao_material.py', 'openbao_lock.py', 'image_evidence.py',
                  'podman_guard.py', 'stream_archive.py', 'image_archive.py', 'process_limits.py'):
         files[name] = bounded_hash(ROOT / 'scripts' / name, 65536)
     return hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
@@ -59,8 +59,8 @@ def artifact(image=None):
 
 
 def validate_image(image):
-    with artifact(image) as (_, archive):
-        return archive
+    with artifact(image):
+        pass  # Validation only; archive consumption must hold artifact() custody.
 
 
 def cached_image():

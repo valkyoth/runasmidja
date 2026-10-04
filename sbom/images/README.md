@@ -76,3 +76,10 @@ executable, not from a generalized base-image exemption. See the
 [OpenBao recipe](../../deploy/podman/openbao/README.md) for binary/recipe/archive
 identities and upstream MPL-2.0 license custody. The exact image was tested with
 built-in KV/AppRole/PebbleDB; external plugin compatibility is not attested.
+
+
+Scan evidence now uses per-service transactions and immutable image/content-keyed
+snapshots. Use the [exact-snapshot export procedure](../../docs/IMAGE_EVIDENCE.md);
+old fixed-name local reports are historical and are not updated or accepted
+for current export. Probe annotations and qualification records use the same
+publication contract.

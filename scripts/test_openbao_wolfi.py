@@ -72,7 +72,7 @@ class CustodyTests(unittest.TestCase):
                 replace_private(Path(folder)/'receipt.json', json.dumps(record))
                 if key:
                     with self.assertRaises(RuntimeError): image.validate_image(good['image'])
-                else: self.assertEqual(image.validate_image(good['image']), Path(folder)/'image.tar')
+                else: self.assertIsNone(image.validate_image(good['image']))
 
     def test_profiles_and_unsigned_arbitrary_override_rejected(self):
         with patch.dict(os.environ, {'RUNASMIDJA_OPENBAO_PROFILE': 'unknown'}):

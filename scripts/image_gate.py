@@ -6,7 +6,8 @@ import os
 import platform
 import stat
 from pathlib import Path
-from custody import MAX_AUDIT, replace_private
+from custody import MAX_AUDIT
+from image_evidence import evidence_transaction, ScanResult
 from process_limits import run_bounded
 from advisory_review import BLOCKING_SEVERITIES, disposition
 from sbom_privacy import public_sbom
@@ -73,8 +74,13 @@ def provenance(service, image, policy, cosign):
     return 'signed-index'
 
 
-def scan(service, image, scanner, archive=None, candidate_recipe=None, archive_check=None):
-    target = EVIDENCE / (service + '.cdx.json')
+def scan(service, image, scanner, archive=None, candidate_recipe=None, archive_check=None, component=None):
+    # Lock order: artifact cache (when applicable), then evidence service.
+    with evidence_transaction(EVIDENCE, service, image) as transaction:
+        return _scan(service, image, scanner, archive, candidate_recipe, archive_check, component, transaction)
+
+
+def _scan(service, image, scanner, archive, candidate_recipe, archive_check, component, transaction):
     before = None
     if archive_check is not None:
         if archive is None or candidate_recipe is not None:
@@ -113,6 +119,11 @@ def scan(service, image, scanner, archive=None, candidate_recipe=None, archive_c
             'licenses': [{'license': {'id': 'PostgreSQL'}}],
             'externalReferences': [{'type': 'distribution', 'url': source['url'],
                                     'hashes': [{'alg': 'SHA-256', 'content': source['sha256']}]}]})
+    if component is not None:
+        if (service != 'probe' or not component.get('bom-ref') or
+                any(item.get('bom-ref') == component['bom-ref'] for item in evidence['components'])):
+            raise RuntimeError('First-party inventory annotation conflicts with scanner evidence')
+        evidence['components'].append(component)
     public_sbom(evidence, service, image, ROOT)
     reviews = json.loads((ROOT / 'deploy/podman/advisory-reviews.json').read_text())
     from advisory_evidence import verified_reviews
@@ -124,9 +135,9 @@ def scan(service, image, scanner, archive=None, candidate_recipe=None, archive_c
     if reviewed:
         evidence.setdefault('metadata', {}).setdefault('properties', []).append(
             {'name': 'runasmidja:unknown-not-affected-reviews', 'value': str(reviewed)})
-    replace_private(target, json.dumps(evidence, indent=2) + '\n', limit=MAX_AUDIT)
-    clean = 'blocked' not in statuses
-    return clean, statuses.count('blocked')
+    snapshot = transaction.publish(evidence)
+    print(f'{service}: SBOM {snapshot.name}', flush=True)
+    return ScanResult('blocked' not in statuses, statuses.count('blocked'), snapshot)
 
 
 def verify_images(images):
@@ -147,13 +158,14 @@ def verify_images(images):
         if service == 'openbao' and policy[service].get('method') == 'local-build':
             from openbao_image import artifact, binding
             with artifact(image) as (_, archive):
-                clean, count = scan(service, image, scanner, archive=archive,
+                result = scan(service, image, scanner, archive=archive,
                                     archive_check=lambda: binding(archive, image))
         elif policy[service].get('method') == 'local-build':
             from postgres_image import validate_image
-            clean, count = scan(service, image, scanner, archive=validate_image(image))
+            result = scan(service, image, scanner, archive=validate_image(image))
         else:
-            clean, count = scan(service, image, scanner)
+            result = scan(service, image, scanner)
+        clean, count = result[:2]
         print(f'{service}: {method}; exact-image SBOM; {count} blocking UNKNOWN/HIGH/CRITICAL findings', flush=True)
         if not clean:
             blocked.append(service)

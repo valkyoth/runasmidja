@@ -41,16 +41,16 @@ this is trusted local custody, not bit-for-bit reproducibility or a publisher
 signature on the resulting image. No registry push is performed.
 
 Observed candidate image:
-`sha256:9ffb8ed80617f40dfd6ade69797344d435dff809b69edf9e7e965743aae9983f`.
+`sha256:b4fe85528d757bace7dbe14d70e0b39e3f5935d7bd94204159b4cc0dca43a9d1`.
 
 Executable SHA256:
 `535cf827b13753046757f5ec8b97ae0ef21f10a40ffe673f0d5e75616170f5ea`.
 
 Archive SHA256:
-`c9551bb5e615d5128eb3b46a71fa91011ca19e18a5203862bbc93557f42f0f02`.
+`4c38f842fc737d6212c307a5afc5c166100e8fcff129d1ca2097fe9ebf0453e0`.
 
 Recipe fingerprint:
-`8e459a192b12b859d08481b89df302b4a79d5c62c264c6d81f8a74b667be216f`.
+`f317ab8cca7195382895cd0fa6e138f1272a54f6ce53ed04c4e114e0dd2846d6`.
 
 The 313-component scan retains GO-2026-5932 UNKNOWN. Its separately reviewed
 exact-image not-affected evidence uses the byte-identical upstream executable
@@ -86,3 +86,10 @@ under exclusive access. A normal failure releases the lock without authorizing
 an unreviewed artifact. This serializes cooperating local tooling, not malicious
 code with the same user's filesystem authority. Other artifact caches retain
 their separate existing contracts.
+
+
+Scan evidence now uses per-service transactions and immutable image/content-keyed
+snapshots. Use the [exact-snapshot export procedure](../../../docs/IMAGE_EVIDENCE.md);
+old fixed-name local reports are historical and are not updated or accepted
+for current export. Probe annotations and qualification records use the same
+publication contract.

@@ -27,7 +27,7 @@ class ImageTests(unittest.TestCase):
             report = json.dumps({'bomFormat': 'CycloneDX', 'components': [{'name': 'fixture'}]})
             result = SimpleNamespace(returncode=0, stdout=report)
             with patch.object(gate, 'run_bounded', return_value=result):
-                self.assertEqual(gate.scan('postgres', identity, 'trivy', archive=path, candidate_recipe='recipe'), (True, 0))
+                self.assertEqual(gate.scan('postgres', identity, 'trivy', archive=path, candidate_recipe='recipe')[:2], (True, 0))
             self.assertFalse((Path(folder) / 'receipt.json').exists())
             def changed(*args, **kwargs):
                 with path.open('ab') as output: output.write(b'changed')
@@ -63,22 +63,24 @@ class ImageTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
              patch.object(gate, 'disposition', side_effect=lambda *args: disposition(*args, today=date.fromisoformat(review['reviewed_on']))), \
              patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=0, stdout=json.dumps(report))) as call:
-            self.assertEqual(gate.scan('openbao', review['image'], 'trivy'), (True, 0))
+            result = gate.scan('openbao', review['image'], 'trivy')
+            self.assertEqual(result[:2], (True, 0))
             self.assertIn('UNKNOWN,HIGH,CRITICAL', call.call_args.args)
             self.assertEqual(call.call_args.args[call.call_args.args.index('--exit-code') + 1], '0')
             self.assertEqual(call.call_args.kwargs['allowed'], (0,))
-            retained = json.loads((Path(folder) / 'openbao.cdx.json').read_text())
+            retained = json.loads(result.snapshot.read_text())
             self.assertEqual(retained['vulnerabilities'], report['vulnerabilities'])
             self.assertEqual(retained['metadata']['component']['name'], 'runasmidja/openbao@' + review['image'])
             self.assertEqual(retained['metadata']['properties'][-1]['value'], '1')
-            self.assertEqual(gate.scan('openbao', review['image'] + '-changed', 'trivy'), (False, 1))
+            self.assertEqual(gate.scan('openbao', review['image'] + '-changed', 'trivy')[:2], (False, 1))
         for finding in ({'id': 'new-advisory'}, {'id': 'new-advisory', 'ratings': [{}]},
                         {'id': 'new-advisory', 'ratings': [{'severity': 'unknown'}]}):
             report['vulnerabilities'] = [finding]
             with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
                  patch.object(gate, 'run_bounded', return_value=SimpleNamespace(returncode=0, stdout=json.dumps(report))):
-                self.assertEqual(gate.scan('openbao', review['image'], 'trivy'), (False, 1))
-                self.assertEqual(json.loads((Path(folder) / 'openbao.cdx.json').read_text())['vulnerabilities'], [finding])
+                result = gate.scan('openbao', review['image'], 'trivy')
+                self.assertEqual(result[:2], (False, 1))
+                self.assertEqual(json.loads(result.snapshot.read_text())['vulnerabilities'], [finding])
 
     def test_exceptions_are_exact_digest_platform_and_service_scoped(self):
         legacy = {**POLICY, 'valkey': POLICY['valkey-official']}

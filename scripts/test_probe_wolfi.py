@@ -125,15 +125,16 @@ class AdmissionTests(unittest.TestCase):
             def scanner(*args, **kwargs): return SimpleNamespace(stdout=report)
             check = lambda: image.archive_binding(path, identity)
             with patch.object(gate, 'run_bounded', side_effect=scanner):
-                self.assertEqual(gate.scan('probe', identity, 'scanner', archive=path, archive_check=check), (True, 0))
-            evidence = (Path(folder) / 'probe.cdx.json').read_text()
+                result = gate.scan('probe', identity, 'scanner', archive=path, archive_check=check)
+                self.assertEqual(result[:2], (True, 0))
+            evidence = result.snapshot.read_text()
             self.assertNotIn('PostgreSQL', evidence)
             def mutated(*args, **kwargs):
                 with path.open('ab') as target: target.write(b'changed')
                 return SimpleNamespace(stdout=report)
             with patch.object(gate, 'run_bounded', side_effect=mutated), self.assertRaisesRegex(RuntimeError, 'changed during scan'):
                 gate.scan('probe', identity, 'scanner', archive=path, archive_check=check)
-            self.assertEqual((Path(folder) / 'probe.cdx.json').read_text(), evidence)
+            self.assertEqual(result.snapshot.read_text(), evidence)
             for kwargs in ({}, {'archive': path, 'candidate_recipe': 'ambiguous'}):
                 with self.assertRaises(ValueError):
                     gate.scan('probe', identity, 'scanner', archive_check=check, **kwargs)
@@ -176,7 +177,7 @@ class BuildTests(unittest.TestCase):
                     (state / 'archive-identity').write_text(identity)
                 def scan(service, *args, **kwargs):
                     if service == 'probe-base': return fault != 'base-scan', 0
-                    (state / 'probe.cdx.json').write_text(json.dumps({'components': []}))
+                    (state / 'probe.cdx.json').write_text(json.dumps({'components': [kwargs['component']]}))
                     (state / 'probe.cdx.json').chmod(0o600)
                     return fault != 'image-scan', 0
                 patches.enter_context(patch.object(image, 'BINARY', binary))

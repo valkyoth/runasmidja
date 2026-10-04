@@ -2,6 +2,11 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Follow-up SAST confirms SAST-001 fixed. Fix SAST-002 (Low) with serialized
+  service evidence transactions, image/content-keyed immutable snapshots,
+  atomic probe annotation, bound public export and concurrency regressions.
+- Make OpenBao validation success-only; archive reads require held custody.
+
 - Fix SAST-001 (Low): serialize global OpenBao cache writers, lock receipt/archive
   readers through scans, recheck concurrent automatic builds, and add real
   multiprocessing/custody/publication-failure regressions.

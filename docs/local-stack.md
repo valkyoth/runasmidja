@@ -282,3 +282,10 @@ wait without modifying each other's candidates. Automatic callers recheck a
 completed receipt after waiting. Do not delete `artifact.lock` or reset cache
 custody to interrupt work; stop the owning process normally. Kernel locking
 releases on process exit. See the [cache contract](../deploy/podman/openbao/README.md#concurrent-cache-custody).
+
+
+Scan evidence now uses per-service transactions and immutable image/content-keyed
+snapshots. Use the [exact-snapshot export procedure](IMAGE_EVIDENCE.md);
+old fixed-name local reports are historical and are not updated or accepted
+for current export. Probe annotations and qualification records use the same
+publication contract.

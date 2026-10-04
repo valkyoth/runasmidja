@@ -10,8 +10,7 @@ from process_limits import run_bounded
 from podman_guard import podman, require_rootless
 from stream_archive import save_bounded_archive
 from podman_guard import archive as guarded_archive
-from custody import replace_private
-from sbom_privacy import public_sbom
+from image_evidence import evidence_transaction
 
 RECIPE = ROOT / 'deploy/podman/probe'
 BINARY = ROOT / 'target/x86_64-unknown-linux-musl/release/runasmidja-server'
@@ -54,20 +53,17 @@ def build(state):
     archive = state / 'image.tar'
     guarded_archive(run_bounded, save_bounded_archive, image, archive)
     binding = archive_binding(archive, image)
-    if not scan('probe', image, scanner, archive=archive,
-                archive_check=lambda: archive_binding(archive, image))[0]:
-        raise RuntimeError('Probe image vulnerability gate rejected')
-    if archive_binding(archive, image) != binding:
-        raise RuntimeError('Probe archive changed after scan')
-    report = json.loads((EVIDENCE / 'probe.cdx.json').read_text())
-    report['components'].append({'type': 'application', 'name': 'runasmidja-server',
+    component = {'type': 'application', 'name': 'runasmidja-server',
         'version': '0.2.3', 'bom-ref': 'runasmidja-static-probe',
         'hashes': [{'alg': 'SHA-256', 'content': digest}],
         'licenses': [{'license': {'id': 'EUPL-1.2'}}],
         'properties': [{'name': 'runasmidja:inventory-origin',
-                        'value': 'first-party build; Cargo SBOM and audit qualify Rust dependencies'}]})
-    public_sbom(report, 'probe', image, ROOT)
-    replace_private(EVIDENCE / 'probe.cdx.json', json.dumps(report, indent=2) + '\n')
+                        'value': 'first-party build; Cargo SBOM and audit qualify Rust dependencies'}]}
+    if not scan('probe', image, scanner, archive=archive,
+                archive_check=lambda: archive_binding(archive, image), component=component)[0]:
+        raise RuntimeError('Probe image vulnerability gate rejected')
+    if archive_binding(archive, image) != binding:
+        raise RuntimeError('Probe archive changed after scan')
     return image, digest, binding
 
 
@@ -78,4 +74,5 @@ def evidence(image, binary, archive):
         'image': image, 'binary_sha256': binary, 'archive_sha256': archive,
         'source_sha256': source_digest(), 'version': '0.2.3',
         'trust': 'local build/test custody; not distributed publisher signing'}
-    replace_private(EVIDENCE / 'probe-qualification.json', json.dumps(record, indent=2) + '\n')
+    with evidence_transaction(EVIDENCE, 'probe', image) as transaction:
+        return transaction.publish(record, kind='qualification')
