@@ -4,6 +4,11 @@ import re
 import tempfile
 from pathlib import Path
 
+SHARE_URI = re.compile(
+    r'(?i)(?<![A-Za-z0-9+.-])(?:file://[^/]|'
+    r'(?:smb|cifs|nfs|afp|sshfs)://[^/\s]+(?:/|$))'
+)
+
 
 def json_strings(document):
     pending = [iter((document,))]
@@ -40,9 +45,9 @@ def reject_private_paths(document, repository_root, extra_roots=()):
     for value in json_strings(document):
         normalized = value.replace('\\', '/')
         if (re.search(r'(?<![:/])//[^/\s]+/', normalized) or
-                re.search(r'file://[^/]', normalized) or
+                SHARE_URI.search(normalized) or
                 re.search(r'(?<![A-Za-z0-9])[A-Za-z]:/', normalized)):
             raise RuntimeError('Private network/drive path in public inventory')
-        normalized = normalized.replace('file://', '')
+        normalized = re.sub(r'(?i)file://', '', normalized)
         if any(pattern.search(normalized) for pattern in patterns):
             raise RuntimeError('Known private filesystem path in public inventory')

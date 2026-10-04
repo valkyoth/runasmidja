@@ -183,3 +183,11 @@ aggregate budget stops the complete traversal, not just that directory/file.
 No inventories are automatically deleted or limits silently raised. Review and
 remove obsolete evidence or explicitly review a policy change when limits fill.
 These bounds cover this validator, not every other repository/CI operation.
+
+
+Network-share URI detection treats schemes case-insensitively. Remote `file://`
+and SMB, CIFS, NFS, AFP and SSHFS URIs are rejected in parsed keys and values,
+including URI text embedded in descriptions. Local `file:///` normalization is
+also case-insensitive before known-root checks. HTTPS/package URLs remain allowed;
+this is an explicit known-share-scheme policy, not an assertion that every possible
+URI scheme is classified. No URI is fetched or dereferenced by this check.

@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Reject case-insensitive file/share URIs in public evidence, with exhaustive
+  casing tests and retained HTTPS/package URL controls.
+
 - Check parsed evidence strings/keys against known private build/temp/cache roots
   and network paths; bound the public tree to 256 entries and 128 MiB of JSON.
 
