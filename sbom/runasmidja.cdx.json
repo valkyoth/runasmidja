@@ -81,8 +81,8 @@
   "dependencies": [
     {
       "dependsOn": [
-        "CycloneDxRef-Component-runasmidja-crypto-0.2.2",
         "CycloneDxRef-Component-runasmidja-html-0.2.2",
+        "CycloneDxRef-Component-runasmidja-crypto-0.2.2",
         "CycloneDxRef-Component-runasmidja-ports-0.2.2",
         "CycloneDxRef-Component-runasmidja-core-0.2.2"
       ],
@@ -215,7 +215,7 @@
       "name": "runasmidja",
       "type": "application"
     },
-    "timestamp": "2026-10-04T09:03:02.781Z",
+    "timestamp": "2026-10-04T12:41:36.102Z",
     "tools": [
       {
         "name": "cargo-sbom",
@@ -223,7 +223,7 @@
       }
     ]
   },
-  "serialNumber": "urn:uuid:301a062d-e146-4827-9ce1-f73f6526f824",
+  "serialNumber": "urn:uuid:70b52345-fcd2-48db-8b40-ff78dbc7fc91",
   "specVersion": "1.5",
   "version": 1
 }

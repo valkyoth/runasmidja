@@ -2,8 +2,8 @@
 
 Status: required Fluxheim deployment coverage; proposed compatible Wolfi image
 follow-ups after the tagged v0.2.0. v0.2.1 is signed and tagged. The current
-authorized patch is [v0.2.2 Wolfi Valkey](releases/v0.2.2-scope.md), awaiting
-maintainer pentest; v0.2.3 remains proposed. This plan itself adds no shipped behavior. The 386 minor workstreams and source mappings remain.
+authorized patch is [v0.2.2 Wolfi Valkey](releases/v0.2.2-scope.md), with maintainer pentest acceptance;
+GitHub and tagging remain pending; v0.2.3 remains proposed. This plan itself adds no shipped behavior. The 386 minor workstreams and source mappings remain.
 
 ## Decision and maintenance scope
 

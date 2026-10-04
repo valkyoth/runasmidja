@@ -9,7 +9,7 @@
     "valkey-io/valkey": "9.1.2",
     "gchq/CyberChef": "v11.5.0"
   },
-  "openbao_sdk": "2.2.2",
+  "openbao_sdk": "2.2.3",
   "postgres": "19beta4",
   "postgres_release_source": "https://www.postgresql.org/about/news/postgresql-19-beta-4-released-3386/",
   "optional_github_releases": {

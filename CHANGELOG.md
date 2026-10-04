@@ -1,12 +1,18 @@
 # Changelog
 
-## 0.2.2 — implementation candidate; pentest RETEST REQUIRED
+## 0.2.2 — release prepared; GitHub and tag pending
+
+Maintainer accepted 8a814ec on 2026-10-04 with no new actionable findings.
+All three prior findings are resolved: root/rootful service execution, rollback
+instance scope and build/probe containment. Release automation is metadata-only;
+all six workspace crates remain 0.2.2/publish=false. The preparation history
+below describes the fixes leading to this accepted candidate.
 
 - Follow-up Low remediation: share rootless enforcement across public builds,
   probes, archive export and image import; test namespace entry and AST bypasses.
 
 - Remediate the Medium rootless-enforcement and Low rollback-scope findings;
-  add side-effect-denial regressions and require maintainer retest.
+  add side-effect-denial regressions; maintainer retest subsequently accepted.
 - Adopt public signed Wolfi Valkey 9.1.2 with exact index/platform admission and
   weekly/manual freshness checks; retain the previous official digest for rollback.
 - Separate fixture custody, OpenBao-issued ACLs, real eviction, outage/restart,
