@@ -191,3 +191,11 @@ including URI text embedded in descriptions. Local `file:///` normalization is
 also case-insensitive before known-root checks. HTTPS/package URLs remain allowed;
 this is an explicit known-share-scheme policy, not an assertion that every possible
 URI scheme is classified. No URI is fetched or dereferenced by this check.
+
+
+Local file-URI normalization matches only a complete scheme boundary, never a
+`file` suffix inside a distinct scheme such as `profile` or `custom-file`.
+Known-private-root checks inspect both the original slash-normalized string and
+the file-normalized candidate. Normalization therefore cannot erase a private
+root that was visible before it. Distinct public schemes and local public paths
+remain valid; nothing is dereferenced.

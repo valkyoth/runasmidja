@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Preserve private-root evidence during URI normalization by checking both
+  original and normalized strings and matching only complete file schemes.
+
 - Reject case-insensitive file/share URIs in public evidence, with exhaustive
   casing tests and retained HTTPS/package URL controls.
 

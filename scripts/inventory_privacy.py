@@ -8,6 +8,7 @@ SHARE_URI = re.compile(
     r'(?i)(?<![A-Za-z0-9+.-])(?:file://[^/]|'
     r'(?:smb|cifs|nfs|afp|sshfs)://[^/\s]+(?:/|$))'
 )
+FILE_URI = re.compile(r'(?i)(?<![A-Za-z0-9+.-])file://')
 
 
 def json_strings(document):
@@ -48,6 +49,6 @@ def reject_private_paths(document, repository_root, extra_roots=()):
                 SHARE_URI.search(normalized) or
                 re.search(r'(?<![A-Za-z0-9])[A-Za-z]:/', normalized)):
             raise RuntimeError('Private network/drive path in public inventory')
-        normalized = re.sub(r'(?i)file://', '', normalized)
-        if any(pattern.search(normalized) for pattern in patterns):
+        candidates = (normalized, FILE_URI.sub('', normalized))
+        if any(pattern.search(candidate) for candidate in candidates for pattern in patterns):
             raise RuntimeError('Known private filesystem path in public inventory')
