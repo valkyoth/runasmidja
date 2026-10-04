@@ -9,6 +9,16 @@ SHARE_URI = re.compile(
     r'(?:smb|cifs|nfs|afp|sshfs)://[^/\s]+(?:/|$))'
 )
 FILE_URI = re.compile(r'(?i)(?<![A-Za-z0-9+.-])file://')
+DOT_SEGMENT = re.compile(r'''(^|/)\.{1,2}(?=/|$)|(?<=[\s=:"'])\.{1,2}/''')
+RELATIVE_MODULE = re.compile(r'\./[A-Za-z0-9_@+.-]+(?:/[A-Za-z0-9_@+.-]+)*')
+
+
+def ambiguous_segments(value):
+    # Scanner Go module names such as ./api are source-relative identifiers.
+    # Permit one leading ./ only, with no subsequent current/parent segments.
+    if RELATIVE_MODULE.fullmatch(value) and all(part not in ('.', '..') for part in value.split('/')[1:]):
+        return False
+    return bool(DOT_SEGMENT.search(value))
 
 
 def json_strings(document):
@@ -50,5 +60,7 @@ def reject_private_paths(document, repository_root, extra_roots=()):
                 re.search(r'(?<![A-Za-z0-9])[A-Za-z]:/', normalized)):
             raise RuntimeError('Private network/drive path in public inventory')
         candidates = (normalized, FILE_URI.sub('', normalized))
+        if any(ambiguous_segments(candidate) for candidate in candidates):
+            raise RuntimeError('Ambiguous dot-segment path in public inventory')
         if any(pattern.search(candidate) for candidate in candidates for pattern in patterns):
             raise RuntimeError('Known private filesystem path in public inventory')

@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Reject ambiguous dot-segment paths while preserving simple scanner-relative
+  module identifiers, dotted filenames and ordinary advisory prose.
+
 - Preserve private-root evidence during URI normalization by checking both
   original and normalized strings and matching only complete file schemes.
 

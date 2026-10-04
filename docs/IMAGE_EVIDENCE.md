@@ -199,3 +199,16 @@ Known-private-root checks inspect both the original slash-normalized string and
 the file-normalized candidate. Normalization therefore cannot erase a private
 root that was visible before it. Distinct public schemes and local public paths
 remain valid; nothing is dereferenced.
+
+
+Path candidates with parent (`..`) or interior current-directory (`.`) segments
+are rejected rather than resolved or dereferenced, including file URIs, embedded
+path descriptions and backslash-separated inputs after slash normalization.
+One literal leading `./` is allowed only for a simple source-relative module
+identifier with safe segment characters and no later `.`/`..` segments. This
+preserves actual scanner Go module names (`./api`, `./sdk`, and nested module
+names); it cannot traverse upward or disguise an absolute known private root.
+Dotted filenames, canonical HTTPS URLs and sentence punctuation remain allowed.
+No retained scanner inventory or historical advisory text is rewritten to satisfy
+the check. This is still the documented known-path evidence profile, not universal
+path canonicalization or a proof that arbitrary relative names are nonsensitive.
