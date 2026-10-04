@@ -1,6 +1,6 @@
 # Workflow reference admission
 
-Version owner: v0.3.0; candidate, maintainer pentest NOT RUN.
+Version owner: v0.3.0; candidate, maintainer pentest RETEST REQUIRED.
 
 ## Checked references
 
@@ -90,3 +90,35 @@ separate reviewed extension; they are not silently admitted.
 No service build/scan job is added to GitHub CI. Container reference tests are
 small YAML fixtures; they never start containers. Release automation remains
 read-only metadata checking, and all Rust packages remain publish=false.
+
+## Platform bootstrap boundary — SAST-001 remediation
+
+The repository check runs after checkout and parser installation. It is a
+regression detector, not pre-execution enforcement for that bootstrap. On
+2026-10-04 the live repository Actions API reported `sha_pinning_required: false`.
+The setting was enabled and a fresh GET verified `true`, with Actions still enabled
+and `allowed_actions: all` unchanged. GitHub's platform setting enforces full
+commit pins for actions before they execute; it does not require full pins for
+reusable workflows. See [GitHub settings guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository)
+and [REST policy API](https://docs.github.com/en/rest/actions/permissions).
+
+Run `python3 scripts/check_github_policy.py` locally with the maintainer's existing
+authenticated GitHub CLI before release and during security review. It only reads
+this repository's settings; disabled/missing enforcement, malformed metadata,
+auth/API errors and timeouts fail. No administrator credential is added to CI,
+and no new credential is provisioned by this remediation. Settings can drift;
+the recorded readback is point-in-time evidence, not a permanent attestation.
+
+All three checked-in workflows currently have one job. Their first steps are the
+pinned credential-free checkout, hash-pinned parser install, then the policy
+checker using the installed venv interpreter. Workload steps follow. Regression
+tests protect this narrow bootstrap and single-job shape. Future independent or
+reusable-workflow jobs must depend on a minimal `reference-policy` job through
+`needs`, without conditions that bypass success; each runner still needs its own
+checkout/tool setup. Review this graph explicitly before relaxing the test.
+This ordering does not make malicious repository changes safe or inspect remote
+reusable-workflow internals. Maintainer review remains required for those cases.
+
+No negative workflow was pushed to GitHub during this remediation. Live setting
+readback and documented platform semantics are distinguished from local mocked
+API/ordering tests. CodeQL remains Default and heavy qualification remains local.

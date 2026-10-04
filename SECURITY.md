@@ -5,7 +5,7 @@ recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins
 workers and supply-chain changes require threat review and executable tests.
 The foundations through v0.2.3 are signed and tagged with accepted maintainer
 pentests and green GitHub checks. The v0.3.0 workflow-reference candidate awaits
-its maintainer pentest (**NOT RUN**). Automated tests do not attest pentest PASS.
+maintainer retest (**RETEST REQUIRED**). Automated tests do not attest pentest PASS.
 None is a production service. See the [candidate assessment](security/pentest/v0.3.0.md).
 
 Runasmidja targets a normal public website. Review findings against its actual
@@ -21,7 +21,7 @@ Run scripts/checks.sh, current freshness checks, cargo deny check and cargo audi
 --deny warnings before releases; real service/browser/provider/fault tests apply
 to the feature being claimed. Keep security docs, limitations, CHANGELOG and
 release notes with each pass. Every minor/patch/RC/tag needs an exact-source
-pentest and tested remediation; NOT RUN never qualifies as PASS.
+pentest and tested remediation; RETEST REQUIRED never qualifies as PASS.
 The maintainer performs that pentest. Completed candidate work may be committed
 locally for their retest; a commit does not attest acceptance. The maintainer
 pushes unless they explicitly delegate it. GitHub failures follow the

@@ -30,6 +30,9 @@ assessor or additional approval service is required for this working loop.
    Changes affecting tested behavior require maintainer retest before restoring
    PASS; unchanged coverage can retain its evidence. After green, commit locally
    again, let the maintainer push, and repeat until GitHub is green.
+   For v0.3.0 onward, run `python3 scripts/check_github_policy.py` locally before
+   release to verify live platform SHA enforcement; do not put administrator
+   credentials in CI. See [workflow bootstrap boundary](WORKFLOW_POLICY.md#platform-bootstrap-boundary--sast-001-remediation).
 8. Stop and wait for the maintainer to explicitly request the version tag.
    Only then check readiness, create the signed tag and push that version tag.
    Tag authorization does not implicitly authorize publishing distributions.

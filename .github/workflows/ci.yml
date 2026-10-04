@@ -15,10 +15,11 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 2
+      - run: scripts/install_python_tools.sh
+      - run: .local/check-tools/bin/python3 scripts/workflow_policy.py
       - run: git show --check --format= HEAD
       - run: rustup show
       - run: rustup target add thumbv7em-none-eabihf wasm32-unknown-unknown
-      - run: scripts/install_python_tools.sh
       - run: scripts/checks.sh
       - run: python3 scripts/smoke_probe.py
       - run: scripts/install_ci_tools.sh

@@ -1,7 +1,9 @@
 # Changelog
 
-## 0.3.0 — candidate; pentest NOT RUN
+## 0.3.0 — candidate; pentest RETEST REQUIRED
 
+- Remediate Low SAST-001: enable and verify platform action SHA enforcement,
+  validate immediately after bootstrap and test live-policy failure/ordering cases.
 - Parse workflow YAML structurally for both suffixes; validate static full-commit
   action/reusable-workflow references and SHA256 container references.
 - Admit explicitly reviewed local composite actions/workflows with recursive

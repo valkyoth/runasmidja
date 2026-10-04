@@ -13,5 +13,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - run: scripts/install_python_tools.sh
+      - run: .local/check-tools/bin/python3 scripts/workflow_policy.py
       - run: sudo apt-get update && sudo apt-get install -y skopeo
       - run: python3 scripts/check_freshness.py

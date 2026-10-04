@@ -26,7 +26,7 @@ external network operations are distinct explicit actions.
 **Current status:** foundations through `v0.2.3` are signed and tagged with
 accepted pentests and green GitHub checks. The `0.3.0` candidate replaces textual
 workflow-reference checks with bounded YAML admission. Maintainer pentest is
-**NOT RUN**. No workbench, transformation, browser UI, production HTTP server or
+**RETEST REQUIRED**. No workbench, transformation, browser UI, production HTTP server or
 CyberChef parity is implemented yet. See the [0.3.0 scope](docs/releases/v0.3.0-scope.md)
 and [candidate assessment](security/pentest/v0.3.0.md).
 
