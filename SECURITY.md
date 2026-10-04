@@ -5,7 +5,8 @@ recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins
 workers and supply-chain changes require threat review and executable tests.
 The v0.1.0 and v0.2.0 foundations are signed and tagged with accepted maintainer
 pentests and green GitHub checks. The v0.2.1 Wolfi health-probe packaging candidate
-requires its own pentest; it is NOT RUN. None is a production service. See the
+has maintainer acceptance on 2026-10-04; GitHub checks and tagging remain pending.
+None is a production service. See the
 [candidate assessment](security/pentest/v0.2.1.md).
 
 Runasmidja targets a normal public website. Review findings against its actual

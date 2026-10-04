@@ -10,6 +10,7 @@
 | CI action provenance | Configured | Full commit pins; weekly Actions Dependabot |
 | Tool provenance/freshness | Configured | Exact archive SHA-256 and versions; live freshness workflow |
 | Verified tool compilation | Implemented; maintainer retest accepted | CI compiles exact verified archive offline; corrupt/offline/traversal regressions |
+| Wolfi static probe qualification | Implemented; maintainer accepted v0.2.1 | Signed base/platform, exact archive/executable binding, live kernel limits/capabilities, owned cleanup; native/scratch regressions |
 | Fixture image provenance/inventory | Implemented; maintainer retest accepted | Signed OpenBao/Wolfi index-to-leaf binding, exact Valkey provenance exception, source-built PostgreSQL config/layer binding, per-image inventory and UNKNOWN/HIGH/CRITICAL rejection; only evidence-bound expiring UNKNOWN not-affected reviews; original PostgreSQL remains blocked |
 | Public build containment | Implemented; maintainer retest accepted | Checked CPU/memory/PID owned cgroup and build-step limits, private 3 GiB store, pre-write 512 MiB atomic archive cap; actual build/kernel/tmpfs and failure regressions |
 | Public SBOM privacy | Implemented; maintainer retest accepted | Stable image names; generator/repository rejection of home/macOS/Windows/workspace paths |

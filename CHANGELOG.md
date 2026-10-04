@@ -1,6 +1,12 @@
 # Changelog
 
-## 0.2.1 — Wolfi probe candidate; pentest NOT RUN
+## 0.2.1 — release prepared; GitHub and tag pending
+
+Maintainer accepted 74b52fc on 2026-10-04 with no actionable findings. Full local
+release qualification passes; no remediation was required. The accompanying
+SAST report limits are retained in the assessment. Version/publishing review
+confirms all six crates remain 0.2.1/publish=false; metadata automation cannot
+push or publish.
 
 Add a minimal signed-base Wolfi static image for the existing health probe;
 retain native and scratch profiles. Scan the exact base/built archive, bind

@@ -2,7 +2,7 @@
 
 Status: required Fluxheim deployment coverage; proposed compatible Wolfi image
 follow-ups after the tagged v0.2.0. The maintainer authorized v0.2.1 on
-2026-10-04; its [bounded scope](releases/v0.2.1-scope.md) is in implementation.
+2026-10-04; its [bounded scope](releases/v0.2.1-scope.md) is locally qualified with maintainer acceptance; GitHub/tag remain pending.
 v0.2.2/v0.2.3 remain proposed. This plan itself adds no shipped behavior. The 386 minor workstreams and source mappings remain.
 
 ## Decision and maintenance scope

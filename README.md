@@ -25,7 +25,8 @@ external network operations are distinct explicit actions.
 
 **Current status:** `v0.1.0` and `v0.2.0` are signed and tagged with accepted
 pentests and green GitHub checks. The `0.2.1` candidate adds a minimal Wolfi image
-for the existing health probe; its maintainer pentest is **NOT RUN**.
+for the existing health probe; its maintainer pentest is **PASS**, accepted on
+2026-10-04. GitHub checks and explicit version tagging remain pending.
 OpenBao-first service provisioning and the Wolfi/PostgreSQL fixture remain
 available. No workbench, transformation, browser UI, production HTTP server or
 CyberChef parity is implemented yet. See the [0.2.1 scope](docs/releases/v0.2.1-scope.md)
