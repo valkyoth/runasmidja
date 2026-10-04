@@ -6,6 +6,7 @@ import os
 import tarfile
 import tempfile
 import unittest
+import podman_guard
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -40,6 +41,9 @@ def archive(path, attack=None):
 
 
 class ArchiveTests(unittest.TestCase):
+    def setUp(self):
+        guard = patch.object(podman_guard, 'require_rootless')
+        guard.start(); self.addCleanup(guard.stop)
     def test_outer_archive_budget_and_special_files_reject_before_parsing(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / 'large'

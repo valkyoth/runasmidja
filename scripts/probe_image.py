@@ -7,7 +7,9 @@ from image_gate import ROOT, EVIDENCE, provenance, scan, tool
 from image_archive import verify as verify_archive
 from postgres_image import bounded_hash
 from process_limits import run_bounded
+from podman_guard import podman, require_rootless
 from stream_archive import save_bounded_archive
+from podman_guard import archive as guarded_archive
 from custody import replace_private
 from sbom_privacy import public_sbom
 
@@ -22,6 +24,7 @@ def archive_binding(path, image):
 
 
 def build(state):
+    require_rootless(run_bounded)
     policy = json.loads((RECIPE / 'image.lock.json').read_text())
     base = policy['probe-base']['image']
     containerfile = (RECIPE / 'Containerfile').read_text()
@@ -42,14 +45,14 @@ def build(state):
     if bounded_hash(context / 'runasmidja-server', MAX_BINARY) != digest:
         raise RuntimeError('Probe executable changed during context preparation')
     # Public verified base only. No build execution: this recipe consists of COPY/config.
-    run_bounded('podman', 'pull', '--platform', 'linux/amd64', base)
-    run_bounded('podman', 'build', '--network', 'none', '--pull=never', '--layers=false',
+    podman(run_bounded, 'pull', '--platform', 'linux/amd64', base)
+    podman(run_bounded, 'build', '--network', 'none', '--pull=never', '--layers=false',
         '--inherit-labels=false', '--inherit-annotations=false', '--http-proxy=false',
         '--platform', 'linux/amd64', '--iidfile', str(state / 'image.id'),
         '-f', str(context / 'Containerfile'), str(context), timeout=180)
     image = (state / 'image.id').read_text().strip()
     archive = state / 'image.tar'
-    save_bounded_archive(['podman', 'save', '--format', 'docker-archive', image], archive)
+    guarded_archive(run_bounded, save_bounded_archive, image, archive)
     binding = archive_binding(archive, image)
     if not scan('probe', image, scanner, archive=archive,
                 archive_check=lambda: archive_binding(archive, image))[0]:

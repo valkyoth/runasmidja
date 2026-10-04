@@ -4,6 +4,7 @@ import hashlib
 import json
 import tempfile
 import unittest
+import podman_guard
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -28,6 +29,11 @@ def info():
 
 
 class RuntimeTests(unittest.TestCase):
+    def setUp(self):
+        guard = patch.object(podman_guard, 'require_rootless')
+        guard.start(); self.addCleanup(guard.stop)
+        entry = patch.object(image, 'require_rootless')
+        entry.start(); self.addCleanup(entry.stop)
     def test_resource_identity_and_execution_configuration_denials(self):
         good = info(); runtime.configuration(good, IMAGE)
         prefix_free = copy.deepcopy(good); prefix_free['Image'] = IMAGE[7:]
@@ -107,6 +113,11 @@ class RuntimeTests(unittest.TestCase):
 
 
 class AdmissionTests(unittest.TestCase):
+    def setUp(self):
+        guard = patch.object(podman_guard, 'require_rootless')
+        guard.start(); self.addCleanup(guard.stop)
+        entry = patch.object(image, 'require_rootless')
+        entry.start(); self.addCleanup(entry.stop)
     def test_probe_archive_scans_bind_bytes_without_postgres_metadata(self):
         with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)):
             path = Path(folder) / 'image.tar'; identity = archive(path)
@@ -142,6 +153,11 @@ class AdmissionTests(unittest.TestCase):
                     with self.assertRaises(RuntimeError): gate.provenance('probe-base', base, policy, 'cosign')
 
 class BuildTests(unittest.TestCase):
+    def setUp(self):
+        guard = patch.object(podman_guard, 'require_rootless')
+        guard.start(); self.addCleanup(guard.stop)
+        entry = patch.object(image, 'require_rootless')
+        entry.start(); self.addCleanup(entry.stop)
     def test_build_admission_stops_on_provenance_scan_and_archive_failures(self):
         from contextlib import ExitStack
         for fault in ('provenance', 'base-scan', 'build', 'archive', 'image-scan', 'success'):

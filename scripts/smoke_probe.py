@@ -8,6 +8,8 @@ import socket
 import subprocess
 import time
 from pathlib import Path
+from process_limits import run_bounded
+from podman_guard import podman, require_rootless
 
 ROOT = Path(__file__).resolve().parent.parent
 NAME = 'runasmidja-test-probe'
@@ -44,7 +46,7 @@ def verify(port):
                 'health probe accepted a forbidden route')
 
 def container_user(name):
-    user = subprocess.check_output(['podman', 'inspect', '--format', '{{.Config.User}}', name], text=True).strip()
+    user = podman(run_bounded, 'inspect', '--format', '{{.Config.User}}', name).stdout.strip()
     require(user == '65532:65532', 'container is not running as the expected user')
 
 def ready_port(process, timeout=5):
@@ -93,17 +95,18 @@ def main():
     parser.add_argument('--container', action='store_true')
     args = parser.parse_args()
     if args.container:
+        require_rootless(run_bounded)
         subprocess.run(['cargo', 'build', '--locked', '-p', 'runasmidja-server', '--release', '--target', 'x86_64-unknown-linux-musl'], cwd=ROOT, check=True)
-        subprocess.run(['podman', 'build', '--network', 'none', '-t', 'localhost/runasmidja:foundation', '-f', 'Containerfile', '.'], cwd=ROOT, check=True)
+        podman(run_bounded, 'build', '--network', 'none', '-t', 'localhost/runasmidja:foundation', '-f', str(ROOT / 'Containerfile'), str(ROOT))
         # No replacement of an existing name; only remove a container created by this run.
-        subprocess.run(['podman', 'run', '-d', '--name', NAME, '--init', '--read-only', '--cap-drop', 'ALL',
+        podman(run_bounded, 'run', '-d', '--name', NAME, '--init', '--read-only', '--cap-drop', 'ALL',
             '--security-opt', 'no-new-privileges', '--memory', '32m', '--pids-limit', '16',
-            '-p', '127.0.0.1:18082:18080', 'localhost/runasmidja:foundation'], check=True, stdout=subprocess.DEVNULL)
+            '-p', '127.0.0.1:18082:18080', 'localhost/runasmidja:foundation')
         try:
             container_user(NAME)
             verify(18082)
         finally:
-            subprocess.run(['podman', 'rm', '-f', NAME], check=True, stdout=subprocess.DEVNULL)
+            podman(run_bounded, 'rm', '-f', NAME)
         print('Scratch/non-root/read-only container health and rejected routes: PASS')
     else:
         subprocess.run(['cargo', 'build', '--locked', '-p', 'runasmidja-server'], cwd=ROOT, check=True)

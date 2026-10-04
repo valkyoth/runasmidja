@@ -7,6 +7,7 @@ import tempfile
 import uuid
 from pathlib import Path
 from process_limits import run_bounded
+from podman_guard import require_rootless, unshare
 from custody import private, replace_private
 from stream_archive import save_bounded_archive
 
@@ -19,6 +20,7 @@ BUILD_LIMITS = ['--memory', '2g', '--memory-swap', '2g', '--cpu-period', '100000
 
 
 def sandbox(recipe, *, qualify=False):
+    require_rootless(run_bounded, local=True)
     identity = str(uuid.uuid4())
     unit = 'runasmidja-build-' + identity + '.service'
     description = 'Runasmidja public build ' + identity
@@ -27,11 +29,11 @@ def sandbox(recipe, *, qualify=False):
             '--description', description, '-p', 'CPUQuota=200%', '-p', f'MemoryMax={MEMORY}',
             '-p', 'MemorySwapMax=0', '-p', 'TasksMax=512', '-p', 'Delegate=yes',
             '-p', 'DelegateSubgroup=supervisor',
-            '-p', 'RuntimeMaxSec=1800', 'podman', '--remote=false', 'unshare', 'unshare',
-            '--mount', '--propagation', 'private', sys.executable, str(Path(__file__).resolve()),
-            '--worker', arena, recipe, 'qualify' if qualify else 'build']
+            '-p', 'RuntimeMaxSec=1800']
+        worker_args = [sys.executable, str(Path(__file__).resolve()),
+                       '--worker', arena, recipe, 'qualify' if qualify else 'build']
         try:
-            return run_bounded(*command, timeout=1800, allowed=(0, 1, 125))
+            return unshare(run_bounded, command, worker_args, timeout=1800, allowed=(0, 1, 125))
         finally:
             # Stop the captured unit, not a possibly recycled PID/process group.
             info = run_bounded('systemctl', '--user', 'show', unit, '-p', 'Description', '--value', allowed=(0, 1))
@@ -54,7 +56,18 @@ def cgroup():
     return parent + '/steps'
 
 
+def require_worker_namespace():
+    rows = [line.split() for line in Path('/proc/self/uid_map').read_text().splitlines()]
+    if (os.geteuid() != 0 or not rows or len(rows[0]) != 3 or
+            rows[0][0] != '0' or not rows[0][1].isdigit() or
+            int(rows[0][1]) == 0 or rows[0][2] != '1'):
+        raise RuntimeError('Build worker requires a nonroot host UID mapping')
+
+
 def worker(arena, recipe, mode):
+    # Narrow exception: already inside host-checked Podman unshare. Host guards
+    # reject namespace UID 0, so verify its nonroot mapping and owned cgroup here.
+    require_worker_namespace()
     parent = cgroup()
     run_bounded('mount', '-t', 'tmpfs', '-o', f'size={STORAGE},mode=0700,nodev,nosuid', 'runasmidja-build', arena)
     root = Path(arena)
@@ -102,6 +115,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 5 and sys.argv[1] == '--worker':
         worker(*sys.argv[2:])
     elif sys.argv[1:] == ['--qualify']:
+        require_rootless(run_bounded, local=True)
         STATE.mkdir(mode=0o700, parents=True, exist_ok=True)
         from image_gate import provenance, scan, tool, EVIDENCE
         policy = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())

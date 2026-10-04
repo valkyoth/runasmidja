@@ -3,6 +3,7 @@ import json
 import re
 from pathlib import Path
 from process_limits import run_bounded
+from podman_guard import podman, require_rootless
 from postgres_image import bounded_hash
 from probe_image import MAX_BINARY
 from smoke_probe import require, verify
@@ -11,7 +12,7 @@ LABEL = 'io.runasmidja.probe-qualification'
 
 
 def inspect(identity):
-    result = json.loads(run_bounded('podman', 'inspect', identity).stdout)
+    result = json.loads(podman(run_bounded, 'inspect', identity).stdout)
     require(len(result) == 1, 'Probe inspection is ambiguous')
     return result[0]
 
@@ -71,7 +72,7 @@ def kernel_limits(info):
 
 
 def qualify(image, digest, state, owner):
-    result = run_bounded('podman', 'create', '--name', 'runasmidja-probe-' + owner,
+    result = podman(run_bounded, 'create', '--name', 'runasmidja-probe-' + owner,
         '--label', LABEL + '=' + owner, '--read-only', '--cap-drop', 'ALL',
         '--security-opt', 'no-new-privileges', '--memory', '32m', '--memory-swap', '32m',
         '--pids-limit', '16', '--cpu-period', '100000', '--cpu-quota', '100000',
@@ -81,13 +82,13 @@ def qualify(image, digest, state, owner):
     try:
         configuration(owned(identity, owner), image)
         binary = state / 'copied-executable'
-        run_bounded('podman', 'cp', identity + ':/runasmidja-server', str(binary))
+        podman(run_bounded, 'cp', identity + ':/runasmidja-server', str(binary))
         require(bounded_hash(binary, MAX_BINARY) == digest, 'Image executable differs from built executable')
         os_release = state / 'os-release'
-        run_bounded('podman', 'cp', identity + ':/etc/os-release', str(os_release))
+        podman(run_bounded, 'cp', identity + ':/etc/os-release', str(os_release))
         require(os_release.stat().st_size < 4096 and 'ID=wolfi' in os_release.read_text().splitlines(),
                 'Probe runtime is not the admitted Wolfi profile')
-        run_bounded('podman', 'start', identity)
+        podman(run_bounded, 'start', identity)
         info = owned(identity, owner)
         configuration(info, image)
         require(info['State']['Running'], 'Probe exited before testing')
@@ -96,4 +97,4 @@ def qualify(image, digest, state, owner):
         require(owned(identity, owner)['State']['Running'], 'Probe exited during testing')
     finally:
         owned(identity, owner)
-        run_bounded('podman', 'rm', '-f', identity)
+        podman(run_bounded, 'rm', '-f', identity)

@@ -2,6 +2,7 @@
 import hashlib
 import tempfile
 import unittest
+import podman_guard
 from contextlib import ExitStack
 from pathlib import Path
 from types import SimpleNamespace
@@ -13,6 +14,11 @@ from test_postgres_image import archive
 
 
 class BuildRetryTests(unittest.TestCase):
+    def setUp(self):
+        guard = patch.object(podman_guard, 'require_rootless')
+        guard.start(); self.addCleanup(guard.stop)
+        entry = patch.object(build, 'require_rootless')
+        entry.start(); self.addCleanup(entry.stop)
     def environment(self, folder, patches, fault):
         state = Path(folder)
         source = b'public source fixture'

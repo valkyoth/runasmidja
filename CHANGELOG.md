@@ -2,6 +2,9 @@
 
 ## 0.2.2 — implementation candidate; pentest RETEST REQUIRED
 
+- Follow-up Low remediation: share rootless enforcement across public builds,
+  probes, archive export and image import; test namespace entry and AST bypasses.
+
 - Remediate the Medium rootless-enforcement and Low rollback-scope findings;
   add side-effect-denial regressions and require maintainer retest.
 - Adopt public signed Wolfi Valkey 9.1.2 with exact index/platform admission and

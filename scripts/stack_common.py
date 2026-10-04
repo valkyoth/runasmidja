@@ -27,17 +27,12 @@ def run(*args, **kwargs):
     return run_bounded(*args, **kwargs)
 
 def require_rootless():
-    # Use the same Podman connection/environment as the following command.
-    # Do not cache: a caller can change the selected engine between operations.
-    if os.getuid() == 0 or os.geteuid() == 0:
-        raise RuntimeError('Fixture refuses execution as root')
-    result = run('podman', 'info', '--format', '{{.Host.Security.Rootless}}')
-    if result.stdout.strip() != 'true':
-        raise RuntimeError('Fixture requires rootless Podman')
+    from podman_guard import require_rootless as guard
+    guard(run)
 
 def podman(*args, **kwargs):
-    require_rootless()
-    return run('podman', *args, **kwargs)
+    from podman_guard import podman as guarded
+    return guarded(run, *args, **kwargs)
 
 def wait_for(check):
     deadline = time.monotonic() + 90

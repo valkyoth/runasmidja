@@ -1,6 +1,7 @@
 """Fail closed on missing kernel limits and never stop an unowned build unit."""
 import tempfile
 import unittest
+import podman_guard
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -8,6 +9,11 @@ import build_sandbox as build
 
 
 class BuildTests(unittest.TestCase):
+    def setUp(self):
+        guard = patch.object(podman_guard, 'require_rootless')
+        guard.start(); self.addCleanup(guard.stop)
+        entry = patch.object(build, 'require_rootless')
+        entry.start(); self.addCleanup(entry.stop)
     def test_missing_or_changed_kernel_limits_fail_closed(self):
         parent = '/user.slice/runasmidja-build-fixture.service/supervisor'
         files = {'cgroup': '0::' + parent, 'memory.max': str(build.MEMORY),

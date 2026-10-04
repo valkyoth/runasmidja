@@ -87,3 +87,9 @@ and [storage/host](STORAGE_HOST_CONTRACTS.md) rules apply by feature. The curren
 textual graph/workflow guards, fixture ownership checks and report metadata
 validator have verified limits; see [reconciliation](gap-reconciliation-2026-10-03.md).
 Their planned hardening is not a claim that current tests enforce those rules.
+
+Host-side Podman calls use `podman_guard.py`, with negative regressions for
+build/probe/streaming/namespace entry. `check_repository.py` includes an AST
+command guardrail; the already-isolated build worker is the reviewed exception
+and requires UID-map and cgroup verification. CI runs these mocked policy tests
+without invoking Podman. Real builds, image scans and runtime checks remain local.

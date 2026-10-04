@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 from custody import read_private, replace_private, durable_unlink, sync_parent
 from process_limits import run_bounded
+from podman_guard import podman, require_rootless
 
 ROOT = Path(__file__).resolve().parent.parent
 STATE = ROOT / '.local/postgres-wolfi'
@@ -30,7 +31,7 @@ def fingerprint():
         raise RuntimeError('Build base differs from reviewed publisher policy')
     files = {name: bounded_hash(recipe / name, 64 * 1024) for name in
              ('Containerfile', 'entrypoint.sh', '.containerignore', 'source.lock.json')}
-    for name in ('build_postgres_image.py', 'build_sandbox.py', 'stream_archive.py', 'process_limits.py', 'custody.py'):
+    for name in ('build_postgres_image.py', 'build_sandbox.py', 'podman_guard.py', 'stream_archive.py', 'process_limits.py', 'custody.py'):
         files[name] = bounded_hash(ROOT / 'scripts' / name, 64 * 1024)
     files['base_provenance'] = policy
     return hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
@@ -48,7 +49,7 @@ def candidate_receipt(path, image, expected_recipe):
 
 
 def verify_loaded_image(image):
-    actual = run_bounded('podman', 'image', 'inspect', image, '--format', '{{.Id}}').stdout.strip()
+    actual = podman(run_bounded, 'image', 'inspect', image, '--format', '{{.Id}}').stdout.strip()
     if 'sha256:' + actual.removeprefix('sha256:') != image:
         raise RuntimeError('Local PostgreSQL image identity drift')
 

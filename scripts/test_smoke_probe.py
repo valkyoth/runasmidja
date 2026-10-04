@@ -6,6 +6,7 @@ import sys
 import threading
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 import smoke_probe
 
@@ -26,17 +27,17 @@ class SmokeProbeTests(unittest.TestCase):
 
     def test_container_identity_rejects_root_and_unexpected_users(self):
         for user in ('0:0', '', '65532:0'):
-            with self.subTest(user=user), patch.object(smoke_probe.subprocess, 'check_output', return_value=user):
+            with self.subTest(user=user), patch.object(smoke_probe, 'podman', return_value=SimpleNamespace(stdout=user)):
                 with self.assertRaisesRegex(RuntimeError, 'expected user'):
                     smoke_probe.container_user('test-container')
-        with patch.object(smoke_probe.subprocess, 'check_output', return_value='65532:65532\n'):
+        with patch.object(smoke_probe, 'podman', return_value=SimpleNamespace(stdout='65532:65532\n')):
             smoke_probe.container_user('test-container')
 
     def test_checks_remain_active_with_optimization(self):
         cases = (
             ("patch.object(smoke_probe, 'request', return_value=b'garbage')", 'smoke_probe.verify(1)', 'invalid response'),
             ("patch.object(smoke_probe, 'request', return_value=" + repr(GOOD) + ')', 'smoke_probe.verify(1)', 'forbidden route'),
-            ("patch.object(smoke_probe.subprocess, 'check_output', return_value='0:0')", "smoke_probe.container_user('test')", 'expected user'),
+            ("patch.object(smoke_probe, 'podman', return_value=SimpleNamespace(stdout='0:0'))", "smoke_probe.container_user('test')", 'expected user'),
         )
         for mode in ('flag', 'environment'):
             env = os.environ.copy()
@@ -44,7 +45,7 @@ class SmokeProbeTests(unittest.TestCase):
             env['PYTHONOPTIMIZE'] = '1' if mode == 'environment' else '0'
             for mocking, call, message in cases:
                 with self.subTest(mode=mode, check=message):
-                    code = ('import smoke_probe\nfrom unittest.mock import patch\nwith ' + mocking + ':\n    ' + call + '\n')
+                    code = ('import smoke_probe\nfrom types import SimpleNamespace\nfrom unittest.mock import patch\nwith ' + mocking + ':\n    ' + call + '\n')
                     command = [sys.executable] + (['-O'] if mode == 'flag' else []) + ['-c', code]
                     result = subprocess.run(command, env=env, capture_output=True, text=True, timeout=10)
                     self.assertNotEqual(result.returncode, 0)

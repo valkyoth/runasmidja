@@ -222,3 +222,12 @@ The official Valkey profile is restricted in selection, admission and entrypoint
 handling to the validated `v02-admission-ready` instance; another stack ID fails
 before custody creation or image building. These checks trust the local engine
 and CLI under the development fixture's existing trusted-host model.
+
+Builds and probe workflows also use the neutral `podman_guard.py` boundary,
+including archive export and image import/inspection. The public build checks
+its explicit local engine before entering Podman unshare. Its isolated worker
+then verifies the nonroot host UID mapping and owned cgroup; namespace UID 0 is
+not host root. The repository AST gate rejects new raw host Podman command paths.
+The shared guard participates in the PostgreSQL recipe fingerprint, so changing
+it requires a new admitted build. Existing containers must be explicitly
+recreated through ownership/mount-checked maintenance; data is never reset.

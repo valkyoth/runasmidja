@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def check(root=ROOT):
     errors = []
+    from podman_policy import check as check_podman_policy
+    errors.extend(check_podman_policy(root))
     from sbom_privacy import check_sboms
     errors.extend(check_sboms(root))
     for base in (root,):

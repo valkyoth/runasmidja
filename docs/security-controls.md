@@ -36,3 +36,9 @@
 A configured workflow is not evidence that GitHub settings or remote CI passed.
 A local service smoke test is not a production security assessment. See
 [threat model](threat-model.md) and [testing](testing.md).
+
+Build/probe follow-up (v0.2.2, retest required): all host Podman command paths
+share the rootless guard, including archive export and PostgreSQL import. The
+build checks its explicit local engine before unshare; its namespace worker
+requires the nonroot host UID mapping and owned resource cgroup. The Python AST
+gate prevents accidental raw command paths, not arbitrary hostile source changes.

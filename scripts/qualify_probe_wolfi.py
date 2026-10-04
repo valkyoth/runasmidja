@@ -4,11 +4,14 @@ import tempfile
 import uuid
 from pathlib import Path
 from image_gate import ROOT
+from process_limits import run_bounded
+from podman_guard import require_rootless
 from probe_image import build, evidence
 from probe_runtime import qualify
 
 
 def main():
+    require_rootless(run_bounded)
     state = ROOT / '.local/probe-wolfi'
     state.mkdir(parents=True, mode=0o700, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='candidate-', dir=state) as folder:

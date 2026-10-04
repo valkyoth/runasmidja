@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 from image_gate import ROOT, EVIDENCE, tool, provenance, scan
 from process_limits import run_bounded
+from podman_guard import podman, require_rootless
 from custody import replace_private, read_private
 from postgres_image import fingerprint, candidate_receipt, commit_candidate, bounded_hash
 from build_sandbox import sandbox
@@ -20,6 +21,7 @@ SOURCE_URL, SOURCE_SHA = PINS['url'], PINS['sha256']
 
 
 def build():
+    require_rootless(run_bounded)
     STATE.mkdir(mode=0o700, parents=True, exist_ok=True)
     EVIDENCE.mkdir(mode=0o700, parents=True, exist_ok=True)
     policy = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())
@@ -55,7 +57,7 @@ def build():
         raise RuntimeError('Built PostgreSQL vulnerability gate failed')
     if candidate_receipt(archive, image, started) != candidate:
         raise RuntimeError('Candidate changed during scan')
-    run_bounded('podman', 'load', '--input', str(archive), timeout=180)
+    podman(run_bounded, 'load', '--input', str(archive), timeout=180)
     commit_candidate(candidate)
     print('Public-source PostgreSQL Wolfi build completed.', flush=True)
 
