@@ -3,64 +3,7 @@
   "components": [
     {
       "author": "",
-      "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.2.0",
-      "description": "Bounded portable domain foundations",
-      "externalReferences": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/valkyoth/runasmidja"
-        }
-      ],
-      "licenses": [
-        {
-          "expression": "EUPL-1.2"
-        }
-      ],
-      "name": "runasmidja-core",
-      "type": "library",
-      "version": "0.2.0"
-    },
-    {
-      "author": "",
-      "bom-ref": "CycloneDxRef-Component-runasmidja-ports-0.2.0",
-      "description": "Portable boundaries for hosted adapters",
-      "externalReferences": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/valkyoth/runasmidja"
-        }
-      ],
-      "licenses": [
-        {
-          "expression": "EUPL-1.2"
-        }
-      ],
-      "name": "runasmidja-ports",
-      "type": "library",
-      "version": "0.2.0"
-    },
-    {
-      "author": "",
-      "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.2.0",
-      "description": "HTML boundary reserved for future Vef extraction",
-      "externalReferences": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/valkyoth/runasmidja"
-        }
-      ],
-      "licenses": [
-        {
-          "expression": "EUPL-1.2"
-        }
-      ],
-      "name": "runasmidja-html",
-      "type": "library",
-      "version": "0.2.0"
-    },
-    {
-      "author": "",
-      "bom-ref": "CycloneDxRef-Component-runasmidja-crypto-0.2.0",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-crypto-0.2.1",
       "description": "Cryptography boundary reserved for future Brynja extraction",
       "externalReferences": [
         {
@@ -75,18 +18,75 @@
       ],
       "name": "runasmidja-crypto",
       "type": "library",
-      "version": "0.2.0"
+      "version": "0.2.1"
+    },
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-ports-0.2.1",
+      "description": "Portable boundaries for hosted adapters",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-ports",
+      "type": "library",
+      "version": "0.2.1"
+    },
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.2.1",
+      "description": "HTML boundary reserved for future Vef extraction",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-html",
+      "type": "library",
+      "version": "0.2.1"
+    },
+    {
+      "author": "",
+      "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.2.1",
+      "description": "Bounded portable domain foundations",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/valkyoth/runasmidja"
+        }
+      ],
+      "licenses": [
+        {
+          "expression": "EUPL-1.2"
+        }
+      ],
+      "name": "runasmidja-core",
+      "type": "library",
+      "version": "0.2.1"
     }
   ],
   "dependencies": [
     {
       "dependsOn": [
-        "CycloneDxRef-Component-runasmidja-html-0.2.0",
-        "CycloneDxRef-Component-runasmidja-crypto-0.2.0",
-        "CycloneDxRef-Component-runasmidja-ports-0.2.0",
-        "CycloneDxRef-Component-runasmidja-core-0.2.0"
+        "CycloneDxRef-Component-runasmidja-crypto-0.2.1",
+        "CycloneDxRef-Component-runasmidja-core-0.2.1",
+        "CycloneDxRef-Component-runasmidja-ports-0.2.1",
+        "CycloneDxRef-Component-runasmidja-html-0.2.1"
       ],
-      "ref": "CycloneDxRef-Component-runasmidja-0.2.0"
+      "ref": "CycloneDxRef-Component-runasmidja-0.2.1"
     }
   ],
   "metadata": {
@@ -99,7 +99,7 @@
       "components": [
         {
           "author": "",
-          "bom-ref": "CycloneDxRef-Component-runasmidja-0.2.0",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-0.2.1",
           "description": "Portable facade for Runasmidja",
           "externalReferences": [
             {
@@ -114,11 +114,11 @@
           ],
           "name": "runasmidja",
           "type": "library",
-          "version": "0.2.0"
+          "version": "0.2.1"
         },
         {
           "author": "",
-          "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.2.0",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-core-0.2.1",
           "description": "Bounded portable domain foundations",
           "externalReferences": [
             {
@@ -133,11 +133,11 @@
           ],
           "name": "runasmidja-core",
           "type": "library",
-          "version": "0.2.0"
+          "version": "0.2.1"
         },
         {
           "author": "",
-          "bom-ref": "CycloneDxRef-Component-runasmidja-crypto-0.2.0",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-crypto-0.2.1",
           "description": "Cryptography boundary reserved for future Brynja extraction",
           "externalReferences": [
             {
@@ -152,11 +152,11 @@
           ],
           "name": "runasmidja-crypto",
           "type": "library",
-          "version": "0.2.0"
+          "version": "0.2.1"
         },
         {
           "author": "",
-          "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.2.0",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-html-0.2.1",
           "description": "HTML boundary reserved for future Vef extraction",
           "externalReferences": [
             {
@@ -171,11 +171,11 @@
           ],
           "name": "runasmidja-html",
           "type": "library",
-          "version": "0.2.0"
+          "version": "0.2.1"
         },
         {
           "author": "",
-          "bom-ref": "CycloneDxRef-Component-runasmidja-ports-0.2.0",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-ports-0.2.1",
           "description": "Portable boundaries for hosted adapters",
           "externalReferences": [
             {
@@ -190,11 +190,11 @@
           ],
           "name": "runasmidja-ports",
           "type": "library",
-          "version": "0.2.0"
+          "version": "0.2.1"
         },
         {
           "author": "",
-          "bom-ref": "CycloneDxRef-Component-runasmidja-server-0.2.0",
+          "bom-ref": "CycloneDxRef-Component-runasmidja-server-0.2.1",
           "description": "Linux health probe scaffold for Runasmidja",
           "externalReferences": [
             {
@@ -209,13 +209,13 @@
           ],
           "name": "runasmidja-server",
           "type": "application",
-          "version": "0.2.0"
+          "version": "0.2.1"
         }
       ],
       "name": "runasmidja",
       "type": "application"
     },
-    "timestamp": "2026-10-04T06:59:24.390Z",
+    "timestamp": "2026-10-04T08:15:46.042Z",
     "tools": [
       {
         "name": "cargo-sbom",
@@ -223,7 +223,7 @@
       }
     ]
   },
-  "serialNumber": "urn:uuid:699171d3-3ca4-4e16-9d8d-399d7a7d0a86",
+  "serialNumber": "urn:uuid:b596b0e1-c454-4f20-88f1-7bd8df669725",
   "specVersion": "1.5",
   "version": 1
 }

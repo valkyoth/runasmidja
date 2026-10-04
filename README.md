@@ -23,15 +23,13 @@ The same Rust engine will execute in a browser worker and native hosts.
 Browser processing is the default; saving, sharing, server execution and
 external network operations are distinct explicit actions.
 
-**Current status:** `v0.1.0` is tagged with accepted pentest and green GitHub
-checks. `0.2.0` adds OpenBao-first service provisioning. Its maintainer pentest
-is accepted with no new findings; final commits await GitHub checks and tagging.
-The authorized minimal Wolfi/PostgreSQL source build passes scans and real service
-qualification without a vulnerability waiver; see the
-[remediation report](security/pentest/v0.2.0.md). No workbench, transformation,
-browser UI, production HTTP server or CyberChef parity is implemented yet.
-See the [0.2 scope](docs/releases/v0.2.0-scope.md) and
-[0.1 assessment](security/pentest/v0.1.0.md).
+**Current status:** `v0.1.0` and `v0.2.0` are signed and tagged with accepted
+pentests and green GitHub checks. The `0.2.1` candidate adds a minimal Wolfi image
+for the existing health probe; its maintainer pentest is **NOT RUN**.
+OpenBao-first service provisioning and the Wolfi/PostgreSQL fixture remain
+available. No workbench, transformation, browser UI, production HTTP server or
+CyberChef parity is implemented yet. See the [0.2.1 scope](docs/releases/v0.2.1-scope.md)
+and [candidate assessment](security/pentest/v0.2.1.md).
 
 GitHub checks code and dependencies; CodeQL uses Default setup. Container builds,
 image scans and real service tests run locally before pushing. See the
@@ -108,7 +106,7 @@ Every code file has a hard 500-line ceiling.
 [release runbook](docs/RELEASE_RUNBOOK.md),
 [security controls](docs/security-controls.md),
 [dependency policy](docs/supply-chain-security.md),
-[candidate release notes](release-notes/v0.2.0.md),
+[candidate release notes](release-notes/v0.2.1.md),
 [tagged foundation notes](release-notes/v0.1.0.md).
 
 The [original idea](docs/IDEA.md) and [supplied planning bundle](docs/reference/workbench-plan/README.md)

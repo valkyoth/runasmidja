@@ -45,7 +45,7 @@ def provenance(service, image, policy, cosign):
                 ('approved_by', 'approved_on', 'reason', 'scope')):
             raise RuntimeError('Unsigned image exception incomplete or out of scope')
         return 'maintainer-exception'
-    if service not in ('openbao', 'wolfi-base') or rule.get('method') != 'signed-index':
+    if service not in ('openbao', 'wolfi-base', 'probe-base') or rule.get('method') != 'signed-index':
         raise RuntimeError('Unsupported image provenance policy')
     result = run_bounded(cosign, 'verify', '--certificate-identity', rule['identity'],
         '--certificate-oidc-issuer', rule['issuer'], rule['index'], timeout=180)
@@ -65,10 +65,14 @@ def provenance(service, image, policy, cosign):
     return 'signed-index'
 
 
-def scan(service, image, scanner, archive=None, candidate_recipe=None):
+def scan(service, image, scanner, archive=None, candidate_recipe=None, archive_check=None):
     target = EVIDENCE / (service + '.cdx.json')
     before = None
-    if archive and candidate_recipe is not None:
+    if archive_check is not None:
+        if archive is None or candidate_recipe is not None:
+            raise ValueError('Ambiguous archive binding')
+        before = archive_check()
+    elif archive and candidate_recipe is not None:
         from postgres_image import candidate_receipt
         before = candidate_receipt(archive, image, candidate_recipe)
     # Never consume stale evidence after a failed scanner run or follow an output link.
@@ -84,12 +88,16 @@ def scan(service, image, scanner, archive=None, candidate_recipe=None):
     if evidence.get('bomFormat') != 'CycloneDX' or not evidence.get('components'):
         raise RuntimeError('Image SBOM is missing dependency inventory')
     if archive:
-        if before is not None:
+        if archive_check is not None:
+            if archive_check() != before:
+                raise RuntimeError('Archive changed during scan')
+        elif before is not None:
             if candidate_receipt(archive, image, candidate_recipe) != before:
                 raise RuntimeError('Candidate changed during scan')
         else:
             from postgres_image import validate_image
             validate_image(image, require_local=False)
+    if archive and service == 'postgres':
         source = json.loads((ROOT / 'deploy/podman/postgres/source.lock.json').read_text())
         evidence['components'].append({'type': 'application', 'name': 'PostgreSQL',
             'version': source['version'], 'bom-ref': 'runasmidja-postgresql-source',

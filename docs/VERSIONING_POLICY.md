@@ -1,6 +1,6 @@
 # Versioning Policy
 
-0.1.0 is the unpublished repository-foundation candidate. Numbered minors are
+0.1.0 and 0.2.0 are tagged foundation releases. Numbered minors are
 small feature/contract passes; 0.N.P patches fix compatible defects and need a
 patch rationale and the same pentest gate. Add arbitrarily many pre-1.0 minors
 when required coverage remains incomplete. 1.0.0 is the first serious production

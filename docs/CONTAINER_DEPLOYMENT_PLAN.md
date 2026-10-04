@@ -1,8 +1,9 @@
 # Container bases and Fluxheim qualification
 
 Status: required Fluxheim deployment coverage; proposed compatible Wolfi image
-follow-ups after v0.2.0 passes the maintainer/GitHub release loop. This document
-adds no shipped behavior. The 386 minor workstreams and source mappings remain.
+follow-ups after the tagged v0.2.0. The maintainer authorized v0.2.1 on
+2026-10-04; its [bounded scope](releases/v0.2.1-scope.md) is in implementation.
+v0.2.2/v0.2.3 remain proposed. This plan itself adds no shipped behavior. The 386 minor workstreams and source mappings remain.
 
 ## Decision and maintenance scope
 
@@ -32,7 +33,8 @@ add a paid registry dependency or accept an older service merely to match bases.
 
 ## Proposed compatible patch sequence
 
-These versions reserve a reviewable recommendation, not approved implementation.
+v0.2.1 is the authorized current patch; the remaining versions reserve a
+reviewable recommendation, not approved implementation.
 They harden packaging of existing foundation behavior. If an image requires new
 application features or changes secret/storage/auth contracts, split that work
 into a bounded minor instead of hiding it in a patch. v0.3/v0.4 workflow/graph

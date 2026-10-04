@@ -76,6 +76,7 @@ reviewed image tools first if absent):
 
 ```sh
 python3 scripts/smoke_probe.py --container
+python3 scripts/qualify_probe_wolfi.py
 python3 scripts/build_sandbox.py --qualify
 python3 scripts/stack_qualification.py
 python3 scripts/qualification_bounds.py

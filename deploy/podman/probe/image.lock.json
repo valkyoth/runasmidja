@@ -1,0 +1,10 @@
+{
+  "platform": "linux/amd64",
+  "probe-base": {
+    "method": "signed-index",
+    "image": "cgr.dev/chainguard/static@sha256:a40219f3b0c2719e4e4220310e80a2230a4b95881644292c130e3a8e8287fc6c",
+    "index": "cgr.dev/chainguard/static@sha256:fe55470f22d3259488d9d3739168d8f04da67755f0b69382bc26eda4a7d3d327",
+    "identity": "https://github.com/chainguard-images/images/.github/workflows/release.yaml@refs/heads/main",
+    "issuer": "https://token.actions.githubusercontent.com"
+  }
+}

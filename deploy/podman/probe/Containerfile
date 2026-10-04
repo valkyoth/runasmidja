@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: EUPL-1.2
+FROM cgr.dev/chainguard/static@sha256:a40219f3b0c2719e4e4220310e80a2230a4b95881644292c130e3a8e8287fc6c
+COPY --chown=65532:65532 runasmidja-server /runasmidja-server
+USER 65532:65532
+WORKDIR /
+ENTRYPOINT ["/runasmidja-server"]
+CMD ["18080", "--container"]

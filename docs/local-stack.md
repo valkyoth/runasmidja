@@ -178,3 +178,11 @@ packages follow daily Tumbleweed updates. Freshness also checks the official
 PostgreSQL source checksum and current Wolfi base index; drift requires review,
 not an automatic pin update. The optional Meilisearch fixture and
 OpenBao Rust SDK are not admitted by this pass.
+
+## Optional Wolfi health probe (v0.2.1 candidate)
+
+Run `python3 scripts/qualify_probe_wolfi.py` locally. It admits the exact signed
+static base, builds/scans the COPY-only image and tests the bound executable
+with actual kernel resource/capability checks and an ephemeral loopback port.
+No vault/database/cache data is touched. Native/scratch remain supported
+regression profiles; see the [recipe](../deploy/podman/probe/README.md).

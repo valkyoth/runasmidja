@@ -1,6 +1,19 @@
 # Changelog
 
-## 0.2.0 — release prepared, GitHub and tag pending
+## 0.2.1 — Wolfi probe candidate; pentest NOT RUN
+
+Add a minimal signed-base Wolfi static image for the existing health probe;
+retain native and scratch profiles. Scan the exact base/built archive, bind
+archive config/layers and copied executable, check actual kernel limits and
+zero capabilities, use an ephemeral loopback port, and clean up only the captured
+owned container. Add negative regressions, base freshness and public inventories.
+Heavy qualification remains local; no runtime Rust dependencies or website/API
+features are added. See [scope](docs/releases/v0.2.1-scope.md).
+
+## 0.2.0 — tagged 2026-10-04
+
+Signed tag points to 4e5b4e1; Rust CI and CodeQL Default are green. The following
+entries retain the preparation history; pending statements below are historical.
 
 GitHub scope update (2026-10-04): remove the container job entirely at the
 maintainer's request. Builds, image admission and real service/resource checks

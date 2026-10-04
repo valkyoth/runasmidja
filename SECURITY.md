@@ -3,12 +3,10 @@
 Runasmidja is security-sensitive data-transformation software. Inputs, imported
 recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins,
 workers and supply-chain changes require threat review and executable tests.
-The repository has a tagged v0.1.0 foundation and a v0.2.0 remediation candidate;
-neither is a production service. The maintainer accepted the v0.2.0 retest with
-no new findings; GitHub checks and tagging remain pending. The authorized
-Wolfi/PostgreSQL fixture passes scans and actual service qualification; this
-does not establish production security or a pentest PASS. See the
-[assessment](security/pentest/v0.2.0.md).
+The v0.1.0 and v0.2.0 foundations are signed and tagged with accepted maintainer
+pentests and green GitHub checks. The v0.2.1 Wolfi health-probe packaging candidate
+requires its own pentest; it is NOT RUN. None is a production service. See the
+[candidate assessment](security/pentest/v0.2.1.md).
 
 Runasmidja targets a normal public website. Review findings against its actual
 supported behavior, exploitability and trust boundaries, and choose controls
@@ -41,7 +39,7 @@ and have no production support claim.
 All project-operated initialization, runtime, build and release secrets must
 come through OpenBao; public Rust setup/build needs none. Vault startup trust
 and independent recovery custody are the minimal explicit bootstrap boundary.
-The v0.2 candidate issues service passwords in OpenBao before consumer startup;
+The released v0.2 fixture issues service passwords in OpenBao before consumer startup;
 persistent private delivery, build/release identity and production custody remain
 separate qualification passes. Legacy v0.1 fixture data is preserved unchanged. See [secret lifecycle](docs/SECRETS_POLICY.md).
 Search is optional infrastructure; current database permissions govern hits

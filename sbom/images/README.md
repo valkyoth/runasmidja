@@ -48,3 +48,13 @@ snapshots are evidence for these specific images and scanner database, not futur
 rebuilds or advisory databases.
 Public root component names are stable image identities; generation and
 repository checks reject private home/Windows/workspace paths elsewhere.
+
+## v0.2.1 probe inventories
+
+`probe-base.cdx.json` records the signed Wolfi static base; `probe.cdx.json`
+records the locally assembled exact scanned image and the first-party probe's
+executable hash/EUPL-1.2 license. Base package license identifiers are retained
+from scanner evidence; see each component's licenses. The scanner does not
+recover Rust dependency metadata from our stripped executable: the Cargo SBOM
+and advisory audit remain required separate evidence. Qualification runs locally,
+not in GitHub container CI. No registry image is published by generating SBOMs.
