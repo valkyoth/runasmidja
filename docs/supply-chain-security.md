@@ -53,7 +53,9 @@ application is recorded explicitly with its source hash; Trivy's OS inventory
 does not claim automatic advisory analysis of that compiled C source. Official
 PostgreSQL release/advisory review remains required. The Cargo inventory
 does not cover these image graphs. See [image evidence](../sbom/images/README.md).
-CI uploads per-image SBOMs for failed as well as successful scans.
+Local pre-push qualification retains per-image SBOMs from completed scans,
+including scans whose findings block admission. Review public inventories before
+committing them; operational scanner failures do not yield fresh valid evidence.
 Trivy uses `--exit-code 0` for completed reports, including reports with findings.
 Every nonzero scanner exit is an operational failure and blocks admission before
 report parsing. Policy is enforced from the completed report; a reviewed UNKNOWN

@@ -33,6 +33,10 @@ browser UI, production HTTP server or CyberChef parity is implemented yet.
 See the [0.2 scope](docs/releases/v0.2.0-scope.md) and
 [0.1 assessment](security/pentest/v0.1.0.md).
 
+GitHub checks code and dependencies; CodeQL uses Default setup. Container builds,
+image scans and real service tests run locally before pushing. See the
+[verification split](docs/RELEASE_RUNBOOK.md#local-pre-push-and-github-checks).
+
 The [release plan](docs/RELEASE_PLAN.md) defines 386 small pre-1.0 passes,
 through `0.386.0`, with further versions whenever needed. `1.0.0` is the first
 serious production release with complete declared website/API functionality.

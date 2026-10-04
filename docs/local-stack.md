@@ -5,12 +5,12 @@ Linux/rootless Podman, Python 3.11+, OpenSSL/Skopeo CLIs and free loopback ports
 The public PostgreSQL build additionally requires systemd 254+ user delegation
 and cgroup v2 CPU/memory/PID controllers; unsupported containment fails closed.
 Podman must support `build --inherit-labels=false --inherit-annotations=false`.
-CI uses `ubuntu-26.04`: its reviewed [runner inventory](https://github.com/actions/runner-images/blob/ubuntu26/20260927.149/images/ubuntu/Ubuntu2604-Readme.md)
-includes Podman 5.7.0 and systemd 259. The failed Ubuntu 24.04 runner had
-Podman 4.9.3, which lacks those build switches. CI checks the switches and runs
-the actual build-resource qualification before service provisioning; the job's
-45-minute ceiling accommodates the existing 30-minute bounded build plus
-admission and service checks. This does not require local OS/Podman upgrades.
+Container builds, image scans and real service/fault qualification run locally
+before pushing, not in GitHub CI. Keep private evidence in `.local`; copy only
+reviewed public SBOMs into `sbom/images` and record results in the assessment.
+See the [pre-push split](RELEASE_RUNBOOK.md#local-pre-push-and-github-checks).
+Unsupported local build capabilities fail closed; OS/Podman updates remain
+under the maintainer's normal Tumbleweed update policy.
 
 ```sh
 python3 scripts/install_image_tools.py
@@ -47,8 +47,8 @@ APK uses the base's bundled repository signing keys. See the
 The maintainer accepted provenance exceptions for the original exact unsigned
 PostgreSQL/Valkey digests; only Valkey still uses this active exception. They
 do not waive CVEs and must be reviewed again on digest changes. Startup always
-scans, with unfixed findings included and no ignore/VEX filter. CI retains
-per-image SBOMs even when scans fail.
+scans, with unfixed findings included and no ignore/VEX filter. Completed scans retain local per-image SBOMs even when findings block admission.
+An operational scanner failure cannot produce fresh valid evidence.
 
 The v0.2 fixture uses `.local/stacks/v02-admission-ready` and
 `runasmidja-v02-admission-ready-*` containers,
@@ -156,7 +156,7 @@ the supported Podman mount parser; audit files remain owner-only. PostgreSQL
 runs as UID/GID 999 on a read-only root without capabilities. Its independent
 qualification verifies UTF8/C.UTF-8, no compiler/Perl/gosu runtime and 12 root,
 password/env/symlink/auth/partial/legacy/version/readiness denials with unchanged
-rejected data. These checks also run in full service qualification and CI.
+rejected data. These checks run in full local service qualification before pushing.
 PostgreSQL/Valkey transport remains plaintext in the disposable local fixture.
 Production TLS, independent encrypted quorum recovery, HA, leased credentials
 and certificate/identity rotation are separate later owners.

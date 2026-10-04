@@ -60,3 +60,43 @@ CI release workflow validates metadata only and has no publishing credentials.
 Signed-tag trust and external release artifact signing receive explicit
 qualification before publication; copied sibling signer files are not inherited
 as Runasmidja authorization.
+
+## Local pre-push and GitHub checks
+
+Heavy qualification runs locally before pushing an implementation candidate:
+container builds, exact-image provenance/scans/SBOMs, real external services,
+resource/fault tests, and applicable browser/provider/fuzz/performance suites.
+Use the actual candidate and record results and limitations in its assessment;
+GitHub green alone cannot replace this evidence. Reuse unchanged evidence for
+CI/documentation-only changes; rerun affected qualification after behavior,
+image, build recipe, policy or relevant environment changes.
+
+For the current v0.2 fixture, run these local commands as applicable (install
+reviewed image tools first if absent):
+
+```sh
+python3 scripts/smoke_probe.py --container
+python3 scripts/build_sandbox.py --qualify
+python3 scripts/stack_qualification.py
+python3 scripts/qualification_bounds.py
+```
+
+Stack qualification admits exact images and builds PostgreSQL when no committed
+receipt exists. Rebuild explicitly with `python3 scripts/build_postgres_image.py`
+when qualifying changed build inputs; retained fixtures must not be silently
+reset or reused across an image mismatch. Preserve their data and select a
+separate profile as described in [local stack](local-stack.md).
+
+Push/PR CI runs repository/whitespace checks, Rust formatting/Clippy/tests/docs,
+no_std target checks, Python unit/regression tests, the small native smoke probe,
+and dependency/license/advisory checks with a Cargo SBOM. Its job ceiling is
+15 minutes, not a runtime promise. Do not add container builds, image scans or
+service/browser/fuzz/performance qualification to the automatic push path.
+The weekly/manual freshness workflow only queries upstream metadata; the manual
+release workflow only validates source/report metadata. Neither runs services.
+
+CodeQL stays on GitHub Default setup, independently of Rust CI, using the default
+query suite. Its runtime is GitHub-managed and may grow with the codebase; no
+one-hour runtime guarantee or custom timeout is claimed. Do not introduce
+advanced workflows or container builds into scanning. Review future expensive
+checks for the same local/hosted split before enabling them.
