@@ -20,3 +20,22 @@ class FreshnessTests(unittest.TestCase):
 
     def test_postgres_relative_directory_links(self):
         self.assertEqual(postgres_version('<a href="v19beta4/">v19beta4</a>'), '19beta4')
+
+    def test_openbao_packaging_cannot_lag_monitored_sources(self):
+        import copy
+        import json
+        import tempfile
+        from pathlib import Path
+        from check_freshness import ROOT, check_openbao_packaging
+        check_openbao_packaging(ROOT)
+        names = ('deploy/podman/openbao/image.lock.json', 'deploy/podman/image-policy.json',
+                 'docs/upstream-lock.json')
+        originals = {name:json.loads((ROOT/name).read_text()) for name in names}
+        for key in ('upstream', 'base', 'version'):
+            with self.subTest(key=key), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder); data = copy.deepcopy(originals)
+                data[names[0]][key] = 'drift'
+                for name, value in data.items():
+                    (root/name).parent.mkdir(parents=True, exist_ok=True)
+                    (root/name).write_text(json.dumps(value))
+                with self.assertRaises(RuntimeError): check_openbao_packaging(root)

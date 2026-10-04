@@ -1,6 +1,19 @@
 # Changelog
 
-## 0.2.2 — release prepared; GitHub and tag pending
+## 0.2.3 — implementation candidate; pentest NOT RUN
+
+- Assemble the verified static OpenBao 2.7.1 executable on signed Wolfi; retain
+  exact input/image/archive provenance, upstream license and per-image inventory.
+- Isolate new fixture custody; test fresh startup, retained same-version image
+  switching/rollback, scoped auth, audit exhaustion and recovery.
+- Add admission/publication/retry regressions and monitor packaging-pin drift.
+- Keep heavy tests local, six crates publish=false and portable Rust unchanged.
+- See [scope](docs/releases/v0.2.3-scope.md),
+  [notes](release-notes/v0.2.3.md) and [assessment](security/pentest/v0.2.3.md).
+
+## 0.2.2 — released 2026-10-04
+
+Signed tag points to 4d6f40e; Rust CI and CodeQL Default are green.
 
 Maintainer accepted 8a814ec on 2026-10-04 with no new actionable findings.
 All three prior findings are resolved: root/rootful service execution, rollback

@@ -93,3 +93,16 @@ build/probe/streaming/namespace entry. `check_repository.py` includes an AST
 command guardrail; the already-isolated build worker is the reviewed exception
 and requires UID-map and cgroup verification. CI runs these mocked policy tests
 without invoking Podman. Real builds, image scans and runtime checks remain local.
+
+
+## Wolfi OpenBao packaging (v0.2.3)
+
+Developer qualification covers fresh vault-first initialization and retained
+same-version official/Wolfi switching, actual audit ENOSPC and recovery, binary/
+base/version identity, scoped auth/storage and kernel limits. Regression tests
+cover static ELF/hash rejection, owned material cleanup, recipe/archive/receipt
+binding, scanner and publication failures followed by successful retries, and
+switch checkpoint/identity/custody failure recovery. Freshness detects drift
+between the packaging lock and monitored upstream/base pins. Heavy tests remain
+local; see the [handoff](releases/v0.2.3-handoff.md). Automated success does not
+attest maintainer pentest acceptance.

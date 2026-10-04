@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: EUPL-1.2
+FROM cgr.dev/chainguard/wolfi-base@sha256:fbcaceb3a1eedec23eb80df9328f9be4a438546836ec15a67df39a104096d44a
+COPY --chown=65532:65532 bao /usr/bin/bao
+COPY OPENBAO-LICENSE /usr/share/licenses/openbao/LICENSE
+USER 65532:65532
+WORKDIR /
+ENTRYPOINT ["/usr/bin/bao"]
+CMD ["server", "-config=/config/bao.hcl"]

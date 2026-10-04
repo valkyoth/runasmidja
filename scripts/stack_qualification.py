@@ -203,6 +203,8 @@ def qualify():
     collisions()
     from qualification_valkey import qualify as qualify_valkey
     qualify_valkey()
+    from qualification_openbao import qualify as qualify_openbao
+    qualify_openbao()
     leakage(values, bootstrap_root)
     from qualification_postgres import qualify as qualify_postgres
     qualify_postgres()

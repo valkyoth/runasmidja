@@ -42,3 +42,11 @@ share the rootless guard, including archive export and PostgreSQL import. The
 build checks its explicit local engine before unshare; its namespace worker
 requires the nonroot host UID mapping and owned resource cgroup. The Python AST
 gate prevents accidental raw command paths, not arbitrary hostile source changes.
+
+
+The v0.2.3 development candidate adds signed-input/static-binary Wolfi OpenBao
+assembly, exact exported-archive admission and explicit same-version retained
+vault switching. Actual audit-full refusal/recovery is qualified. These controls
+retain trusted-host custody and finite audit limits; they are not production
+vault recovery, external plugin qualification or pentest PASS. See the
+[bounded scope](releases/v0.2.3-scope.md).

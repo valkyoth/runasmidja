@@ -33,6 +33,14 @@ def provenance(service, image, policy, cosign):
     rule = policy[service]
     if policy.get('platform') != 'linux/amd64':
         raise RuntimeError('Image platform has no reviewed provenance policy')
+    if service == 'openbao' and rule.get('method') == 'local-build' and rule.get('image') == 'local:openbao-wolfi':
+        from openbao_image import validate_image, pins
+        validate_image(image)
+        lock = pins()
+        upstream = {**policy, 'openbao': lock['upstream'], 'wolfi-base': lock['base']}
+        provenance('openbao', lock['upstream']['image'], upstream, cosign)
+        provenance('wolfi-base', lock['base']['image'], upstream, cosign)
+        return 'local assembly (verified static upstream binary and signed Wolfi base)'
     if service == 'postgres' and rule.get('method') == 'local-build' and rule.get('image') == 'local:postgres-wolfi':
         from postgres_image import validate_image
         validate_image(image)
@@ -129,16 +137,25 @@ def verify_images(images):
     policy = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())
     from valkey_image import admission_policy
     policy = admission_policy(images, policy)
+    from openbao_image import admission_policy as bao_policy
+    policy = bao_policy(images, policy)
     EVIDENCE.mkdir(parents=True, mode=0o700, exist_ok=True)
     scanner, cosign = tool('trivy'), tool('cosign')
     blocked = []
     for service, image in images.items():
         method = provenance(service, image, policy, cosign)
         archive = None
+        options = {}
         if policy[service].get('method') == 'local-build':
-            from postgres_image import validate_image
-            archive = validate_image(image)
-        clean, count = scan(service, image, scanner, **({'archive': archive} if archive else {}))
+            if service == 'openbao':
+                from openbao_image import validate_image, binding
+                archive = validate_image(image)
+                options['archive_check'] = lambda: binding(archive, image)
+            else:
+                from postgres_image import validate_image
+                archive = validate_image(image)
+            options['archive'] = archive
+        clean, count = scan(service, image, scanner, **options)
         print(f'{service}: {method}; exact-image SBOM; {count} blocking UNKNOWN/HIGH/CRITICAL findings', flush=True)
         if not clean:
             blocked.append(service)

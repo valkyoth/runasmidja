@@ -38,7 +38,17 @@ def postgres_version(document):
         return (2, int(version.split('.')[1]) if '.' in version else 0)
     return max(versions, key=order)
 
+def check_openbao_packaging(root):
+    lock = json.loads((root / 'deploy/podman/openbao/image.lock.json').read_text())
+    policy = json.loads((root / 'deploy/podman/image-policy.json').read_text())
+    metadata = json.loads((root / 'docs/upstream-lock.json').read_text())
+    if (lock['upstream'] != policy['openbao'] or lock['base'] != policy['wolfi-base'] or
+            'v' + lock['version'] != metadata['github_releases']['openbao/openbao']):
+        raise RuntimeError('OpenBao packaging pins drifted from monitored upstream/base')
+
+
 def main():
+    check_openbao_packaging(ROOT)
     issues = []
     def compare(label, expected, read):
         try:

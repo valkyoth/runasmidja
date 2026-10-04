@@ -1,9 +1,10 @@
 # Fixture image inventories
 
 These CycloneDX reports cover the exact Linux/amd64 runtime images selected by
-[images.json](../../deploy/podman/images.json), plus their Wolfi build base. They
-supplement the separate Cargo-only inventory. The local PostgreSQL marker
-resolves to the immutable image ID bound by the private build receipt.
+[images.json](../../deploy/podman/images.json) after fixture profile selection,
+plus their Wolfi build base. They
+supplement the separate Cargo-only inventory. The local PostgreSQL marker and selected Wolfi OpenBao profile
+resolve to immutable image IDs bound by their private build receipts.
 
 Current images scanned on 2026-10-04 using reviewed Trivy 0.75.0, with
 `--scanners vuln`, UNKNOWN/HIGH/CRITICAL severity, unfixed findings included and
@@ -13,7 +14,8 @@ The database was updated at 2026-10-03T14:28:08Z and downloaded at 17:22:49Z.
 
 | Image | Inventory components | Reported findings | Execution disposition |
 | --- | --- | --- | --- |
-| OpenBao | 322 | 1 UNKNOWN, 0 HIGH/CRITICAL | Signed index; retained exact-image not-affected review, expires 2026-11-02 |
+| Wolfi OpenBao | 313 | 1 UNKNOWN, 0 HIGH/CRITICAL | Signed inputs, local archive binding; exact-image review expires 2026-11-02 |
+| Official OpenBao (rollback) | 322 | 1 UNKNOWN, 0 HIGH/CRITICAL | Signed index; original exact-image review expires 2026-11-02 |
 | Wolfi/PostgreSQL | 24 | 0 | Authorized public-source build; local archive/config/layer binding |
 | Wolfi Valkey | 20 | 0 | Signed Chainguard index binds exact platform leaf |
 | Official Valkey (rollback) | 24 | 0 | Exact unsigned-image exception approved by maintainer |
@@ -64,3 +66,13 @@ not in GitHub container CI. No registry image is published by generating SBOMs.
 `valkey-official-v0.2.1.cdx.json` preserves the exact rollback image inventory.
 The rollback exception does not apply to the new image. See the
 [Valkey provenance and operating profile](../../deploy/podman/valkey/README.md).
+
+
+`openbao.cdx.json` inventories the v0.2.3 locally assembled Wolfi default.
+`openbao-official-v0.2.2.cdx.json` preserves the signed upstream/rollback inventory.
+Both retain the same UNKNOWN advisory with separate exact-image reviews; the
+Wolfi review derives affected-package absence from the byte-identical static
+executable, not from a generalized base-image exemption. See the
+[OpenBao recipe](../../deploy/podman/openbao/README.md) for binary/recipe/archive
+identities and upstream MPL-2.0 license custody. The exact image was tested with
+built-in KV/AppRole/PebbleDB; external plugin compatibility is not attested.

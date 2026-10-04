@@ -1,9 +1,9 @@
 # Container bases and Fluxheim qualification
 
-Status: required Fluxheim deployment coverage; proposed compatible Wolfi image
-follow-ups after the tagged v0.2.0. v0.2.1 is signed and tagged. The current
-authorized patch is [v0.2.2 Wolfi Valkey](releases/v0.2.2-scope.md), with maintainer pentest acceptance;
-GitHub and tagging remain pending; v0.2.3 remains proposed. This plan itself adds no shipped behavior. The 386 minor workstreams and source mappings remain.
+Status: v0.2.1 probe and v0.2.2 Valkey packaging are signed/tagged. The current
+bounded candidate is [v0.2.3 Wolfi OpenBao](releases/v0.2.3-scope.md), with
+maintainer pentest NOT RUN. Required Fluxheim coverage and all 386 minor
+workstreams/source mappings remain unchanged.
 
 ## Decision and maintenance scope
 
@@ -28,15 +28,15 @@ offers a free starter image, with access restrictions for specific version tags.
 [OpenBao](https://images.chainguard.dev/directory/image/openbao/overview) and
 [Meilisearch](https://images.chainguard.dev/directory/image/meilisearch/overview)
 describe organization-access images. These pages were reviewed on 2026-10-03;
+OpenBao access was rechecked on 2026-10-04 (public registry denied access);
 they are not proof that a freely accessible, current-version Wolfi image exists.
 Commercial Chainguard OS images are distinct from Wolfi starter images. Verify
 actual base/package/version/signature/access metadata before admission. Do not
 add a paid registry dependency or accept an older service merely to match bases.
 
-## Proposed compatible patch sequence
+## Compatible patch sequence
 
-v0.2.2 is the authorized current patch; the remaining versions reserve a
-reviewable recommendation, not approved implementation.
+v0.2.3 is the authorized current patch; v0.2.1 and v0.2.2 are released.
 They harden packaging of existing foundation behavior. If an image requires new
 application features or changes secret/storage/auth contracts, split that work
 into a bounded minor instead of hiding it in a patch. v0.3/v0.4 workflow/graph

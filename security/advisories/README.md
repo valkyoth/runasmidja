@@ -41,3 +41,14 @@ images. Incomplete/unpopulated inventories cannot establish absence. Raw binary
 and extraction records stay in ignored private local state; no workstation path
 is embedded in published evidence. This is a scoped not-affected determination,
 not a blanket dependency ignore or pentest PASS.
+
+## Wolfi OpenBao packaging (v0.2.3)
+
+[Separate evidence](openbao-wolfi-GO-2026-5932.json) binds the locally assembled
+Wolfi image to the same reviewed static executable bytes, using the original
+complete affected-package absence inventory. The new exact image retains its
+UNKNOWN finding in the SBOM and its own evidence hash/review entry, dated
+2026-10-04 and expiring 2026-11-02. No wildcard, automatic image transfer or
+expiry extension is introduced. Both original upstream and new local image
+must pass their individual reviews; changing executable bytes invalidates this
+reasoning. See the [recipe](../../deploy/podman/openbao/README.md).

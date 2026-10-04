@@ -51,8 +51,8 @@ do not waive CVEs and must be reviewed again on digest changes. Startup always
 scans, with unfixed findings included and no ignore/VEX filter. Completed scans retain local per-image SBOMs even when findings block admission.
 An operational scanner failure cannot produce fresh valid evidence.
 
-The v0.2.2 fixture uses `.local/stacks/v022-wolfi-valkey` and
-`runasmidja-v022-wolfi-valkey-*` containers,
+The v0.2.3 fixture uses `.local/stacks/v023-wolfi-bao` and
+`runasmidja-v023-wolfi-bao-*` containers,
 network and PostgreSQL volume. `RUNASMIDJA_STACK_ID` accepts a bounded lowercase
 identifier for a separate test profile; ports stay fixed, so run only one profile
 at a time. Every mutation verifies project/service/instance ownership labels.
@@ -202,8 +202,8 @@ ports are shared. To qualify the preserved previous fixture, then return:
 
 ```sh
 python3 scripts/stack.py stop
-RUNASMIDJA_STACK_ID=v02-admission-ready RUNASMIDJA_VALKEY_PROFILE=official python3 scripts/stack_qualification.py
-RUNASMIDJA_STACK_ID=v02-admission-ready RUNASMIDJA_VALKEY_PROFILE=official python3 scripts/stack.py stop
+RUNASMIDJA_STACK_ID=v02-admission-ready RUNASMIDJA_OPENBAO_PROFILE=official RUNASMIDJA_VALKEY_PROFILE=official python3 scripts/stack_qualification.py
+RUNASMIDJA_STACK_ID=v02-admission-ready RUNASMIDJA_OPENBAO_PROFILE=official RUNASMIDJA_VALKEY_PROFILE=official python3 scripts/stack.py stop
 python3 scripts/stack_qualification.py
 ```
 
@@ -231,3 +231,45 @@ not host root. The repository AST gate rejects new raw host Podman command paths
 The shared guard participates in the PostgreSQL recipe fingerprint, so changing
 it requires a new admitted build. Existing containers must be explicitly
 recreated through ownership/mount-checked maintenance; data is never reset.
+
+
+## OpenBao Wolfi profile and same-version rollback (v0.2.3)
+
+Default `RUNASMIDJA_OPENBAO_PROFILE=wolfi` selects the locally admitted static
+upstream executable on Wolfi. `official` selects only the exact signed upstream
+image. Unknown values fail before fixture custody is created. The source pins
+in images.json remain official; `fixture_images()` resolves the selected profile
+and private image receipt before admission. See the
+[recipe, provenance and limits](../deploy/podman/openbao/README.md).
+
+The new default instance keeps prior v022 fixture custody separate and untouched.
+To operate that previous fixture, explicitly set both
+`RUNASMIDJA_STACK_ID=v022-wolfi-valkey` and `RUNASMIDJA_OPENBAO_PROFILE=official`.
+Stop it before starting the default instance; their loopback ports are shared.
+
+To test rollback of the **same initialized v023 vault**, retaining all data:
+
+```sh
+python3 scripts/switch_openbao.py official
+RUNASMIDJA_OPENBAO_PROFILE=official python3 scripts/stack_qualification.py
+python3 scripts/switch_openbao.py wolfi
+python3 scripts/stack_qualification.py
+```
+
+The switch is limited to v023-wolfi-bao and the two admitted 2.7.1 images. It
+preflights ownership, image identity and exact config/data mounts, stops owned
+services, removes only the captured vault container and restarts against the
+retained data. Custody files and scoped KV credential/version values must match.
+A private pending checkpoint binds the target and original custody/value hashes;
+interruption requires retrying the same command. Do not delete the checkpoint,
+reset state, change targets or treat a failed switch as a completed rollback.
+The selected environment applies to each command; it is not a persisted default.
+A plain default command rejects a running official vault rather than replacing it.
+
+Full qualification checks actual static executable, Wolfi base, nonroot/capability
+and kernel limits, then fills the disposable audit tmpfs and requires audited
+reads to fail with a server error. Removing only the owned fill file restores
+scoped access. This is finite disposable audit evidence, not durable retention.
+Built-in KV/AppRole and PebbleDB are tested; external plugins are unqualified.
+OpenBao root filesystem remains writable under the existing fixture contract;
+no read-only-root claim is introduced by changing its base.

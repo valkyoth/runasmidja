@@ -88,6 +88,14 @@ when qualifying changed build inputs; retained fixtures must not be silently
 reset or reused across an image mismatch. Preserve their data and select a
 separate profile as described in [local stack](local-stack.md).
 
+For v0.2.3 OpenBao packaging, also run `python3 scripts/build_openbao_image.py`
+when its recipe changes, and qualify a fresh default vault followed by the
+[official/Wolfi retained-data switch round trip](local-stack.md#openbao-wolfi-profile-and-same-version-rollback-v023).
+Full service qualification includes actual vault audit exhaustion/recovery.
+Keep previous fixture custody; never reset secrets/data to make a check pass.
+An interrupted switch retains a target-bound checkpoint; retry the same target.
+Any new exact image requires fresh scans and explicit advisory evidence review.
+
 Push/PR CI runs repository/whitespace checks, Rust formatting/Clippy/tests/docs,
 no_std target checks, Python unit/regression tests, the small native smoke probe,
 and dependency/license/advisory checks with a Cargo SBOM. Its job ceiling is

@@ -12,7 +12,7 @@ from process_limits import run_bounded
 from custody import private, read_private, replace_private, durable_unlink, read_owned_regular_bounded
 
 ROOT = Path(__file__).resolve().parent.parent
-INSTANCE = os.environ.get('RUNASMIDJA_STACK_ID', 'v022-wolfi-valkey')
+INSTANCE = os.environ.get('RUNASMIDJA_STACK_ID', 'v023-wolfi-bao')
 if not re.fullmatch(r'[a-z0-9][a-z0-9-]{0,31}', INSTANCE):
     raise RuntimeError('Invalid test stack identifier')
 STATE = ROOT / '.local/stacks' / INSTANCE

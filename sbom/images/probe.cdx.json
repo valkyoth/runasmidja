@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:0eefac28-3b2a-4aa1-8ebd-797036687bd4",
+  "serialNumber": "urn:uuid:e119e366-649f-4d1d-ab27-abcc06013a22",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T12:41:44+00:00",
+    "timestamp": "2026-10-04T13:57:06+00:00",
     "tools": {
       "components": [
         {
@@ -20,13 +20,13 @@
       ]
     },
     "component": {
-      "bom-ref": "0e60cf55-f16f-48fe-a991-9fdd94c94c69",
+      "bom-ref": "a9734298-e073-4f9d-a57a-ec13915969fa",
       "type": "container",
-      "name": "runasmidja/probe@sha256:829c7cc29c34ffaa1fdcf2cbad07bf070e5e5f938f27bbd5a0d86a510b26d5ce",
+      "name": "runasmidja/probe@sha256:e2f90da4b9afd1f5f90a3a3e3b2c751930fb211707cc7f6d4177b0ea5a3c0825",
       "properties": [
         {
           "name": "aquasecurity:trivy:DiffID",
-          "value": "sha256:24637644fce5d3defcb410a38e37a1b8e1699ae228f34f6320414024606f68bc"
+          "value": "sha256:77f6cc82d299e2a97f8131399ac14e14b912aec191d2b8de8c0ee7ba5d5c0c8e"
         },
         {
           "name": "aquasecurity:trivy:DiffID",
@@ -34,7 +34,7 @@
         },
         {
           "name": "aquasecurity:trivy:ImageID",
-          "value": "sha256:829c7cc29c34ffaa1fdcf2cbad07bf070e5e5f938f27bbd5a0d86a510b26d5ce"
+          "value": "sha256:e2f90da4b9afd1f5f90a3a3e3b2c751930fb211707cc7f6d4177b0ea5a3c0825"
         },
         {
           "name": "aquasecurity:trivy:Labels:io.buildah.version",
@@ -53,7 +53,7 @@
   },
   "components": [
     {
-      "bom-ref": "6c26c26e-9c63-418d-9b06-846fb7f09f69",
+      "bom-ref": "8e80eb6e-5c8b-4df7-a16d-09eff79f71f8",
       "type": "operating-system",
       "name": "wolfi",
       "version": "20230201",
@@ -223,7 +223,7 @@
     {
       "type": "application",
       "name": "runasmidja-server",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "bom-ref": "runasmidja-static-probe",
       "hashes": [
         {
@@ -248,15 +248,15 @@
   ],
   "dependencies": [
     {
-      "ref": "0e60cf55-f16f-48fe-a991-9fdd94c94c69",
+      "ref": "8e80eb6e-5c8b-4df7-a16d-09eff79f71f8",
       "dependsOn": [
-        "6c26c26e-9c63-418d-9b06-846fb7f09f69"
+        "pkg:apk/wolfi/tzdata@2026e-r0?arch=x86_64&distro=20230201"
       ]
     },
     {
-      "ref": "6c26c26e-9c63-418d-9b06-846fb7f09f69",
+      "ref": "a9734298-e073-4f9d-a57a-ec13915969fa",
       "dependsOn": [
-        "pkg:apk/wolfi/tzdata@2026e-r0?arch=x86_64&distro=20230201"
+        "8e80eb6e-5c8b-4df7-a16d-09eff79f71f8"
       ]
     },
     {

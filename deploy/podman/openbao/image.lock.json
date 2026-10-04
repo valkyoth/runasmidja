@@ -1,0 +1,20 @@
+{
+  "version": "2.7.1",
+  "binary_sha256": "535cf827b13753046757f5ec8b97ae0ef21f10a40ffe673f0d5e75616170f5ea",
+  "binary_path": "/usr/bin/bao",
+  "timestamp": 1791072000,
+  "upstream": {
+    "image": "ghcr.io/openbao/openbao@sha256:a36ea8c27f0dcff5757664ad080425f96d3b6b2f33db3e76c4e2d3112fb17005",
+    "method": "signed-index",
+    "index": "ghcr.io/openbao/openbao@sha256:6d2b93856e3fcf7b18ad855a0b51eaba474dc8b79cf554379ea32034797d2acf",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "identity": "https://github.com/openbao/openbao/.github/workflows/release-images.yml@refs/tags/v2.7.1"
+  },
+  "base": {
+    "image": "cgr.dev/chainguard/wolfi-base@sha256:fbcaceb3a1eedec23eb80df9328f9be4a438546836ec15a67df39a104096d44a",
+    "method": "signed-index",
+    "index": "cgr.dev/chainguard/wolfi-base@sha256:9c2092b053779e14c82fb50f77b37bcc38b7d2c83972352d5813280f9d035b03",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "identity": "https://github.com/chainguard-images/images/.github/workflows/release.yaml@refs/heads/main"
+  }
+}

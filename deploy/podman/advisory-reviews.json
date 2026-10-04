@@ -10,5 +10,17 @@
     "reason": "Exact bundled binary contains no affected golang.org/x/crypto/openpgp package symbols; maintained ProtonMail fork symbols are present.",
     "evidence": "security/advisories/openbao-GO-2026-5932.json",
     "evidence_sha256": "3826f900e3d44299e74c96eefa71783ed166d0a339bbee13fa4eca5be60c1dbf"
+  },
+  {
+    "id": "GO-2026-5932",
+    "image": "sha256:2e5754ec7ed9e817bc4fd343c87e4748267b3848efb7eb76c0d3507a0933f0e4",
+    "module": "golang.org/x/crypto",
+    "version": "v0.56.0",
+    "status": "not_affected",
+    "reviewed_on": "2026-10-04",
+    "expires_on": "2026-11-02",
+    "reason": "Exact copied executable is byte-identical to the signed upstream binary with retained complete affected-package absence evidence; only this built image is reviewed.",
+    "evidence": "security/advisories/openbao-wolfi-GO-2026-5932.json",
+    "evidence_sha256": "3098bcf7e457183ac619b0ac3904caf859976df4d8f1d9db12f38b9f3489ca36"
   }
 ]

@@ -131,6 +131,7 @@ class ImageTests(unittest.TestCase):
                 with self.assertRaises(RuntimeError):
                     gate.scan('postgres', IMAGES['postgres'], 'trivy')
 
+    @patch.dict('os.environ', {'RUNASMIDJA_OPENBAO_PROFILE': 'official'})
     def test_preserves_all_three_sboms_then_rejects_any_unclean_image(self):
         with tempfile.TemporaryDirectory() as folder, patch.object(gate, 'EVIDENCE', Path(folder)), \
              patch.object(gate, 'tool'), patch.object(gate, 'provenance'), \
