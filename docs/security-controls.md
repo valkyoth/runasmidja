@@ -7,7 +7,7 @@
 | Code size | Implemented | scripts/check_repository.py, rejection tests, hard 500-line limit |
 | Integer overflow | Implemented | Release overflow-checks, abort policy |
 | Dependency/source/license policy | Configured | deny.toml, Cargo.lock, audit gate |
-| CI action provenance | Live SHA enforcement enabled; retest required | Platform `sha_pinning_required=true` verified 2026-10-04; read-only live policy checker; full commit pins and weekly Actions Dependabot; reusable workflow coverage remains repository checks/review |
+| CI action provenance | Live SHA enforcement enabled; maintainer accepted v0.3.0 | Platform `sha_pinning_required=true` verified 2026-10-04; read-only live policy checker; full commit pins and weekly Actions Dependabot; reusable workflow coverage remains repository checks/review |
 | Tool provenance/freshness | Configured | Exact archive SHA-256 and versions; live freshness workflow |
 | Verified tool compilation | Implemented; maintainer retest accepted | CI compiles exact verified archive offline; corrupt/offline/traversal regressions |
 | Wolfi static probe qualification | Implemented; maintainer accepted v0.2.1 | Signed base/platform, exact archive/executable binding, live kernel limits/capabilities, owned cleanup; native/scratch regressions |
@@ -25,7 +25,7 @@
 | Search optionality and live authorization | Planned | Early SearchService, repository/Meilisearch profiles, metadata allowlist, outbox and current-authority rechecks; see [design](SEARCH_DESIGN.md) |
 | PostgreSQL/Valkey test controls | Implemented harness | Runtime DB role, cache ACL/prefix/TTL/memory, loopback ports |
 | Release metadata readiness | Configured; limited | Report shape/digest/lineage/SBOM-presence only; no assessor/artifact authentication; trusted review required |
-| Workflow reference admission | Implemented candidate; pentest RETEST REQUIRED | Bounded structural YAML for both suffixes, remote commits, container digests and reviewed recursive local references; [policy and limits](WORKFLOW_POLICY.md) |
+| Workflow reference admission | Implemented candidate; maintainer pentest PASS | Bounded structural YAML for both suffixes, remote commits, container digests and reviewed recursive local references; [policy and limits](WORKFLOW_POLICY.md) |
 | Portable graph enforcement hardening | Required; v0.4.0 | no_std comment spoof and dependency/feature graph limits retain their [owners](gap-reconciliation-2026-10-03.md) |
 | Fixture ownership/drift | Minimum ownership implemented; full drift pending v0.5 | Project/service/instance labels before network/volume/container reuse and stop; pinned image ID checked. Full fingerprints and inspect/mutate races unqualified |
 | Wolfi Valkey fixture | Implemented; v0.2.2 maintainer accepted | Exact version/base, auth/ACL/key denials, real eviction, kernel restrictions, outage/restart/nonpersistence and preserved-instance-only official rollback; nonzero host/container UID and selected-engine rootless enforcement |

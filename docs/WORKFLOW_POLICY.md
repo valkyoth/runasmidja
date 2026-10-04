@@ -1,6 +1,6 @@
 # Workflow reference admission
 
-Version owner: v0.3.0; candidate, maintainer pentest RETEST REQUIRED.
+Version owner: v0.3.0; candidate, maintainer pentest PASS; GitHub/tag pending.
 
 ## Checked references
 

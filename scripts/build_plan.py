@@ -184,7 +184,7 @@ def build():
         f'Actual additional Runasmidja passes start at v{continuation}; do not reuse historical reference versions.')
     plans = DOCS / 'releases'; plans.mkdir(exist_ok=True)
     data_dir = DOCS / 'roadmap'; data_dir.mkdir(exist_ok=True)
-    index = ['# Runasmidja Release Plan To 1.0.0', '', 'Status: roadmap contract; v0.1.0/v0.2.0/v0.2.1/v0.2.2/v0.2.3 tagged; v0.3.0 workflow-reference candidate; maintainer pentest RETEST REQUIRED.',
+    index = ['# Runasmidja Release Plan To 1.0.0', '', 'Status: roadmap contract; v0.1.0/v0.2.0/v0.2.1/v0.2.2/v0.2.3 tagged; v0.3.0 workflow-reference candidate; maintainer pentest PASS; GitHub/tag pending.',
              'The authorized Wolfi/PostgreSQL fixture passes scans and real qualification; see the',
              '[assessment](../security/pentest/v0.2.0.md).', '',
         f'{len(rows)} small pre-1.0 passes, starting at 0.1.0 and ending at {rows[-1]["version"]}. Add further minors whenever inventory, provider work or qualification needs a smaller pass. Version 1.0.0 is the first serious production release.', '',

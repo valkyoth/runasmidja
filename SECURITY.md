@@ -4,8 +4,8 @@ Runasmidja is security-sensitive data-transformation software. Inputs, imported
 recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins,
 workers and supply-chain changes require threat review and executable tests.
 The foundations through v0.2.3 are signed and tagged with accepted maintainer
-pentests and green GitHub checks. The v0.3.0 workflow-reference candidate awaits
-maintainer retest (**RETEST REQUIRED**). Automated tests do not attest pentest PASS.
+pentests and green GitHub checks. The v0.3.0 workflow-reference candidate has
+maintainer pentest **PASS**; final release commits await GitHub and tagging. Automated tests do not attest pentest PASS.
 None is a production service. See the [candidate assessment](security/pentest/v0.3.0.md).
 
 Runasmidja targets a normal public website. Review findings against its actual

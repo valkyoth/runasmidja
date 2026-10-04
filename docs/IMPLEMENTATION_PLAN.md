@@ -1,6 +1,6 @@
 # Runasmidja Implementation Plan
 
-Status: planning contract; v0.1.0/v0.2.0/v0.2.1/v0.2.2/v0.2.3 tagged; v0.3.0 workflow-reference candidate; maintainer pentest RETEST REQUIRED.
+Status: planning contract; v0.1.0/v0.2.0/v0.2.1/v0.2.2/v0.2.3 tagged; v0.3.0 workflow-reference candidate; maintainer pentest PASS; GitHub/tag pending.
 The authorized Wolfi/PostgreSQL fixture passes scans and real qualification; see the
 [assessment](../security/pentest/v0.2.0.md).
 

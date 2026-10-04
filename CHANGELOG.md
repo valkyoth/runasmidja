@@ -1,7 +1,8 @@
 # Changelog
 
-## 0.3.0 — candidate; pentest RETEST REQUIRED
+## 0.3.0 — pentest PASS; final GitHub/tag pending
 
+- Maintainer accepted `fdaa486`: SAST-001 fixed with no new findings.
 - Remediate Low SAST-001: enable and verify platform action SHA enforcement,
   validate immediately after bootstrap and test live-policy failure/ordering cases.
 - Parse workflow YAML structurally for both suffixes; validate static full-commit
