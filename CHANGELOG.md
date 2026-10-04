@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Reject placeholder, linked and oversized public inventories; validate minimum
+  CycloneDX structure and explicit historical service identities.
+
 - Bind public SBOM export destinations to services and independently check
   canonical inventory identities, including concurrent and manual-swap regressions.
 

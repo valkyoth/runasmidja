@@ -11,7 +11,7 @@ from sbom_privacy import PUBLIC_SERVICES, check_sboms
 
 
 def record(service, image='image'):
-    return {'bomFormat': 'CycloneDX', 'components': [{'name': 'fixture'}],
+    return {'bomFormat': 'CycloneDX', 'specVersion': '1.7', 'components': [{'type': 'library', 'name': 'fixture'}],
             'metadata': {'component': {'name': f'runasmidja/{service}@{image}'}}}
 
 
@@ -84,7 +84,7 @@ class PublicEvidenceTests(unittest.TestCase):
         path.write_text(json.dumps(record('postgres')))
         self.assertEqual(check_sboms(self.root), [])
         # Historical inventories retain their own service identity, not a fabricated suffix identity.
-        (self.images/'postgres-official-blocked-2026-10-03.cdx.json').write_text(json.dumps(record('postgres')))
+        (self.images/'postgres-official-blocked-2026-10-03.cdx.json').write_text(json.dumps(dict(record('postgres'), metadata={'component': {'name': 'docker.io/library/postgres@sha256:original'}})))
         self.assertEqual(check_sboms(self.root), [])
 
     def test_concurrent_exports_cannot_cross_service_destinations(self):

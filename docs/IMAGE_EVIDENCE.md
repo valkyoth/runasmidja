@@ -85,3 +85,27 @@ OpenBao `validate_image()` validates only and returns no archive path. Use its
 `artifact()` context manager whenever archive bytes are consumed; it holds the
 shared artifact lock through scanning. Evidence snapshots are separate immutable
 files and may be referred to after their publication transaction ends.
+
+
+## Repository inventory validation
+
+All public JSON is read once through a no-follow, nonblocking descriptor. It must
+be a regular single-link file no larger than 16 MiB; reads also enforce the limit
+after `fstat` to reject growth. Public Git-readable permissions are allowed.
+Rejected symlinks, FIFOs, directories or oversized files are never reopened by
+the privacy check. Invalid encoding, malformed/deeply nested JSON fail closed.
+
+All `.cdx.json` files, including Cargo and historical inventories, must declare
+CycloneDX and a supported `specVersion` (currently 1.5 and 1.7, matching the
+reviewed producers), with a nonempty component list. Each component needs a
+nonempty string name and type. New producer formats require a reviewed update.
+This is a bounded minimum evidence profile, not full CycloneDX schema validation,
+inventory completeness proof, signature verification or release authorization.
+
+Canonical service bindings remain required. Historical OpenBao/Valkey names map
+to their original services; the blocked official PostgreSQL report retains its
+original `docker.io/library/postgres@sha256:` identity. These three filenames have
+explicit bindings in the validator. Unknown image `.cdx.json` filenames fail
+until reviewed into that mapping, so manual cross-service historical swaps cannot
+silently become accepted evidence. Historical records remain historical; passing
+these checks never admits a blocked image or makes an old scan current.

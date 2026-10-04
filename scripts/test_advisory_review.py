@@ -64,7 +64,7 @@ class PrivacyTests(unittest.TestCase):
             root=Path(folder);(root/'sbom/images').mkdir(parents=True);path=root/'sbom/images/fixture.json'
             for service in PUBLIC_SERVICES:
                 (root/'sbom/images'/f'{service}.cdx.json').write_text(json.dumps(
-                    {'metadata':{'component':{'name':f'runasmidja/{service}@image'}}}))
+                    {'bomFormat': 'CycloneDX', 'specVersion': '1.7', 'components': [{'type': 'library', 'name': 'fixture'}], 'metadata':{'component':{'name':f'runasmidja/{service}@image'}}}))
             for value in ('/home/person/project','/Users/person/project',r'C:\Work\project',str(root)):
                 path.write_text(json.dumps({'metadata':{'properties':[{'value':value}]}}))
                 self.assertTrue(check_sboms(root))

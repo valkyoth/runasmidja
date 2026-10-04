@@ -12,7 +12,7 @@ class RepositoryTests(unittest.TestCase):
         images.mkdir(parents=True)
         for service in PUBLIC_SERVICES:
             (images / f'{service}.cdx.json').write_text(json.dumps(
-                {'metadata': {'component': {'name': f'runasmidja/{service}@image'}}}))
+                {'bomFormat': 'CycloneDX', 'specVersion': '1.7', 'components': [{'type': 'library', 'name': 'fixture'}], 'metadata': {'component': {'name': f'runasmidja/{service}@image'}}}))
 
     def test_container_recipes_have_the_same_code_limit(self):
         with tempfile.TemporaryDirectory() as folder:
