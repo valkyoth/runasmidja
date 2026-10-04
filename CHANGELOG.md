@@ -2,6 +2,9 @@
 
 ## 0.2.3 — remediated candidate; pentest RETEST REQUIRED
 
+- Detect embedded relative traversal at punctuation/token boundaries, retaining
+  the strict source-relative module exception and ordinary prose controls.
+
 - Reject ambiguous dot-segment paths while preserving simple scanner-relative
   module identifiers, dotted filenames and ordinary advisory prose.
 

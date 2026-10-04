@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:a646ae78-976b-499d-a8de-47d4d76dadfc",
+  "serialNumber": "urn:uuid:5afbf8e4-4ce4-46d7-b88a-134618fdc2c4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-04T18:41:32+00:00",
+    "timestamp": "2026-10-04T18:52:54+00:00",
     "tools": {
       "components": [
         {
@@ -122,7 +122,7 @@
   },
   "components": [
     {
-      "bom-ref": "5e8fd8a8-bd91-4256-b5d7-75e4e6251a17",
+      "bom-ref": "85027a3c-06e4-406a-ae29-6be7e261bc3e",
       "type": "operating-system",
       "name": "wolfi",
       "version": "20230201",
@@ -1074,7 +1074,7 @@
   ],
   "dependencies": [
     {
-      "ref": "5e8fd8a8-bd91-4256-b5d7-75e4e6251a17",
+      "ref": "85027a3c-06e4-406a-ae29-6be7e261bc3e",
       "dependsOn": [
         "pkg:apk/wolfi/valkey-9.1-cli@9.1.2-r2?arch=x86_64&distro=20230201",
         "pkg:apk/wolfi/valkey-9.1@9.1.2-r2?arch=x86_64&distro=20230201"
@@ -1223,7 +1223,7 @@
     {
       "ref": "pkg:oci/valkey@sha256:46daab244007fcd928009a4202f5ec090119441f90b350c3430c5d2982d59818?arch=amd64&repository_url=cgr.dev%2Fchainguard%2Fvalkey",
       "dependsOn": [
-        "5e8fd8a8-bd91-4256-b5d7-75e4e6251a17"
+        "85027a3c-06e4-406a-ae29-6be7e261bc3e"
       ]
     }
   ],

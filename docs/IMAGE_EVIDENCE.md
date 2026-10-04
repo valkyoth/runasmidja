@@ -212,3 +212,11 @@ Dotted filenames, canonical HTTPS URLs and sentence punctuation remain allowed.
 No retained scanner inventory or historical advisory text is rewritten to satisfy
 the check. This is still the documented known-path evidence profile, not universal
 path canonicalization or a proof that arbitrary relative names are nonsensitive.
+
+
+Embedded relative traversal uses a path-token boundary rather than a list of
+prose delimiters: punctuation that is not a word or `@`, `+`, `.`, `-` path-token
+character can precede `./` or `../`. Parentheses, brackets, braces, commas,
+semicolons and pipes therefore cannot hide a relative traversal, including after
+backslash normalization. The strict whole-string relative-module exception remains;
+ordinary prose, dotted filenames and valid module identifiers still pass.

@@ -9,7 +9,7 @@ SHARE_URI = re.compile(
     r'(?:smb|cifs|nfs|afp|sshfs)://[^/\s]+(?:/|$))'
 )
 FILE_URI = re.compile(r'(?i)(?<![A-Za-z0-9+.-])file://')
-DOT_SEGMENT = re.compile(r'''(^|/)\.{1,2}(?=/|$)|(?<=[\s=:"'])\.{1,2}/''')
+DOT_SEGMENT = re.compile(r'''(^|/)\.{1,2}(?=/|$)|(?<![\w@+.-])\.{1,2}/''')
 RELATIVE_MODULE = re.compile(r'\./[A-Za-z0-9_@+.-]+(?:/[A-Za-z0-9_@+.-]+)*')
 
 
