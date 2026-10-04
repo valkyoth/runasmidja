@@ -23,7 +23,7 @@ later qualification. Public Rust builds remain secret-free.
 The submitted v0.2 review adds actual verified-archive/offline Cargo install
 regressions, adversarial child floods/pipe deadlock/timeouts, safe bounded audit
 reads/retention, fsync faults and exact-image signature/inventory/scan denials.
-`qualification_bounds.py` scans the exact Valkey image before its isolated real
+`qualification_bounds.py` verifies and scans the exact signed Wolfi base image before its isolated real
 Podman ENOSPC/log-rotation/capture/reuse test and cleans up only its captured
 owned container. That test does not qualify the whole three-service stack.
 The authorized Wolfi/PostgreSQL source build passes scans and full remediated

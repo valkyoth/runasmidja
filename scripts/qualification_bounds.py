@@ -8,9 +8,9 @@ from stack_common import podman
 
 def qualify():
     policy = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())
-    image = policy['valkey']['image']
-    provenance('valkey', image, policy, tool('cosign'))
-    clean, _count = scan('valkey', image, tool('trivy'))
+    image = policy['wolfi-base']['image']
+    provenance('wolfi-base', image, policy, tool('cosign'))
+    clean, _count = scan('wolfi-base', image, tool('trivy'))
     if not clean:
         raise RuntimeError('Bounds test image not admitted')
     identity = str(uuid.uuid4())

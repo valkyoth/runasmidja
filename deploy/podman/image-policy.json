@@ -19,12 +19,11 @@
     "reason": "Maintainer authorized own Wolfi/PostgreSQL 19beta4 image; original image retained only as blocked historical evidence."
   },
   "valkey": {
-    "image": "docker.io/valkey/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d",
-    "method": "maintainer-exception",
-    "approved_by": "project maintainer",
-    "approved_on": "2026-10-03",
-    "scope": "disposable Linux/amd64 fixture only",
-    "reason": "Exact official image has no Cosign signature; maintainer explicitly accepted this provenance limitation. Scans/SBOM remain mandatory."
+    "image": "cgr.dev/chainguard/valkey@sha256:46daab244007fcd928009a4202f5ec090119441f90b350c3430c5d2982d59818",
+    "method": "signed-index",
+    "index": "cgr.dev/chainguard/valkey@sha256:0d4a661641c6bffe0f2a95cd6adb5dff7b6884dbc3645f59d304961ad99bb021",
+    "identity": "https://github.com/chainguard-images/images/.github/workflows/release.yaml@refs/heads/main",
+    "issuer": "https://token.actions.githubusercontent.com"
   },
   "wolfi-base": {
     "image": "cgr.dev/chainguard/wolfi-base@sha256:fbcaceb3a1eedec23eb80df9328f9be4a438546836ec15a67df39a104096d44a",
@@ -35,6 +34,14 @@
   },
   "historical_postgres": {
     "image": "docker.io/library/postgres@sha256:0f06bb68e8704361a8972fd9916a3bb9e72ff43f025d22a05b1750c6f6db418b",
+    "method": "maintainer-exception",
+    "approved_by": "project maintainer",
+    "approved_on": "2026-10-03",
+    "scope": "disposable Linux/amd64 fixture only",
+    "reason": "Exact official image has no Cosign signature; maintainer explicitly accepted this provenance limitation. Scans/SBOM remain mandatory."
+  },
+  "valkey-official": {
+    "image": "docker.io/valkey/valkey@sha256:3b83b0b6a598bb390c8186a408a69949772f439548a81c5ea0ab7ccf102c248d",
     "method": "maintainer-exception",
     "approved_by": "project maintainer",
     "approved_on": "2026-10-03",

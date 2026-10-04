@@ -3,11 +3,11 @@
 Runasmidja is security-sensitive data-transformation software. Inputs, imported
 recipes, crypto, rendering, secrets, caching, database access, HTTP/TLS, plugins,
 workers and supply-chain changes require threat review and executable tests.
-The v0.1.0 and v0.2.0 foundations are signed and tagged with accepted maintainer
-pentests and green GitHub checks. The v0.2.1 Wolfi health-probe packaging candidate
-has maintainer acceptance on 2026-10-04; GitHub checks and tagging remain pending.
+The v0.1.0, v0.2.0 and v0.2.1 foundations are signed and tagged with accepted
+maintainer pentests and green GitHub checks. The v0.2.2 Wolfi Valkey fixture
+candidate awaits maintainer pentesting; automated tests cannot attest PASS.
 None is a production service. See the
-[candidate assessment](security/pentest/v0.2.1.md).
+[candidate assessment](security/pentest/v0.2.2.md).
 
 Runasmidja targets a normal public website. Review findings against its actual
 supported behavior, exploitability and trust boundaries, and choose controls

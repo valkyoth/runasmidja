@@ -58,7 +58,7 @@ def build(state):
         raise RuntimeError('Probe archive changed after scan')
     report = json.loads((EVIDENCE / 'probe.cdx.json').read_text())
     report['components'].append({'type': 'application', 'name': 'runasmidja-server',
-        'version': '0.2.1', 'bom-ref': 'runasmidja-static-probe',
+        'version': '0.2.2', 'bom-ref': 'runasmidja-static-probe',
         'hashes': [{'alg': 'SHA-256', 'content': digest}],
         'licenses': [{'license': {'id': 'EUPL-1.2'}}],
         'properties': [{'name': 'runasmidja:inventory-origin',
@@ -73,6 +73,6 @@ def evidence(image, binary, archive):
     from check_release import source_digest
     record = {'schema': 1, 'profile': 'linux/amd64 Wolfi development probe',
         'image': image, 'binary_sha256': binary, 'archive_sha256': archive,
-        'source_sha256': source_digest(), 'version': '0.2.1',
+        'source_sha256': source_digest(), 'version': '0.2.2',
         'trust': 'local build/test custody; not distributed publisher signing'}
     replace_private(EVIDENCE / 'probe-qualification.json', json.dumps(record, indent=2) + '\n')

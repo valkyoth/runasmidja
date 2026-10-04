@@ -45,7 +45,7 @@ def provenance(service, image, policy, cosign):
                 ('approved_by', 'approved_on', 'reason', 'scope')):
             raise RuntimeError('Unsigned image exception incomplete or out of scope')
         return 'maintainer-exception'
-    if service not in ('openbao', 'wolfi-base', 'probe-base') or rule.get('method') != 'signed-index':
+    if service not in ('openbao', 'wolfi-base', 'probe-base', 'valkey') or rule.get('method') != 'signed-index':
         raise RuntimeError('Unsupported image provenance policy')
     result = run_bounded(cosign, 'verify', '--certificate-identity', rule['identity'],
         '--certificate-oidc-issuer', rule['issuer'], rule['index'], timeout=180)
@@ -127,6 +127,8 @@ def verify_images(images):
     if set(images) != {'openbao', 'postgres', 'valkey'}:
         raise RuntimeError('Fixture image set differs from reviewed policy')
     policy = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())
+    from valkey_image import admission_policy
+    policy = admission_policy(images, policy)
     EVIDENCE.mkdir(parents=True, mode=0o700, exist_ok=True)
     scanner, cosign = tool('trivy'), tool('cosign')
     blocked = []

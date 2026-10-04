@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-03",
+  "checked_at": "2026-10-04",
   "github_releases": {
     "aquasecurity/trivy": "v0.75.0",
     "sigstore/cosign": "v3.1.3",

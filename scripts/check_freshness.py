@@ -67,6 +67,9 @@ def main():
     probe = json.loads((ROOT / 'deploy/podman/probe/image.lock.json').read_text())['probe-base']['index']
     compare('Wolfi static probe index', probe.split('@')[1], lambda: run_bounded('skopeo', 'inspect', '--no-tags',
         '--format', '{{.Digest}}', 'docker://cgr.dev/chainguard/static:latest').stdout.strip())
+    valkey = json.loads((ROOT / 'deploy/podman/image-policy.json').read_text())['valkey']['index']
+    compare('Wolfi Valkey index', valkey.split('@')[1], lambda: run_bounded('skopeo', 'inspect', '--no-tags',
+        '--format', '{{.Digest}}', 'docker://cgr.dev/chainguard/valkey:latest').stdout.strip())
     for repo, version in metadata.get('optional_github_releases', {}).items():
         compare(repo + ' (optional, not admitted)', version, lambda repo=repo: json.loads(fetch(f'https://api.github.com/repos/{repo}/releases/latest'))['tag_name'])
     workspace = json.loads(__import__('subprocess').check_output(['cargo', 'metadata', '--locked', '--offline', '--format-version', '1'], cwd=ROOT))

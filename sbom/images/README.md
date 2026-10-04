@@ -15,7 +15,8 @@ The database was updated at 2026-10-03T14:28:08Z and downloaded at 17:22:49Z.
 | --- | --- | --- | --- |
 | OpenBao | 322 | 1 UNKNOWN, 0 HIGH/CRITICAL | Signed index; retained exact-image not-affected review, expires 2026-11-02 |
 | Wolfi/PostgreSQL | 24 | 0 | Authorized public-source build; local archive/config/layer binding |
-| Valkey | 24 | 0 | Exact unsigned-image exception approved by maintainer |
+| Wolfi Valkey | 20 | 0 | Signed Chainguard index binds exact platform leaf |
+| Official Valkey (rollback) | 24 | 0 | Exact unsigned-image exception approved by maintainer |
 | Wolfi base | 20 | 0 | Signed Chainguard index binds exact platform leaf |
 | Original official PostgreSQL (historical) | 151 | 42 HIGH/CRITICAL | BLOCKED; not executed by current fixture |
 
@@ -43,13 +44,13 @@ PostgreSQL provenance exception did not waive its findings.
 
 Run `python3 scripts/install_image_tools.py`, then `python3 scripts/image_gate.py`
 to regenerate reports in ignored `.local/image-evidence`. Startup always rescans.
-CI retains reports as a 30-day artifact even when qualification fails. Committed
+Heavy qualification and evidence retention are local, not GitHub CI. Committed
 snapshots are evidence for these specific images and scanner database, not future
 rebuilds or advisory databases.
 Public root component names are stable image identities; generation and
 repository checks reject private home/Windows/workspace paths elsewhere.
 
-## v0.2.1 probe inventories
+## Probe inventories (available since v0.2.1)
 
 `probe-base.cdx.json` records the signed Wolfi static base; `probe.cdx.json`
 records the locally assembled exact scanned image and the first-party probe's
@@ -58,3 +59,8 @@ from scanner evidence; see each component's licenses. The scanner does not
 recover Rust dependency metadata from our stripped executable: the Cargo SBOM
 and advisory audit remain required separate evidence. Qualification runs locally,
 not in GitHub container CI. No registry image is published by generating SBOMs.
+
+`valkey.cdx.json` inventories the v0.2.2 signed Wolfi default.
+`valkey-official-v0.2.1.cdx.json` preserves the exact rollback image inventory.
+The rollback exception does not apply to the new image. See the
+[Valkey provenance and operating profile](../../deploy/podman/valkey/README.md).

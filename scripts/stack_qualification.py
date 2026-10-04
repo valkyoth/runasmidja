@@ -199,6 +199,9 @@ def qualify():
     smoke()
     leakage(values, bootstrap_root)
     collisions()
+    from qualification_valkey import qualify as qualify_valkey
+    qualify_valkey()
+    leakage(values, bootstrap_root)
     from qualification_postgres import qualify as qualify_postgres
     qualify_postgres()
     print('Real outage, root-revoked restart, version reuse and persistent PostgreSQL data: PASS')

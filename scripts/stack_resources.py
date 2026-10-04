@@ -62,12 +62,13 @@ def start_container(service, image, args):
         if not info['State']['Running']:
             podman('start', name)
         return
+    from valkey_image import arguments
+    command = arguments(image) if service == 'valkey' else ['server', '-config=/config/bao.hcl'] if service == 'openbao' else []
     podman('run', '-d', '--name', name, *label_args(service),
         '--log-driver', 'k8s-file', '--log-opt', 'max-size=1048576',
         '--network', NETWORK, '--memory', '512m', '--cpus', '1', '--pids-limit', '128',
         '--security-opt', 'no-new-privileges', *args, image,
-        *({'openbao': ['server', '-config=/config/bao.hcl'],
-           'valkey': ['valkey-server', '/config/valkey.conf']}.get(service, [])))
+        *command)
 
 
 def stop():

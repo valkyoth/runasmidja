@@ -81,8 +81,9 @@ class ImageTests(unittest.TestCase):
                 self.assertEqual(json.loads((Path(folder) / 'openbao.cdx.json').read_text())['vulnerabilities'], [finding])
 
     def test_exceptions_are_exact_digest_platform_and_service_scoped(self):
+        legacy = {**POLICY, 'valkey': POLICY['valkey-official']}
         for service in ('valkey',):
-            self.assertEqual(gate.provenance(service, IMAGES[service], POLICY, 'cosign'), 'maintainer-exception')
+            self.assertEqual(gate.provenance(service, legacy[service]['image'], legacy, 'cosign'), 'maintainer-exception')
             for image in ('other@sha256:' + '0' * 64, IMAGES[service] + 'changed'):
                 with self.assertRaises(RuntimeError):
                     gate.provenance(service, image, POLICY, 'cosign')

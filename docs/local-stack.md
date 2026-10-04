@@ -45,13 +45,14 @@ config/layers; it is trusted-host custody, not a portable signed release.
 APK uses the base's bundled repository signing keys. See the
 [recipe and supported profile](../deploy/podman/postgres/README.md).
 The maintainer accepted provenance exceptions for the original exact unsigned
-PostgreSQL/Valkey digests; only Valkey still uses this active exception. They
+PostgreSQL/Valkey digests; only the explicit official Valkey rollback profile
+still uses its exception. The default Wolfi Valkey requires a signed index. They
 do not waive CVEs and must be reviewed again on digest changes. Startup always
 scans, with unfixed findings included and no ignore/VEX filter. Completed scans retain local per-image SBOMs even when findings block admission.
 An operational scanner failure cannot produce fresh valid evidence.
 
-The v0.2 fixture uses `.local/stacks/v02-admission-ready` and
-`runasmidja-v02-admission-ready-*` containers,
+The v0.2.2 fixture uses `.local/stacks/v022-wolfi-valkey` and
+`runasmidja-v022-wolfi-valkey-*` containers,
 network and PostgreSQL volume. `RUNASMIDJA_STACK_ID` accepts a bounded lowercase
 identifier for a separate test profile; ports stay fixed, so run only one profile
 at a time. Every mutation verifies project/service/instance ownership labels.
@@ -179,10 +180,36 @@ PostgreSQL source checksum and current Wolfi base index; drift requires review,
 not an automatic pin update. The optional Meilisearch fixture and
 OpenBao Rust SDK are not admitted by this pass.
 
-## Optional Wolfi health probe (v0.2.1 candidate)
+## Optional Wolfi health probe (available since v0.2.1)
 
 Run `python3 scripts/qualify_probe_wolfi.py` locally. It admits the exact signed
 static base, builds/scans the COPY-only image and tests the bound executable
 with actual kernel resource/capability checks and an ephemeral loopback port.
 No vault/database/cache data is touched. Native/scratch remain supported
 regression profiles; see the [recipe](../deploy/podman/probe/README.md).
+
+## Valkey profile rollback (v0.2.2)
+
+Default `RUNASMIDJA_VALKEY_PROFILE=wolfi` admits the exact public Chainguard
+Valkey digest. `official` selects only the previously reviewed official digest;
+unknown profiles fail. There is no arbitrary image override or transferred
+unsigned exception. Both profiles run fresh scans before service startup.
+See [identity, inventory and access](../deploy/podman/valkey/README.md).
+
+The new fixture has separate custody/data; the previous fixture remains intact.
+Do not copy vault credentials, reset volumes or run both profiles concurrently:
+ports are shared. To qualify the preserved previous fixture, then return:
+
+```sh
+python3 scripts/stack.py stop
+RUNASMIDJA_STACK_ID=v02-admission-ready RUNASMIDJA_VALKEY_PROFILE=official python3 scripts/stack_qualification.py
+RUNASMIDJA_STACK_ID=v02-admission-ready RUNASMIDJA_VALKEY_PROFILE=official python3 scripts/stack.py stop
+python3 scripts/stack_qualification.py
+```
+
+Qualification validates the actual version, nonroot/read-only configuration,
+kernel memory/CPU/PID/capability restrictions, wrong-auth/command/key denials,
+real bounded maxmemory eviction, outage and restart with cache nonpersistence
+and unchanged OpenBao credential versions. It grants no administrative ACL
+commands. Actual TTL/countdown remains v0.7. This is a disposable local fixture,
+not production cache migration, TLS, high availability or a website feature.

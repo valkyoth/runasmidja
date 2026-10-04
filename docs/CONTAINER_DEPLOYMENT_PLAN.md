@@ -1,9 +1,9 @@
 # Container bases and Fluxheim qualification
 
 Status: required Fluxheim deployment coverage; proposed compatible Wolfi image
-follow-ups after the tagged v0.2.0. The maintainer authorized v0.2.1 on
-2026-10-04; its [bounded scope](releases/v0.2.1-scope.md) is locally qualified with maintainer acceptance; GitHub/tag remain pending.
-v0.2.2/v0.2.3 remain proposed. This plan itself adds no shipped behavior. The 386 minor workstreams and source mappings remain.
+follow-ups after the tagged v0.2.0. v0.2.1 is signed and tagged. The current
+authorized patch is [v0.2.2 Wolfi Valkey](releases/v0.2.2-scope.md), awaiting
+maintainer pentest; v0.2.3 remains proposed. This plan itself adds no shipped behavior. The 386 minor workstreams and source mappings remain.
 
 ## Decision and maintenance scope
 
@@ -18,8 +18,10 @@ another full source build. Our PostgreSQL 19beta4 build covers a concrete curren
 gap. A custom service build needs its own source/toolchain/dependency provenance,
 ABI/TLS/plugin compatibility, license inventory and recurring rebuild owner.
 Do not blindly copy musl-linked binaries into a glibc runtime. Runtime images
-exclude build tools and unnecessary packages; a shell/package manager is retained
-only when the admitted fixture actually needs it.
+exclude build tools and unnecessary packages where practical. For v0.2.2, the
+public maintained Valkey starter retains its upstream shell/shared libraries:
+we accept and scan that inventory instead of maintaining a hand-stripped fork.
+This is an explicit packaging tradeoff, not a claim that the fixture needs bash.
 
 The current [Valkey catalogue](https://images.chainguard.dev/directory/image/valkey/overview)
 offers a free starter image, with access restrictions for specific version tags.
@@ -33,7 +35,7 @@ add a paid registry dependency or accept an older service merely to match bases.
 
 ## Proposed compatible patch sequence
 
-v0.2.1 is the authorized current patch; the remaining versions reserve a
+v0.2.2 is the authorized current patch; the remaining versions reserve a
 reviewable recommendation, not approved implementation.
 They harden packaging of existing foundation behavior. If an image requires new
 application features or changes secret/storage/auth contracts, split that work

@@ -1,6 +1,6 @@
 # Runasmidja Release Plan To 1.0.0
 
-Status: roadmap contract; v0.1.0/v0.2.0 tagged; v0.2.1 maintainer pentest accepted; GitHub and tag pending.
+Status: roadmap contract; v0.1.0/v0.2.0/v0.2.1 tagged; v0.2.2 implementation candidate; maintainer pentest NOT RUN.
 The authorized Wolfi/PostgreSQL fixture passes scans and real qualification; see the
 [assessment](../security/pentest/v0.2.0.md).
 
@@ -33,9 +33,9 @@ Run `scripts/checks.sh`, current dependency/license/advisory checks, freshness, 
 
 The [release runbook](RELEASE_RUNBOOK.md) and [version policy](VERSIONING_POLICY.md) define the handoff. Build and verify locally, commit completed candidates as needed, and stop for the maintainer’s pentest. Finalize acceptance only after green. The maintainer pushes; repeat GitHub fixes and affected pentest retests until green. Tag and push the version tag only when explicitly requested; distribution publication needs separate authorization.
 
-The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The current bounded patch is [v0.2.1 Wolfi probe packaging](releases/v0.2.1-scope.md); v0.3.0 remains the next minor. The released [v0.2.0 fixture](releases/v0.2.0-scope.md) issues database/cache passwords in OpenBao; the legacy v0.1 fixture is retained unchanged. Temporary delivery, build/release identity and full drift qualification remain later numbered passes.
+The [search design](SEARCH_DESIGN.md) and [secret lifecycle](SECRETS_POLICY.md) define required trust boundaries. The current bounded patch is [v0.2.2 Wolfi Valkey fixture](releases/v0.2.2-scope.md); v0.3.0 remains the next minor. The released [v0.2.0 fixture](releases/v0.2.0-scope.md) issues database/cache passwords in OpenBao; the legacy v0.1 fixture is retained unchanged. Temporary delivery, build/release identity and full drift qualification remain later numbered passes.
 
-The [container and Fluxheim plan](CONTAINER_DEPLOYMENT_PLAN.md) proposes compatible v0.2.1-v0.2.3 image follow-ups, without renumbering the minor workstreams. Fluxheim Wolfi proxy qualification is required at v0.11.0 (health fixture), v0.12.0 (freshness), v0.129.0/v0.130.0/v0.133.0 (actual deployment/TLS/security) and v0.366.0/RC/1.0 (exact artifacts). Meilisearch preferred-base admission remains v0.115.0. v0.2.1 is locally qualified with maintainer acceptance; v0.2.2/v0.2.3 remain proposed.
+The [container and Fluxheim plan](CONTAINER_DEPLOYMENT_PLAN.md) proposes compatible v0.2.1-v0.2.3 image follow-ups, without renumbering the minor workstreams. Fluxheim Wolfi proxy qualification is required at v0.11.0 (health fixture), v0.12.0 (freshness), v0.129.0/v0.130.0/v0.133.0 (actual deployment/TLS/security) and v0.366.0/RC/1.0 (exact artifacts). Meilisearch preferred-base admission remains v0.115.0. v0.2.1 is tagged; v0.2.2 is the current implementation candidate awaiting pentest; v0.2.3 remains proposed.
 
 The [2026-10-03 planning revision](plan-revision-2026-10-03.md) records moved owners and qualification limits. Unpublished version assignments changed; the supplied source-version mapping remains intact.
 

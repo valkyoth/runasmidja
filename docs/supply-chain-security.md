@@ -30,6 +30,11 @@ PostgreSQL/Valkey pins in deploy/podman/image-policy.json, limited to disposable
 fixtures. Changing any pin requires renewed review; these exceptions do not
 waive vulnerability findings or establish cryptographic publisher identity.
 The original PostgreSQL exception is historical and that image remains blocked.
+The Valkey exception is rollback-only. Default Valkey verifies its exact signed
+Chainguard index, GitHub workflow identity/issuer and Linux/amd64 leaf. Its public
+Wolfi starter includes a shell and shared libraries; retain their upstream
+inventory and notices rather than claiming a shell-free image. Every startup
+scans either selected profile; no scan or provenance fallback is allowed.
 Its authorized replacement builds pinned official source on a Wolfi platform
 leaf authenticated through the signed Chainguard index. Signed APK packages are
 resolved at build time; builds are not bit-for-bit reproducibility claims.

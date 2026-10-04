@@ -101,6 +101,8 @@ def ensure_image():
 
 def fixture_images():
     images = json.loads((ROOT / 'deploy/podman/images.json').read_text())
+    from valkey_image import selected_image
+    images['valkey'] = selected_image()
     if images.get('postgres') == MARKER:
         images['postgres'] = ensure_image()
     return images

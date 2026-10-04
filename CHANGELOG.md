@@ -1,6 +1,16 @@
 # Changelog
 
-## 0.2.1 — release prepared; GitHub and tag pending
+## 0.2.2 — implementation candidate; pentest NOT RUN
+
+- Adopt public signed Wolfi Valkey 9.1.2 with exact index/platform admission and
+  weekly/manual freshness checks; retain the previous official digest for rollback.
+- Separate fixture custody, OpenBao-issued ACLs, real eviction, outage/restart,
+  nonpersistence and kernel/resource qualification; bounded fixture RESP client.
+- Preserve native/scratch/Wolfi probe regressions and code-only GitHub CI.
+- See [scope](docs/releases/v0.2.2-scope.md),
+  [notes](release-notes/v0.2.2.md) and [assessment](security/pentest/v0.2.2.md).
+
+## 0.2.1 — released 2026-10-04
 
 Maintainer accepted 74b52fc on 2026-10-04 with no actionable findings. Full local
 release qualification passes; no remediation was required. The accompanying

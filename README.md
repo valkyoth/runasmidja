@@ -23,14 +23,14 @@ The same Rust engine will execute in a browser worker and native hosts.
 Browser processing is the default; saving, sharing, server execution and
 external network operations are distinct explicit actions.
 
-**Current status:** `v0.1.0` and `v0.2.0` are signed and tagged with accepted
-pentests and green GitHub checks. The `0.2.1` candidate adds a minimal Wolfi image
-for the existing health probe; its maintainer pentest is **PASS**, accepted on
-2026-10-04. GitHub checks and explicit version tagging remain pending.
+**Current status:** `v0.1.0`, `v0.2.0` and `v0.2.1` are signed and tagged with
+accepted pentests and green GitHub checks. The `0.2.2` candidate adopts the
+public signed Wolfi Valkey image for the development fixture, with explicit
+rollback and real cache/resource tests. Maintainer pentest is **NOT RUN**.
 OpenBao-first service provisioning and the Wolfi/PostgreSQL fixture remain
 available. No workbench, transformation, browser UI, production HTTP server or
-CyberChef parity is implemented yet. See the [0.2.1 scope](docs/releases/v0.2.1-scope.md)
-and [candidate assessment](security/pentest/v0.2.1.md).
+CyberChef parity is implemented yet. See the [0.2.2 scope](docs/releases/v0.2.2-scope.md)
+and [candidate assessment](security/pentest/v0.2.2.md).
 
 GitHub checks code and dependencies; CodeQL uses Default setup. Container builds,
 image scans and real service tests run locally before pushing. See the
@@ -68,7 +68,7 @@ python3 scripts/stack.py stop
 
 Dependencies run in rootless Podman: PostgreSQL **19 beta 4**, OpenBao **2.7.1**
 and Valkey **9.1.2**. PostgreSQL is built automatically from pinned official source
-on a verified Wolfi base. Private custody lives in ignored `.local/stacks/v02-admission-ready`;
+on a verified Wolfi base. Private custody lives in ignored `.local/stacks/v022-wolfi-valkey`;
 earlier `.local/stacks/*` and `.local/stack` data remain separate and retained.
 OpenBao is initialized over TLS with declarative audit, KV v2, scoped AppRole
 and revoked bootstrap root token. Image provenance and exact-digest scans run
@@ -107,7 +107,7 @@ Every code file has a hard 500-line ceiling.
 [release runbook](docs/RELEASE_RUNBOOK.md),
 [security controls](docs/security-controls.md),
 [dependency policy](docs/supply-chain-security.md),
-[candidate release notes](release-notes/v0.2.1.md),
+[candidate release notes](release-notes/v0.2.2.md),
 [tagged foundation notes](release-notes/v0.1.0.md).
 
 The [original idea](docs/IDEA.md) and [supplied planning bundle](docs/reference/workbench-plan/README.md)
